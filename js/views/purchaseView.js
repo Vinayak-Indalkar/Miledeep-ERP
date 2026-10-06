@@ -22,13 +22,13 @@ export const PurchaseView = {
   ],
 
   bookingsList: [
-    { sNo: 1, bookingNo: 'PB-2026-089', bookingDate: '2026-10-04', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', grader: 'B. Venkatesh', agent: 'Coastal Marine Agency', bookingCount: '40 Count', bookingWeight: 2000, bookingRate: 440, arrivalPlant: 'DFL UNIT-5 (JPT)', supplier: 'Godavari Coastal Aqua Farms', pond: 'Pond #4B & 5A', expectedDate: '2026-10-04', advancePaid: '$ 3,000', status: 'FULFILLED' },
-    { sNo: 2, bookingNo: 'PB-2026-092', bookingDate: '2026-10-03', species: 'Black Tiger Shrimp', purchaseType: 'Hatchery Buyback Contract', grader: 'K. Ramu', agent: 'Sagar Marine Brokers', bookingCount: '20 Count', bookingWeight: 3500, bookingRate: 620, arrivalPlant: 'DFL UNIT-3 (PSP)', supplier: 'Sagar Marine Hatcheries & Cultivators', pond: 'Kakinada Bay Cage 1', expectedDate: '2026-10-03', advancePaid: '$ 5,000', status: 'FULFILLED' },
-    { sNo: 3, bookingNo: 'PB-2026-095', bookingDate: '2026-10-05', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', grader: 'M. Nagesh', agent: 'Direct Farmer', bookingCount: '50 Count', bookingWeight: 4000, bookingRate: 380, arrivalPlant: 'DFL UNIT-4 (PND)', supplier: 'Krishna Delta Prawn Harvesters', pond: 'Cluster #9', expectedDate: '2026-10-05', advancePaid: '$ 4,500', status: 'FULFILLED' },
-    { sNo: 4, bookingNo: 'PB-2026-102', bookingDate: '2026-10-08', species: 'Vannamei Shrimp', purchaseType: 'Agent Procurement Order', grader: 'B. Venkatesh', agent: 'Delta Seafood Associates', bookingCount: '30 Count', bookingWeight: 3200, bookingRate: 460, arrivalPlant: 'DFL UNIT-5 (JPT)', supplier: 'Godavari Coastal Aqua Farms', pond: 'Pond #14', expectedDate: '2026-10-08', advancePaid: '$ 0', status: 'CONFIRMED' },
-    { sNo: 5, bookingNo: 'PB-2026-105', bookingDate: '2026-10-09', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', grader: 'G. Suribabu', agent: 'Direct Farmer', bookingCount: '45 Count', bookingWeight: 2800, bookingRate: 410, arrivalPlant: 'DFL UNIT-6 (JPT-II)', supplier: 'Konaseema Marine Harvesters', pond: 'Pond #3 Coastal', expectedDate: '2026-10-09', advancePaid: '$ 2,500', status: 'CONFIRMED' },
-    { sNo: 6, bookingNo: 'PB-2026-108', bookingDate: '2026-10-10', species: 'Black Tiger Shrimp', purchaseType: 'Corporate Feed-Linked Booking', grader: 'K. Ramu', agent: 'Nellore Aqua Syndicate', bookingCount: '25 Count', bookingWeight: 5000, bookingRate: 590, arrivalPlant: 'DFL UNIT-2 (KKD)', supplier: 'Nellore Brackish Aqua Cultivators', pond: 'Block #12 Pond A', expectedDate: '2026-10-10', advancePaid: '$ 6,000', status: 'PENDING' },
-    { sNo: 7, bookingNo: 'PB-2026-110', bookingDate: '2026-10-11', species: 'Asian Seabass (Barramundi)', purchaseType: 'Spot Market Purchase', grader: 'M. Nagesh', agent: 'East Coast Brokers', bookingCount: '500-800 g/pc', bookingWeight: 1800, bookingRate: 320, arrivalPlant: 'DFL UNIT-1 (VSP)', supplier: 'East Coast Aqua Society', pond: 'Cage #7 Deep Sea', expectedDate: '2026-10-11', advancePaid: '$ 1,500', status: 'PENDING' }
+    { sNo: 1, bookingNo: 'PB-2026-089', bookingStation: 'Bhimavaram Center #1', bookingDate: '2026-10-04', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', vehicleNo: 'AP 37 TE 4821', driverName: 'G. Narayana', grader: 'B. Venkatesh', agent: 'Coastal Marine Agency', farmLocation: 'Pond #4B & 5A, Akividu', supplier: 'Godavari Coastal Aqua Farms', bookingCount: '40 Count', bookingWeight: 2000, bookingRate: 440, arrivalPlant: 'DFL UNIT-5 (JPT)', remarks: 'Grade quality A, direct early morning harvest.', expectedDate: '2026-10-04', advancePaid: '$ 3,000', status: 'FULFILLED' },
+    { sNo: 2, bookingNo: 'PB-2026-092', bookingStation: 'Kakinada Sea Intake #2', bookingDate: '2026-10-03', species: 'Black Tiger Shrimp', purchaseType: 'Hatchery Buyback Contract', vehicleNo: 'AP 05 TX 9102', driverName: 'M. Srinu', grader: 'K. Ramu', agent: 'Sagar Marine Brokers', farmLocation: 'Kakinada Bay Cage 1', supplier: 'Sagar Marine Hatcheries & Cultivators', bookingCount: '20 Count', bookingWeight: 3500, bookingRate: 620, arrivalPlant: 'DFL UNIT-3 (PSP)', remarks: 'Export batch benchmark rate locked.', expectedDate: '2026-10-03', advancePaid: '$ 5,000', status: 'FULFILLED' },
+    { sNo: 3, bookingNo: 'PB-2026-095', bookingStation: 'Machilipatnam Delta #3', bookingDate: '2026-10-05', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', vehicleNo: 'AP 16 TZ 3390', driverName: 'Ch. Prasad', grader: 'M. Nagesh', agent: 'Direct Farmer', farmLocation: 'Krishna Delta Cluster #9', supplier: 'Krishna Delta Prawn Harvesters', bookingCount: '50 Count', bookingWeight: 4000, bookingRate: 380, arrivalPlant: 'DFL UNIT-4 (PND)', remarks: 'Direct farmer pond harvest with aerated crates.', expectedDate: '2026-10-05', advancePaid: '$ 4,500', status: 'FULFILLED' },
+    { sNo: 4, bookingNo: 'PB-2026-102', bookingStation: 'Bhimavaram Center #1', bookingDate: '2026-10-08', species: 'Vannamei Shrimp', purchaseType: 'Agent Procurement Order', vehicleNo: 'AP 37 TE 8812', driverName: 'K. Subba Rao', grader: 'B. Venkatesh', agent: 'Delta Seafood Associates', farmLocation: 'Pond #14, Undi Road', supplier: 'Godavari Coastal Aqua Farms', bookingCount: '30 Count', bookingWeight: 3200, bookingRate: 460, arrivalPlant: 'DFL UNIT-5 (JPT)', remarks: 'Agent booking agreement signed.', expectedDate: '2026-10-08', advancePaid: '$ 0', status: 'CONFIRMED' },
+    { sNo: 5, bookingNo: 'PB-2026-105', bookingStation: 'Amalapuram Harvesters #4', bookingDate: '2026-10-09', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', vehicleNo: 'AP 04 TT 5619', driverName: 'D. Rambabu', grader: 'G. Suribabu', agent: 'Direct Farmer', farmLocation: 'Konaseema Coastal Pond #3', supplier: 'Konaseema Marine Harvesters', bookingCount: '45 Count', bookingWeight: 2800, bookingRate: 410, arrivalPlant: 'DFL UNIT-6 (JPT-II)', remarks: 'Pond sample tested negative for antibiotics.', expectedDate: '2026-10-09', advancePaid: '$ 2,500', status: 'CONFIRMED' },
+    { sNo: 6, bookingNo: 'PB-2026-108', bookingStation: 'Ongole Coastal Hub #1', bookingDate: '2026-10-10', species: 'Black Tiger Shrimp', purchaseType: 'Corporate Feed-Linked Booking', vehicleNo: 'AP 26 TV 1104', driverName: 'Y. Brahmaiah', grader: 'K. Ramu', agent: 'Nellore Aqua Syndicate', farmLocation: 'Nellore Block #12 Pond A', supplier: 'Nellore Brackish Aqua Cultivators', bookingCount: '25 Count', bookingWeight: 5000, bookingRate: 590, arrivalPlant: 'DFL UNIT-2 (KKD)', remarks: 'Feed linked contract with high yield estimation.', expectedDate: '2026-10-10', advancePaid: '$ 6,000', status: 'PENDING' },
+    { sNo: 7, bookingNo: 'PB-2026-110', bookingStation: 'Visakhapatnam Gate Dock', bookingDate: '2026-10-11', species: 'Asian Seabass (Barramundi)', purchaseType: 'Spot Market Purchase', vehicleNo: 'AP 31 TH 7741', driverName: 'P. Appa Rao', grader: 'M. Nagesh', agent: 'East Coast Brokers', farmLocation: 'Deep Sea Cage #7', supplier: 'East Coast Aqua Society', bookingCount: '500-800 g/pc', bookingWeight: 1800, bookingRate: 320, arrivalPlant: 'DFL UNIT-1 (VSP)', remarks: 'Live harvest intake to dock.', expectedDate: '2026-10-11', advancePaid: '$ 1,500', status: 'PENDING' }
   ],
 
   commercialTxns: [
@@ -820,21 +820,33 @@ export const PurchaseView = {
         </div>
 
         <!-- Search / Filter Fields: Select Purchase, Select Arrival Plant, Date -->
-        <div class="bg-white p-4 rounded-xl border border-[#DFE1E6] shadow-xs space-y-3">
-          <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
+          <div class="flex items-center justify-between pb-3 border-b border-[#EBECF0]">
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-              <h3 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Search / Filter Bookings</h3>
+              <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
             </div>
-            <span class="text-[11px] text-[#6B778C]">Filter by Purchase Type, Arrival Plant & Date</span>
+
+            <!-- Filter Controls: Reset & Toggle Open/Close -->
+            <div class="flex items-center gap-2">
+              <button type="button" id="booking-top-reset-btn" class="dt-top-filter-reset-btn text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] hover:bg-[#F4F5F7] px-2.5 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-colors cursor-pointer" title="Reset all filters">
+                <svg class="w-3.5 h-3.5 text-[#6B778C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>Reset</span>
+              </button>
+
+              <button type="button" id="booking-top-toggle-btn" class="dt-top-filter-toggle-btn text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+                <svg class="w-3.5 h-3.5 dt-top-filter-toggle-icon transform transition-transform duration-200" id="booking-top-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <span class="dt-top-filter-toggle-text" id="booking-top-toggle-text">Hide Filter</span>
+              </button>
+            </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
-            <!-- 1. Select Purchase -->
+          <!-- Collapsible Filter Inputs Grid -->
+          <div id="booking-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Select Purchase</label>
-              <select id="booking-filter-purchase" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
-                <option value="ALL">All Purchase Types</option>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT PURCHASE</label>
+              <select id="booking-top-purchase-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Purchases (Select)</option>
                 <option value="Direct Farmer Procurement">Direct Farmer Procurement</option>
                 <option value="Hatchery Buyback Contract">Hatchery Buyback Contract</option>
                 <option value="Agent Procurement Order">Agent Procurement Order</option>
@@ -843,34 +855,28 @@ export const PurchaseView = {
               </select>
             </div>
 
-            <!-- 2. Select Arrival Plant -->
             <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Select Arrival Plant</label>
-              <select id="booking-filter-plant" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
-                <option value="ALL">All Arrival Plants</option>
-                <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP) - Visakhapatnam</option>
-                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD) - Kakinada</option>
-                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP) - Peddapuram</option>
-                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND) - Ponduru</option>
-                <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT) - Jagannaickpur</option>
-                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II) - Unit 2</option>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT ARRIVAL PLANT</label>
+              <select id="booking-top-plant-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Arrival Plants (Select)</option>
+                <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
               </select>
             </div>
 
-            <!-- 3. Date -->
             <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Date</label>
-              <input type="date" id="booking-filter-date" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">DATE</label>
+              <input type="date" id="booking-top-date-input" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
             </div>
 
-            <!-- Action Buttons -->
             <div class="flex items-end gap-2">
-              <button id="booking-search-btn" type="button" class="btn-primary flex-1 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <button type="button" id="booking-top-search-btn" class="dt-top-filter-search-btn btn-primary w-full py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 <span>Search</span>
-              </button>
-              <button id="booking-reset-btn" type="button" class="btn-secondary py-2 px-3 rounded-lg text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] cursor-pointer">
-                <span>Reset</span>
               </button>
             </div>
           </div>
@@ -885,6 +891,7 @@ export const PurchaseView = {
       data: this.bookingsList,
       keyField: 'bookingNo',
       tableTitle: 'Recorded Pond Bookings & Procurement Orders (CRUD)',
+      hideTopFilterBar: true,
       columns: [
         { 
           field: 'sNo', 
@@ -961,11 +968,36 @@ export const PurchaseView = {
       if (b) PurchaseView.showBookingDetails(b);
     };
 
-    const filterPurchase = document.getElementById('booking-filter-purchase');
-    const filterPlant = document.getElementById('booking-filter-plant');
-    const filterDate = document.getElementById('booking-filter-date');
-    const searchBtn = document.getElementById('booking-search-btn');
-    const resetBtn = document.getElementById('booking-reset-btn');
+    const filterPurchase = document.getElementById('booking-top-purchase-select');
+    const filterPlant = document.getElementById('booking-top-plant-select');
+    const filterDate = document.getElementById('booking-top-date-input');
+    const searchBtn = document.getElementById('booking-top-search-btn');
+    const resetBtn = document.getElementById('booking-top-reset-btn');
+    const toggleBtn = document.getElementById('booking-top-toggle-btn');
+    const filterBody = document.getElementById('booking-top-filter-body');
+    const toggleText = document.getElementById('booking-top-toggle-text');
+    const toggleIcon = document.getElementById('booking-top-toggle-icon');
+
+    // Toggle hide/show filter
+    if (toggleBtn && filterBody) {
+      let isCollapsed = false;
+      toggleBtn.addEventListener('click', () => {
+        isCollapsed = !isCollapsed;
+        if (isCollapsed) {
+          filterBody.classList.add('hidden');
+          if (toggleText) toggleText.innerText = 'Show Filter';
+          if (toggleIcon) toggleIcon.classList.add('-rotate-90');
+          toggleBtn.classList.remove('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.add('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        } else {
+          filterBody.classList.remove('hidden');
+          if (toggleText) toggleText.innerText = 'Hide Filter';
+          if (toggleIcon) toggleIcon.classList.remove('-rotate-90');
+          toggleBtn.classList.add('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.remove('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        }
+      });
+    }
 
     const applyBookingFilters = () => {
       const pVal = filterPurchase ? filterPurchase.value : 'ALL';
@@ -994,7 +1026,7 @@ export const PurchaseView = {
         if (filterPlant) filterPlant.value = 'ALL';
         if (filterDate) filterDate.value = '';
         bookingsTable.setData(this.bookingsList);
-        Toast.show('Filters reset. Displaying all bookings.', 'info');
+        Toast.show('Filters have been reset. Displaying all bookings.', 'info');
       });
     }
 
@@ -2406,73 +2438,193 @@ export const PurchaseView = {
   },
 
   // =========================================================================
-  // CRUD MODAL HANDLERS FOR BOOKINGS
+  // CRUD MODAL HANDLERS FOR BOOKINGS (EXACT USER SPECIFICATION)
   // =========================================================================
   openCreateBookingModal(tableInstance) {
     Modal.open({
-      title: 'Create Pre-Harvest Pond Booking',
-      size: 'lg',
+      title: 'Create Booking',
+      size: 'xl',
       content: `
-        <form class="space-y-3 text-xs">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Booking Number</label>
-              <input type="text" id="newbkg-no" value="PB-2026-${Math.floor(100 + Math.random() * 900)}" readonly class="w-full text-xs px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
+        <form id="create-booking-form" class="space-y-4 text-xs">
+          <!-- Required Fields Section -->
+          <div class="bg-[#FAFBFC] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
+            <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Required Information</span>
+                <span class="text-[#FF5630] font-bold text-sm">*</span>
+              </div>
+              <span class="text-[11px] text-[#6B778C]">Fields marked with * are mandatory</span>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Select Purchase Type *</label>
-              <select id="newbkg-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                <option selected>Direct Farmer Procurement</option>
-                <option>Hatchery Buyback Contract</option>
-                <option>Agent Procurement Order</option>
-                <option>Corporate Feed-Linked Booking</option>
-                <option>Spot Market Purchase</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Select Arrival Plant *</label>
-              <select id="newbkg-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                <option selected>DFL UNIT-5 (JPT) - Jagannaickpur</option>
-                <option>DFL UNIT-1 (VSP) - Visakhapatnam</option>
-                <option>DFL UNIT-2 (KKD) - Kakinada</option>
-                <option>DFL UNIT-3 (PSP) - Peddapuram</option>
-                <option>DFL UNIT-4 (PND) - Ponduru</option>
-                <option>DFL UNIT-6 (JPT-II) - Unit 2</option>
-              </select>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <!-- 1. Booking Station -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  1. Booking Station <span class="text-[#FF5630]">*</span>
+                </label>
+                <select id="newbkg-station" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                  <option value="">-- Select Booking Station --</option>
+                  <option value="Bhimavaram Center #1">Bhimavaram Center #1</option>
+                  <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
+                  <option value="Amalapuram Harvesters #4">Amalapuram Harvesters #4</option>
+                  <option value="Machilipatnam Delta #3">Machilipatnam Delta #3</option>
+                  <option value="Ongole Coastal Hub #1">Ongole Coastal Hub #1</option>
+                  <option value="Visakhapatnam Gate Dock">Visakhapatnam Gate Dock</option>
+                </select>
+              </div>
+
+              <!-- 2. Species -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  2. Species <span class="text-[#FF5630]">*</span>
+                </label>
+                <select id="newbkg-species" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                  <option value="">-- Select Species --</option>
+                  <option value="Vannamei Shrimp">Vannamei Shrimp (Litopenaeus vannamei)</option>
+                  <option value="Black Tiger Shrimp">Black Tiger Shrimp (Penaeus monodon)</option>
+                  <option value="Asian Seabass (Barramundi)">Asian Seabass (Barramundi)</option>
+                  <option value="Freshwater Scampi">Freshwater Scampi</option>
+                </select>
+              </div>
+
+              <!-- 3. Purchase Type -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  3. Purchase Type <span class="text-[#FF5630]">*</span>
+                </label>
+                <select id="newbkg-purchasetype" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                  <option value="">-- Select Purchase Type --</option>
+                  <option value="Direct Farmer Procurement">Direct Farmer Procurement</option>
+                  <option value="Hatchery Buyback Contract">Hatchery Buyback Contract</option>
+                  <option value="Agent Procurement Order">Agent Procurement Order</option>
+                  <option value="Corporate Feed-Linked Booking">Corporate Feed-Linked Booking</option>
+                  <option value="Spot Market Purchase">Spot Market Purchase</option>
+                </select>
+              </div>
+
+              <!-- 4. Booking Number -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  4. Booking Number <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="newbkg-no" value="PB-2026-${Math.floor(100 + Math.random() * 900)}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" placeholder="e.g. PB-2026-115" />
+              </div>
+
+              <!-- 5. Vehicle Number -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  5. Vehicle Number <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="newbkg-vehno" placeholder="e.g. AP 37 TE 4821" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 6. Driver Name -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  6. Driver Name <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="newbkg-driver" placeholder="e.g. G. Narayana" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 7. Grader Name -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  7. Grader Name <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="newbkg-grader" placeholder="e.g. B. Venkatesh" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 8. Booking Date -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  8. Booking Date <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="date" id="newbkg-date" value="2026-10-06" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 9. Farm Location -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  9. Farm Location <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="newbkg-farmloc" placeholder="e.g. Bhimavaram Cluster #4 / Pond #12" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 10. Suppliers -->
+              <div class="sm:col-span-2 lg:col-span-3">
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  10. Suppliers <span class="text-[#FF5630]">*</span>
+                </label>
+                <select id="newbkg-supplier" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                  <option value="">-- Select Supplier / Farmer --</option>
+                  <option value="Godavari Coastal Aqua Farms">Godavari Coastal Aqua Farms (Bhimavaram)</option>
+                  <option value="Sagar Marine Hatcheries & Cultivators">Sagar Marine Hatcheries & Cultivators (Kakinada)</option>
+                  <option value="Krishna Delta Prawn Harvesters">Krishna Delta Prawn Harvesters (Machilipatnam)</option>
+                  <option value="Konaseema Marine Harvesters">Konaseema Marine Harvesters (Amalapuram)</option>
+                  <option value="Nellore Brackish Aqua Cultivators">Nellore Brackish Aqua Cultivators (Nellore)</option>
+                  <option value="East Coast Aqua Society">East Coast Aqua Society (Visakhapatnam)</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Farmer / Supplier *</label>
-              <select id="newbkg-sup" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name} (${s.region})</option>`).join('')}
-              </select>
+          <!-- Optional Fields Section -->
+          <div class="bg-white p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
+            <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
+              <span class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Optional Information</span>
+              <span class="text-[11px] text-[#6B778C]">Additional procurement details</span>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Source *</label>
-              <input type="text" id="newbkg-pond" value="Pond #15, Akividu" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <!-- 11. Agent Name -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
+                  11. Agent Name (Optional)
+                </label>
+                <input type="text" id="newbkg-agent" placeholder="e.g. Coastal Marine Agency / Direct" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 12. Remarks -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
+                  12. Remarks (Optional)
+                </label>
+                <textarea id="newbkg-remarks" rows="2" placeholder="e.g. Harvest scheduled for 4:00 AM, ice boxes ready..." class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]"></textarea>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species *</label>
-              <select id="newbkg-spec" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                ${ERP_DATA.species.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
-              </select>
+          <!-- Booking Details Sub-Section -->
+          <div class="bg-[#F4F5F7] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
+            <div class="flex items-center justify-between border-b border-[#DFE1E6] pb-2">
+              <span class="text-xs font-bold text-[#0052CC] uppercase tracking-wider">Booking Details</span>
+              <span class="text-[11px] text-[#6B778C]">Grade, Expected Weight & Benchmark Rate</span>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Booked Quantity (KG) *</label>
-              <input type="number" id="newbkg-qty" value="3500" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Expected Harvest Date *</label>
-              <input type="date" id="newbkg-date" value="2026-10-12" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Advance Paid</label>
-              <input type="text" id="newbkg-adv" value="$ 4,000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- 13. Booking Count -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  13. Booking Count
+                </label>
+                <input type="text" id="newbkg-count" placeholder="e.g. 40 Count (30-40 pcs/kg)" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 14. Booking Weight (Kgs) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  14. Booking Weight (Kgs)
+                </label>
+                <input type="number" id="newbkg-weight" placeholder="e.g. 3500" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-extrabold text-[#006644] focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 15. Booking Rate -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  15. Booking Rate (₹ / KG)
+                </label>
+                <input type="number" id="newbkg-rate" placeholder="e.g. 440" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-extrabold text-[#172B4D] focus:outline-none focus:border-[#0052CC]" />
+              </div>
             </div>
           </div>
         </form>
@@ -2480,36 +2632,74 @@ export const PurchaseView = {
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Create Booking',
+          label: 'Save',
           type: 'primary',
           onClick: (m) => {
-            const no = document.getElementById('newbkg-no').value;
-            const pType = document.getElementById('newbkg-type').value;
-            const plant = document.getElementById('newbkg-plant').value;
-            const sup = document.getElementById('newbkg-sup').value;
-            const pond = document.getElementById('newbkg-pond').value;
-            const spec = document.getElementById('newbkg-spec').value;
-            const qty = parseFloat(document.getElementById('newbkg-qty').value) || 3000;
-            const date = document.getElementById('newbkg-date').value;
-            const adv = document.getElementById('newbkg-adv').value;
+            const station = document.getElementById('newbkg-station')?.value?.trim();
+            const species = document.getElementById('newbkg-species')?.value?.trim();
+            const purchaseType = document.getElementById('newbkg-purchasetype')?.value?.trim();
+            const bookingNo = document.getElementById('newbkg-no')?.value?.trim();
+            const vehicleNo = document.getElementById('newbkg-vehno')?.value?.trim();
+            const driverName = document.getElementById('newbkg-driver')?.value?.trim();
+            const graderName = document.getElementById('newbkg-grader')?.value?.trim();
+            const bookingDate = document.getElementById('newbkg-date')?.value?.trim();
+            const farmLocation = document.getElementById('newbkg-farmloc')?.value?.trim();
+            const supplier = document.getElementById('newbkg-supplier')?.value?.trim();
 
-            const newB = {
-              bookingNo: no,
-              purchaseType: pType,
-              arrivalPlant: plant,
-              supplier: sup,
-              pond: pond,
-              species: spec,
-              bookedQty: qty,
-              expectedDate: date,
-              advancePaid: adv,
+            const agent = document.getElementById('newbkg-agent')?.value?.trim() || 'Direct';
+            const remarks = document.getElementById('newbkg-remarks')?.value?.trim() || '';
+
+            const bookingCount = document.getElementById('newbkg-count')?.value?.trim() || '40 Count';
+            const bookingWeight = parseFloat(document.getElementById('newbkg-weight')?.value) || 0;
+            const bookingRate = parseFloat(document.getElementById('newbkg-rate')?.value) || 0;
+
+            // Required validation
+            if (!station || !species || !purchaseType || !bookingNo || !vehicleNo || !driverName || !graderName || !bookingDate || !farmLocation || !supplier) {
+              Toast.show('Please fill in all 10 required fields marked with *', 'error', 'Missing Required Fields');
+              return;
+            }
+
+            const mappedPlant = station.includes('Bhimavaram') ? 'DFL UNIT-5 (JPT)' :
+                               station.includes('Kakinada') ? 'DFL UNIT-3 (PSP)' :
+                               station.includes('Amalapuram') ? 'DFL UNIT-6 (JPT-II)' :
+                               station.includes('Machilipatnam') ? 'DFL UNIT-4 (PND)' :
+                               station.includes('Visakhapatnam') ? 'DFL UNIT-1 (VSP)' : 'DFL UNIT-2 (KKD)';
+
+            const newBooking = {
+              sNo: PurchaseView.bookingsList.length + 1,
+              bookingStation: station,
+              species: species,
+              purchaseType: purchaseType,
+              bookingNo: bookingNo,
+              vehicleNo: vehicleNo,
+              driverName: driverName,
+              grader: graderName,
+              bookingDate: bookingDate,
+              farmLocation: farmLocation,
+              pond: farmLocation,
+              supplier: supplier,
+              agent: agent,
+              remarks: remarks,
+              bookingCount: bookingCount,
+              bookingWeight: bookingWeight,
+              bookedQty: bookingWeight,
+              bookingRate: bookingRate,
+              arrivalPlant: mappedPlant,
+              expectedDate: bookingDate,
+              advancePaid: '$ 0',
               status: 'CONFIRMED'
             };
 
-            PurchaseView.bookingsList.unshift(newB);
+            PurchaseView.bookingsList.unshift(newBooking);
+
+            // Re-assign S.No
+            PurchaseView.bookingsList.forEach((b, idx) => {
+              b.sNo = idx + 1;
+            });
+
             if (tableInstance) tableInstance.setData(PurchaseView.bookingsList);
             m.close();
-            Toast.show(`Booking ${newB.bookingNo} created for ${plant}.`, 'success', 'Booking Registered');
+            Toast.show(`Booking ${newBooking.bookingNo} saved successfully.`, 'success', 'Booking Created');
           }
         }
       ]
@@ -2519,61 +2709,184 @@ export const PurchaseView = {
   openEditBookingModal(booking, tableInstance) {
     Modal.open({
       title: `Edit Booking: ${booking.bookingNo}`,
-      size: 'lg',
+      size: 'xl',
       content: `
-        <form class="space-y-3 text-xs">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Purchase Type</label>
-              <select id="editbkg-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                <option value="Direct Farmer Procurement" ${booking.purchaseType === 'Direct Farmer Procurement' ? 'selected' : ''}>Direct Farmer Procurement</option>
-                <option value="Hatchery Buyback Contract" ${booking.purchaseType === 'Hatchery Buyback Contract' ? 'selected' : ''}>Hatchery Buyback Contract</option>
-                <option value="Agent Procurement Order" ${booking.purchaseType === 'Agent Procurement Order' ? 'selected' : ''}>Agent Procurement Order</option>
-                <option value="Corporate Feed-Linked Booking" ${booking.purchaseType === 'Corporate Feed-Linked Booking' ? 'selected' : ''}>Corporate Feed-Linked Booking</option>
-                <option value="Spot Market Purchase" ${booking.purchaseType === 'Spot Market Purchase' ? 'selected' : ''}>Spot Market Purchase</option>
-              </select>
+        <form id="edit-booking-form" class="space-y-4 text-xs">
+          <!-- Required Fields Section -->
+          <div class="bg-[#FAFBFC] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
+            <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Required Information</span>
+                <span class="text-[#FF5630] font-bold text-sm">*</span>
+              </div>
+              <span class="text-[11px] text-[#6B778C]">Fields marked with * are mandatory</span>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Plant Destination</label>
-              <select id="editbkg-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                <option value="DFL UNIT-5 (JPT)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-5') ? 'selected' : ''}>DFL UNIT-5 (JPT) - Jagannaickpur</option>
-                <option value="DFL UNIT-1 (VSP)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-1') ? 'selected' : ''}>DFL UNIT-1 (VSP) - Visakhapatnam</option>
-                <option value="DFL UNIT-2 (KKD)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-2') ? 'selected' : ''}>DFL UNIT-2 (KKD) - Kakinada</option>
-                <option value="DFL UNIT-3 (PSP)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-3') ? 'selected' : ''}>DFL UNIT-3 (PSP) - Peddapuram</option>
-                <option value="DFL UNIT-4 (PND)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-4') ? 'selected' : ''}>DFL UNIT-4 (PND) - Ponduru</option>
-                <option value="DFL UNIT-6 (JPT-II)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-6') ? 'selected' : ''}>DFL UNIT-6 (JPT-II) - Unit 2</option>
-              </select>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <!-- 1. Booking Station -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  1. Booking Station <span class="text-[#FF5630]">*</span>
+                </label>
+                <select id="editbkg-station" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                  <option value="Bhimavaram Center #1" ${booking.bookingStation === 'Bhimavaram Center #1' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-5')) ? 'selected' : ''}>Bhimavaram Center #1</option>
+                  <option value="Kakinada Sea Intake #2" ${booking.bookingStation === 'Kakinada Sea Intake #2' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-3')) ? 'selected' : ''}>Kakinada Sea Intake #2</option>
+                  <option value="Amalapuram Harvesters #4" ${booking.bookingStation === 'Amalapuram Harvesters #4' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-6')) ? 'selected' : ''}>Amalapuram Harvesters #4</option>
+                  <option value="Machilipatnam Delta #3" ${booking.bookingStation === 'Machilipatnam Delta #3' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-4')) ? 'selected' : ''}>Machilipatnam Delta #3</option>
+                  <option value="Ongole Coastal Hub #1" ${booking.bookingStation === 'Ongole Coastal Hub #1' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-2')) ? 'selected' : ''}>Ongole Coastal Hub #1</option>
+                  <option value="Visakhapatnam Gate Dock" ${booking.bookingStation === 'Visakhapatnam Gate Dock' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-1')) ? 'selected' : ''}>Visakhapatnam Gate Dock</option>
+                </select>
+              </div>
+
+              <!-- 2. Species -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  2. Species <span class="text-[#FF5630]">*</span>
+                </label>
+                <select id="editbkg-species" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                  <option value="Vannamei Shrimp" ${booking.species && booking.species.includes('Vannamei') ? 'selected' : ''}>Vannamei Shrimp (Litopenaeus vannamei)</option>
+                  <option value="Black Tiger Shrimp" ${booking.species && booking.species.includes('Black Tiger') ? 'selected' : ''}>Black Tiger Shrimp (Penaeus monodon)</option>
+                  <option value="Asian Seabass (Barramundi)" ${booking.species && booking.species.includes('Asian Seabass') ? 'selected' : ''}>Asian Seabass (Barramundi)</option>
+                  <option value="Freshwater Scampi" ${booking.species && booking.species.includes('Scampi') ? 'selected' : ''}>Freshwater Scampi</option>
+                </select>
+              </div>
+
+              <!-- 3. Purchase Type -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  3. Purchase Type <span class="text-[#FF5630]">*</span>
+                </label>
+                <select id="editbkg-purchasetype" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                  <option value="Direct Farmer Procurement" ${booking.purchaseType === 'Direct Farmer Procurement' ? 'selected' : ''}>Direct Farmer Procurement</option>
+                  <option value="Hatchery Buyback Contract" ${booking.purchaseType === 'Hatchery Buyback Contract' ? 'selected' : ''}>Hatchery Buyback Contract</option>
+                  <option value="Agent Procurement Order" ${booking.purchaseType === 'Agent Procurement Order' ? 'selected' : ''}>Agent Procurement Order</option>
+                  <option value="Corporate Feed-Linked Booking" ${booking.purchaseType === 'Corporate Feed-Linked Booking' ? 'selected' : ''}>Corporate Feed-Linked Booking</option>
+                  <option value="Spot Market Purchase" ${booking.purchaseType === 'Spot Market Purchase' ? 'selected' : ''}>Spot Market Purchase</option>
+                </select>
+              </div>
+
+              <!-- 4. Booking Number -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  4. Booking Number <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="editbkg-no" value="${booking.bookingNo}" readonly class="w-full text-xs px-2.5 py-2 bg-[#EBECF0] border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC]" />
+              </div>
+
+              <!-- 5. Vehicle Number -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  5. Vehicle Number <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="editbkg-vehno" value="${booking.vehicleNo || 'AP 37 TE 4821'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 6. Driver Name -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  6. Driver Name <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="editbkg-driver" value="${booking.driverName || 'G. Narayana'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 7. Grader Name -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  7. Grader Name <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="editbkg-grader" value="${booking.grader || 'B. Venkatesh'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 8. Booking Date -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  8. Booking Date <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="date" id="editbkg-date" value="${booking.bookingDate || booking.expectedDate || '2026-10-06'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 9. Farm Location -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  9. Farm Location <span class="text-[#FF5630]">*</span>
+                </label>
+                <input type="text" id="editbkg-farmloc" value="${booking.farmLocation || booking.pond || 'Bhimavaram Cluster #4'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 10. Suppliers -->
+              <div class="sm:col-span-2 lg:col-span-3">
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  10. Suppliers <span class="text-[#FF5630]">*</span>
+                </label>
+                <select id="editbkg-supplier" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                  <option value="Godavari Coastal Aqua Farms" ${booking.supplier && booking.supplier.includes('Godavari') ? 'selected' : ''}>Godavari Coastal Aqua Farms (Bhimavaram)</option>
+                  <option value="Sagar Marine Hatcheries & Cultivators" ${booking.supplier && booking.supplier.includes('Sagar') ? 'selected' : ''}>Sagar Marine Hatcheries & Cultivators (Kakinada)</option>
+                  <option value="Krishna Delta Prawn Harvesters" ${booking.supplier && booking.supplier.includes('Krishna') ? 'selected' : ''}>Krishna Delta Prawn Harvesters (Machilipatnam)</option>
+                  <option value="Konaseema Marine Harvesters" ${booking.supplier && booking.supplier.includes('Konaseema') ? 'selected' : ''}>Konaseema Marine Harvesters (Amalapuram)</option>
+                  <option value="Nellore Brackish Aqua Cultivators" ${booking.supplier && booking.supplier.includes('Nellore') ? 'selected' : ''}>Nellore Brackish Aqua Cultivators (Nellore)</option>
+                  <option value="East Coast Aqua Society" ${booking.supplier && booking.supplier.includes('East Coast') ? 'selected' : ''}>East Coast Aqua Society (Visakhapatnam)</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Location</label>
-              <input type="text" id="editbkg-pond" value="${booking.pond}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+          <!-- Optional Fields Section -->
+          <div class="bg-white p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
+            <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
+              <span class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Optional Information</span>
+              <span class="text-[11px] text-[#6B778C]">Additional procurement details</span>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
-              <input type="text" id="editbkg-spec" value="${booking.species}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <!-- 11. Agent Name -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
+                  11. Agent Name (Optional)
+                </label>
+                <input type="text" id="editbkg-agent" value="${booking.agent || ''}" placeholder="e.g. Coastal Marine Agency" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 12. Remarks -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
+                  12. Remarks (Optional)
+                </label>
+                <textarea id="editbkg-remarks" rows="2" placeholder="e.g. Harvest notes..." class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">${booking.remarks || ''}</textarea>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Booked Quantity (KG)</label>
-              <input type="number" id="editbkg-qty" value="${booking.bookedQty}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold" />
+          <!-- Booking Details Sub-Section -->
+          <div class="bg-[#F4F5F7] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
+            <div class="flex items-center justify-between border-b border-[#DFE1E6] pb-2">
+              <span class="text-xs font-bold text-[#0052CC] uppercase tracking-wider">Booking Details</span>
+              <span class="text-[11px] text-[#6B778C]">Grade, Expected Weight & Benchmark Rate</span>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Expected Date</label>
-              <input type="date" id="editbkg-date" value="${booking.expectedDate}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Status</label>
-              <select id="editbkg-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                <option value="CONFIRMED" ${booking.status === 'CONFIRMED' ? 'selected' : ''}>CONFIRMED</option>
-                <option value="PENDING" ${booking.status === 'PENDING' ? 'selected' : ''}>PENDING</option>
-                <option value="FULFILLED" ${booking.status === 'FULFILLED' ? 'selected' : ''}>FULFILLED</option>
-                <option value="CANCELLED" ${booking.status === 'CANCELLED' ? 'selected' : ''}>CANCELLED</option>
-              </select>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- 13. Booking Count -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  13. Booking Count
+                </label>
+                <input type="text" id="editbkg-count" value="${booking.bookingCount || '40 Count'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 14. Booking Weight (Kgs) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  14. Booking Weight (Kgs)
+                </label>
+                <input type="number" id="editbkg-weight" value="${booking.bookingWeight || booking.bookedQty || 0}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-extrabold text-[#006644] focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 15. Booking Rate -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
+                  15. Booking Rate (₹ / KG)
+                </label>
+                <input type="number" id="editbkg-rate" value="${booking.bookingRate || 420}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-extrabold text-[#172B4D] focus:outline-none focus:border-[#0052CC]" />
+              </div>
             </div>
           </div>
         </form>
@@ -2581,20 +2894,52 @@ export const PurchaseView = {
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Update Booking',
+          label: 'Save',
           type: 'primary',
           onClick: (m) => {
-            booking.purchaseType = document.getElementById('editbkg-type').value;
-            booking.arrivalPlant = document.getElementById('editbkg-plant').value;
-            booking.pond = document.getElementById('editbkg-pond').value;
-            booking.species = document.getElementById('editbkg-spec').value;
-            booking.bookedQty = parseFloat(document.getElementById('editbkg-qty').value) || booking.bookedQty;
-            booking.expectedDate = document.getElementById('editbkg-date').value;
-            booking.status = document.getElementById('editbkg-status').value;
+            const station = document.getElementById('editbkg-station')?.value?.trim();
+            const species = document.getElementById('editbkg-species')?.value?.trim();
+            const purchaseType = document.getElementById('editbkg-purchasetype')?.value?.trim();
+            const vehicleNo = document.getElementById('editbkg-vehno')?.value?.trim();
+            const driverName = document.getElementById('editbkg-driver')?.value?.trim();
+            const graderName = document.getElementById('editbkg-grader')?.value?.trim();
+            const bookingDate = document.getElementById('editbkg-date')?.value?.trim();
+            const farmLocation = document.getElementById('editbkg-farmloc')?.value?.trim();
+            const supplier = document.getElementById('editbkg-supplier')?.value?.trim();
+
+            const agent = document.getElementById('editbkg-agent')?.value?.trim() || 'Direct';
+            const remarks = document.getElementById('editbkg-remarks')?.value?.trim() || '';
+
+            const bookingCount = document.getElementById('editbkg-count')?.value?.trim() || booking.bookingCount;
+            const bookingWeight = parseFloat(document.getElementById('editbkg-weight')?.value) || booking.bookingWeight;
+            const bookingRate = parseFloat(document.getElementById('editbkg-rate')?.value) || booking.bookingRate;
+
+            if (!station || !species || !purchaseType || !vehicleNo || !driverName || !graderName || !bookingDate || !farmLocation || !supplier) {
+              Toast.show('Please fill in all required fields marked with *', 'error', 'Validation Error');
+              return;
+            }
+
+            booking.bookingStation = station;
+            booking.species = species;
+            booking.purchaseType = purchaseType;
+            booking.vehicleNo = vehicleNo;
+            booking.driverName = driverName;
+            booking.grader = graderName;
+            booking.bookingDate = bookingDate;
+            booking.expectedDate = bookingDate;
+            booking.farmLocation = farmLocation;
+            booking.pond = farmLocation;
+            booking.supplier = supplier;
+            booking.agent = agent;
+            booking.remarks = remarks;
+            booking.bookingCount = bookingCount;
+            booking.bookingWeight = bookingWeight;
+            booking.bookedQty = bookingWeight;
+            booking.bookingRate = bookingRate;
 
             if (tableInstance) tableInstance.setData(PurchaseView.bookingsList);
             m.close();
-            Toast.show(`Booking ${booking.bookingNo} updated.`, 'success');
+            Toast.show(`Booking ${booking.bookingNo} updated successfully.`, 'success');
           }
         }
       ]
@@ -2610,61 +2955,89 @@ export const PurchaseView = {
           <div class="p-3 bg-[#DEEBFF] text-[#0747A6] rounded-lg border border-[#B3D4FF] flex items-center justify-between">
             <div>
               <span class="font-bold text-sm">${booking.bookingNo}</span>
-              <span class="ml-2 text-xs">(${booking.bookingDate || booking.expectedDate} • ${booking.purchaseType || 'Direct Procurement'})</span>
+              <span class="ml-2 text-xs">(${booking.bookingDate || booking.expectedDate} • ${booking.purchaseType || 'Direct Farmer Procurement'})</span>
             </div>
             <span class="lozenge lozenge-success font-bold">${booking.status || 'CONFIRMED'}</span>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Species</span>
-              <span class="font-bold text-[#172B4D]">${booking.species}</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Farmer / Supplier</span>
-              <span class="font-bold text-[#172B4D]">${booking.supplier || '-'}</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Pond / Location</span>
-              <span class="font-bold text-[#172B4D]">${booking.pond || '-'}</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Arrival Destination</span>
-              <span class="font-bold text-[#0052CC]">${booking.arrivalPlant || 'DFL UNIT-5 (JPT)'}</span>
+          <!-- Required Fields Summary -->
+          <div class="bg-[#FAFBFC] p-3 rounded-lg border border-[#DFE1E6] space-y-2">
+            <h4 class="font-bold text-xs text-[#172B4D] border-b border-[#EBECF0] pb-1">Required Information</h4>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">1. Booking Station</span>
+                <span class="font-bold text-[#172B4D]">${booking.bookingStation || booking.arrivalPlant || 'Bhimavaram Center #1'}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">2. Species</span>
+                <span class="font-bold text-[#0052CC]">${booking.species}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">3. Purchase Type</span>
+                <span class="font-medium text-[#172B4D]">${booking.purchaseType}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">4. Booking Number</span>
+                <span class="font-bold text-[#0052CC]">${booking.bookingNo}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">5. Vehicle Number</span>
+                <span class="font-bold text-[#172B4D]">${booking.vehicleNo || 'AP 37 TE 4821'}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">6. Driver Name</span>
+                <span class="font-medium text-[#172B4D]">${booking.driverName || 'G. Narayana'}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">7. Grader Name</span>
+                <span class="font-bold text-[#172B4D]">${booking.grader || 'B. Venkatesh'}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">8. Booking Date</span>
+                <span class="font-medium text-[#172B4D]">${booking.bookingDate || booking.expectedDate}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">9. Farm Location</span>
+                <span class="font-medium text-[#172B4D]">${booking.farmLocation || booking.pond || 'Bhimavaram Cluster #4'}</span>
+              </div>
+              <div class="sm:col-span-3">
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">10. Suppliers</span>
+                <span class="font-bold text-[#172B4D]">${booking.supplier || 'Godavari Coastal Aqua Farms'}</span>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Assigned Grader</span>
-              <span class="font-bold text-[#172B4D]">${booking.grader || 'B. Venkatesh'}</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Procurement Agent</span>
-              <span class="font-bold text-[#172B4D]">${booking.agent || 'Direct'}</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Booking Count</span>
-              <span class="font-bold text-[#0052CC]">${booking.bookingCount || '40 Count'}</span>
-            </div>
-            <div class="p-2.5 bg-[#E3FCEF] border border-[#ABF5D1] rounded">
-              <span class="text-[#006644] text-[11px] block">Booked Weight</span>
-              <span class="font-extrabold text-sm text-[#006644]">${(booking.bookingWeight || booking.bookedQty || 0).toLocaleString()} KG</span>
+          <!-- Optional Fields Summary -->
+          <div class="bg-white p-3 rounded-lg border border-[#DFE1E6] space-y-2">
+            <h4 class="font-bold text-xs text-[#5E6C84] border-b border-[#EBECF0] pb-1">Optional Information</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">11. Agent Name</span>
+                <span class="font-medium text-[#172B4D]">${booking.agent || 'Direct'}</span>
+              </div>
+              <div>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">12. Remarks</span>
+                <span class="font-medium text-[#172B4D]">${booking.remarks || 'Standard procurement contract.'}</span>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Booking Rate</span>
-              <span class="font-extrabold text-[#172B4D]">₹ ${booking.bookingRate || 420} / KG</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Expected Harvest</span>
-              <span class="font-bold text-[#172B4D]">${booking.expectedDate || '-'}</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Advance Disbursed</span>
-              <span class="font-bold text-[#006644]">${booking.advancePaid || '$ 0'}</span>
+          <!-- Booking Details Section -->
+          <div class="bg-[#F4F5F7] p-3 rounded-lg border border-[#DFE1E6] space-y-2">
+            <h4 class="font-bold text-xs text-[#0052CC] border-b border-[#DFE1E6] pb-1">Booking Details</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <div class="p-2 bg-white rounded border border-[#DFE1E6]">
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">13. Booking Count</span>
+                <span class="font-bold text-sm text-[#0052CC]">${booking.bookingCount || '40 Count'}</span>
+              </div>
+              <div class="p-2 bg-white rounded border border-[#DFE1E6]">
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">14. Booking Weight</span>
+                <span class="font-extrabold text-sm text-[#006644]">${(booking.bookingWeight || booking.bookedQty || 0).toLocaleString()} KG</span>
+              </div>
+              <div class="p-2 bg-white rounded border border-[#DFE1E6]">
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">15. Booking Rate</span>
+                <span class="font-extrabold text-sm text-[#172B4D]">₹ ${booking.bookingRate || 420} / KG</span>
+              </div>
             </div>
           </div>
         </div>
@@ -2675,7 +3048,7 @@ export const PurchaseView = {
           label: 'Print Booking Slip',
           type: 'primary',
           onClick: (m) => {
-            Toast.show(`Printing Booking Agreement ${booking.bookingNo}...`, 'info');
+            Toast.show(`Printing Booking Slip for ${booking.bookingNo}...`, 'info');
           }
         }
       ]
