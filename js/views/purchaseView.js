@@ -101,14 +101,17 @@ export const PurchaseView = {
           break;
 
         // 2. Sub Menu: Operations
-        case 'lot-tracking':
-          this.renderLotTracking(subContainer);
-          break;
         case 'bookings':
           this.renderBookings(subContainer);
           break;
         case 'rm-arrivals':
           this.renderRMArrivals(subContainer);
+          break;
+        case 'arrivals':
+          this.renderArrivals(subContainer);
+          break;
+        case 'lot-tracking':
+          this.renderLotTracking(subContainer);
           break;
 
         // 3. Sub Menu: Transactions & Bills
@@ -915,6 +918,161 @@ export const PurchaseView = {
   },
 
   // =========================================================================
+  // SUB MENU: OPERATIONS -> TAB 3: ARRIVALS (CENTER CATCH INWARD REGISTER)
+  // =========================================================================
+  renderArrivals(container) {
+    const totalCatchKg = ERP_DATA.arrivals.reduce((sum, a) => sum + (a.netCatchKg || 0), 0);
+    const totalCrates = ERP_DATA.arrivals.reduce((sum, a) => sum + (a.cratesIn || 0), 0);
+
+    container.innerHTML = `
+      <div class="space-y-4 animate-fade-in">
+        <!-- Header with Title and Create Button -->
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-xl font-extrabold text-[#172B4D]">Arrivals Register (Center Catch Inward)</h1>
+              <span class="lozenge lozenge-blue font-bold text-xs">${ERP_DATA.arrivals.length} Receipts</span>
+            </div>
+            <p class="text-xs text-[#5E6C84] mt-0.5">Procurement center intake records, crates tally, icing checks, and farm-to-dock harvest receipts.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="btn-create-arrival-record" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ Create Arrival</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 KPI Summary Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="bg-white p-3.5 rounded-xl border border-[#DFE1E6] shadow-xs">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">Total Net Catch</span>
+            <div class="flex items-baseline justify-between">
+              <span class="text-xl font-extrabold text-[#006644]">${totalCatchKg.toLocaleString()} KG</span>
+              <span class="text-[10px] text-[#006644] font-semibold bg-[#E3FCEF] px-1.5 py-0.5 rounded">Intake Verified</span>
+            </div>
+          </div>
+
+          <div class="bg-white p-3.5 rounded-xl border border-[#DFE1E6] shadow-xs">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">Active Centers</span>
+            <div class="flex items-baseline justify-between">
+              <span class="text-xl font-extrabold text-[#0052CC]">5 Centers</span>
+              <span class="text-[10px] text-[#0052CC] font-semibold bg-[#DEEBFF] px-1.5 py-0.5 rounded">All Active</span>
+            </div>
+          </div>
+
+          <div class="bg-white p-3.5 rounded-xl border border-[#DFE1E6] shadow-xs">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">Crates Inward</span>
+            <div class="flex items-baseline justify-between">
+              <span class="text-xl font-extrabold text-[#172B4D]">${totalCrates.toLocaleString()} Crates</span>
+              <span class="text-[10px] text-[#6B778C] font-semibold bg-[#F4F5F7] px-1.5 py-0.5 rounded">100% Retained</span>
+            </div>
+          </div>
+
+          <div class="bg-white p-3.5 rounded-xl border border-[#DFE1E6] shadow-xs">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">Avg Core Temp</span>
+            <div class="flex items-baseline justify-between">
+              <span class="text-xl font-extrabold text-[#0747A6]">2.6 °C</span>
+              <span class="text-[10px] text-[#006644] font-semibold bg-[#E3FCEF] px-1.5 py-0.5 rounded">HACCP Target &lt; 4°C</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Mount Point -->
+        <div id="center-arrivals-table-container"></div>
+      </div>
+    `;
+
+    const arrivalsTable = new DataTable({
+      containerId: 'center-arrivals-table-container',
+      data: ERP_DATA.arrivals,
+      keyField: 'id',
+      pageSize: 10,
+      tableTitle: 'Center Inward Catch Receipts & Dispatch Register (CRUD)',
+      columns: [
+        { 
+          field: 'arrivalCode', 
+          header: 'Arrival Code', 
+          render: (val, row) => `<span class="font-bold text-[#0052CC] hover:underline cursor-pointer" onclick="window.__viewArrivalRecord('${row.id}')">${val}</span>` 
+        },
+        { 
+          field: 'date', 
+          header: 'Date & Time', 
+          render: (val, row) => `<div><span class="font-medium text-[#172B4D]">${val}</span><div class="text-[10px] text-[#6B778C]">${row.time || 'Morning'}</div></div>` 
+        },
+        { field: 'center', header: 'Center / Station' },
+        { 
+          field: 'supplier', 
+          header: 'Farmer / Supplier', 
+          render: (val, row) => `<div><span class="font-semibold text-[#172B4D]">${val}</span><div class="text-[10px] text-[#6B778C]">${row.pond}</div></div>` 
+        },
+        { 
+          field: 'species', 
+          header: 'Species & Count', 
+          render: (val, row) => `<div><span class="font-medium text-[#172B4D]">${val}</span><div class="text-[10px] font-bold text-[#0052CC]">${row.countRange}</div></div>` 
+        },
+        { 
+          field: 'cratesIn', 
+          header: 'Crates (In/Out)', 
+          render: (val, row) => `<span class="font-bold">${val} / ${row.cratesOut || val}</span>` 
+        },
+        { 
+          field: 'netCatchKg', 
+          header: 'Net Catch (KG)', 
+          render: (val) => `<span class="font-extrabold text-[#006644]">${val.toLocaleString()} KG</span>` 
+        },
+        { 
+          field: 'temperature', 
+          header: 'Temp (°C)', 
+          render: (val) => {
+            const num = parseFloat(val) || 2.5;
+            const cls = num <= 3.0 ? 'lozenge-success' : 'lozenge-warning';
+            return `<span class="lozenge ${cls}">${val}</span>`;
+          } 
+        },
+        { 
+          field: 'vehicleNo', 
+          header: 'Vehicle & Driver', 
+          render: (val, row) => `<div><span class="font-bold text-[#172B4D]">${val}</span><div class="text-[10px] text-[#6B778C]">${row.driverName}</div></div>` 
+        },
+        { 
+          field: 'graderName', 
+          header: 'Grader / Lead', 
+          render: (val, row) => `<div><span class="text-[#172B4D]">${val}</span><div class="text-[10px] text-[#6B778C]">${row.supervisor}</div></div>` 
+        },
+        { field: 'status', header: 'Status', type: 'status' }
+      ],
+      actions: [
+        {
+          label: 'View',
+          icon: `<svg class="w-4 h-4 text-[#5E6C84]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+          onClick: (row) => PurchaseView.showArrivalRecordDetails(row)
+        },
+        {
+          label: 'Edit',
+          icon: `<svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
+          onClick: (row) => PurchaseView.openEditArrivalRecordModal(row, arrivalsTable)
+        },
+        {
+          label: 'Delete',
+          icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
+          onClick: (row) => PurchaseView.deleteArrivalRecord(row, arrivalsTable)
+        }
+      ]
+    });
+
+    window.__viewArrivalRecord = (id) => {
+      const item = ERP_DATA.arrivals.find(a => a.id === id);
+      if (item) PurchaseView.showArrivalRecordDetails(item);
+    };
+
+    const createBtn = document.getElementById('btn-create-arrival-record');
+    if (createBtn) {
+      createBtn.addEventListener('click', () => PurchaseView.openCreateArrivalRecordModal(arrivalsTable));
+    }
+  },
+
+  // =========================================================================
   // SUB MENU: TRANSACTIONS & BILLS -> TAB 1: SUPPLIER BILL SUMMARY
   // =========================================================================
   renderSupplierBills(container) {
@@ -1715,6 +1873,380 @@ export const PurchaseView = {
           ERP_DATA.rmArrivals.splice(idx, 1);
           if (tableInstance) tableInstance.setData(ERP_DATA.rmArrivals);
           Toast.show(`Arrival ${arrival.arrivalNumber} deleted.`, 'success');
+        }
+      }
+    });
+  },
+
+  // =========================================================================
+  // CRUD MODAL HANDLERS FOR ARRIVALS (CENTER CATCH INWARD)
+  // =========================================================================
+  openCreateArrivalRecordModal(tableInstance) {
+    const nextCode = `ARR-2026-${1046 + ERP_DATA.arrivals.length}`;
+    Modal.open({
+      title: 'Create Inward Harvest Catch Arrival Record',
+      size: 'lg',
+      content: `
+        <form id="form-create-arrival-record" class="space-y-4 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Code *</label>
+              <input type="text" id="arr-code" value="${nextCode}" readonly class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Date *</label>
+              <input type="date" id="arr-date" value="2026-10-06" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Procurement Center *</label>
+              <select id="arr-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                <option selected>Bhimavaram Center #1 (BVM-C1)</option>
+                <option>Kakinada Sea Intake #2 (KKD-C2)</option>
+                <option>Machilipatnam Delta #3 (MCN-C3)</option>
+                <option>Amalapuram Harvesters #4 (AML-C4)</option>
+                <option>Ongole Coastal Hub #1 (ONG-C1)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supplier / Farmer *</label>
+              <select id="arr-supplier" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Location *</label>
+              <input type="text" id="arr-pond" value="Pond #4B Tail Cluster" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species *</label>
+              <select id="arr-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                ${ERP_DATA.species.map(sp => `<option value="${sp.name}">${sp.name}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Count Range</label>
+              <input type="text" id="arr-count" value="44 pcs/kg" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Crates Inward</label>
+              <input type="number" id="arr-crates-in" value="120" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Core Temp (°C)</label>
+              <input type="number" step="0.1" id="arr-temp" value="2.5" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Number</label>
+              <input type="text" id="arr-veh" value="AP 37 TE 9942" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+          </div>
+
+          <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg">
+            <span class="text-xs font-bold text-[#172B4D] block mb-2">Weighment & Catch Calculation</span>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+              <div>
+                <label class="block text-[11px] font-semibold text-[#5E6C84] mb-1">Gross Wt (KG)</label>
+                <input type="number" id="arr-gross-calc" value="3850" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-[#5E6C84] mb-1">Tare Wt (KG)</label>
+                <input type="number" id="arr-tare-calc" value="450" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-[#5E6C84] mb-1">Ice Wt (KG)</label>
+                <input type="number" id="arr-ice-calc" value="600" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-[#006644] mb-1">Calculated Net Catch</label>
+                <div id="arr-net-preview" class="text-sm font-extrabold px-3 py-1.5 bg-[#E3FCEF] text-[#006644] rounded border border-[#ABF5D1]">
+                  2,800 KG
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
+              <input type="text" id="arr-driver-name" value="K. Appa Rao" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Grader / Technician</label>
+              <input type="text" id="arr-grader-name" value="B. Venkatesh" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center Supervisor</label>
+              <input type="text" id="arr-supervisor-name" value="S. Prasad" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+          </div>
+        </form>
+      `,
+      footerButtons: [
+        { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Create Arrival Record',
+          type: 'primary',
+          onClick: (m) => {
+            const code = document.getElementById('arr-code').value;
+            const date = document.getElementById('arr-date').value;
+            const center = document.getElementById('arr-center').value;
+            const sup = document.getElementById('arr-supplier').value;
+            const pond = document.getElementById('arr-pond').value;
+            const species = document.getElementById('arr-species').value;
+            const count = document.getElementById('arr-count').value;
+            const crates = parseInt(document.getElementById('arr-crates-in').value) || 100;
+            const temp = parseFloat(document.getElementById('arr-temp').value) || 2.5;
+            const veh = document.getElementById('arr-veh').value;
+            const gross = parseFloat(document.getElementById('arr-gross-calc').value) || 3000;
+            const tare = parseFloat(document.getElementById('arr-tare-calc').value) || 400;
+            const ice = parseFloat(document.getElementById('arr-ice-calc').value) || 500;
+            const net = Math.max(0, gross - tare - ice);
+            const driver = document.getElementById('arr-driver-name').value;
+            const grader = document.getElementById('arr-grader-name').value;
+            const supervisor = document.getElementById('arr-supervisor-name').value;
+
+            const newRecord = {
+              id: code,
+              arrivalCode: code,
+              date: date,
+              time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+              center: center,
+              supplier: sup,
+              pond: pond,
+              species: species,
+              countRange: count,
+              cratesIn: crates,
+              cratesOut: crates,
+              iceWeightKg: ice,
+              grossWeightKg: gross,
+              tareWeightKg: tare,
+              netCatchKg: net,
+              temperature: `${temp} °C`,
+              vehicleNo: veh,
+              driverName: driver,
+              graderName: grader,
+              supervisor: supervisor,
+              remarks: 'Created via center intake portal',
+              status: 'QC_CLEARED'
+            };
+
+            ERP_DATA.arrivals.unshift(newRecord);
+            if (tableInstance) tableInstance.setData(ERP_DATA.arrivals);
+            m.close();
+            Toast.show(`Arrival receipt ${code} created successfully for ${net.toLocaleString()} KG`, 'success', 'Arrival Created');
+          }
+        }
+      ]
+    });
+
+    setTimeout(() => {
+      const g = document.getElementById('arr-gross-calc');
+      const t = document.getElementById('arr-tare-calc');
+      const i = document.getElementById('arr-ice-calc');
+      const prev = document.getElementById('arr-net-preview');
+      const calc = () => {
+        const gv = parseFloat(g.value) || 0;
+        const tv = parseFloat(t.value) || 0;
+        const iv = parseFloat(i.value) || 0;
+        const nv = Math.max(0, gv - tv - iv);
+        if (prev) prev.innerText = `${nv.toLocaleString()} KG`;
+      };
+      if (g && t && i) {
+        g.addEventListener('input', calc);
+        t.addEventListener('input', calc);
+        i.addEventListener('input', calc);
+      }
+    }, 60);
+  },
+
+  openEditArrivalRecordModal(arrival, tableInstance) {
+    Modal.open({
+      title: `Edit Arrival Record: ${arrival.arrivalCode}`,
+      size: 'md',
+      content: `
+        <form class="space-y-3 text-xs">
+          <div>
+            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center / Station</label>
+            <input type="text" id="edit-arrec-center" value="${arrival.center}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Harvest Location</label>
+              <input type="text" id="edit-arrec-pond" value="${arrival.pond}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Count Range</label>
+              <input type="text" id="edit-arrec-count" value="${arrival.countRange}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Net Catch (KG)</label>
+              <input type="number" id="edit-arrec-net" value="${arrival.netCatchKg}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold text-[#006644]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Core Temp</label>
+              <input type="text" id="edit-arrec-temp" value="${arrival.temperature}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Crates Inward</label>
+              <input type="number" id="edit-arrec-crates" value="${arrival.cratesIn}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Registration</label>
+              <input type="text" id="edit-arrec-veh" value="${arrival.vehicleNo}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
+              <input type="text" id="edit-arrec-driver" value="${arrival.driverName}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Status</label>
+            <select id="edit-arrec-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+              <option value="QC_CLEARED" ${arrival.status === 'QC_CLEARED' ? 'selected' : ''}>QC_CLEARED</option>
+              <option value="UNDER_TESTING" ${arrival.status === 'UNDER_TESTING' ? 'selected' : ''}>UNDER_TESTING</option>
+              <option value="TRANSFERRED" ${arrival.status === 'TRANSFERRED' ? 'selected' : ''}>TRANSFERRED</option>
+              <option value="REJECTED" ${arrival.status === 'REJECTED' ? 'selected' : ''}>REJECTED</option>
+            </select>
+          </div>
+        </form>
+      `,
+      footerButtons: [
+        { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Update Arrival',
+          type: 'primary',
+          onClick: (m) => {
+            arrival.center = document.getElementById('edit-arrec-center').value;
+            arrival.pond = document.getElementById('edit-arrec-pond').value;
+            arrival.countRange = document.getElementById('edit-arrec-count').value;
+            arrival.netCatchKg = parseFloat(document.getElementById('edit-arrec-net').value) || arrival.netCatchKg;
+            arrival.temperature = document.getElementById('edit-arrec-temp').value;
+            arrival.cratesIn = parseInt(document.getElementById('edit-arrec-crates').value) || arrival.cratesIn;
+            arrival.vehicleNo = document.getElementById('edit-arrec-veh').value;
+            arrival.driverName = document.getElementById('edit-arrec-driver').value;
+            arrival.status = document.getElementById('edit-arrec-status').value;
+
+            if (tableInstance) tableInstance.setData(ERP_DATA.arrivals);
+            m.close();
+            Toast.show(`Arrival ${arrival.arrivalCode} updated successfully.`, 'success');
+          }
+        }
+      ]
+    });
+  },
+
+  showArrivalRecordDetails(arrival) {
+    Modal.open({
+      title: `Arrival Receipt Details: ${arrival.arrivalCode}`,
+      size: 'lg',
+      content: `
+        <div class="space-y-4 text-xs">
+          <div class="p-3 bg-[#DEEBFF] text-[#0747A6] rounded-lg border border-[#B3D4FF] flex items-center justify-between">
+            <div>
+              <span class="font-bold text-sm">${arrival.arrivalCode}</span>
+              <span class="ml-2 text-xs">(${arrival.date} • ${arrival.time})</span>
+            </div>
+            <span class="lozenge lozenge-success font-bold">${arrival.status}</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Procurement Center</span>
+              <span class="font-bold text-[#172B4D]">${arrival.center}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Farmer / Supplier</span>
+              <span class="font-bold text-[#172B4D]">${arrival.supplier}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Harvest Source</span>
+              <span class="font-bold text-[#172B4D]">${arrival.pond}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Species</span>
+              <span class="font-bold text-[#0052CC]">${arrival.species}</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Count / Grade</span>
+              <span class="font-bold text-[#172B4D]">${arrival.countRange}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Gross / Tare Wt</span>
+              <span class="font-bold text-[#172B4D]">${arrival.grossWeightKg} / ${arrival.tareWeightKg} KG</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Ice Weight</span>
+              <span class="font-bold text-[#172B4D]">${arrival.iceWeightKg} KG</span>
+            </div>
+            <div class="p-2.5 bg-[#E3FCEF] border border-[#ABF5D1] rounded">
+              <span class="text-[#006644] text-[11px] block">Net Catch Weight</span>
+              <span class="font-extrabold text-sm text-[#006644]">${arrival.netCatchKg.toLocaleString()} KG</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Crates (In / Out)</span>
+              <span class="font-bold text-[#172B4D]">${arrival.cratesIn} / ${arrival.cratesOut}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Vehicle No</span>
+              <span class="font-bold text-[#172B4D]">${arrival.vehicleNo}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Driver</span>
+              <span class="font-bold text-[#172B4D]">${arrival.driverName}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Grader / Lead</span>
+              <span class="font-bold text-[#172B4D]">${arrival.graderName}</span>
+            </div>
+          </div>
+
+          <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+            <span class="text-[#6B778C] text-[11px] block">Intake Observations & Remarks</span>
+            <span class="font-medium text-[#172B4D]">${arrival.remarks}</span>
+          </div>
+        </div>
+      `,
+      footerButtons: [
+        { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
+        { 
+          label: 'Print Inward Slip', 
+          type: 'primary', 
+          onClick: (m) => {
+            Toast.show(`Printing Inward Catch Receipt for ${arrival.arrivalCode}...`, 'info');
+          } 
+        }
+      ]
+    });
+  },
+
+  deleteArrivalRecord(arrival, tableInstance) {
+    Modal.confirm({
+      title: `Delete Arrival Record ${arrival.arrivalCode}`,
+      message: `Are you sure you want to permanently delete inward arrival receipt <strong>${arrival.arrivalCode}</strong> (${arrival.netCatchKg} KG)?`,
+      confirmText: 'Delete Record',
+      isDestructive: true,
+      onConfirm: () => {
+        const idx = ERP_DATA.arrivals.findIndex(a => a.id === arrival.id);
+        if (idx > -1) {
+          ERP_DATA.arrivals.splice(idx, 1);
+          if (tableInstance) tableInstance.setData(ERP_DATA.arrivals);
+          Toast.show(`Arrival record ${arrival.arrivalCode} deleted successfully.`, 'success');
         }
       }
     });

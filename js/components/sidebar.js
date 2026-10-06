@@ -19,11 +19,12 @@ export const NAV_HIERARCHY = [
       {
         id: "operations",
         title: "Operations",
-        defaultTab: "lot-tracking",
+        defaultTab: "bookings",
         tabs: [
-          { id: "lot-tracking", label: "Lot Tracking", hash: "#/purchase/operations/lot-tracking", highlight: true },
-          { id: "bookings", label: "Bookings", hash: "#/purchase/operations/bookings" },
-          { id: "rm-arrivals", label: "Raw Material Arrivals", hash: "#/purchase/operations/rm-arrivals" }
+          { id: "bookings", label: "Booking", hash: "#/purchase/operations/bookings" },
+          { id: "rm-arrivals", label: "Raw Material Arrivals", hash: "#/purchase/operations/rm-arrivals" },
+          { id: "arrivals", label: "Arrivals", hash: "#/purchase/operations/arrivals" },
+          { id: "lot-tracking", label: "Lot Tracking", hash: "#/purchase/operations/lot-tracking", highlight: true }
         ]
       },
       {
