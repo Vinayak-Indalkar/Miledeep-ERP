@@ -1,5 +1,14 @@
 # Devi Fisheries ERP — Enterprise Seafood Processing & Export SaaS
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FVinayak-Indalkar%2FMiledeep-ERP)
+[![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-2ea44f?style=for-the-badge&logo=github)](https://vinayak-indalkar.github.io/Miledeep-ERP/)
+
+### 🚀 Live Preview & Deployment
+- **🌐 Live Demo on GitHub Pages**: [https://vinayak-indalkar.github.io/Miledeep-ERP/](https://vinayak-indalkar.github.io/Miledeep-ERP/)
+- **▲ Deploy to Vercel in 1-Click**: [Click here to deploy your own instance on Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FVinayak-Indalkar%2FMiledeep-ERP)
+
+---
+
 A modern, production-grade Fisheries & Marine Processing ERP SaaS web application built with **HTML5, CSS3, JavaScript (ES6 Modules), Tailwind CSS, and the Atlassian Design System** visual language and UX principles.
 
 ---
