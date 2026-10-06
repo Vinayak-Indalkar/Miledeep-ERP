@@ -890,7 +890,8 @@ export const PurchaseView = {
       containerId: 'bookings-table-container',
       data: this.bookingsList,
       keyField: 'bookingNo',
-      tableTitle: 'Recorded Pond Bookings & Procurement Orders (CRUD)',
+      tableTitle: 'Bookings List',
+      searchable: false,
       hideTopFilterBar: true,
       columns: [
         { 
