@@ -405,7 +405,7 @@ export class DataTable {
         let content = cellVal !== undefined && cellVal !== null ? cellVal : '-';
 
         if (col.render) {
-          content = col.render(cellVal, row);
+          content = col.render(cellVal, row, startIdx + idx);
         } else if (col.type === 'status' || col.field.toLowerCase().includes('status')) {
           content = this.renderStatusLozenge(cellVal);
         }

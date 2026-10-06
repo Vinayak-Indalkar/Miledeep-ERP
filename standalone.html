@@ -2231,7 +2231,7 @@ class DataTable {
         let content = cellVal !== undefined && cellVal !== null ? cellVal : '-';
 
         if (col.render) {
-          content = col.render(cellVal, row);
+          content = col.render(cellVal, row, startIdx + idx);
         } else if (col.type === 'status' || col.field.toLowerCase().includes('status')) {
           content = this.renderStatusLozenge(cellVal);
         }
@@ -4448,10 +4448,13 @@ const PurchaseView = {
   ],
 
   bookingsList: [
-    { bookingNo: 'PB-2026-089', supplier: 'Godavari Coastal Aqua Farms', pond: 'Pond #4B & 5A', species: 'Vannamei Shrimp', bookedQty: 2000, expectedDate: '2026-10-04', advancePaid: '$ 3,000', status: 'FULFILLED' },
-    { bookingNo: 'PB-2026-092', supplier: 'Sagar Marine Hatcheries & Cultivators', pond: 'Kakinada Bay Cage 1', species: 'Black Tiger Shrimp', bookedQty: 3500, expectedDate: '2026-10-03', advancePaid: '$ 5,000', status: 'FULFILLED' },
-    { bookingNo: 'PB-2026-095', supplier: 'Krishna Delta Prawn Harvesters', pond: 'Cluster #9', species: 'Vannamei Shrimp', bookedQty: 4000, expectedDate: '2026-10-05', advancePaid: '$ 4,500', status: 'FULFILLED' },
-    { bookingNo: 'PB-2026-102', supplier: 'Godavari Coastal Aqua Farms', pond: 'Pond #14', species: 'Vannamei Shrimp', bookedQty: 3200, expectedDate: '2026-10-08', advancePaid: '$ 0', status: 'CONFIRMED' }
+    { sNo: 1, bookingNo: 'PB-2026-089', bookingDate: '2026-10-04', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', grader: 'B. Venkatesh', agent: 'Coastal Marine Agency', bookingCount: '40 Count', bookingWeight: 2000, bookingRate: 440, arrivalPlant: 'DFL UNIT-5 (JPT)', supplier: 'Godavari Coastal Aqua Farms', pond: 'Pond #4B & 5A', expectedDate: '2026-10-04', advancePaid: '$ 3,000', status: 'FULFILLED' },
+    { sNo: 2, bookingNo: 'PB-2026-092', bookingDate: '2026-10-03', species: 'Black Tiger Shrimp', purchaseType: 'Hatchery Buyback Contract', grader: 'K. Ramu', agent: 'Sagar Marine Brokers', bookingCount: '20 Count', bookingWeight: 3500, bookingRate: 620, arrivalPlant: 'DFL UNIT-3 (PSP)', supplier: 'Sagar Marine Hatcheries & Cultivators', pond: 'Kakinada Bay Cage 1', expectedDate: '2026-10-03', advancePaid: '$ 5,000', status: 'FULFILLED' },
+    { sNo: 3, bookingNo: 'PB-2026-095', bookingDate: '2026-10-05', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', grader: 'M. Nagesh', agent: 'Direct Farmer', bookingCount: '50 Count', bookingWeight: 4000, bookingRate: 380, arrivalPlant: 'DFL UNIT-4 (PND)', supplier: 'Krishna Delta Prawn Harvesters', pond: 'Cluster #9', expectedDate: '2026-10-05', advancePaid: '$ 4,500', status: 'FULFILLED' },
+    { sNo: 4, bookingNo: 'PB-2026-102', bookingDate: '2026-10-08', species: 'Vannamei Shrimp', purchaseType: 'Agent Procurement Order', grader: 'B. Venkatesh', agent: 'Delta Seafood Associates', bookingCount: '30 Count', bookingWeight: 3200, bookingRate: 460, arrivalPlant: 'DFL UNIT-5 (JPT)', supplier: 'Godavari Coastal Aqua Farms', pond: 'Pond #14', expectedDate: '2026-10-08', advancePaid: '$ 0', status: 'CONFIRMED' },
+    { sNo: 5, bookingNo: 'PB-2026-105', bookingDate: '2026-10-09', species: 'Vannamei Shrimp', purchaseType: 'Direct Farmer Procurement', grader: 'G. Suribabu', agent: 'Direct Farmer', bookingCount: '45 Count', bookingWeight: 2800, bookingRate: 410, arrivalPlant: 'DFL UNIT-6 (JPT-II)', supplier: 'Konaseema Marine Harvesters', pond: 'Pond #3 Coastal', expectedDate: '2026-10-09', advancePaid: '$ 2,500', status: 'CONFIRMED' },
+    { sNo: 6, bookingNo: 'PB-2026-108', bookingDate: '2026-10-10', species: 'Black Tiger Shrimp', purchaseType: 'Corporate Feed-Linked Booking', grader: 'K. Ramu', agent: 'Nellore Aqua Syndicate', bookingCount: '25 Count', bookingWeight: 5000, bookingRate: 590, arrivalPlant: 'DFL UNIT-2 (KKD)', supplier: 'Nellore Brackish Aqua Cultivators', pond: 'Block #12 Pond A', expectedDate: '2026-10-10', advancePaid: '$ 6,000', status: 'PENDING' },
+    { sNo: 7, bookingNo: 'PB-2026-110', bookingDate: '2026-10-11', species: 'Asian Seabass (Barramundi)', purchaseType: 'Spot Market Purchase', grader: 'M. Nagesh', agent: 'East Coast Brokers', bookingCount: '500-800 g/pc', bookingWeight: 1800, bookingRate: 320, arrivalPlant: 'DFL UNIT-1 (VSP)', supplier: 'East Coast Aqua Society', pond: 'Cage #7 Deep Sea', expectedDate: '2026-10-11', advancePaid: '$ 1,500', status: 'PENDING' }
   ],
 
   commercialTxns: [
@@ -5221,20 +5224,81 @@ const PurchaseView = {
   },
 
   // =========================================================================
-  // SUB MENU: OPERATIONS -> TAB 2: BOOKINGS (FULL CRUD)
+  // SUB MENU: OPERATIONS -> TAB 1: BOOKINGS (FULL CRUD + SEARCH & FILTERS)
   // =========================================================================
   renderBookings(container) {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
           <div>
-            <h1 class="text-xl font-extrabold text-[#172B4D]">Pre-Harvest Pond Bookings & Farmer Contracts</h1>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Pre-harvest agreements, pond reservations, expected harvest schedules, and advances.</p>
+            <div class="flex items-center gap-2">
+              <h1 class="text-xl font-extrabold text-[#172B4D]">Pre-Harvest Pond Bookings & Farmer Contracts</h1>
+              <span class="lozenge lozenge-blue font-bold text-xs">${this.bookingsList.length} Bookings</span>
+            </div>
+            <p class="text-xs text-[#5E6C84] mt-0.5">Pre-harvest agreements, pond reservations, expected harvest schedules, advances, and plant destination routing.</p>
           </div>
           <div class="flex items-center gap-2">
-            <button id="btn-create-booking" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs">
-              <span>New Booking</span>
+            <button id="btn-create-booking" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>+ New Booking</span>
             </button>
+          </div>
+        </div>
+
+        <!-- Search / Filter Fields: Select Purchase, Select Arrival Plant, Date -->
+        <div class="bg-white p-4 rounded-xl border border-[#DFE1E6] shadow-xs space-y-3">
+          <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Search / Filter Bookings</h3>
+            </div>
+            <span class="text-[11px] text-[#6B778C]">Filter by Purchase Type, Arrival Plant & Date</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+            <!-- 1. Select Purchase -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Select Purchase</label>
+              <select id="booking-filter-purchase" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Purchase Types</option>
+                <option value="Direct Farmer Procurement">Direct Farmer Procurement</option>
+                <option value="Hatchery Buyback Contract">Hatchery Buyback Contract</option>
+                <option value="Agent Procurement Order">Agent Procurement Order</option>
+                <option value="Corporate Feed-Linked Booking">Corporate Feed-Linked Booking</option>
+                <option value="Spot Market Purchase">Spot Market Purchase</option>
+              </select>
+            </div>
+
+            <!-- 2. Select Arrival Plant -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Select Arrival Plant</label>
+              <select id="booking-filter-plant" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Arrival Plants</option>
+                <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP) - Visakhapatnam</option>
+                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD) - Kakinada</option>
+                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP) - Peddapuram</option>
+                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND) - Ponduru</option>
+                <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT) - Jagannaickpur</option>
+                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II) - Unit 2</option>
+              </select>
+            </div>
+
+            <!-- 3. Date -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Date</label>
+              <input type="date" id="booking-filter-date" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-end gap-2">
+              <button id="booking-search-btn" type="button" class="btn-primary flex-1 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Search</span>
+              </button>
+              <button id="booking-reset-btn" type="button" class="btn-secondary py-2 px-3 rounded-lg text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] cursor-pointer">
+                <span>Reset</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -5246,18 +5310,65 @@ const PurchaseView = {
       containerId: 'bookings-table-container',
       data: this.bookingsList,
       keyField: 'bookingNo',
-      tableTitle: 'Recorded Pond Bookings (CRUD)',
+      tableTitle: 'Recorded Pond Bookings & Procurement Orders (CRUD)',
       columns: [
-        { field: 'bookingNo', header: 'Booking ID', render: (v) => `<span class=" font-bold text-[#0052CC]">${v}</span>` },
-        { field: 'supplier', header: 'Farmer / Cultivator' },
-        { field: 'pond', header: 'Pond Location' },
-        { field: 'species', header: 'Species' },
-        { field: 'bookedQty', header: 'Booked Quantity', render: (v) => `<span class=" font-bold">${v.toLocaleString()} KG</span>` },
-        { field: 'expectedDate', header: 'Expected Harvest' },
-        { field: 'advancePaid', header: 'Advance' },
-        { field: 'status', header: 'Status', type: 'status' }
+        { 
+          field: 'sNo', 
+          header: 'S.No', 
+          render: (v, row, index) => `<span class="font-bold text-[#5E6C84]">${index !== undefined ? index + 1 : 1}</span>` 
+        },
+        { 
+          field: 'species', 
+          header: 'Species', 
+          render: (v) => `<span class="font-semibold text-[#172B4D]">${v}</span>` 
+        },
+        { 
+          field: 'bookingNo', 
+          header: 'Booking Number', 
+          render: (v, row) => `<span class="font-bold text-[#0052CC] hover:underline cursor-pointer" onclick="window.__viewBookingDetails('${row.bookingNo}')">${v}</span>` 
+        },
+        { 
+          field: 'bookingDate', 
+          header: 'Booking Date', 
+          render: (v, row) => `<span class="text-[#172B4D] font-medium">${v || row.expectedDate}</span>` 
+        },
+        { 
+          field: 'purchaseType', 
+          header: 'Purchase Type', 
+          render: (v) => `<span class="font-medium text-[#172B4D] bg-[#F4F5F7] px-2 py-0.5 rounded text-[11px] border border-[#DFE1E6]">${v || 'Direct Procurement'}</span>` 
+        },
+        { 
+          field: 'grader', 
+          header: 'Grader', 
+          render: (v) => `<span class="text-[#172B4D] font-medium">${v || 'B. Venkatesh'}</span>` 
+        },
+        { 
+          field: 'agent', 
+          header: 'Agent', 
+          render: (v) => `<span class="text-[#5E6C84]">${v || 'Direct'}</span>` 
+        },
+        { 
+          field: 'bookingCount', 
+          header: 'Booking Count', 
+          render: (v) => `<span class="font-bold text-[#0052CC]">${v || '40 Count'}</span>` 
+        },
+        { 
+          field: 'bookingWeight', 
+          header: 'Booking Weight', 
+          render: (v, row) => `<span class="font-extrabold text-[#006644]">${(typeof v === 'number' ? v : (row.bookedQty || 0)).toLocaleString()} KG</span>` 
+        },
+        { 
+          field: 'bookingRate', 
+          header: 'Booking Rate', 
+          render: (v) => `<span class="font-bold text-[#172B4D]">₹ ${v || 420} / KG</span>` 
+        }
       ],
       actions: [
+        {
+          label: 'View',
+          icon: `<svg class="w-4 h-4 text-[#5E6C84]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+          onClick: (row) => PurchaseView.showBookingDetails(row)
+        },
         {
           label: 'Edit',
           icon: `<svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
@@ -5270,6 +5381,48 @@ const PurchaseView = {
         }
       ]
     });
+
+    window.__viewBookingDetails = (bkgNo) => {
+      const b = this.bookingsList.find(x => x.bookingNo === bkgNo);
+      if (b) PurchaseView.showBookingDetails(b);
+    };
+
+    const filterPurchase = document.getElementById('booking-filter-purchase');
+    const filterPlant = document.getElementById('booking-filter-plant');
+    const filterDate = document.getElementById('booking-filter-date');
+    const searchBtn = document.getElementById('booking-search-btn');
+    const resetBtn = document.getElementById('booking-reset-btn');
+
+    const applyBookingFilters = () => {
+      const pVal = filterPurchase ? filterPurchase.value : 'ALL';
+      const plVal = filterPlant ? filterPlant.value : 'ALL';
+      const dVal = filterDate ? filterDate.value : '';
+
+      const filtered = this.bookingsList.filter(b => {
+        const matchPurchase = (pVal === 'ALL') || (b.purchaseType === pVal);
+        const matchPlant = (plVal === 'ALL') || (b.arrivalPlant === plVal) || (b.arrivalPlant && b.arrivalPlant.includes(plVal));
+        const matchDate = !dVal || (b.bookingDate === dVal) || (b.expectedDate === dVal);
+        return matchPurchase && matchPlant && matchDate;
+      });
+
+      bookingsTable.setData(filtered);
+      Toast.show(`Filtered ${filtered.length} booking records.`, 'info', 'Search Results');
+    };
+
+    if (searchBtn) searchBtn.addEventListener('click', applyBookingFilters);
+    if (filterPurchase) filterPurchase.addEventListener('change', applyBookingFilters);
+    if (filterPlant) filterPlant.addEventListener('change', applyBookingFilters);
+    if (filterDate) filterDate.addEventListener('change', applyBookingFilters);
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (filterPurchase) filterPurchase.value = 'ALL';
+        if (filterPlant) filterPlant.value = 'ALL';
+        if (filterDate) filterDate.value = '';
+        bookingsTable.setData(this.bookingsList);
+        Toast.show('Filters reset. Displaying all bookings.', 'info');
+      });
+    }
 
     const createBtn = document.getElementById('btn-create-booking');
     if (createBtn) {
@@ -6684,45 +6837,68 @@ const PurchaseView = {
   openCreateBookingModal(tableInstance) {
     Modal.open({
       title: 'Create Pre-Harvest Pond Booking',
-      size: 'md',
+      size: 'lg',
       content: `
-        <form class="space-y-3">
-          <div class="grid grid-cols-2 gap-3">
+        <form class="space-y-3 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Booking Number</label>
-              <input type="text" id="newbkg-no" value="PB-2026-${Math.floor(100 + Math.random() * 900)}" readonly class="w-full text-xs  px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded" />
+              <input type="text" id="newbkg-no" value="PB-2026-${Math.floor(100 + Math.random() * 900)}" readonly class="w-full text-xs px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Expected Harvest Date</label>
-              <input type="date" id="newbkg-date" value="2026-10-12" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Select Purchase Type *</label>
+              <select id="newbkg-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                <option selected>Direct Farmer Procurement</option>
+                <option>Hatchery Buyback Contract</option>
+                <option>Agent Procurement Order</option>
+                <option>Corporate Feed-Linked Booking</option>
+                <option>Spot Market Purchase</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Select Arrival Plant *</label>
+              <select id="newbkg-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                <option selected>DFL UNIT-5 (JPT) - Jagannaickpur</option>
+                <option>DFL UNIT-1 (VSP) - Visakhapatnam</option>
+                <option>DFL UNIT-2 (KKD) - Kakinada</option>
+                <option>DFL UNIT-3 (PSP) - Peddapuram</option>
+                <option>DFL UNIT-4 (PND) - Ponduru</option>
+                <option>DFL UNIT-6 (JPT-II) - Unit 2</option>
+              </select>
             </div>
           </div>
-          <div>
-            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Farmer / Supplier</label>
-            <select id="newbkg-sup" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-              ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name} (${s.region})</option>`).join('')}
-            </select>
-          </div>
-          <div class="grid grid-cols-2 gap-3">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Source</label>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Farmer / Supplier *</label>
+              <select id="newbkg-sup" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name} (${s.region})</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Source *</label>
               <input type="text" id="newbkg-pond" value="Pond #15, Akividu" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
             </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species *</label>
               <select id="newbkg-spec" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
                 ${ERP_DATA.species.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
               </select>
             </div>
-          </div>
-          <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Booked Quantity (KG)</label>
-              <input type="number" id="newbkg-qty" value="3500" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Booked Quantity (KG) *</label>
+              <input type="number" id="newbkg-qty" value="3500" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Expected Harvest Date *</label>
+              <input type="date" id="newbkg-date" value="2026-10-12" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Advance Paid</label>
-              <input type="text" id="newbkg-adv" value="$ 4,000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
+              <input type="text" id="newbkg-adv" value="$ 4,000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
             </div>
           </div>
         </form>
@@ -6734,15 +6910,19 @@ const PurchaseView = {
           type: 'primary',
           onClick: (m) => {
             const no = document.getElementById('newbkg-no').value;
-            const date = document.getElementById('newbkg-date').value;
+            const pType = document.getElementById('newbkg-type').value;
+            const plant = document.getElementById('newbkg-plant').value;
             const sup = document.getElementById('newbkg-sup').value;
             const pond = document.getElementById('newbkg-pond').value;
             const spec = document.getElementById('newbkg-spec').value;
             const qty = parseFloat(document.getElementById('newbkg-qty').value) || 3000;
+            const date = document.getElementById('newbkg-date').value;
             const adv = document.getElementById('newbkg-adv').value;
 
             const newB = {
               bookingNo: no,
+              purchaseType: pType,
+              arrivalPlant: plant,
               supplier: sup,
               pond: pond,
               species: spec,
@@ -6755,7 +6935,7 @@ const PurchaseView = {
             PurchaseView.bookingsList.unshift(newB);
             if (tableInstance) tableInstance.setData(PurchaseView.bookingsList);
             m.close();
-            Toast.show(`Booking ${newB.bookingNo} created.`, 'success');
+            Toast.show(`Booking ${newB.bookingNo} created for ${plant}.`, 'success', 'Booking Registered');
           }
         }
       ]
@@ -6765,21 +6945,61 @@ const PurchaseView = {
   openEditBookingModal(booking, tableInstance) {
     Modal.open({
       title: `Edit Booking: ${booking.bookingNo}`,
-      size: 'md',
+      size: 'lg',
       content: `
-        <form class="space-y-3">
-          <div>
-            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Location</label>
-            <input type="text" id="editbkg-pond" value="${booking.pond}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+        <form class="space-y-3 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Purchase Type</label>
+              <select id="editbkg-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                <option value="Direct Farmer Procurement" ${booking.purchaseType === 'Direct Farmer Procurement' ? 'selected' : ''}>Direct Farmer Procurement</option>
+                <option value="Hatchery Buyback Contract" ${booking.purchaseType === 'Hatchery Buyback Contract' ? 'selected' : ''}>Hatchery Buyback Contract</option>
+                <option value="Agent Procurement Order" ${booking.purchaseType === 'Agent Procurement Order' ? 'selected' : ''}>Agent Procurement Order</option>
+                <option value="Corporate Feed-Linked Booking" ${booking.purchaseType === 'Corporate Feed-Linked Booking' ? 'selected' : ''}>Corporate Feed-Linked Booking</option>
+                <option value="Spot Market Purchase" ${booking.purchaseType === 'Spot Market Purchase' ? 'selected' : ''}>Spot Market Purchase</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Plant Destination</label>
+              <select id="editbkg-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                <option value="DFL UNIT-5 (JPT)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-5') ? 'selected' : ''}>DFL UNIT-5 (JPT) - Jagannaickpur</option>
+                <option value="DFL UNIT-1 (VSP)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-1') ? 'selected' : ''}>DFL UNIT-1 (VSP) - Visakhapatnam</option>
+                <option value="DFL UNIT-2 (KKD)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-2') ? 'selected' : ''}>DFL UNIT-2 (KKD) - Kakinada</option>
+                <option value="DFL UNIT-3 (PSP)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-3') ? 'selected' : ''}>DFL UNIT-3 (PSP) - Peddapuram</option>
+                <option value="DFL UNIT-4 (PND)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-4') ? 'selected' : ''}>DFL UNIT-4 (PND) - Ponduru</option>
+                <option value="DFL UNIT-6 (JPT-II)" ${booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-6') ? 'selected' : ''}>DFL UNIT-6 (JPT-II) - Unit 2</option>
+              </select>
+            </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Location</label>
+              <input type="text" id="editbkg-pond" value="${booking.pond}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
+              <input type="text" id="editbkg-spec" value="${booking.species}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Booked Quantity (KG)</label>
-              <input type="number" id="editbkg-qty" value="${booking.bookedQty}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
+              <input type="number" id="editbkg-qty" value="${booking.bookedQty}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold" />
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Expected Date</label>
               <input type="date" id="editbkg-date" value="${booking.expectedDate}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Status</label>
+              <select id="editbkg-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                <option value="CONFIRMED" ${booking.status === 'CONFIRMED' ? 'selected' : ''}>CONFIRMED</option>
+                <option value="PENDING" ${booking.status === 'PENDING' ? 'selected' : ''}>PENDING</option>
+                <option value="FULFILLED" ${booking.status === 'FULFILLED' ? 'selected' : ''}>FULFILLED</option>
+                <option value="CANCELLED" ${booking.status === 'CANCELLED' ? 'selected' : ''}>CANCELLED</option>
+              </select>
             </div>
           </div>
         </form>
@@ -6790,13 +7010,98 @@ const PurchaseView = {
           label: 'Update Booking',
           type: 'primary',
           onClick: (m) => {
+            booking.purchaseType = document.getElementById('editbkg-type').value;
+            booking.arrivalPlant = document.getElementById('editbkg-plant').value;
             booking.pond = document.getElementById('editbkg-pond').value;
+            booking.species = document.getElementById('editbkg-spec').value;
             booking.bookedQty = parseFloat(document.getElementById('editbkg-qty').value) || booking.bookedQty;
             booking.expectedDate = document.getElementById('editbkg-date').value;
+            booking.status = document.getElementById('editbkg-status').value;
 
             if (tableInstance) tableInstance.setData(PurchaseView.bookingsList);
             m.close();
             Toast.show(`Booking ${booking.bookingNo} updated.`, 'success');
+          }
+        }
+      ]
+    });
+  },
+
+  showBookingDetails(booking) {
+    Modal.open({
+      title: `Booking Agreement Details: ${booking.bookingNo}`,
+      size: 'lg',
+      content: `
+        <div class="space-y-4 text-xs">
+          <div class="p-3 bg-[#DEEBFF] text-[#0747A6] rounded-lg border border-[#B3D4FF] flex items-center justify-between">
+            <div>
+              <span class="font-bold text-sm">${booking.bookingNo}</span>
+              <span class="ml-2 text-xs">(${booking.bookingDate || booking.expectedDate} • ${booking.purchaseType || 'Direct Procurement'})</span>
+            </div>
+            <span class="lozenge lozenge-success font-bold">${booking.status || 'CONFIRMED'}</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Species</span>
+              <span class="font-bold text-[#172B4D]">${booking.species}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Farmer / Supplier</span>
+              <span class="font-bold text-[#172B4D]">${booking.supplier || '-'}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Pond / Location</span>
+              <span class="font-bold text-[#172B4D]">${booking.pond || '-'}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Arrival Destination</span>
+              <span class="font-bold text-[#0052CC]">${booking.arrivalPlant || 'DFL UNIT-5 (JPT)'}</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Assigned Grader</span>
+              <span class="font-bold text-[#172B4D]">${booking.grader || 'B. Venkatesh'}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Procurement Agent</span>
+              <span class="font-bold text-[#172B4D]">${booking.agent || 'Direct'}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Booking Count</span>
+              <span class="font-bold text-[#0052CC]">${booking.bookingCount || '40 Count'}</span>
+            </div>
+            <div class="p-2.5 bg-[#E3FCEF] border border-[#ABF5D1] rounded">
+              <span class="text-[#006644] text-[11px] block">Booked Weight</span>
+              <span class="font-extrabold text-sm text-[#006644]">${(booking.bookingWeight || booking.bookedQty || 0).toLocaleString()} KG</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Booking Rate</span>
+              <span class="font-extrabold text-[#172B4D]">₹ ${booking.bookingRate || 420} / KG</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Expected Harvest</span>
+              <span class="font-bold text-[#172B4D]">${booking.expectedDate || '-'}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Advance Disbursed</span>
+              <span class="font-bold text-[#006644]">${booking.advancePaid || '$ 0'}</span>
+            </div>
+          </div>
+        </div>
+      `,
+      footerButtons: [
+        { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Print Booking Slip',
+          type: 'primary',
+          onClick: (m) => {
+            Toast.show(`Printing Booking Agreement ${booking.bookingNo}...`, 'info');
           }
         }
       ]
