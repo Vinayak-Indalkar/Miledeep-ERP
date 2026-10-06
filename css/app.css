@@ -1,0 +1,336 @@
+/* Atlassian Design System Theme & Custom ERP Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Atlassian Color Palette */
+  --ds-background-neutral: #F4F5F7;
+  --ds-background-neutral-subtle: #FAFBFC;
+  --ds-background-neutral-hover: #EBECF0;
+  --ds-background-neutral-active: #DFE1E6;
+  
+  --ds-surface: #FFFFFF;
+  --ds-surface-overlay: #FFFFFF;
+  --ds-surface-raised: #FFFFFF;
+  --ds-surface-sunken: #F4F5F7;
+  
+  --ds-text: #172B4D;
+  --ds-text-subtle: #42526E;
+  --ds-text-subtlest: #6B778C;
+  --ds-text-inverse: #FFFFFF;
+  
+  --ds-border: #DFE1E6;
+  --ds-border-subtle: #EBECF0;
+  --ds-border-bold: #7A869A;
+  --ds-border-focused: #4C9AFF;
+  
+  /* Brand & Status Colors */
+  --ds-brand-primary: #0052CC;
+  --ds-brand-primary-hover: #0747A6;
+  --ds-brand-primary-active: #00388B;
+  --ds-brand-subtle: #DEEBFF;
+  
+  --ds-success: #36B37E;
+  --ds-success-subtle: #E3FCEF;
+  --ds-success-text: #006644;
+  
+  --ds-warning: #FFAB00;
+  --ds-warning-subtle: #FFF0B3;
+  --ds-warning-text: #172B4D;
+  
+  --ds-danger: #FF5630;
+  --ds-danger-subtle: #FFEBE6;
+  --ds-danger-text: #BF2600;
+  
+  --ds-info: #00B8D9;
+  --ds-info-subtle: #E6FCFF;
+  --ds-info-text: #008DA6;
+  
+  --ds-purple: #6554C0;
+  --ds-purple-subtle: #EAE6FF;
+  --ds-purple-text: #403294;
+}
+
+*, *::before, *::after, body, button, input, select, textarea, kbd, code, pre, table, . {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+body {
+  color: var(--ds-text);
+  background-color: var(--ds-background-neutral);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F5F7;
+}
+::-webkit-scrollbar-thumb {
+  background: #C1C7D0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A5ADBA;
+}
+
+/* Atlassian Lozenge (Badge) Styles */
+.lozenge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+
+.lozenge-default {
+  background-color: var(--ds-background-neutral-hover);
+  color: var(--ds-text-subtle);
+}
+
+.lozenge-success {
+  background-color: var(--ds-success-subtle);
+  color: var(--ds-success-text);
+}
+
+.lozenge-inprogress {
+  background-color: var(--ds-brand-subtle);
+  color: var(--ds-brand-primary);
+}
+
+.lozenge-warning {
+  background-color: var(--ds-warning-subtle);
+  color: #8f4d00;
+}
+
+.lozenge-danger {
+  background-color: var(--ds-danger-subtle);
+  color: var(--ds-danger-text);
+}
+
+.lozenge-info {
+  background-color: var(--ds-info-subtle);
+  color: var(--ds-info-text);
+}
+
+.lozenge-purple {
+  background-color: var(--ds-purple-subtle);
+  color: var(--ds-purple-text);
+}
+
+/* Atlassian Button Styles */
+.btn-primary {
+  background-color: var(--ds-brand-primary);
+  color: #ffffff;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+.btn-primary:hover {
+  background-color: var(--ds-brand-primary-hover);
+}
+.btn-primary:active {
+  background-color: var(--ds-brand-primary-active);
+}
+
+.btn-subtle {
+  background-color: transparent;
+  color: var(--ds-text-subtle);
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.btn-subtle:hover {
+  background-color: var(--ds-background-neutral-hover);
+  color: var(--ds-text);
+}
+
+.btn-secondary {
+  background-color: #091E420A;
+  color: var(--ds-text);
+  font-weight: 500;
+  border: 1px solid var(--ds-border);
+}
+.btn-secondary:hover {
+  background-color: #091E4214;
+}
+
+.btn-danger {
+  background-color: var(--ds-danger);
+  color: #ffffff;
+}
+.btn-danger:hover {
+  background-color: #DE350B;
+}
+
+/* Table styling */
+.erp-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.erp-table th {
+  background-color: #FAFBFC;
+  color: #5E6C84;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 14px;
+  border-bottom: 2px solid #DFE1E6;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  white-space: nowrap;
+}
+.erp-table td {
+  padding: 10px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid #EBECF0;
+  color: #172B4D;
+  vertical-align: middle;
+}
+.erp-table tr:hover td {
+  background-color: #FAFBFC;
+}
+
+/* Fixed Sticky Actions Column across all tables */
+.erp-table .sticky-action-col {
+  position: sticky !important;
+  right: 0 !important;
+  background-clip: padding-box;
+}
+.erp-table th.sticky-action-col {
+  background-color: #FAFBFC !important;
+  z-index: 20 !important;
+  border-left: 1px solid #DFE1E6;
+  box-shadow: -4px 0 6px -2px rgba(9, 30, 66, 0.08);
+}
+.erp-table td.sticky-action-col {
+  background-color: #ffffff;
+  z-index: 10 !important;
+  border-left: 1px solid #EBECF0;
+  box-shadow: -4px 0 6px -2px rgba(9, 30, 66, 0.08);
+}
+.erp-table tr:hover td.sticky-action-col {
+  background-color: #FAFBFC !important;
+}
+.erp-table tr.bg-\[\#F4F5F7\] td.sticky-action-col {
+  background-color: #F4F5F7 !important;
+}
+
+/* Nav Item Active */
+.nav-item-active {
+  background-color: #DEEBFF !important;
+  color: #0052CC !important;
+  font-weight: 600 !important;
+}
+.nav-item-active svg {
+  color: #0052CC !important;
+}
+
+/* Tab active */
+.tab-active {
+  color: #0052CC !important;
+  border-bottom: 2px solid #0052CC !important;
+  font-weight: 600 !important;
+}
+
+/* Drawer & Modal Transitions */
+.drawer-backdrop {
+  background-color: rgba(9, 30, 66, 0.54);
+  backdrop-filter: blur(2px);
+  transition: opacity 0.25s ease;
+}
+
+.drawer-panel {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Traceability Flow Step */
+.trace-step-node {
+  position: relative;
+  z-index: 1;
+}
+.trace-step-node::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 32px;
+  height: 2px;
+  background-color: #DFE1E6;
+  z-index: 0;
+}
+.trace-step-node:last-child::after {
+  display: none;
+}
+
+/* Coldstore Rack Grid */
+.rack-slot {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.rack-slot:hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 8px rgba(9, 30, 66, 0.15);
+  z-index: 2;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Skeleton Shimmer Animation */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #EBECF0 0%,
+    #F4F5F7 25%,
+    #EBECF0 50%,
+    #EBECF0 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+/* Print Styles */
+@media print {
+  aside, header, .no-print {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
