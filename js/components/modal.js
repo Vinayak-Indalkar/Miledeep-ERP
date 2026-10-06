@@ -158,5 +158,62 @@ export const Modal = {
         }
       ]
     });
+  },
+
+  // Action Success / Submitted / Saved / Edited Confirmation Popup
+  success({ title = 'Action Completed Successfully', message = 'The record has been processed and saved.', details = null, buttonText = 'OK', onConfirm = null }) {
+    this.close();
+
+    const modalEl = document.createElement('div');
+    modalEl.id = 'erp-modal-root';
+    modalEl.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 drawer-backdrop';
+
+    let detailsHtml = '';
+    if (details && Array.isArray(details) && details.length > 0) {
+      detailsHtml = `
+        <div class="mt-3.5 p-3 bg-[#F4F5F7] rounded-lg border border-[#DFE1E6] text-xs space-y-1.5 text-left">
+          ${details.map(d => `
+            <div class="flex items-center justify-between">
+              <span class="text-[#6B778C] font-medium">${d.label}:</span>
+              <span class="font-bold text-[#172B4D]">${d.value}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    modalEl.innerHTML = `
+      <div class="bg-white rounded-xl shadow-2xl border border-[#DFE1E6] w-full max-w-md flex flex-col animate-fade-in overflow-hidden text-center p-6">
+        <div class="w-12 h-12 rounded-full bg-[#E3FCEF] text-[#006644] mx-auto flex items-center justify-center mb-3 shadow-xs">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        
+        <h3 class="text-base font-extrabold text-[#172B4D] mb-1.5">${title}</h3>
+        <p class="text-xs text-[#5E6C84] leading-relaxed">${message}</p>
+        
+        ${detailsHtml}
+
+        <div class="mt-5 flex justify-center">
+          <button id="modal-success-btn" class="btn-primary w-full py-2 rounded-lg text-xs font-bold shadow-xs hover:shadow cursor-pointer">
+            ${buttonText}
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modalEl);
+    this.activeModal = modalEl;
+
+    const btn = modalEl.querySelector('#modal-success-btn');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        this.close();
+        if (onConfirm) onConfirm();
+      });
+    }
+
+    modalEl.addEventListener('click', (e) => {
+      if (e.target === modalEl) this.close();
+    });
   }
 };

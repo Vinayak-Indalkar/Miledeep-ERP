@@ -31,6 +31,123 @@ export const PurchaseView = {
     { sNo: 7, bookingNo: 'PB-2026-110', bookingStation: 'Visakhapatnam Gate Dock', bookingDate: '2026-10-11', species: 'Asian Seabass (Barramundi)', purchaseType: 'Spot Market Purchase', vehicleNo: 'AP 31 TH 7741', driverName: 'P. Appa Rao', grader: 'M. Nagesh', agent: 'East Coast Brokers', farmLocation: 'Deep Sea Cage #7', supplier: 'East Coast Aqua Society', bookingCount: '500-800 g/pc', bookingWeight: 1800, bookingRate: 320, arrivalPlant: 'DFL UNIT-1 (VSP)', remarks: 'Live harvest intake to dock.', expectedDate: '2026-10-11', advancePaid: '$ 1,500', status: 'PENDING' }
   ],
 
+  rmArrivalsList: [
+    {
+      sNo: 1,
+      id: 'RMA-2026-101',
+      arrivalNumber: 'RMA-2026-101',
+      date: '06/10/2026',
+      company: 'DEVI FISHERIES LIMITED',
+      plant: 'DFL UNIT-5 (JPT)',
+      center: 'Bhimavaram Center #1',
+      species: 'Vannamei (VM)',
+      weight: 3850,
+      balanceWeight: 1250,
+      status: 'QC_CLEARED',
+      averageRate: 425,
+      amount: 1636250,
+      balanceAmount: 531250,
+      vehicleNumber: 'AP 37 TE 9011',
+      driverName: 'K. Ramu',
+      remarks: 'Fresh harvest intake, weighbridge dock verified.'
+    },
+    {
+      sNo: 2,
+      id: 'RMA-2026-102',
+      arrivalNumber: 'RMA-2026-102',
+      date: '06/10/2026',
+      company: 'DEVI FISHERIES LIMITED',
+      plant: 'DFL UNIT-3 (PSP)',
+      center: 'Kakinada Sea Intake #2',
+      species: 'Black Tiger (BT)',
+      weight: 4200,
+      balanceWeight: 800,
+      status: 'RECEIVED',
+      averageRate: 610,
+      amount: 2562000,
+      balanceAmount: 488000,
+      vehicleNumber: 'AP 05 TX 9102',
+      driverName: 'M. Srinu',
+      remarks: 'Export batch benchmark rate locked.'
+    },
+    {
+      sNo: 3,
+      id: 'RMA-2026-103',
+      arrivalNumber: 'RMA-2026-103',
+      date: '06/10/2026',
+      company: 'DEVI FISHERIES LIMITED',
+      plant: 'DFL UNIT-4 (PND)',
+      center: 'Machilipatnam Delta #3',
+      species: 'Vannamei (VM)',
+      weight: 2900,
+      balanceWeight: 900,
+      status: 'IN_PROCESS',
+      averageRate: 390,
+      amount: 1131000,
+      balanceAmount: 351000,
+      vehicleNumber: 'AP 16 TZ 3390',
+      driverName: 'Ch. Prasad',
+      remarks: 'De-icing completed, staged for pre-processing.'
+    },
+    {
+      sNo: 4,
+      id: 'RMA-2026-104',
+      arrivalNumber: 'RMA-2026-104',
+      date: '06/10/2026',
+      company: 'DEVI FISHERIES LIMITED',
+      plant: 'DFL UNIT-6 (JPT-II)',
+      center: 'Amalapuram Harvesters #4',
+      species: 'Vannamei (VM)',
+      weight: 3100,
+      balanceWeight: 1100,
+      status: 'COMPLETED',
+      averageRate: 415,
+      amount: 1286500,
+      balanceAmount: 456500,
+      vehicleNumber: 'AP 04 TT 5619',
+      driverName: 'D. Rambabu',
+      remarks: 'Batch grading and count verification complete.'
+    },
+    {
+      sNo: 5,
+      id: 'RMA-2026-105',
+      arrivalNumber: 'RMA-2026-105',
+      date: '06/10/2026',
+      company: 'DEVI FISHERIES LIMITED',
+      plant: 'DFL UNIT-2 (KKD)',
+      center: 'Ongole Coastal Hub #1',
+      species: 'Black Tiger (BT)',
+      weight: 5000,
+      balanceWeight: 2000,
+      status: 'QC_CLEARED',
+      averageRate: 590,
+      amount: 2950000,
+      balanceAmount: 1180000,
+      vehicleNumber: 'AP 26 TV 1104',
+      driverName: 'Y. Brahmaiah',
+      remarks: 'Brackish water harvest intake verified.'
+    },
+    {
+      sNo: 6,
+      id: 'RMA-2026-106',
+      arrivalNumber: 'RMA-2026-106',
+      date: '06/10/2026',
+      company: 'DEVI FISHERIES LIMITED',
+      plant: 'DFL UNIT-1 (VSP)',
+      center: 'Visakhapatnam Gate Dock',
+      species: 'Asian Seabass',
+      weight: 1800,
+      balanceWeight: 600,
+      status: 'RECEIVED',
+      averageRate: 320,
+      amount: 576000,
+      balanceAmount: 192000,
+      vehicleNumber: 'AP 31 TH 7741',
+      driverName: 'P. Appa Rao',
+      remarks: 'Live harvest cage delivery.'
+    }
+  ],
+
   commercialTxns: [
     { txnId: 'CTX-2026-0041', date: '2026-10-04', supplier: 'Godavari Coastal Aqua Farms', description: 'Raw Material Harvest Intake Lot LOT-2026-00125', amountUsd: 9156, amountInr: 760000, type: 'PURCHASE_PAYABLE', status: 'POSTED' },
     { txnId: 'CTX-2026-0040', date: '2026-10-03', supplier: 'Sagar Marine Hatcheries', description: 'Black Tiger Harvest Booking PB-2026-092 Advance', amountUsd: 5000, amountInr: 415000, type: 'ADVANCE_PAID', status: 'POSTED' },
@@ -1042,40 +1159,190 @@ export const PurchaseView = {
   renderRMArrivals(container) {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
+        <!-- Header with Title and Create Button -->
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
           <div>
-            <h1 class="text-xl font-extrabold text-[#172B4D]">Raw Material Arrivals (Dock Weighbridge)</h1>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Physical intake of fresh harvest catch, gross/tare weighment, temperature check, and de-icing.</p>
+            <div class="flex items-center gap-2">
+              <h1 class="text-xl font-extrabold text-[#172B4D]">Raw Material Arrivals</h1>
+              <span class="lozenge lozenge-blue font-bold text-xs" id="rm-arrivals-count-badge">${this.rmArrivalsList.length} Records</span>
+            </div>
+            <p class="text-xs text-[#5E6C84] mt-0.5">Physical intake of fresh harvest catch, dock weighbridge readings, and processing balance ledgers.</p>
           </div>
           <div class="flex items-center gap-2">
-            <button id="btn-create-arrival-modal" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs">
+            <button id="btn-create-arrival-modal" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
               <span>Create RM Arrival</span>
             </button>
           </div>
         </div>
 
+        <!-- Search / Filter Fields: Date, Company, Species, Plant, Center, Weight, Amount, Average Rate -->
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
+          <div class="flex items-center justify-between pb-3 border-b border-[#EBECF0]">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
+            </div>
+
+            <!-- Filter Controls: Reset & Toggle Open/Close -->
+            <div class="flex items-center gap-2">
+              <button type="button" id="rm-top-reset-btn" class="dt-top-filter-reset-btn text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] hover:bg-[#F4F5F7] px-2.5 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-colors cursor-pointer" title="Reset all filters">
+                <svg class="w-3.5 h-3.5 text-[#6B778C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>Reset</span>
+              </button>
+
+              <button type="button" id="rm-top-toggle-btn" class="dt-top-filter-toggle-btn text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+                <svg class="w-3.5 h-3.5 dt-top-filter-toggle-icon transform transition-transform duration-200" id="rm-top-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <span class="dt-top-filter-toggle-text" id="rm-top-toggle-text">Hide Filter</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Collapsible Filter Inputs Grid -->
+          <div id="rm-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 text-xs transition-all duration-200">
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">DATE</label>
+              <input type="text" id="rm-top-date-input" value="06/10/2026" placeholder="06/10/2026" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">COMPANY</label>
+              <select id="rm-top-company-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Companies</option>
+                <option value="DEVI FISHERIES LIMITED" selected>DEVI FISHERIES LIMITED</option>
+                <option value="DEVI AQUA FEEDS">DEVI AQUA FEEDS</option>
+                <option value="DEVI SEAFOODS">DEVI SEAFOODS</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SPECIES</label>
+              <select id="rm-top-species-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">Select Species</option>
+                <option value="Vannamei (VM)">Vannamei (VM)</option>
+                <option value="Black Tiger (BT)">Black Tiger (BT)</option>
+                <option value="Asian Seabass">Asian Seabass</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">PLANT</label>
+              <select id="rm-top-plant-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">Select Plant</option>
+                <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">CENTER</label>
+              <select id="rm-top-center-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">Select Center</option>
+                <option value="Bhimavaram Center #1">Bhimavaram Center #1</option>
+                <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
+                <option value="Machilipatnam Delta #3">Machilipatnam Delta #3</option>
+                <option value="Amalapuram Harvesters #4">Amalapuram Harvesters #4</option>
+                <option value="Ongole Coastal Hub #1">Ongole Coastal Hub #1</option>
+                <option value="Visakhapatnam Gate Dock">Visakhapatnam Gate Dock</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">WEIGHT</label>
+              <input type="text" id="rm-top-weight-input" placeholder="Enter Weight" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">AMOUNT</label>
+              <input type="text" id="rm-top-amount-input" placeholder="Enter Amount" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">AVERAGE RATE</label>
+              <input type="text" id="rm-top-avgrate-input" placeholder="Enter Average Rate" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+            </div>
+          </div>
+
+          <div class="mt-3 flex justify-end">
+            <button type="button" id="rm-top-search-btn" class="dt-top-filter-search-btn btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <span>Search</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Table Container -->
         <div id="rm-arrivals-table-container"></div>
       </div>
     `;
 
     const arrivalsTable = new DataTable({
       containerId: 'rm-arrivals-table-container',
-      data: ERP_DATA.rmArrivals,
+      data: this.rmArrivalsList,
       keyField: 'arrivalNumber',
       pageSize: 10,
-      tableTitle: 'Recorded Raw Material Arrivals (Create, View, Edit, Delete)',
+      tableTitle: 'Raw Material Arrivals List',
+      searchable: false,
+      hideTopFilterBar: true,
       columns: [
-        { field: 'arrivalNumber', header: 'Arrival No', render: (val) => `<span class=" font-bold text-[#0052CC]">${val}</span>` },
-        { field: 'lotNumber', header: 'Linked Lot', render: (val) => `<span class=" text-[#172B4D] font-medium">${val}</span>` },
-        { field: 'supplierName', header: 'Supplier' },
-        { field: 'vehicleNumber', header: 'Vehicle / Driver', render: (val, row) => `<div><span class=" font-semibold">${val}</span><div class="text-[10px] text-[#6B778C]">${row.driverName}</div></div>` },
-        { field: 'species', header: 'Species' },
-        { field: 'grossWeightKg', header: 'Gross Wt', render: (val) => `<span class="">${val} KG</span>` },
-        { field: 'tareWeightKg', header: 'Tare Wt', render: (val) => `<span class="">${val} KG</span>` },
-        { field: 'netWeightKg', header: 'Net Wt', render: (val) => `<span class=" font-bold text-[#0747A6]">${val.toLocaleString()} KG</span>` },
-        { field: 'temperatureCelsius', header: 'Temp', render: (val) => `<span class="lozenge ${val <= 3.0 ? 'lozenge-success' : 'lozenge-warning'} ">${val} °C</span>` },
-        { field: 'qcStatus', header: 'QC Status', type: 'status' },
-        { field: 'receivingStatus', header: 'Receiving Status', type: 'status' }
+        { 
+          field: 'sNo', 
+          header: 'SNO', 
+          render: (v, row, index) => `<span class="font-bold text-[#5E6C84]">${index !== undefined ? index + 1 : 1}</span>` 
+        },
+        { 
+          field: 'date', 
+          header: 'Date', 
+          render: (v) => `<span class="font-medium text-[#172B4D]">${v || '06/10/2026'}</span>` 
+        },
+        { 
+          field: 'plant', 
+          header: 'Plant', 
+          render: (v) => `<span class="font-semibold text-[#0052CC]">${v || 'DFL UNIT-5 (JPT)'}</span>` 
+        },
+        { 
+          field: 'center', 
+          header: 'Center', 
+          render: (v) => `<span class="text-[#172B4D] font-medium">${v || 'Bhimavaram Center #1'}</span>` 
+        },
+        { 
+          field: 'species', 
+          header: 'Species', 
+          render: (v) => `<span class="font-semibold text-[#172B4D]">${v || 'Vannamei (VM)'}</span>` 
+        },
+        { 
+          field: 'weight', 
+          header: 'Weight', 
+          render: (v) => `<span class="font-extrabold text-[#006644]">${(typeof v === 'number' ? v : parseFloat(v) || 0).toLocaleString()} KG</span>` 
+        },
+        { 
+          field: 'balanceWeight', 
+          header: 'Balance Weight', 
+          render: (v) => `<span class="font-bold text-[#FF8B00]">${(typeof v === 'number' ? v : parseFloat(v) || 0).toLocaleString()} KG</span>` 
+        },
+        { 
+          field: 'status', 
+          header: 'Status', 
+          type: 'status' 
+        },
+        { 
+          field: 'averageRate', 
+          header: 'Average Rate', 
+          render: (v) => `<span class="font-bold text-[#172B4D]">₹ ${v || 425} / KG</span>` 
+        },
+        { 
+          field: 'amount', 
+          header: 'Amount', 
+          render: (v) => `<span class="font-extrabold text-[#172B4D]">₹ ${(typeof v === 'number' ? v : parseFloat(v) || 0).toLocaleString()}</span>` 
+        },
+        { 
+          field: 'balanceAmount', 
+          header: 'Balance Amount', 
+          render: (v) => `<span class="font-bold text-[#6554C0]">₹ ${(typeof v === 'number' ? v : parseFloat(v) || 0).toLocaleString()}</span>` 
+        }
       ],
       actions: [
         {
@@ -1095,6 +1362,90 @@ export const PurchaseView = {
         }
       ]
     });
+
+    const filterDate = document.getElementById('rm-top-date-input');
+    const filterCompany = document.getElementById('rm-top-company-select');
+    const filterSpecies = document.getElementById('rm-top-species-select');
+    const filterPlant = document.getElementById('rm-top-plant-select');
+    const filterCenter = document.getElementById('rm-top-center-select');
+    const filterWeight = document.getElementById('rm-top-weight-input');
+    const filterAmount = document.getElementById('rm-top-amount-input');
+    const filterAvgRate = document.getElementById('rm-top-avgrate-input');
+    const searchBtn = document.getElementById('rm-top-search-btn');
+    const resetBtn = document.getElementById('rm-top-reset-btn');
+    const toggleBtn = document.getElementById('rm-top-toggle-btn');
+    const filterBody = document.getElementById('rm-top-filter-body');
+    const toggleText = document.getElementById('rm-top-toggle-text');
+    const toggleIcon = document.getElementById('rm-top-toggle-icon');
+
+    // Toggle hide/show filter
+    if (toggleBtn && filterBody) {
+      let isCollapsed = false;
+      toggleBtn.addEventListener('click', () => {
+        isCollapsed = !isCollapsed;
+        if (isCollapsed) {
+          filterBody.classList.add('hidden');
+          if (toggleText) toggleText.innerText = 'Show Filter';
+          if (toggleIcon) toggleIcon.classList.add('-rotate-90');
+          toggleBtn.classList.remove('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.add('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        } else {
+          filterBody.classList.remove('hidden');
+          if (toggleText) toggleText.innerText = 'Hide Filter';
+          if (toggleIcon) toggleIcon.classList.remove('-rotate-90');
+          toggleBtn.classList.add('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.remove('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        }
+      });
+    }
+
+    const applyRMFilters = () => {
+      const dVal = (filterDate ? filterDate.value : '').trim();
+      const compVal = filterCompany ? filterCompany.value : 'ALL';
+      const specVal = filterSpecies ? filterSpecies.value : 'ALL';
+      const plVal = filterPlant ? filterPlant.value : 'ALL';
+      const ctrVal = filterCenter ? filterCenter.value : 'ALL';
+      const wtVal = filterWeight ? parseFloat(filterWeight.value) : null;
+      const amtVal = filterAmount ? parseFloat(filterAmount.value) : null;
+      const rateVal = filterAvgRate ? parseFloat(filterAvgRate.value) : null;
+
+      const filtered = this.rmArrivalsList.filter(item => {
+        const matchDate = !dVal || (item.date && item.date.includes(dVal));
+        const matchComp = (compVal === 'ALL') || (item.company === compVal);
+        const matchSpec = (specVal === 'ALL') || (item.species === specVal);
+        const matchPlant = (plVal === 'ALL') || (item.plant === plVal) || (item.plant && item.plant.includes(plVal));
+        const matchCenter = (ctrVal === 'ALL') || (item.center === ctrVal) || (item.center && item.center.includes(ctrVal));
+        const matchWeight = isNaN(wtVal) || wtVal === null || (item.weight >= wtVal);
+        const matchAmount = isNaN(amtVal) || amtVal === null || (item.amount >= amtVal);
+        const matchRate = isNaN(rateVal) || rateVal === null || (item.averageRate >= rateVal);
+
+        return matchDate && matchComp && matchSpec && matchPlant && matchCenter && matchWeight && matchAmount && matchRate;
+      });
+
+      arrivalsTable.setData(filtered);
+      Toast.show(`Filtered ${filtered.length} raw material arrival records.`, 'info', 'Search Results');
+    };
+
+    if (searchBtn) searchBtn.addEventListener('click', applyRMFilters);
+    if (filterCompany) filterCompany.addEventListener('change', applyRMFilters);
+    if (filterSpecies) filterSpecies.addEventListener('change', applyRMFilters);
+    if (filterPlant) filterPlant.addEventListener('change', applyRMFilters);
+    if (filterCenter) filterCenter.addEventListener('change', applyRMFilters);
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (filterDate) filterDate.value = '06/10/2026';
+        if (filterCompany) filterCompany.value = 'DEVI FISHERIES LIMITED';
+        if (filterSpecies) filterSpecies.value = 'ALL';
+        if (filterPlant) filterPlant.value = 'ALL';
+        if (filterCenter) filterCenter.value = 'ALL';
+        if (filterWeight) filterWeight.value = '';
+        if (filterAmount) filterAmount.value = '';
+        if (filterAvgRate) filterAvgRate.value = '';
+        arrivalsTable.setData(this.rmArrivalsList);
+        Toast.show('Filters have been reset. Displaying all RM arrivals.', 'info');
+      });
+    }
 
     const createBtn = document.getElementById('btn-create-arrival-modal');
     if (createBtn) {
@@ -1850,213 +2201,424 @@ export const PurchaseView = {
   // CRUD MODAL HANDLERS FOR RAW MATERIAL ARRIVALS
   // =========================================================================
   openCreateArrivalModal(tableInstance) {
+    const nextArrNo = `RMA-2026-${100 + this.rmArrivalsList.length + 1}`;
     Modal.open({
-      title: 'Record Fresh Raw Material Arrival & Weighment',
+      title: 'Create Raw Material Arrival',
       size: 'lg',
       content: `
-        <form class="space-y-4">
-          <div class="grid grid-cols-3 gap-3">
+        <form id="form-create-rm-arrival" class="space-y-4 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Number</label>
-              <input type="text" id="newarr-no" value="RMA-2026-${Math.floor(10000 + Math.random() * 90000)}" readonly class="w-full text-xs  px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded" />
+              <input type="text" id="rm-new-no" value="${nextArrNo}" readonly class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Harvest Lot Number</label>
-              <input type="text" id="newarr-lot" value="LOT-2026-${Math.floor(10000 + Math.random() * 90000)}" readonly class="w-full text-xs  px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded text-[#0052CC]" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Date</label>
+              <input type="text" id="rm-new-date" value="06/10/2026" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Date & Time</label>
-              <input type="text" id="newarr-time" value="${new Date().toISOString().replace('T', ' ').substring(0, 16)}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Company</label>
+              <select id="rm-new-company" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="DEVI FISHERIES LIMITED" selected>DEVI FISHERIES LIMITED</option>
+                <option value="DEVI AQUA FEEDS">DEVI AQUA FEEDS</option>
+                <option value="DEVI SEAFOODS">DEVI SEAFOODS</option>
+              </select>
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supplier / Farm</label>
-              <select id="newarr-sup" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name} (${s.region})</option>`).join('')}
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Plant</label>
+              <select id="rm-new-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="DFL UNIT-5 (JPT)" selected>DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
+                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center</label>
+              <select id="rm-new-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="Bhimavaram Center #1" selected>Bhimavaram Center #1</option>
+                <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
+                <option value="Machilipatnam Delta #3">Machilipatnam Delta #3</option>
+                <option value="Amalapuram Harvesters #4">Amalapuram Harvesters #4</option>
+                <option value="Ongole Coastal Hub #1">Ongole Coastal Hub #1</option>
+                <option value="Visakhapatnam Gate Dock">Visakhapatnam Gate Dock</option>
               </select>
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
-              <select id="newarr-spec" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                ${ERP_DATA.species.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
+              <select id="rm-new-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="Vannamei (VM)" selected>Vannamei (VM)</option>
+                <option value="Black Tiger (BT)">Black Tiger (BT)</option>
+                <option value="Asian Seabass">Asian Seabass</option>
               </select>
             </div>
           </div>
 
-          <div class="grid grid-cols-3 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Registration</label>
-              <input type="text" id="newarr-veh" value="AP 37 TE 9011" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Weight (KG)</label>
+              <input type="number" id="rm-new-weight" value="3850" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
-              <input type="text" id="newarr-driver" value="K. Ramu" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Balance Weight (KG)</label>
+              <input type="number" id="rm-new-bal-weight" value="1250" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Core Temp (°C)</label>
-              <input type="number" step="0.1" id="newarr-temp" value="2.6" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Average Rate (₹/KG)</label>
+              <input type="number" id="rm-new-avgrate" value="425" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Status</label>
+              <select id="rm-new-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="QC_CLEARED" selected>QC_CLEARED</option>
+                <option value="RECEIVED">RECEIVED</option>
+                <option value="IN_PROCESS">IN_PROCESS</option>
+                <option value="COMPLETED">COMPLETED</option>
+              </select>
             </div>
           </div>
 
-          <!-- Live Automatic Net Weight Calculation Box -->
+          <!-- Real-Time Amount Calculations Card -->
           <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg">
-            <span class="text-xs font-bold text-[#172B4D] block mb-2">Weighbridge Scale Readings</span>
-            <div class="grid grid-cols-3 gap-3">
-              <div>
-                <label class="block text-[11px] font-semibold text-[#5E6C84] mb-1">Gross Weight (KG)</label>
-                <input type="number" id="arr-gross-wt" value="3200" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
+            <span class="text-xs font-bold text-[#172B4D] block mb-2">Real-Time Valuation Summary</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="text-[11px] font-semibold text-[#5E6C84] block mb-1">Total Amount (Weight × Avg Rate)</span>
+                <div id="rm-new-amt-preview" class="text-sm font-extrabold text-[#172B4D]">
+                  ₹ 16,36,250
+                </div>
               </div>
-              <div>
-                <label class="block text-[11px] font-semibold text-[#5E6C84] mb-1">Tare Weight (Tubs & Ice KG)</label>
-                <input type="number" id="arr-tare-wt" value="450" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
-              </div>
-              <div>
-                <label class="block text-[11px] font-semibold text-[#0747A6] mb-1">Calculated Net Weight</label>
-                <div id="arr-calc-net" class="text-sm font-bold  px-3 py-1.5 bg-[#DEEBFF] text-[#0052CC] rounded border border-[#B3D4FF]">
-                  2,750 KG
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="text-[11px] font-semibold text-[#5E6C84] block mb-1">Balance Amount (Bal Weight × Avg Rate)</span>
+                <div id="rm-new-balamt-preview" class="text-sm font-extrabold text-[#6554C0]">
+                  ₹ 5,31,250
                 </div>
               </div>
             </div>
           </div>
-        </form>
-      `,
-      footerButtons: [
-        { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
-        { 
-          label: 'Submit Arrival Entry', 
-          type: 'primary', 
-          onClick: (m) => {
-            const arrNo = document.getElementById('newarr-no').value;
-            const lotNo = document.getElementById('newarr-lot').value;
-            const sup = document.getElementById('newarr-sup').value;
-            const spec = document.getElementById('newarr-spec').value;
-            const veh = document.getElementById('newarr-veh').value;
-            const driver = document.getElementById('newarr-driver').value;
-            const temp = parseFloat(document.getElementById('newarr-temp').value) || 2.5;
-            const gross = parseFloat(document.getElementById('arr-gross-wt').value) || 3000;
-            const tare = parseFloat(document.getElementById('arr-tare-wt').value) || 400;
-            const net = Math.max(0, gross - tare);
 
-            const newArr = {
-              arrivalNumber: arrNo,
-              lotNumber: lotNo,
-              supplierName: sup,
-              vehicleNumber: veh,
-              driverName: driver,
-              driverPhone: '+91 98480 00000',
-              species: spec,
-              variety: 'Head-On Shell-On (HOSO)',
-              countPcsKg: 55,
-              grossWeightKg: gross,
-              tareWeightKg: tare,
-              netWeightKg: net,
-              arrivalTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
-              temperatureCelsius: temp,
-              icingRatio: '1 : 1.2',
-              qcStatus: 'PASSED',
-              receivingStatus: 'STAGED_AT_DOCK',
-              inspector: 'Anjaneyulu',
-              notes: 'Inspected and verified.'
-            };
-
-            ERP_DATA.rmArrivals.unshift(newArr);
-            if (tableInstance) tableInstance.setData(ERP_DATA.rmArrivals);
-            m.close();
-            Toast.show(`Arrival ${newArr.arrivalNumber} recorded and routed to Dock Staging.`, 'success', 'Arrival Registered');
-          } 
-        }
-      ]
-    });
-
-    setTimeout(() => {
-      const gross = document.getElementById('arr-gross-wt');
-      const tare = document.getElementById('arr-tare-wt');
-      const net = document.getElementById('arr-calc-net');
-
-      const updateNet = () => {
-        const g = parseFloat(gross.value) || 0;
-        const t = parseFloat(tare.value) || 0;
-        const n = Math.max(0, g - t);
-        net.innerText = `${n.toLocaleString()} KG`;
-      };
-
-      if (gross && tare && net) {
-        gross.addEventListener('input', updateNet);
-        tare.addEventListener('input', updateNet);
-      }
-    }, 50);
-  },
-
-  openEditArrivalModal(arrival, tableInstance) {
-    Modal.open({
-      title: `Edit RM Arrival: ${arrival.arrivalNumber}`,
-      size: 'md',
-      content: `
-        <form class="space-y-3">
-          <div>
-            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Registration</label>
-            <input type="text" id="editarr-veh" value="${arrival.vehicleNumber}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-          </div>
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Number</label>
+              <input type="text" id="rm-new-veh" value="AP 37 TE 9011" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
-              <input type="text" id="editarr-driver" value="${arrival.driverName}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Core Temp (°C)</label>
-              <input type="number" step="0.1" id="editarr-temp" value="${arrival.temperatureCelsius}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
+              <input type="text" id="rm-new-driver" value="K. Ramu" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Gross Weight (KG)</label>
-              <input type="number" id="editarr-gross" value="${arrival.grossWeightKg}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Tare Weight (KG)</label>
-              <input type="number" id="editarr-tare" value="${arrival.tareWeightKg}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
-            </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Remarks</label>
+            <textarea id="rm-new-remarks" rows="2" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">Fresh intake verified at dock weighbridge.</textarea>
           </div>
         </form>
       `,
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Update Arrival',
+          label: 'Save',
           type: 'primary',
           onClick: (m) => {
-            arrival.vehicleNumber = document.getElementById('editarr-veh').value;
-            arrival.driverName = document.getElementById('editarr-driver').value;
-            arrival.temperatureCelsius = parseFloat(document.getElementById('editarr-temp').value) || arrival.temperatureCelsius;
-            const g = parseFloat(document.getElementById('editarr-gross').value) || arrival.grossWeightKg;
-            const t = parseFloat(document.getElementById('editarr-tare').value) || arrival.tareWeightKg;
-            arrival.grossWeightKg = g;
-            arrival.tareWeightKg = t;
-            arrival.netWeightKg = Math.max(0, g - t);
+            const arrNo = document.getElementById('rm-new-no').value;
+            const date = document.getElementById('rm-new-date').value || '06/10/2026';
+            const company = document.getElementById('rm-new-company').value || 'DEVI FISHERIES LIMITED';
+            const plant = document.getElementById('rm-new-plant').value || 'DFL UNIT-5 (JPT)';
+            const center = document.getElementById('rm-new-center').value || 'Bhimavaram Center #1';
+            const species = document.getElementById('rm-new-species').value || 'Vannamei (VM)';
+            const weight = parseFloat(document.getElementById('rm-new-weight').value) || 0;
+            const balWeight = parseFloat(document.getElementById('rm-new-bal-weight').value) || 0;
+            const avgRate = parseFloat(document.getElementById('rm-new-avgrate').value) || 0;
+            const status = document.getElementById('rm-new-status').value || 'QC_CLEARED';
+            const veh = document.getElementById('rm-new-veh').value || '';
+            const driver = document.getElementById('rm-new-driver').value || '';
+            const remarks = document.getElementById('rm-new-remarks').value || '';
 
-            if (tableInstance) tableInstance.setData(ERP_DATA.rmArrivals);
+            const amount = weight * avgRate;
+            const balAmount = balWeight * avgRate;
+
+            const newRecord = {
+              sNo: this.rmArrivalsList.length + 1,
+              id: arrNo,
+              arrivalNumber: arrNo,
+              date: date,
+              company: company,
+              plant: plant,
+              center: center,
+              species: species,
+              weight: weight,
+              balanceWeight: balWeight,
+              status: status,
+              averageRate: avgRate,
+              amount: amount,
+              balanceAmount: balAmount,
+              vehicleNumber: veh,
+              driverName: driver,
+              remarks: remarks
+            };
+
+            this.rmArrivalsList.unshift(newRecord);
+            if (tableInstance) tableInstance.setData(this.rmArrivalsList);
+            const badge = document.getElementById('rm-arrivals-count-badge');
+            if (badge) badge.innerText = `${this.rmArrivalsList.length} Records`;
+
             m.close();
-            Toast.show(`Arrival ${arrival.arrivalNumber} updated.`, 'success');
+
+            // Confirmation Popup after save
+            Modal.success({
+              title: 'Raw Material Arrival Saved Successfully',
+              message: `Arrival record <strong>${arrNo}</strong> has been registered and verified.`,
+              details: [
+                { label: 'Arrival Number', value: arrNo },
+                { label: 'Date', value: date },
+                { label: 'Plant Facility', value: plant },
+                { label: 'Procurement Center', value: center },
+                { label: 'Species', value: species },
+                { label: 'Intake Weight', value: `${weight.toLocaleString()} KG` },
+                { label: 'Total Valuation', value: `₹ ${amount.toLocaleString()}` }
+              ]
+            });
+            Toast.show(`Arrival ${arrNo} saved successfully.`, 'success', 'Arrival Registered');
           }
         }
       ]
     });
+
+    setTimeout(() => {
+      const wtInput = document.getElementById('rm-new-weight');
+      const bwtInput = document.getElementById('rm-new-bal-weight');
+      const rateInput = document.getElementById('rm-new-avgrate');
+      const amtPrev = document.getElementById('rm-new-amt-preview');
+      const bamtPrev = document.getElementById('rm-new-balamt-preview');
+
+      const recalc = () => {
+        const w = parseFloat(wtInput ? wtInput.value : 0) || 0;
+        const bw = parseFloat(bwtInput ? bwtInput.value : 0) || 0;
+        const r = parseFloat(rateInput ? rateInput.value : 0) || 0;
+        if (amtPrev) amtPrev.innerText = `₹ ${(w * r).toLocaleString()}`;
+        if (bamtPrev) bamtPrev.innerText = `₹ ${(bw * r).toLocaleString()}`;
+      };
+
+      if (wtInput) wtInput.addEventListener('input', recalc);
+      if (bwtInput) bwtInput.addEventListener('input', recalc);
+      if (rateInput) rateInput.addEventListener('input', recalc);
+    }, 50);
+  },
+
+  openEditArrivalModal(arrival, tableInstance) {
+    Modal.open({
+      title: `Edit Raw Material Arrival: ${arrival.arrivalNumber || arrival.id}`,
+      size: 'lg',
+      content: `
+        <form id="form-edit-rm-arrival" class="space-y-4 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Number</label>
+              <input type="text" value="${arrival.arrivalNumber || arrival.id}" readonly class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Date</label>
+              <input type="text" id="rm-edit-date" value="${arrival.date || '06/10/2026'}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Company</label>
+              <select id="rm-edit-company" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="DEVI FISHERIES LIMITED" ${arrival.company === 'DEVI FISHERIES LIMITED' ? 'selected' : ''}>DEVI FISHERIES LIMITED</option>
+                <option value="DEVI AQUA FEEDS" ${arrival.company === 'DEVI AQUA FEEDS' ? 'selected' : ''}>DEVI AQUA FEEDS</option>
+                <option value="DEVI SEAFOODS" ${arrival.company === 'DEVI SEAFOODS' ? 'selected' : ''}>DEVI SEAFOODS</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Plant</label>
+              <select id="rm-edit-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="DFL UNIT-5 (JPT)" ${arrival.plant === 'DFL UNIT-5 (JPT)' ? 'selected' : ''}>DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-3 (PSP)" ${arrival.plant === 'DFL UNIT-3 (PSP)' ? 'selected' : ''}>DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-6 (JPT-II)" ${arrival.plant === 'DFL UNIT-6 (JPT-II)' ? 'selected' : ''}>DFL UNIT-6 (JPT-II)</option>
+                <option value="DFL UNIT-4 (PND)" ${arrival.plant === 'DFL UNIT-4 (PND)' ? 'selected' : ''}>DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-2 (KKD)" ${arrival.plant === 'DFL UNIT-2 (KKD)' ? 'selected' : ''}>DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-1 (VSP)" ${arrival.plant === 'DFL UNIT-1 (VSP)' ? 'selected' : ''}>DFL UNIT-1 (VSP)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center</label>
+              <select id="rm-edit-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="Bhimavaram Center #1" ${arrival.center === 'Bhimavaram Center #1' ? 'selected' : ''}>Bhimavaram Center #1</option>
+                <option value="Kakinada Sea Intake #2" ${arrival.center === 'Kakinada Sea Intake #2' ? 'selected' : ''}>Kakinada Sea Intake #2</option>
+                <option value="Machilipatnam Delta #3" ${arrival.center === 'Machilipatnam Delta #3' ? 'selected' : ''}>Machilipatnam Delta #3</option>
+                <option value="Amalapuram Harvesters #4" ${arrival.center === 'Amalapuram Harvesters #4' ? 'selected' : ''}>Amalapuram Harvesters #4</option>
+                <option value="Ongole Coastal Hub #1" ${arrival.center === 'Ongole Coastal Hub #1' ? 'selected' : ''}>Ongole Coastal Hub #1</option>
+                <option value="Visakhapatnam Gate Dock" ${arrival.center === 'Visakhapatnam Gate Dock' ? 'selected' : ''}>Visakhapatnam Gate Dock</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
+              <select id="rm-edit-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="Vannamei (VM)" ${arrival.species === 'Vannamei (VM)' ? 'selected' : ''}>Vannamei (VM)</option>
+                <option value="Black Tiger (BT)" ${arrival.species === 'Black Tiger (BT)' ? 'selected' : ''}>Black Tiger (BT)</option>
+                <option value="Asian Seabass" ${arrival.species === 'Asian Seabass' ? 'selected' : ''}>Asian Seabass</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Weight (KG)</label>
+              <input type="number" id="rm-edit-weight" value="${arrival.weight || 0}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Balance Weight (KG)</label>
+              <input type="number" id="rm-edit-bal-weight" value="${arrival.balanceWeight || 0}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Average Rate (₹/KG)</label>
+              <input type="number" id="rm-edit-avgrate" value="${arrival.averageRate || 0}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Status</label>
+              <select id="rm-edit-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="QC_CLEARED" ${arrival.status === 'QC_CLEARED' ? 'selected' : ''}>QC_CLEARED</option>
+                <option value="RECEIVED" ${arrival.status === 'RECEIVED' ? 'selected' : ''}>RECEIVED</option>
+                <option value="IN_PROCESS" ${arrival.status === 'IN_PROCESS' ? 'selected' : ''}>IN_PROCESS</option>
+                <option value="COMPLETED" ${arrival.status === 'COMPLETED' ? 'selected' : ''}>COMPLETED</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Real-Time Amount Calculations Card -->
+          <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg">
+            <span class="text-xs font-bold text-[#172B4D] block mb-2">Real-Time Valuation Summary</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="text-[11px] font-semibold text-[#5E6C84] block mb-1">Total Amount (Weight × Avg Rate)</span>
+                <div id="rm-edit-amt-preview" class="text-sm font-extrabold text-[#172B4D]">
+                  ₹ ${(arrival.amount || 0).toLocaleString()}
+                </div>
+              </div>
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="text-[11px] font-semibold text-[#5E6C84] block mb-1">Balance Amount (Bal Weight × Avg Rate)</span>
+                <div id="rm-edit-balamt-preview" class="text-sm font-extrabold text-[#6554C0]">
+                  ₹ ${(arrival.balanceAmount || 0).toLocaleString()}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Number</label>
+              <input type="text" id="rm-edit-veh" value="${arrival.vehicleNumber || ''}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
+              <input type="text" id="rm-edit-driver" value="${arrival.driverName || ''}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Remarks</label>
+            <textarea id="rm-edit-remarks" rows="2" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">${arrival.remarks || ''}</textarea>
+          </div>
+        </form>
+      `,
+      footerButtons: [
+        { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Save',
+          type: 'primary',
+          onClick: (m) => {
+            arrival.date = document.getElementById('rm-edit-date').value || arrival.date;
+            arrival.company = document.getElementById('rm-edit-company').value || arrival.company;
+            arrival.plant = document.getElementById('rm-edit-plant').value || arrival.plant;
+            arrival.center = document.getElementById('rm-edit-center').value || arrival.center;
+            arrival.species = document.getElementById('rm-edit-species').value || arrival.species;
+            arrival.weight = parseFloat(document.getElementById('rm-edit-weight').value) || 0;
+            arrival.balanceWeight = parseFloat(document.getElementById('rm-edit-bal-weight').value) || 0;
+            arrival.averageRate = parseFloat(document.getElementById('rm-edit-avgrate').value) || 0;
+            arrival.status = document.getElementById('rm-edit-status').value || arrival.status;
+            arrival.vehicleNumber = document.getElementById('rm-edit-veh').value || '';
+            arrival.driverName = document.getElementById('rm-edit-driver').value || '';
+            arrival.remarks = document.getElementById('rm-edit-remarks').value || '';
+
+            arrival.amount = arrival.weight * arrival.averageRate;
+            arrival.balanceAmount = arrival.balanceWeight * arrival.averageRate;
+
+            if (tableInstance) tableInstance.setData(this.rmArrivalsList);
+            m.close();
+
+            // Confirmation Popup after edit
+            Modal.success({
+              title: 'Raw Material Arrival Updated Successfully',
+              message: `Arrival record <strong>${arrival.arrivalNumber || arrival.id}</strong> has been updated.`,
+              details: [
+                { label: 'Arrival Number', value: arrival.arrivalNumber || arrival.id },
+                { label: 'Date', value: arrival.date },
+                { label: 'Plant Facility', value: arrival.plant },
+                { label: 'Center', value: arrival.center },
+                { label: 'Updated Weight', value: `${arrival.weight.toLocaleString()} KG` },
+                { label: 'Valuation Amount', value: `₹ ${arrival.amount.toLocaleString()}` }
+              ]
+            });
+            Toast.show(`Arrival ${arrival.arrivalNumber || arrival.id} updated successfully.`, 'success');
+          }
+        }
+      ]
+    });
+
+    setTimeout(() => {
+      const wtInput = document.getElementById('rm-edit-weight');
+      const bwtInput = document.getElementById('rm-edit-bal-weight');
+      const rateInput = document.getElementById('rm-edit-avgrate');
+      const amtPrev = document.getElementById('rm-edit-amt-preview');
+      const bamtPrev = document.getElementById('rm-edit-balamt-preview');
+
+      const recalc = () => {
+        const w = parseFloat(wtInput ? wtInput.value : 0) || 0;
+        const bw = parseFloat(bwtInput ? bwtInput.value : 0) || 0;
+        const r = parseFloat(rateInput ? rateInput.value : 0) || 0;
+        if (amtPrev) amtPrev.innerText = `₹ ${(w * r).toLocaleString()}`;
+        if (bamtPrev) bamtPrev.innerText = `₹ ${(bw * r).toLocaleString()}`;
+      };
+
+      if (wtInput) wtInput.addEventListener('input', recalc);
+      if (bwtInput) bwtInput.addEventListener('input', recalc);
+      if (rateInput) rateInput.addEventListener('input', recalc);
+    }, 50);
   },
 
   deleteArrival(arrival, tableInstance) {
+    const arrNo = arrival.arrivalNumber || arrival.id;
     Modal.confirm({
-      title: `Delete Arrival ${arrival.arrivalNumber}`,
-      message: `Are you sure you want to remove arrival record <strong>${arrival.arrivalNumber}</strong>?`,
+      title: `Delete Arrival ${arrNo}`,
+      message: `Are you sure you want to remove raw material arrival record <strong>${arrNo}</strong>?`,
       confirmText: 'Delete Arrival',
       isDestructive: true,
       onConfirm: () => {
-        const idx = ERP_DATA.rmArrivals.findIndex(a => a.arrivalNumber === arrival.arrivalNumber);
+        const idx = this.rmArrivalsList.findIndex(a => (a.arrivalNumber === arrNo || a.id === arrNo));
         if (idx > -1) {
-          ERP_DATA.rmArrivals.splice(idx, 1);
-          if (tableInstance) tableInstance.setData(ERP_DATA.rmArrivals);
-          Toast.show(`Arrival ${arrival.arrivalNumber} deleted.`, 'success');
+          const removed = this.rmArrivalsList.splice(idx, 1)[0];
+          if (tableInstance) tableInstance.setData(this.rmArrivalsList);
+          const badge = document.getElementById('rm-arrivals-count-badge');
+          if (badge) badge.innerText = `${this.rmArrivalsList.length} Records`;
+
+          // Confirmation Popup after delete
+          Modal.success({
+            title: 'Arrival Record Deleted',
+            message: `Raw material arrival <strong>${arrNo}</strong> has been deleted from the database.`,
+            details: [
+              { label: 'Deleted Record', value: arrNo },
+              { label: 'Plant', value: removed.plant || 'DFL UNIT-5' },
+              { label: 'Removed Weight', value: `${(removed.weight || 0).toLocaleString()} KG` }
+            ]
+          });
+          Toast.show(`Arrival ${arrNo} deleted.`, 'success');
         }
       }
     });
@@ -2223,6 +2785,18 @@ export const PurchaseView = {
             ERP_DATA.arrivals.unshift(newRecord);
             if (tableInstance) tableInstance.setData(ERP_DATA.arrivals);
             m.close();
+
+            // Confirmation Popup after save
+            Modal.success({
+              title: 'Arrival Receipt Submitted Successfully',
+              message: `Inward catch arrival receipt ${code} has been recorded and verified.`,
+              details: [
+                { label: 'Arrival Code', value: code },
+                { label: 'Procurement Center', value: center },
+                { label: 'Farmer / Supplier', value: sup },
+                { label: 'Net Catch Weight', value: `${net.toLocaleString()} KG` }
+              ]
+            });
             Toast.show(`Arrival receipt ${code} created successfully for ${net.toLocaleString()} KG`, 'success', 'Arrival Created');
           }
         }
@@ -2322,6 +2896,17 @@ export const PurchaseView = {
 
             if (tableInstance) tableInstance.setData(ERP_DATA.arrivals);
             m.close();
+
+            // Confirmation Popup after update
+            Modal.success({
+              title: 'Arrival Record Updated',
+              message: `Inward arrival receipt ${arrival.arrivalCode} has been updated.`,
+              details: [
+                { label: 'Arrival Code', value: arrival.arrivalCode },
+                { label: 'Procurement Center', value: arrival.center },
+                { label: 'Net Catch Weight', value: `${arrival.netCatchKg.toLocaleString()} KG` }
+              ]
+            });
             Toast.show(`Arrival ${arrival.arrivalCode} updated successfully.`, 'success');
           }
         }
@@ -2430,6 +3015,12 @@ export const PurchaseView = {
         if (idx > -1) {
           ERP_DATA.arrivals.splice(idx, 1);
           if (tableInstance) tableInstance.setData(ERP_DATA.arrivals);
+
+          // Confirmation Popup after delete
+          Modal.success({
+            title: 'Arrival Record Deleted',
+            message: `Inward arrival receipt ${arrival.arrivalCode} has been deleted.`
+          });
           Toast.show(`Arrival record ${arrival.arrivalCode} deleted successfully.`, 'success');
         }
       }
@@ -2689,6 +3280,20 @@ export const PurchaseView = {
 
             if (tableInstance) tableInstance.setData(PurchaseView.bookingsList);
             m.close();
+
+            // Confirmation Popup after save
+            Modal.success({
+              title: 'Booking Saved Successfully',
+              message: `Pre-harvest booking ${newBooking.bookingNo} has been saved and registered in the system.`,
+              details: [
+                { label: 'Booking Number', value: newBooking.bookingNo },
+                { label: 'Species', value: newBooking.species },
+                { label: 'Purchase Type', value: newBooking.purchaseType },
+                { label: 'Booking Station', value: newBooking.bookingStation },
+                { label: 'Booking Weight', value: `${newBooking.bookingWeight.toLocaleString()} KG` },
+                { label: 'Booking Rate', value: `₹ ${newBooking.bookingRate} / KG` }
+              ]
+            });
             Toast.show(`Booking ${newBooking.bookingNo} saved successfully.`, 'success', 'Booking Created');
           }
         }
@@ -2921,6 +3526,18 @@ export const PurchaseView = {
 
             if (tableInstance) tableInstance.setData(PurchaseView.bookingsList);
             m.close();
+
+            // Confirmation Popup after edit
+            Modal.success({
+              title: 'Booking Updated Successfully',
+              message: `All changes to Booking ${booking.bookingNo} have been successfully saved.`,
+              details: [
+                { label: 'Booking Number', value: booking.bookingNo },
+                { label: 'Species', value: booking.species },
+                { label: 'Booking Weight', value: `${booking.bookingWeight.toLocaleString()} KG` },
+                { label: 'Booking Rate', value: `₹ ${booking.bookingRate} / KG` }
+              ]
+            });
             Toast.show(`Booking ${booking.bookingNo} updated successfully.`, 'success');
           }
         }
@@ -3047,7 +3664,14 @@ export const PurchaseView = {
         const idx = PurchaseView.bookingsList.findIndex(b => b.bookingNo === booking.bookingNo);
         if (idx > -1) {
           PurchaseView.bookingsList.splice(idx, 1);
+          PurchaseView.bookingsList.forEach((b, i) => { b.sNo = i + 1; });
           if (tableInstance) tableInstance.setData(PurchaseView.bookingsList);
+
+          // Confirmation Popup after delete
+          Modal.success({
+            title: 'Booking Deleted Successfully',
+            message: `Booking agreement ${booking.bookingNo} has been removed from the registry.`
+          });
           Toast.show(`Booking ${booking.bookingNo} removed.`, 'success');
         }
       }
@@ -3420,41 +4044,100 @@ export const PurchaseView = {
   },
 
   showArrivalDetails(arrival) {
+    const arrNo = arrival.arrivalNumber || arrival.id;
+    const date = arrival.date || '06/10/2026';
+    const company = arrival.company || 'DEVI FISHERIES LIMITED';
+    const plant = arrival.plant || 'DFL UNIT-5 (JPT)';
+    const center = arrival.center || 'Bhimavaram Center #1';
+    const species = arrival.species || 'Vannamei (VM)';
+    const weight = typeof arrival.weight === 'number' ? arrival.weight : parseFloat(arrival.weight) || 0;
+    const balWeight = typeof arrival.balanceWeight === 'number' ? arrival.balanceWeight : parseFloat(arrival.balanceWeight) || 0;
+    const avgRate = arrival.averageRate || 425;
+    const amount = typeof arrival.amount === 'number' ? arrival.amount : (weight * avgRate);
+    const balAmount = typeof arrival.balanceAmount === 'number' ? arrival.balanceAmount : (balWeight * avgRate);
+    const status = arrival.status || 'QC_CLEARED';
+
     Modal.open({
-      title: `Arrival Entry: ${arrival.arrivalNumber}`,
-      size: 'md',
+      title: `Raw Material Arrival: ${arrNo}`,
+      size: 'lg',
       content: `
-        <div class="space-y-3 text-xs">
-          <div class="flex justify-between items-center p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded">
-            <div>
-              <span class="text-[#6B778C]">Linked Lot:</span> <strong class=" text-[#0052CC]">${arrival.lotNumber}</strong>
+        <div class="space-y-4 text-xs">
+          <!-- Top Header Summary Bar -->
+          <div class="flex flex-wrap justify-between items-center p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-[#0052CC]">${arrNo}</span>
+              <span class="text-[#6B778C]">•</span>
+              <span class="font-semibold text-[#172B4D]">${date}</span>
+              <span class="text-[#6B778C]">•</span>
+              <span class="text-[#5E6C84] font-medium">${company}</span>
             </div>
-            <span class="lozenge lozenge-success">${arrival.qcStatus}</span>
+            <span class="lozenge lozenge-success font-bold">${status}</span>
           </div>
 
-          <div class="grid grid-cols-2 gap-2">
-            <div class="p-2 border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C]">Supplier:</span> <div class="font-bold text-[#172B4D]">${arrival.supplierName}</div>
+          <!-- Key Metrics Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-3 bg-white border border-[#DFE1E6] rounded-lg">
+              <span class="text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider block mb-1">Total Weight</span>
+              <span class="text-base font-extrabold text-[#006644]">${weight.toLocaleString()} KG</span>
             </div>
-            <div class="p-2 border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C]">Vehicle / Driver:</span> <div class="font-bold text-[#172B4D]">${arrival.vehicleNumber} (${arrival.driverName})</div>
+            <div class="p-3 bg-white border border-[#DFE1E6] rounded-lg">
+              <span class="text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider block mb-1">Balance Weight</span>
+              <span class="text-base font-extrabold text-[#FF8B00]">${balWeight.toLocaleString()} KG</span>
             </div>
-            <div class="p-2 border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C]">Species & Variety:</span> <div class="font-bold text-[#172B4D]">${arrival.species} - ${arrival.variety}</div>
+            <div class="p-3 bg-white border border-[#DFE1E6] rounded-lg">
+              <span class="text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider block mb-1">Average Rate</span>
+              <span class="text-base font-extrabold text-[#172B4D]">₹ ${avgRate} / KG</span>
             </div>
-            <div class="p-2 border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C]">Net Weight:</span> <div class="font-bold  text-[#006644]">${arrival.netWeightKg.toLocaleString()} KG</div>
-            </div>
-            <div class="p-2 border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C]">Core Temperature:</span> <div class="font-bold ">${arrival.temperatureCelsius} °C</div>
-            </div>
-            <div class="p-2 border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C]">Inspector:</span> <div class="font-bold">${arrival.inspector}</div>
+            <div class="p-3 bg-white border border-[#DFE1E6] rounded-lg">
+              <span class="text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider block mb-1">Total Valuation</span>
+              <span class="text-base font-extrabold text-[#0052CC]">₹ ${amount.toLocaleString()}</span>
             </div>
           </div>
 
-          <div class="p-3 bg-[#F4F5F7] rounded text-[#42526E]">
-            <strong>Receiving Notes:</strong> ${arrival.notes}
+          <!-- Structured Details Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg space-y-2">
+              <div class="flex justify-between border-b border-[#EBECF0] pb-1.5">
+                <span class="text-[#6B778C]">Plant Facility:</span>
+                <span class="font-bold text-[#0052CC]">${plant}</span>
+              </div>
+              <div class="flex justify-between border-b border-[#EBECF0] pb-1.5">
+                <span class="text-[#6B778C]">Procurement Center:</span>
+                <span class="font-bold text-[#172B4D]">${center}</span>
+              </div>
+              <div class="flex justify-between border-b border-[#EBECF0] pb-1.5">
+                <span class="text-[#6B778C]">Target Species:</span>
+                <span class="font-bold text-[#172B4D]">${species}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#6B778C]">Balance Amount:</span>
+                <span class="font-bold text-[#6554C0]">₹ ${balAmount.toLocaleString()}</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg space-y-2">
+              <div class="flex justify-between border-b border-[#EBECF0] pb-1.5">
+                <span class="text-[#6B778C]">Vehicle Number:</span>
+                <span class="font-bold text-[#172B4D]">${arrival.vehicleNumber || 'AP 37 TE 9011'}</span>
+              </div>
+              <div class="flex justify-between border-b border-[#EBECF0] pb-1.5">
+                <span class="text-[#6B778C]">Driver Name:</span>
+                <span class="font-medium text-[#172B4D]">${arrival.driverName || 'K. Ramu'}</span>
+              </div>
+              <div class="flex justify-between border-b border-[#EBECF0] pb-1.5">
+                <span class="text-[#6B778C]">Linked Company:</span>
+                <span class="font-medium text-[#172B4D]">${company}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#6B778C]">QC Inspection:</span>
+                <span class="font-bold text-[#006644]">HACCP Dock Verified</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div class="p-3 bg-[#F4F5F7] rounded-lg text-[#42526E] border border-[#DFE1E6]">
+            <strong>Receiving Notes:</strong> ${arrival.remarks || 'Fresh raw material harvest intake recorded at dock weighbridge. Temp and ice ratio checked.'}
           </div>
         </div>
       `,
