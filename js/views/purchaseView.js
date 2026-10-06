@@ -629,7 +629,7 @@ export const PurchaseView = {
             
             <div class="flex items-center gap-2">
               <button id="btn-create-lot-modal" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs">
-                <span>+ Register New Lot</span>
+                <span>Register New Lot</span>
               </button>
             </div>
           </div>
@@ -813,8 +813,7 @@ export const PurchaseView = {
           </div>
           <div class="flex items-center gap-2">
             <button id="btn-create-booking" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>+ New Booking</span>
+              <span>New Booking</span>
             </button>
           </div>
         </div>
@@ -1123,8 +1122,7 @@ export const PurchaseView = {
           </div>
           <div class="flex items-center gap-2">
             <button id="btn-create-arrival-record" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>+ Create Arrival</span>
+              <span>Create Arrival</span>
             </button>
           </div>
         </div>

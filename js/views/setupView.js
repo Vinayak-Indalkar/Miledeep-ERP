@@ -107,7 +107,6 @@ export const SetupView = {
                 <span id="users-toggle-filter-text">Hide Filter</span>
               </button>
               <button id="btn-create-user-modal" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm cursor-pointer">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                 <span>Register New User</span>
               </button>
             </div>
@@ -810,7 +809,6 @@ export const SetupView = {
             <p class="text-xs text-[#5E6C84] mt-0.5">Define persona permissions, functional authorities, and departmental security profiles.</p>
           </div>
           <button id="btn-create-role-modal" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm cursor-pointer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
             <span>Create New Role</span>
           </button>
         </div>
