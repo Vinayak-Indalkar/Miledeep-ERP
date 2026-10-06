@@ -6500,15 +6500,15 @@ const PurchaseView = {
         <form id="form-create-arrival-record" class="space-y-4 text-xs">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Code *</label>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Code</label>
               <input type="text" id="arr-code" value="${nextCode}" readonly class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Date *</label>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Date</label>
               <input type="date" id="arr-date" value="2026-10-06" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Procurement Center *</label>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Procurement Center</label>
               <select id="arr-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
                 <option selected>Bhimavaram Center #1 (BVM-C1)</option>
                 <option>Kakinada Sea Intake #2 (KKD-C2)</option>
@@ -6521,17 +6521,17 @@ const PurchaseView = {
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supplier / Farmer *</label>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supplier / Farmer</label>
               <select id="arr-supplier" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
                 ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
               </select>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Location *</label>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Location</label>
               <input type="text" id="arr-pond" value="Pond #4B Tail Cluster" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species *</label>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
               <select id="arr-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
                 ${ERP_DATA.species.map(sp => `<option value="${sp.name}">${sp.name}</option>`).join('')}
               </select>
@@ -6863,7 +6863,7 @@ const PurchaseView = {
   },
 
   // =========================================================================
-  // CRUD MODAL HANDLERS FOR BOOKINGS (EXACT USER SPECIFICATION)
+  // CRUD MODAL HANDLERS FOR BOOKINGS (NO MANDATORY FIELDS)
   // =========================================================================
   openCreateBookingModal(tableInstance) {
     Modal.open({
@@ -6871,23 +6871,20 @@ const PurchaseView = {
       size: 'xl',
       content: `
         <form id="create-booking-form" class="space-y-4 text-xs">
-          <!-- Required Fields Section -->
+          <!-- General Information Section -->
           <div class="bg-[#FAFBFC] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
-              <div class="flex items-center gap-1.5">
-                <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Required Information</span>
-                <span class="text-[#FF5630] font-bold text-sm">*</span>
-              </div>
-              <span class="text-[11px] text-[#6B778C]">Fields marked with * are mandatory</span>
+              <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">General Information</span>
+              <span class="text-[11px] text-[#6B778C]">Procurement & Booking Details</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               <!-- 1. Booking Station -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  1. Booking Station <span class="text-[#FF5630]">*</span>
+                  1. Booking Station
                 </label>
-                <select id="newbkg-station" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <select id="newbkg-station" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="">-- Select Booking Station --</option>
                   <option value="Bhimavaram Center #1">Bhimavaram Center #1</option>
                   <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
@@ -6901,9 +6898,9 @@ const PurchaseView = {
               <!-- 2. Species -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  2. Species <span class="text-[#FF5630]">*</span>
+                  2. Species
                 </label>
-                <select id="newbkg-species" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <select id="newbkg-species" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="">-- Select Species --</option>
                   <option value="Vannamei Shrimp">Vannamei Shrimp (Litopenaeus vannamei)</option>
                   <option value="Black Tiger Shrimp">Black Tiger Shrimp (Penaeus monodon)</option>
@@ -6915,9 +6912,9 @@ const PurchaseView = {
               <!-- 3. Purchase Type -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  3. Purchase Type <span class="text-[#FF5630]">*</span>
+                  3. Purchase Type
                 </label>
-                <select id="newbkg-purchasetype" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <select id="newbkg-purchasetype" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="">-- Select Purchase Type --</option>
                   <option value="Direct Farmer Procurement">Direct Farmer Procurement</option>
                   <option value="Hatchery Buyback Contract">Hatchery Buyback Contract</option>
@@ -6930,57 +6927,57 @@ const PurchaseView = {
               <!-- 4. Booking Number -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  4. Booking Number <span class="text-[#FF5630]">*</span>
+                  4. Booking Number
                 </label>
-                <input type="text" id="newbkg-no" value="PB-2026-${Math.floor(100 + Math.random() * 900)}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" placeholder="e.g. PB-2026-115" />
+                <input type="text" id="newbkg-no" value="PB-2026-${Math.floor(100 + Math.random() * 900)}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" placeholder="e.g. PB-2026-115" />
               </div>
 
               <!-- 5. Vehicle Number -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  5. Vehicle Number <span class="text-[#FF5630]">*</span>
+                  5. Vehicle Number
                 </label>
-                <input type="text" id="newbkg-vehno" placeholder="e.g. AP 37 TE 4821" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="newbkg-vehno" placeholder="e.g. AP 37 TE 4821" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 6. Driver Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  6. Driver Name <span class="text-[#FF5630]">*</span>
+                  6. Driver Name
                 </label>
-                <input type="text" id="newbkg-driver" placeholder="e.g. G. Narayana" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="newbkg-driver" placeholder="e.g. G. Narayana" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 7. Grader Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  7. Grader Name <span class="text-[#FF5630]">*</span>
+                  7. Grader Name
                 </label>
-                <input type="text" id="newbkg-grader" placeholder="e.g. B. Venkatesh" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="newbkg-grader" placeholder="e.g. B. Venkatesh" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 8. Booking Date -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  8. Booking Date <span class="text-[#FF5630]">*</span>
+                  8. Booking Date
                 </label>
-                <input type="date" id="newbkg-date" value="2026-10-06" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="date" id="newbkg-date" value="2026-10-06" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 9. Farm Location -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  9. Farm Location <span class="text-[#FF5630]">*</span>
+                  9. Farm Location
                 </label>
-                <input type="text" id="newbkg-farmloc" placeholder="e.g. Bhimavaram Cluster #4 / Pond #12" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="newbkg-farmloc" placeholder="e.g. Bhimavaram Cluster #4 / Pond #12" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 10. Suppliers -->
               <div class="sm:col-span-2 lg:col-span-3">
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  10. Suppliers <span class="text-[#FF5630]">*</span>
+                  10. Suppliers
                 </label>
-                <select id="newbkg-supplier" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <select id="newbkg-supplier" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="">-- Select Supplier / Farmer --</option>
                   <option value="Godavari Coastal Aqua Farms">Godavari Coastal Aqua Farms (Bhimavaram)</option>
                   <option value="Sagar Marine Hatcheries & Cultivators">Sagar Marine Hatcheries & Cultivators (Kakinada)</option>
@@ -6996,7 +6993,7 @@ const PurchaseView = {
           <!-- Optional Fields Section -->
           <div class="bg-white p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
-              <span class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Optional Information</span>
+              <span class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Agent & Remarks</span>
               <span class="text-[11px] text-[#6B778C]">Additional procurement details</span>
             </div>
 
@@ -7004,7 +7001,7 @@ const PurchaseView = {
               <!-- 11. Agent Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
-                  11. Agent Name (Optional)
+                  11. Agent Name
                 </label>
                 <input type="text" id="newbkg-agent" placeholder="e.g. Coastal Marine Agency / Direct" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
@@ -7012,7 +7009,7 @@ const PurchaseView = {
               <!-- 12. Remarks -->
               <div>
                 <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
-                  12. Remarks (Optional)
+                  12. Remarks
                 </label>
                 <textarea id="newbkg-remarks" rows="2" placeholder="e.g. Harvest scheduled for 4:00 AM, ice boxes ready..." class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]"></textarea>
               </div>
@@ -7060,16 +7057,16 @@ const PurchaseView = {
           label: 'Save',
           type: 'primary',
           onClick: (m) => {
-            const station = document.getElementById('newbkg-station')?.value?.trim();
-            const species = document.getElementById('newbkg-species')?.value?.trim();
-            const purchaseType = document.getElementById('newbkg-purchasetype')?.value?.trim();
-            const bookingNo = document.getElementById('newbkg-no')?.value?.trim();
-            const vehicleNo = document.getElementById('newbkg-vehno')?.value?.trim();
-            const driverName = document.getElementById('newbkg-driver')?.value?.trim();
-            const graderName = document.getElementById('newbkg-grader')?.value?.trim();
-            const bookingDate = document.getElementById('newbkg-date')?.value?.trim();
-            const farmLocation = document.getElementById('newbkg-farmloc')?.value?.trim();
-            const supplier = document.getElementById('newbkg-supplier')?.value?.trim();
+            const station = document.getElementById('newbkg-station')?.value?.trim() || 'Bhimavaram Center #1';
+            const species = document.getElementById('newbkg-species')?.value?.trim() || 'Vannamei Shrimp';
+            const purchaseType = document.getElementById('newbkg-purchasetype')?.value?.trim() || 'Direct Farmer Procurement';
+            const bookingNo = document.getElementById('newbkg-no')?.value?.trim() || (`PB-2026-${Math.floor(100 + Math.random() * 900)}`);
+            const vehicleNo = document.getElementById('newbkg-vehno')?.value?.trim() || 'AP 37 TE 4821';
+            const driverName = document.getElementById('newbkg-driver')?.value?.trim() || 'G. Narayana';
+            const graderName = document.getElementById('newbkg-grader')?.value?.trim() || 'B. Venkatesh';
+            const bookingDate = document.getElementById('newbkg-date')?.value?.trim() || new Date().toISOString().split('T')[0];
+            const farmLocation = document.getElementById('newbkg-farmloc')?.value?.trim() || 'Bhimavaram Cluster #4';
+            const supplier = document.getElementById('newbkg-supplier')?.value?.trim() || 'Godavari Coastal Aqua Farms';
 
             const agent = document.getElementById('newbkg-agent')?.value?.trim() || 'Direct';
             const remarks = document.getElementById('newbkg-remarks')?.value?.trim() || '';
@@ -7077,12 +7074,6 @@ const PurchaseView = {
             const bookingCount = document.getElementById('newbkg-count')?.value?.trim() || '40 Count';
             const bookingWeight = parseFloat(document.getElementById('newbkg-weight')?.value) || 0;
             const bookingRate = parseFloat(document.getElementById('newbkg-rate')?.value) || 0;
-
-            // Required validation
-            if (!station || !species || !purchaseType || !bookingNo || !vehicleNo || !driverName || !graderName || !bookingDate || !farmLocation || !supplier) {
-              Toast.show('Please fill in all 10 required fields marked with *', 'error', 'Missing Required Fields');
-              return;
-            }
 
             const mappedPlant = station.includes('Bhimavaram') ? 'DFL UNIT-5 (JPT)' :
                                station.includes('Kakinada') ? 'DFL UNIT-3 (PSP)' :
@@ -7137,23 +7128,20 @@ const PurchaseView = {
       size: 'xl',
       content: `
         <form id="edit-booking-form" class="space-y-4 text-xs">
-          <!-- Required Fields Section -->
+          <!-- General Information Section -->
           <div class="bg-[#FAFBFC] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
-              <div class="flex items-center gap-1.5">
-                <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Required Information</span>
-                <span class="text-[#FF5630] font-bold text-sm">*</span>
-              </div>
-              <span class="text-[11px] text-[#6B778C]">Fields marked with * are mandatory</span>
+              <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">General Information</span>
+              <span class="text-[11px] text-[#6B778C]">Procurement & Booking Details</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               <!-- 1. Booking Station -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  1. Booking Station <span class="text-[#FF5630]">*</span>
+                  1. Booking Station
                 </label>
-                <select id="editbkg-station" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <select id="editbkg-station" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="Bhimavaram Center #1" ${booking.bookingStation === 'Bhimavaram Center #1' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-5')) ? 'selected' : ''}>Bhimavaram Center #1</option>
                   <option value="Kakinada Sea Intake #2" ${booking.bookingStation === 'Kakinada Sea Intake #2' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-3')) ? 'selected' : ''}>Kakinada Sea Intake #2</option>
                   <option value="Amalapuram Harvesters #4" ${booking.bookingStation === 'Amalapuram Harvesters #4' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-6')) ? 'selected' : ''}>Amalapuram Harvesters #4</option>
@@ -7166,9 +7154,9 @@ const PurchaseView = {
               <!-- 2. Species -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  2. Species <span class="text-[#FF5630]">*</span>
+                  2. Species
                 </label>
-                <select id="editbkg-species" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <select id="editbkg-species" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="Vannamei Shrimp" ${booking.species && booking.species.includes('Vannamei') ? 'selected' : ''}>Vannamei Shrimp (Litopenaeus vannamei)</option>
                   <option value="Black Tiger Shrimp" ${booking.species && booking.species.includes('Black Tiger') ? 'selected' : ''}>Black Tiger Shrimp (Penaeus monodon)</option>
                   <option value="Asian Seabass (Barramundi)" ${booking.species && booking.species.includes('Asian Seabass') ? 'selected' : ''}>Asian Seabass (Barramundi)</option>
@@ -7179,9 +7167,9 @@ const PurchaseView = {
               <!-- 3. Purchase Type -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  3. Purchase Type <span class="text-[#FF5630]">*</span>
+                  3. Purchase Type
                 </label>
-                <select id="editbkg-purchasetype" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <select id="editbkg-purchasetype" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="Direct Farmer Procurement" ${booking.purchaseType === 'Direct Farmer Procurement' ? 'selected' : ''}>Direct Farmer Procurement</option>
                   <option value="Hatchery Buyback Contract" ${booking.purchaseType === 'Hatchery Buyback Contract' ? 'selected' : ''}>Hatchery Buyback Contract</option>
                   <option value="Agent Procurement Order" ${booking.purchaseType === 'Agent Procurement Order' ? 'selected' : ''}>Agent Procurement Order</option>
@@ -7193,7 +7181,7 @@ const PurchaseView = {
               <!-- 4. Booking Number -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  4. Booking Number <span class="text-[#FF5630]">*</span>
+                  4. Booking Number
                 </label>
                 <input type="text" id="editbkg-no" value="${booking.bookingNo}" readonly class="w-full text-xs px-2.5 py-2 bg-[#EBECF0] border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC]" />
               </div>
@@ -7201,49 +7189,49 @@ const PurchaseView = {
               <!-- 5. Vehicle Number -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  5. Vehicle Number <span class="text-[#FF5630]">*</span>
+                  5. Vehicle Number
                 </label>
-                <input type="text" id="editbkg-vehno" value="${booking.vehicleNo || 'AP 37 TE 4821'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="editbkg-vehno" value="${booking.vehicleNo || 'AP 37 TE 4821'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 6. Driver Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  6. Driver Name <span class="text-[#FF5630]">*</span>
+                  6. Driver Name
                 </label>
-                <input type="text" id="editbkg-driver" value="${booking.driverName || 'G. Narayana'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="editbkg-driver" value="${booking.driverName || 'G. Narayana'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 7. Grader Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  7. Grader Name <span class="text-[#FF5630]">*</span>
+                  7. Grader Name
                 </label>
-                <input type="text" id="editbkg-grader" value="${booking.grader || 'B. Venkatesh'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="editbkg-grader" value="${booking.grader || 'B. Venkatesh'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 8. Booking Date -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  8. Booking Date <span class="text-[#FF5630]">*</span>
+                  8. Booking Date
                 </label>
-                <input type="date" id="editbkg-date" value="${booking.bookingDate || booking.expectedDate || '2026-10-06'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="date" id="editbkg-date" value="${booking.bookingDate || booking.expectedDate || '2026-10-06'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 9. Farm Location -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  9. Farm Location <span class="text-[#FF5630]">*</span>
+                  9. Farm Location
                 </label>
-                <input type="text" id="editbkg-farmloc" value="${booking.farmLocation || booking.pond || 'Bhimavaram Cluster #4'}" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="editbkg-farmloc" value="${booking.farmLocation || booking.pond || 'Bhimavaram Cluster #4'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
               <!-- 10. Suppliers -->
               <div class="sm:col-span-2 lg:col-span-3">
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  10. Suppliers <span class="text-[#FF5630]">*</span>
+                  10. Suppliers
                 </label>
-                <select id="editbkg-supplier" required class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+                <select id="editbkg-supplier" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="Godavari Coastal Aqua Farms" ${booking.supplier && booking.supplier.includes('Godavari') ? 'selected' : ''}>Godavari Coastal Aqua Farms (Bhimavaram)</option>
                   <option value="Sagar Marine Hatcheries & Cultivators" ${booking.supplier && booking.supplier.includes('Sagar') ? 'selected' : ''}>Sagar Marine Hatcheries & Cultivators (Kakinada)</option>
                   <option value="Krishna Delta Prawn Harvesters" ${booking.supplier && booking.supplier.includes('Krishna') ? 'selected' : ''}>Krishna Delta Prawn Harvesters (Machilipatnam)</option>
@@ -7258,7 +7246,7 @@ const PurchaseView = {
           <!-- Optional Fields Section -->
           <div class="bg-white p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
-              <span class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Optional Information</span>
+              <span class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Agent & Remarks</span>
               <span class="text-[11px] text-[#6B778C]">Additional procurement details</span>
             </div>
 
@@ -7266,7 +7254,7 @@ const PurchaseView = {
               <!-- 11. Agent Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
-                  11. Agent Name (Optional)
+                  11. Agent Name
                 </label>
                 <input type="text" id="editbkg-agent" value="${booking.agent || ''}" placeholder="e.g. Coastal Marine Agency" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
@@ -7274,7 +7262,7 @@ const PurchaseView = {
               <!-- 12. Remarks -->
               <div>
                 <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
-                  12. Remarks (Optional)
+                  12. Remarks
                 </label>
                 <textarea id="editbkg-remarks" rows="2" placeholder="e.g. Harvest notes..." class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">${booking.remarks || ''}</textarea>
               </div>
@@ -7322,27 +7310,22 @@ const PurchaseView = {
           label: 'Save',
           type: 'primary',
           onClick: (m) => {
-            const station = document.getElementById('editbkg-station')?.value?.trim();
-            const species = document.getElementById('editbkg-species')?.value?.trim();
-            const purchaseType = document.getElementById('editbkg-purchasetype')?.value?.trim();
-            const vehicleNo = document.getElementById('editbkg-vehno')?.value?.trim();
-            const driverName = document.getElementById('editbkg-driver')?.value?.trim();
-            const graderName = document.getElementById('editbkg-grader')?.value?.trim();
-            const bookingDate = document.getElementById('editbkg-date')?.value?.trim();
-            const farmLocation = document.getElementById('editbkg-farmloc')?.value?.trim();
-            const supplier = document.getElementById('editbkg-supplier')?.value?.trim();
+            const station = document.getElementById('editbkg-station')?.value?.trim() || booking.bookingStation;
+            const species = document.getElementById('editbkg-species')?.value?.trim() || booking.species;
+            const purchaseType = document.getElementById('editbkg-purchasetype')?.value?.trim() || booking.purchaseType;
+            const vehicleNo = document.getElementById('editbkg-vehno')?.value?.trim() || booking.vehicleNo;
+            const driverName = document.getElementById('editbkg-driver')?.value?.trim() || booking.driverName;
+            const graderName = document.getElementById('editbkg-grader')?.value?.trim() || booking.grader;
+            const bookingDate = document.getElementById('editbkg-date')?.value?.trim() || booking.bookingDate;
+            const farmLocation = document.getElementById('editbkg-farmloc')?.value?.trim() || booking.farmLocation;
+            const supplier = document.getElementById('editbkg-supplier')?.value?.trim() || booking.supplier;
 
-            const agent = document.getElementById('editbkg-agent')?.value?.trim() || 'Direct';
-            const remarks = document.getElementById('editbkg-remarks')?.value?.trim() || '';
+            const agent = document.getElementById('editbkg-agent')?.value?.trim() || booking.agent || 'Direct';
+            const remarks = document.getElementById('editbkg-remarks')?.value?.trim() || booking.remarks || '';
 
             const bookingCount = document.getElementById('editbkg-count')?.value?.trim() || booking.bookingCount;
             const bookingWeight = parseFloat(document.getElementById('editbkg-weight')?.value) || booking.bookingWeight;
             const bookingRate = parseFloat(document.getElementById('editbkg-rate')?.value) || booking.bookingRate;
-
-            if (!station || !species || !purchaseType || !vehicleNo || !driverName || !graderName || !bookingDate || !farmLocation || !supplier) {
-              Toast.show('Please fill in all required fields marked with *', 'error', 'Validation Error');
-              return;
-            }
 
             booking.bookingStation = station;
             booking.species = species;
@@ -8522,32 +8505,32 @@ const SetupView = {
               <input type="text" id="new-user-id" value="${nextId}" readonly class="w-full text-xs px-3 py-2 bg-[#FAFBFC] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
             </div>
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Full Name *</label>
-              <input type="text" id="new-user-name" placeholder="e.g. Ramesh Varma" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block font-bold text-[#172B4D] mb-1">Full Name</label>
+              <input type="text" id="new-user-name" placeholder="e.g. Ramesh Varma" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Corporate Email Address *</label>
-              <input type="email" id="new-user-email" placeholder="ramesh.v@devifisheries.com" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block font-bold text-[#172B4D] mb-1">Corporate Email Address</label>
+              <input type="email" id="new-user-email" placeholder="ramesh.v@devifisheries.com" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Mobile / Phone Number *</label>
-              <input type="text" id="new-user-phone" placeholder="+91 98480 00000" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block font-bold text-[#172B4D] mb-1">Mobile / Phone Number</label>
+              <input type="text" id="new-user-phone" placeholder="+91 98480 00000" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Assigned Role *</label>
-              <select id="new-user-role" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+              <label class="block font-bold text-[#172B4D] mb-1">Assigned Role</label>
+              <select id="new-user-role" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
                 ${ERP_DATA.roles.map(r => `<option value="${r.name}" data-code="${r.id}">${r.name}</option>`).join('')}
               </select>
             </div>
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Department *</label>
-              <select id="new-user-dept" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+              <label class="block font-bold text-[#172B4D] mb-1">Department</label>
+              <select id="new-user-dept" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
                 <option value="Raw Material Purchase">Raw Material Purchase</option>
                 <option value="Quality Assurance">Quality Assurance (QC Lab)</option>
                 <option value="Processing Plant Operations">Plant Operations</option>
@@ -8610,15 +8593,10 @@ const SetupView = {
 
             const selectedPlants = Array.from(document.querySelectorAll('input[name="plant-access"]:checked')).map(cb => cb.value);
 
-            if (!name || !email) {
-              Toast.show('Please fill in required fields (Name & Email)', 'error', 'Validation Error');
-              return;
-            }
-
             const newUser = {
               id: nextId,
-              name,
-              email,
+              name: name || 'Enterprise User',
+              email: email || 'user@devifisheries.com',
               phone: phone || '+91 98480 00000',
               role,
               roleCode,

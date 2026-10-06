@@ -411,32 +411,32 @@ export const SetupView = {
               <input type="text" id="new-user-id" value="${nextId}" readonly class="w-full text-xs px-3 py-2 bg-[#FAFBFC] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
             </div>
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Full Name *</label>
-              <input type="text" id="new-user-name" placeholder="e.g. Ramesh Varma" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block font-bold text-[#172B4D] mb-1">Full Name</label>
+              <input type="text" id="new-user-name" placeholder="e.g. Ramesh Varma" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Corporate Email Address *</label>
-              <input type="email" id="new-user-email" placeholder="ramesh.v@devifisheries.com" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block font-bold text-[#172B4D] mb-1">Corporate Email Address</label>
+              <input type="email" id="new-user-email" placeholder="ramesh.v@devifisheries.com" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Mobile / Phone Number *</label>
-              <input type="text" id="new-user-phone" placeholder="+91 98480 00000" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block font-bold text-[#172B4D] mb-1">Mobile / Phone Number</label>
+              <input type="text" id="new-user-phone" placeholder="+91 98480 00000" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Assigned Role *</label>
-              <select id="new-user-role" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+              <label class="block font-bold text-[#172B4D] mb-1">Assigned Role</label>
+              <select id="new-user-role" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
                 ${ERP_DATA.roles.map(r => `<option value="${r.name}" data-code="${r.id}">${r.name}</option>`).join('')}
               </select>
             </div>
             <div>
-              <label class="block font-bold text-[#172B4D] mb-1">Department *</label>
-              <select id="new-user-dept" required class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+              <label class="block font-bold text-[#172B4D] mb-1">Department</label>
+              <select id="new-user-dept" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
                 <option value="Raw Material Purchase">Raw Material Purchase</option>
                 <option value="Quality Assurance">Quality Assurance (QC Lab)</option>
                 <option value="Processing Plant Operations">Plant Operations</option>
@@ -499,15 +499,10 @@ export const SetupView = {
 
             const selectedPlants = Array.from(document.querySelectorAll('input[name="plant-access"]:checked')).map(cb => cb.value);
 
-            if (!name || !email) {
-              Toast.show('Please fill in required fields (Name & Email)', 'error', 'Validation Error');
-              return;
-            }
-
             const newUser = {
               id: nextId,
-              name,
-              email,
+              name: name || 'Enterprise User',
+              email: email || 'user@devifisheries.com',
               phone: phone || '+91 98480 00000',
               role,
               roleCode,
