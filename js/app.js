@@ -135,13 +135,17 @@ export const App = {
   ensureShellMounted() {
     const existing = document.getElementById('erp-app-shell');
     if (!existing) {
+      const isCollapsed = Sidebar.isCollapsed;
+      const sidebarW = isCollapsed ? 'w-[68px]' : 'w-72';
+      const layoutMl = isCollapsed ? 'ml-[68px]' : 'ml-72';
+
       document.getElementById('app-root').innerHTML = `
         <div id="erp-app-shell" class="min-h-screen bg-[#F4F5F7]">
-          <!-- Left Fixed Sidebar (Spacious 288px width to prevent dropdown cutoff) -->
-          <div id="sidebar-container" class="fixed top-0 left-0 bottom-0 w-72 z-40 transition-all duration-300"></div>
+          <!-- Left Fixed Sidebar (Expandable / Collapsible Icon-Only Mode) -->
+          <div id="sidebar-container" class="fixed top-0 left-0 bottom-0 ${sidebarW} z-40 transition-all duration-300"></div>
 
           <!-- Main Layout Wrapper (offset by fixed sidebar width) -->
-          <div id="main-layout-wrapper" class="ml-72 flex flex-col min-h-screen transition-all duration-300">
+          <div id="main-layout-wrapper" class="${layoutMl} flex flex-col min-h-screen transition-all duration-300">
             <!-- Top Sticky Header -->
             <div id="header-container" class="sticky top-0 z-30 bg-white"></div>
 

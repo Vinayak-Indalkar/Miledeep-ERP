@@ -4,6 +4,7 @@ import { ERP_DATA } from '../data/mockData.js';
 import { Toast } from './toast.js';
 import { Modal } from './modal.js';
 import { TourGuide } from './tourGuide.js';
+import { Sidebar } from './sidebar.js';
 
 export const Header = {
   render(containerId) {
@@ -117,27 +118,12 @@ export const Header = {
   },
 
   bindEvents() {
-    // Hamburger Sidebar Toggle
+    // Hamburger Sidebar Toggle (Collapse into Icon-Only mode instead of completely hiding)
     const toggleBtn = document.getElementById('sidebar-toggle-btn');
     if (toggleBtn) {
       toggleBtn.onclick = (e) => {
         e.stopPropagation();
-        const sidebar = document.getElementById('sidebar-container');
-        const layout = document.getElementById('main-layout-wrapper');
-        if (sidebar && layout) {
-          if (sidebar.classList.contains('hidden')) {
-            sidebar.classList.remove('hidden');
-            layout.classList.add('ml-72');
-            layout.classList.remove('ml-0');
-          } else {
-            sidebar.classList.add('hidden');
-            layout.classList.remove('ml-72');
-            layout.classList.add('ml-0');
-          }
-          setTimeout(() => {
-            window.dispatchEvent(new Event('resize'));
-          }, 150);
-        }
+        Sidebar.toggleCollapse();
       };
     }
 

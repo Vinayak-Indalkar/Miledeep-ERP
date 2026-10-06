@@ -3219,9 +3219,38 @@ const NAV_HIERARCHY = [
 ];
 
 const Sidebar = {
+  isCollapsed: localStorage.getItem('dfl_sidebar_collapsed') === 'true',
   activeModuleId: 'purchase',
   activeSubmenuId: 'dashboard',
   activeTabId: 'rm-dashboard',
+
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed;
+    localStorage.setItem('dfl_sidebar_collapsed', this.isCollapsed ? 'true' : 'false');
+
+    const sidebarContainer = document.getElementById('sidebar-container');
+    const layoutWrapper = document.getElementById('main-layout-wrapper');
+
+    if (sidebarContainer && layoutWrapper) {
+      if (this.isCollapsed) {
+        sidebarContainer.classList.remove('w-72', 'hidden');
+        sidebarContainer.classList.add('w-[68px]');
+        layoutWrapper.classList.remove('ml-72', 'ml-0');
+        layoutWrapper.classList.add('ml-[68px]');
+      } else {
+        sidebarContainer.classList.remove('w-[68px]', 'hidden');
+        sidebarContainer.classList.add('w-72');
+        layoutWrapper.classList.remove('ml-[68px]', 'ml-0');
+        layoutWrapper.classList.add('ml-72');
+      }
+    }
+
+    this.render('sidebar-container', window.location.hash);
+
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 150);
+  },
 
   render(containerId, activeHash = '#/purchase/dashboard/rm-dashboard') {
     const container = document.getElementById(containerId);
@@ -3238,25 +3267,52 @@ const Sidebar = {
     this.activeSubmenuId = subId;
     this.activeTabId = tabId;
 
-    container.innerHTML = `
-      <aside id="erp-sidebar" class="bg-[#0747A6] text-[#DEEBFF] w-72 h-full flex flex-col transition-all duration-300 select-none shadow-xl">
-        <!-- Logo Branding Header -->
-        <div class="h-16 px-4 py-2 flex items-center justify-between border-b border-[#00388B] bg-[#002766] shrink-0">
-          <div class="flex items-center gap-3">
-            <img src="${LOGO_WHITE}" alt="Devi Fisheries" class="h-10 w-auto max-w-[140px] object-contain shrink-0" />
-            <div class="flex flex-col border-l border-[#0052CC] pl-2.5">
-              <span class="font-extrabold text-xs tracking-wider text-white leading-tight">ERP</span>
-              <span class="text-[9px] text-[#8EB7FF] font-semibold leading-tight mt-0.5">Cloud</span>
+    if (this.isCollapsed) {
+      // Collapsed Icon-Only Sidebar Mode (Width: 68px)
+      container.innerHTML = `
+        <aside id="erp-sidebar" class="bg-[#0747A6] text-[#DEEBFF] w-[68px] h-full flex flex-col transition-all duration-300 select-none shadow-xl border-r border-[#00388B]">
+          <!-- Collapsed Logo Icon Header -->
+          <div class="h-14 px-2 py-2 flex items-center justify-center border-b border-[#00388B] bg-[#002766] shrink-0" title="Devi Fisheries ERP">
+            <div class="w-9 h-9 rounded-lg bg-[#0052CC] flex items-center justify-center font-black text-white text-xs shadow-xs border border-[#4C9AFF]">
+              DFL
             </div>
           </div>
-        </div>
 
-        <!-- Navigation Scrollable Area -->
-        <div class="flex-1 overflow-y-auto py-3 px-3 space-y-1.5" id="sidebar-nav-groups">
-          ${this.renderNavHierarchy()}
-        </div>
-      </aside>
-    `;
+          <!-- Navigation Scrollable Icons Area -->
+          <div class="flex-1 overflow-y-auto py-3 px-2 space-y-2 overflow-x-visible" id="sidebar-nav-groups">
+            ${this.renderCollapsedNavHierarchy()}
+          </div>
+
+          <!-- Bottom Expand Button -->
+          <div class="p-2 border-t border-[#00388B] bg-[#002766]/60 shrink-0">
+            <button id="sidebar-bottom-expand-btn" class="w-full h-9 flex items-center justify-center text-[#8EB7FF] hover:text-white hover:bg-[#0052CC] rounded-lg transition-colors cursor-pointer" title="Expand Sidebar">
+              <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+            </button>
+          </div>
+        </aside>
+      `;
+    } else {
+      // Expanded Full Sidebar Mode (Width: 288px)
+      container.innerHTML = `
+        <aside id="erp-sidebar" class="bg-[#0747A6] text-[#DEEBFF] w-72 h-full flex flex-col transition-all duration-300 select-none shadow-xl border-r border-[#00388B]">
+          <!-- Logo Branding Header -->
+          <div class="h-14 px-4 py-2 flex items-center justify-between border-b border-[#00388B] bg-[#002766] shrink-0">
+            <div class="flex items-center gap-3">
+              <img src="${LOGO_WHITE}" alt="Devi Fisheries" class="h-9 w-auto max-w-[130px] object-contain shrink-0" />
+              <div class="flex flex-col border-l border-[#0052CC] pl-2.5">
+                <span class="font-extrabold text-xs tracking-wider text-white leading-tight">ERP</span>
+                <span class="text-[9px] text-[#8EB7FF] font-semibold leading-tight mt-0.5">Cloud</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Scrollable Area -->
+          <div class="flex-1 overflow-y-auto py-3 px-3 space-y-1.5" id="sidebar-nav-groups">
+            ${this.renderNavHierarchy()}
+          </div>
+        </aside>
+      `;
+    }
 
     this.bindEvents();
   },
@@ -3292,7 +3348,7 @@ const Sidebar = {
         <div class="nav-module-group mb-1">
           <button 
             data-module-id="${mod.id}" 
-            class="sidebar-mod-btn w-full px-3.5 py-2.5 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors ${isExpanded ? 'bg-[#0052CC] text-white shadow-xs' : 'text-[#DEEBFF] hover:bg-[#00388B]'}"
+            class="sidebar-mod-btn w-full px-3.5 py-2.5 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${isExpanded ? 'bg-[#0052CC] text-white shadow-xs' : 'text-[#DEEBFF] hover:bg-[#00388B]'}"
           >
             <div class="flex items-center gap-3">
               <span class="${isExpanded ? 'text-white' : 'text-[#8EB7FF]'}">${mod.icon}</span>
@@ -3303,6 +3359,52 @@ const Sidebar = {
             </div>
           </button>
           ${submenusHtml}
+        </div>
+      `;
+    }).join('');
+  },
+
+  renderCollapsedNavHierarchy() {
+    return NAV_HIERARCHY.map(mod => {
+      const isCurrentMod = mod.id === this.activeModuleId;
+      const firstTabHash = mod.submenus[0]?.tabs[0]?.hash || '#/';
+
+      return `
+        <div class="relative group flex justify-center nav-module-group">
+          <!-- Icon Button -->
+          <button 
+            data-module-id="${mod.id}"
+            class="sidebar-mod-btn w-11 h-11 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer ${isCurrentMod ? 'bg-[#0052CC] text-white shadow-md ring-2 ring-[#4C9AFF]' : 'text-[#8EB7FF] hover:bg-[#00388B] hover:text-white'}"
+            title="${mod.title}"
+          >
+            <span class="w-5 h-5 flex items-center justify-center">${mod.icon}</span>
+          </button>
+
+          <!-- Floating Flyout Menu on Hover -->
+          <div class="absolute left-full top-0 ml-2.5 w-60 bg-[#002766] border border-[#0052CC] rounded-xl shadow-2xl p-2.5 hidden group-hover:block z-50 transition-all pointer-events-auto">
+            <!-- Module Title in Flyout -->
+            <div class="flex items-center gap-2 px-2.5 py-1.5 border-b border-[#00388B] mb-1.5 text-white">
+              <span class="text-[#4C9AFF]">${mod.icon}</span>
+              <span class="font-extrabold text-xs tracking-wide">${mod.title}</span>
+            </div>
+
+            <!-- Submenus List in Flyout -->
+            <div class="space-y-1">
+              ${mod.submenus.map(sub => {
+                const isSubActive = isCurrentMod && (sub.id === this.activeSubmenuId);
+                const defaultHash = sub.tabs[0].hash;
+                return `
+                  <a 
+                    href="${defaultHash}" 
+                    class="flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-semibold transition-all ${isSubActive ? 'bg-[#0052CC] text-white shadow-xs' : 'text-[#DEEBFF] hover:bg-[#00388B] hover:text-white'}"
+                  >
+                    <span>${sub.title}</span>
+                    <span class="text-[10px] text-[#8EB7FF] opacity-70">→</span>
+                  </a>
+                `;
+              }).join('')}
+            </div>
+          </div>
         </div>
       `;
     }).join('');
@@ -3322,6 +3424,13 @@ const Sidebar = {
         }
       });
     });
+
+    const expandBtn = document.getElementById('sidebar-bottom-expand-btn');
+    if (expandBtn) {
+      expandBtn.addEventListener('click', () => {
+        this.toggleCollapse();
+      });
+    }
   }
 };
 
@@ -3430,6 +3539,7 @@ const Breadcrumbs = {
 };
 
   // Global Top Header Component
+
 
 
 
@@ -3548,27 +3658,12 @@ const Header = {
   },
 
   bindEvents() {
-    // Hamburger Sidebar Toggle
+    // Hamburger Sidebar Toggle (Collapse into Icon-Only mode instead of completely hiding)
     const toggleBtn = document.getElementById('sidebar-toggle-btn');
     if (toggleBtn) {
       toggleBtn.onclick = (e) => {
         e.stopPropagation();
-        const sidebar = document.getElementById('sidebar-container');
-        const layout = document.getElementById('main-layout-wrapper');
-        if (sidebar && layout) {
-          if (sidebar.classList.contains('hidden')) {
-            sidebar.classList.remove('hidden');
-            layout.classList.add('ml-72');
-            layout.classList.remove('ml-0');
-          } else {
-            sidebar.classList.add('hidden');
-            layout.classList.remove('ml-72');
-            layout.classList.add('ml-0');
-          }
-          setTimeout(() => {
-            window.dispatchEvent(new Event('resize'));
-          }, 150);
-        }
+        Sidebar.toggleCollapse();
       };
     }
 
@@ -10234,13 +10329,17 @@ const App = {
   ensureShellMounted() {
     const existing = document.getElementById('erp-app-shell');
     if (!existing) {
+      const isCollapsed = Sidebar.isCollapsed;
+      const sidebarW = isCollapsed ? 'w-[68px]' : 'w-72';
+      const layoutMl = isCollapsed ? 'ml-[68px]' : 'ml-72';
+
       document.getElementById('app-root').innerHTML = `
         <div id="erp-app-shell" class="min-h-screen bg-[#F4F5F7]">
-          <!-- Left Fixed Sidebar (Spacious 288px width to prevent dropdown cutoff) -->
-          <div id="sidebar-container" class="fixed top-0 left-0 bottom-0 w-72 z-40 transition-all duration-300"></div>
+          <!-- Left Fixed Sidebar (Expandable / Collapsible Icon-Only Mode) -->
+          <div id="sidebar-container" class="fixed top-0 left-0 bottom-0 ${sidebarW} z-40 transition-all duration-300"></div>
 
           <!-- Main Layout Wrapper (offset by fixed sidebar width) -->
-          <div id="main-layout-wrapper" class="ml-72 flex flex-col min-h-screen transition-all duration-300">
+          <div id="main-layout-wrapper" class="${layoutMl} flex flex-col min-h-screen transition-all duration-300">
             <!-- Top Sticky Header -->
             <div id="header-container" class="sticky top-0 z-30 bg-white"></div>
 
