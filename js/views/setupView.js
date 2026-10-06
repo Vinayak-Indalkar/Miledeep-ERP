@@ -1205,21 +1205,6 @@ export const SetupView = {
       };
     }
   },
-    if (select) {
-      select.onchange = (e) => {
-        this.selectedRoleForPermissions = e.target.value;
-        const c = document.getElementById('setup-subpage-content');
-        if (c) this.renderPermissionsTab(c);
-      };
-    }
-
-    const saveBtn = document.getElementById('save-permissions-btn');
-    if (saveBtn) {
-      saveBtn.onclick = () => {
-        Toast.show(`Permissions updated and synchronized for role: ${selectedRole.name}`, 'success', 'Matrix Saved');
-      };
-    }
-  },
 
   // 4. AUDIT & SECURITY LOGS TAB
   renderAuditLogsTab(container) {

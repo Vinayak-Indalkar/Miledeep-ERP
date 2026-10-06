@@ -32,6 +32,7 @@ export const App = {
   },
 
   route() {
+    const rawHash = window.location.hash || '';
     // If explicitly on login page
     if (rawHash === '#/login' || rawHash === '#/signin' || rawHash === '#login') {
       document.getElementById('app-root').innerHTML = `<div id="login-view-container"></div>`;
