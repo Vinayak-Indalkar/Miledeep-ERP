@@ -11,14 +11,16 @@ export class DataTable {
     pageSize = 10,
     searchable = true,
     filterable = true,
-    selectable = true,
+    selectable = false,
     actions = [],
     bulkActions = [],
     exportable = true,
+    showCopy = true,
     tableTitle = '',
     topFilterTitle = '',
-    hideTopFilterBar = false,
-    onRowClick = null
+    hideTopFilterBar = true,
+    onRowClick = null,
+    onDataChange = null
   }) {
     this.container = typeof containerId === 'string' ? document.getElementById(containerId) : containerId;
     this.columns = columns;
@@ -29,10 +31,11 @@ export class DataTable {
     this.currentPage = 1;
     this.searchable = searchable;
     this.filterable = filterable;
-    this.selectable = selectable;
+    this.selectable = false;
     this.actions = actions;
     this.bulkActions = bulkActions;
     this.exportable = exportable;
+    this.showCopy = showCopy;
     this.tableTitle = tableTitle;
     this.topFilterTitle = topFilterTitle || tableTitle || 'DATA EXPLORER & RECORDS';
     this.hideTopFilterBar = hideTopFilterBar;
@@ -42,10 +45,12 @@ export class DataTable {
     this.searchTerm = '';
     this.activeFilters = {};
     this.topFilters = {
-      species: 'ALL',
       center: 'ALL',
-      plant: 'ALL'
+      supplier: 'ALL',
+      plant: 'ALL',
+      date: ''
     };
+    this.onDataChange = onDataChange;
     this.sortColumn = null;
     this.sortDirection = 'asc';
     this.selectedKeys = new Set();
@@ -77,27 +82,42 @@ export class DataTable {
       });
     }
 
-    // Top Filter Bar Species / Center / Plant (soft match if fields exist)
+    // Top Filter Bar Center / Supplier / Plant / Date
     if (this.topFilters) {
-      if (this.topFilters.species && this.topFilters.species !== 'ALL') {
-        const sp = this.topFilters.species.toLowerCase();
-        result = result.filter(item => {
-          const itemSpecies = String(item.species || item.speciesName || item.variety || '').toLowerCase();
-          return !itemSpecies || itemSpecies.includes(sp);
-        });
-      }
       if (this.topFilters.center && this.topFilters.center !== 'ALL') {
         const ct = this.topFilters.center.toLowerCase();
         result = result.filter(item => {
-          const itemCenter = String(item.center || item.centerName || item.landingSource || item.pond || '').toLowerCase();
-          return !itemCenter || itemCenter.includes(ct);
+          const itemCenter = String(item.center || item.centerName || item.station || item.bookingStation || item.pond || '').toLowerCase();
+          return itemCenter.includes(ct);
+        });
+      }
+      if (this.topFilters.supplier && this.topFilters.supplier !== 'ALL') {
+        const sup = this.topFilters.supplier.toLowerCase();
+        result = result.filter(item => {
+          const itemSup = String(item.supplier || item.supplierName || item.farmerName || '').toLowerCase();
+          return itemSup.includes(sup);
         });
       }
       if (this.topFilters.plant && this.topFilters.plant !== 'ALL') {
         const pl = this.topFilters.plant.toLowerCase();
         result = result.filter(item => {
-          const itemPlant = String(item.plant || item.currentLocation || '').toLowerCase();
-          return !itemPlant || itemPlant.includes(pl);
+          const itemPlant = String(item.plant || item.arrivalPlant || item.currentLocation || '').toLowerCase();
+          return itemPlant.includes(pl);
+        });
+      }
+      if (this.topFilters.date && this.topFilters.date.trim() !== '') {
+        const dt = this.topFilters.date.trim().toLowerCase();
+        let dtAlt = '';
+        if (/^\d{4}-\d{2}-\d{2}$/.test(dt)) {
+          const [y, m, d] = dt.split('-');
+          dtAlt = `${d}/${m}/${y}`;
+        } else if (/^\d{2}\/\d{2}\/\d{4}$/.test(dt)) {
+          const [d, m, y] = dt.split('/');
+          dtAlt = `${y}-${m}-${d}`;
+        }
+        result = result.filter(item => {
+          const itemDate = String(item.date || item.arrivalDate || item.bookingDate || '').toLowerCase();
+          return itemDate.includes(dt) || (dtAlt && itemDate.includes(dtAlt));
         });
       }
     }
@@ -128,6 +148,9 @@ export class DataTable {
     this.currentPage = 1;
     this.renderTableBody();
     this.renderPagination();
+    if (typeof this.onDataChange === 'function') {
+      this.onDataChange(this.filteredData);
+    }
   }
 
   render() {
@@ -140,7 +163,7 @@ export class DataTable {
       topFilterHTML = `
         <!-- Collapsible Top Filter Header Card -->
         <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
-          <div class="flex items-center justify-between pb-3 border-b border-[#EBECF0]">
+          <div class="flex items-center justify-between pb-1">
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
               <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
@@ -161,51 +184,58 @@ export class DataTable {
           </div>
 
           <!-- Collapsible Filter Inputs Grid -->
-          <div class="dt-top-filter-body mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs transition-all duration-200">
+          <div class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
             <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SPECIES</label>
-              <select class="dt-top-species-select w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="ALL">All Species (Select)</option>
-                <option value="Vannamei">Vannamei (VM)</option>
-                <option value="Black Tiger">Black Tiger (BT)</option>
-                <option value="Asian Seabass">Asian Seabass</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">CENTER</label>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT CENTER</label>
               <select class="dt-top-center-select w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
                 <option value="ALL">All Centers (Select)</option>
-                <option value="Bhimavaram">Bhimavaram Center #1</option>
-                <option value="Kakinada">Kakinada Sea Intake #2</option>
-                <option value="Amalapuram">Amalapuram Harvesters #4</option>
-                <option value="Machilipatnam">Machilipatnam Delta #3</option>
+                <option value="Bhimavaram Center #1">Bhimavaram Center #1</option>
+                <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
+                <option value="Machilipatnam Delta #3">Machilipatnam Delta #3</option>
+                <option value="Amalapuram Harvesters #4">Amalapuram Harvesters #4</option>
+                <option value="Ongole Coastal Hub #1">Ongole Coastal Hub #1</option>
+                <option value="Visakhapatnam Gate Dock">Visakhapatnam Gate Dock</option>
               </select>
             </div>
 
             <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">PLANT</label>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT SUPPLIER</label>
+              <select class="dt-top-supplier-select w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Suppliers (Select)</option>
+                <option value="Godavari Coastal Aqua Farms">Godavari Coastal Aqua Farms</option>
+                <option value="Sagar Marine Hatcheries">Sagar Marine Hatcheries</option>
+                <option value="Krishna Delta Prawn Harvesters">Krishna Delta Prawn Harvesters</option>
+                <option value="Konaseema Marine Harvesters Syndicate">Konaseema Marine Harvesters</option>
+                <option value="Nellore Brackish Aqua Cultivators">Nellore Brackish Aqua Cultivators</option>
+                <option value="Sri Sai Aqua Farms">Sri Sai Aqua Farms</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT ARRIVAL PLANT</label>
               <select class="dt-top-plant-select w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="ALL">All Plants (Select)</option>
-                <option value="UNIT-5">DFL UNIT-5 (JPT)</option>
-                <option value="UNIT-3">DFL UNIT-3 (PSP)</option>
-                <option value="UNIT-6">DFL UNIT-6 (JPT-II)</option>
-                <option value="UNIT-4">DFL UNIT-4 (PND)</option>
+                <option value="ALL">All Arrival Plants (Select)</option>
+                <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
               </select>
             </div>
 
             <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">FROM DATE</label>
-              <input type="text" value="${dateStr}" class="dt-top-from-date w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">DATE</label>
+              <div class="erp-date-wrapper">
+                <input type="date" value="2026-10-06" class="dt-top-date-input erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
             </div>
 
-            <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">TO DATE</label>
-              <input type="text" value="${dateStr}" class="dt-top-to-date w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
-            </div>
-
-            <div class="flex items-end gap-2">
-              <button type="button" class="dt-top-filter-search-btn btn-primary w-full py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
+            <div class="flex items-end">
+              <button type="button" class="dt-top-filter-search-btn btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 <span>Search</span>
               </button>
@@ -221,44 +251,38 @@ export class DataTable {
 
         <!-- Table Card Container -->
         <div class="bg-white rounded-lg border border-[#DFE1E6] shadow-sm flex flex-col overflow-hidden">
-          <!-- Table Control Toolbar -->
-          <div class="p-3.5 border-b border-[#DFE1E6] bg-[#FAFBFC] flex flex-wrap items-center justify-between gap-3">
-            <div class="flex items-center gap-3 flex-wrap">
-              ${this.tableTitle ? `<h3 class="font-bold text-[#172B4D] text-sm">${this.tableTitle}</h3>` : ''}
+          <!-- Table Control Toolbar (Column visibility, Download, Copy, Search) -->
+          <div class="px-4 py-2.5 border-b border-[#DFE1E6] bg-[#FAFBFC] flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 flex-wrap">
+              ${this.tableTitle ? `<h3 class="font-bold text-[#172B4D] text-xs">${this.tableTitle}</h3>` : ''}
               
-              ${this.searchable ? `
-                <div class="relative w-64">
-                  <input 
-                    type="text" 
-                    id="dt-search-input" 
-                    placeholder="Search in table..." 
-                    class="w-full text-xs pl-8 pr-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF] transition-colors"
-                  />
-                  <svg class="w-3.5 h-3.5 text-[#6B778C] absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                  </svg>
-                </div>
-              ` : ''}
-
               <div id="dt-filter-container" class="flex items-center gap-2"></div>
             </div>
 
             <div class="flex items-center gap-2 flex-wrap">
-              <!-- Excel Export Button -->
-              <button type="button" id="dt-export-btn" class="btn-secondary px-2.5 py-1.5 rounded text-xs flex items-center gap-1.5 hover:bg-[#EBECF0] transition-colors cursor-pointer" title="Export to Excel / CSV">
+              <!-- Copy Button -->
+              ${this.showCopy ? `
+              <button type="button" id="dt-copy-btn" class="btn-secondary px-2.5 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5 hover:bg-[#EBECF0] transition-colors cursor-pointer shadow-2xs" title="Copy table data to clipboard">
+                <svg class="w-3.5 h-3.5 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span>Copy</span>
+              </button>
+              ` : ''}
+
+              <!-- Excel Download Button -->
+              <button type="button" id="dt-export-btn" class="btn-secondary px-2.5 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5 hover:bg-[#EBECF0] transition-colors cursor-pointer shadow-2xs" title="Download Excel / CSV">
                 <svg class="w-3.5 h-3.5 text-[#006644]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                 <span>Excel</span>
               </button>
 
-              <!-- PDF Export Button -->
-              <button type="button" id="dt-pdf-btn" class="btn-secondary px-2.5 py-1.5 rounded text-xs flex items-center gap-1.5 hover:bg-[#EBECF0] transition-colors cursor-pointer" title="Export / Print PDF Document">
+              <!-- PDF Download Button -->
+              <button type="button" id="dt-pdf-btn" class="btn-secondary px-2.5 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5 hover:bg-[#EBECF0] transition-colors cursor-pointer shadow-2xs" title="Download / Print PDF Document">
                 <svg class="w-3.5 h-3.5 text-[#BF2600]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                 <span>PDF</span>
               </button>
 
-              <!-- Columns Visibility Dropdown -->
+              <!-- Column Section / Visibility Dropdown -->
               <div class="relative">
-                <button type="button" id="dt-columns-btn" class="btn-secondary px-2.5 py-1.5 rounded text-xs flex items-center gap-1.5 hover:bg-[#EBECF0] transition-colors cursor-pointer" title="Customize Visible Columns">
+                <button type="button" id="dt-columns-btn" class="btn-secondary px-2.5 py-1.5 rounded-md text-xs font-semibold flex items-center gap-1.5 hover:bg-[#EBECF0] transition-colors cursor-pointer shadow-2xs" title="Customize Visible Columns">
                   <svg class="w-3.5 h-3.5 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                   <span>Column visibility</span>
                 </button>
@@ -510,16 +534,19 @@ export class DataTable {
     const resetBtn = this.container.querySelector('.dt-top-filter-reset-btn');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        const speciesSel = this.container.querySelector('.dt-top-species-select');
         const centerSel = this.container.querySelector('.dt-top-center-select');
+        const supplierSel = this.container.querySelector('.dt-top-supplier-select');
         const plantSel = this.container.querySelector('.dt-top-plant-select');
-        if (speciesSel) speciesSel.value = 'ALL';
+        const dateInput = this.container.querySelector('.dt-top-date-input');
         if (centerSel) centerSel.value = 'ALL';
+        if (supplierSel) supplierSel.value = 'ALL';
         if (plantSel) plantSel.value = 'ALL';
+        if (dateInput) dateInput.value = '';
 
-        this.topFilters.species = 'ALL';
         this.topFilters.center = 'ALL';
+        this.topFilters.supplier = 'ALL';
         this.topFilters.plant = 'ALL';
+        this.topFilters.date = '';
 
         this.applyFilters();
         Toast.show('Filters have been reset.', 'info');
@@ -530,13 +557,15 @@ export class DataTable {
     const topSearchBtn = this.container.querySelector('.dt-top-filter-search-btn');
     if (topSearchBtn) {
       topSearchBtn.addEventListener('click', () => {
-        const speciesSel = this.container.querySelector('.dt-top-species-select');
         const centerSel = this.container.querySelector('.dt-top-center-select');
+        const supplierSel = this.container.querySelector('.dt-top-supplier-select');
         const plantSel = this.container.querySelector('.dt-top-plant-select');
+        const dateInput = this.container.querySelector('.dt-top-date-input');
 
-        this.topFilters.species = speciesSel ? speciesSel.value : 'ALL';
         this.topFilters.center = centerSel ? centerSel.value : 'ALL';
+        this.topFilters.supplier = supplierSel ? supplierSel.value : 'ALL';
         this.topFilters.plant = plantSel ? plantSel.value : 'ALL';
+        this.topFilters.date = (dateInput && dateInput.value) ? dateInput.value : '';
 
         this.applyFilters();
         Toast.show(`Filtered records: ${this.filteredData.length} entries matching search criteria.`, 'info');
@@ -617,6 +646,11 @@ export class DataTable {
         this.renderHeader();
         this.renderTableBody();
       });
+    }
+
+    const copyBtn = this.container.querySelector('#dt-copy-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => this.copyToClipboard());
     }
 
     const exportBtn = this.container.querySelector('#dt-export-btn');
@@ -704,6 +738,51 @@ export class DataTable {
       bulkBar.classList.add('hidden');
       bulkBar.classList.remove('flex');
     }
+  }
+
+  copyToClipboard() {
+    if (!this.filteredData || this.filteredData.length === 0) {
+      Toast.show('No data available to copy.', 'warning');
+      return;
+    }
+
+    const visibleCols = this.columns.filter(c => !this.hiddenColumns.has(c.field));
+    const headers = visibleCols.map(c => c.header).join('\t');
+    const rows = this.filteredData.map(row => {
+      return visibleCols.map(c => {
+        let val = row[c.field];
+        if (val === undefined || val === null) val = '';
+        return String(val).replace(/[\t\n\r]/g, ' ');
+      }).join('\t');
+    });
+
+    const tsvContent = [headers, ...rows].join('\n');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(tsvContent).then(() => {
+        Toast.show(`Copied ${this.filteredData.length} rows to clipboard.`, 'success', 'Table Data Copied');
+      }).catch(() => {
+        this.fallbackCopyTextToClipboard(tsvContent);
+      });
+    } else {
+      this.fallbackCopyTextToClipboard(tsvContent);
+    }
+  }
+
+  fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.top = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      Toast.show(`Copied ${this.filteredData.length} rows to clipboard.`, 'success', 'Table Data Copied');
+    } catch (err) {
+      Toast.show('Failed to copy table data.', 'error');
+    }
+    document.body.removeChild(textArea);
   }
 
   exportToCSV() {

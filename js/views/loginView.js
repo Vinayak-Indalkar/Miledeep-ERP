@@ -81,10 +81,29 @@ export const LoginView = {
             </form>
           </div>
 
-          <!-- Bottom Footer -->
-          <div class="mt-8 pt-4 border-t border-[#EBECF0] flex items-center justify-between text-[11px] text-[#6B778C]">
-            <span class="font-bold text-[#0052CC] tracking-wider text-xs">Miledeep</span>
-            <span>&copy; 2026</span>
+          <!-- Option 1 & Option 2 Buttons -->
+          <div class="mt-8 pt-4 border-t border-[#EBECF0]">
+            <div class="text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider text-center mb-2.5">Select Layout Experience</div>
+            <div class="grid grid-cols-2 gap-3">
+              <button 
+                type="button" 
+                id="login-option-1-btn" 
+                class="w-full py-2.5 px-3 bg-white hover:bg-[#F4F5F7] text-[#172B4D] hover:text-[#0052CC] border border-[#DFE1E6] hover:border-[#0052CC] rounded-lg font-bold text-xs transition-all shadow-xs hover:shadow flex items-center justify-center gap-1.5 cursor-pointer"
+                title="Sign in with Option 1: Classic Left Sidebar Navigation"
+              >
+                <svg class="w-3.5 h-3.5 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h4v12H4zM10 6h10v12H10z"/></svg>
+                <span>Option 1 (Sidebar)</span>
+              </button>
+              <button 
+                type="button" 
+                id="login-option-2-btn" 
+                class="w-full py-2.5 px-3 bg-white hover:bg-[#F4F5F7] text-[#172B4D] hover:text-[#0052CC] border border-[#DFE1E6] hover:border-[#0052CC] rounded-lg font-bold text-xs transition-all shadow-xs hover:shadow flex items-center justify-center gap-1.5 cursor-pointer"
+                title="Sign in with Option 2: Enterprise Top Horizontal Navigation"
+              >
+                <svg class="w-3.5 h-3.5 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16v4H4zM4 12h16v8H4z"/></svg>
+                <span>Option 2 (Top Nav)</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -117,7 +136,7 @@ export const LoginView = {
       });
     }
 
-    // Form Submit
+    // Form Submit (Defaults to Option 1 as requested)
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -125,10 +144,36 @@ export const LoginView = {
         submitBtn.classList.add('opacity-75', 'cursor-wait');
 
         setTimeout(() => {
+          localStorage.setItem('erp_layout_mode', 'option1');
           sessionStorage.setItem('trigger_tour_on_login', 'true');
+          const existing = document.getElementById('erp-app-shell');
+          if (existing) existing.remove();
           Toast.show(`Welcome back, ${ERP_DATA.currentUser.name}`, 'success', 'Authentication Successful');
           window.location.hash = '#/purchase/dashboard/rm-dashboard';
         }, 400);
+      });
+    }
+
+    // Option 1 & Option 2 Buttons
+    const opt1Btn = document.getElementById('login-option-1-btn');
+    if (opt1Btn) {
+      opt1Btn.addEventListener('click', () => {
+        localStorage.setItem('erp_layout_mode', 'option1');
+        const existing = document.getElementById('erp-app-shell');
+        if (existing) existing.remove();
+        Toast.show('Welcome to Option 1: Classic Left Sidebar Navigation', 'info', 'Option 1 Selected');
+        window.location.hash = '#/purchase/dashboard/rm-dashboard';
+      });
+    }
+
+    const opt2Btn = document.getElementById('login-option-2-btn');
+    if (opt2Btn) {
+      opt2Btn.addEventListener('click', () => {
+        localStorage.setItem('erp_layout_mode', 'option2');
+        const existing = document.getElementById('erp-app-shell');
+        if (existing) existing.remove();
+        Toast.show('Welcome to Option 2: Enterprise Top Navigation', 'info', 'Option 2 Selected');
+        window.location.hash = '#/purchase/dashboard/rm-dashboard';
       });
     }
   }

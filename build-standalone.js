@@ -13,6 +13,7 @@ const modal = fs.readFileSync(path.join(__dirname, 'js', 'components', 'modal.js
 const table = fs.readFileSync(path.join(__dirname, 'js', 'components', 'table.js'), 'utf-8');
 const emptyState = fs.readFileSync(path.join(__dirname, 'js', 'components', 'emptyState.js'), 'utf-8');
 const sidebar = fs.readFileSync(path.join(__dirname, 'js', 'components', 'sidebar.js'), 'utf-8');
+const topNav = fs.readFileSync(path.join(__dirname, 'js', 'components', 'topNav.js'), 'utf-8');
 const tabBar = fs.readFileSync(path.join(__dirname, 'js', 'components', 'tabBar.js'), 'utf-8');
 const breadcrumbs = fs.readFileSync(path.join(__dirname, 'js', 'components', 'breadcrumbs.js'), 'utf-8');
 const header = fs.readFileSync(path.join(__dirname, 'js', 'components', 'header.js'), 'utf-8');
@@ -55,6 +56,7 @@ const combinedJS = `
   ${cleanCode(table)}
   ${cleanCode(emptyState)}
   ${cleanCode(sidebar)}
+  ${cleanCode(topNav)}
   ${cleanCode(tabBar)}
   ${cleanCode(breadcrumbs)}
   ${cleanCode(header)}

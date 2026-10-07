@@ -5,6 +5,7 @@ import { Toast } from './components/toast.js';
 import { Modal } from './components/modal.js';
 import { Header } from './components/header.js';
 import { Sidebar, NAV_HIERARCHY } from './components/sidebar.js';
+import { TopNav } from './components/topNav.js';
 import { Breadcrumbs } from './components/breadcrumbs.js';
 import { TourGuide } from './components/tourGuide.js';
 
@@ -19,12 +20,34 @@ import { InventoryView } from './views/inventoryView.js';
 import { SalesView } from './views/salesView.js';
 import { ReportsView } from './views/reportsView.js';
 import { SetupView } from './views/setupView.js';
+import { HelpView } from './views/helpView.js';
 
 export const App = {
   init() {
     Toast.init();
     this.bindHashChange();
+    this.bindDatePickerHelper();
     this.route();
+  },
+
+  bindDatePickerHelper() {
+    document.addEventListener('click', (e) => {
+      const wrapper = e.target.closest('.erp-date-wrapper');
+      if (wrapper) {
+        const input = wrapper.querySelector('input[type="date"]');
+        if (input) {
+          if (typeof input.showPicker === 'function') {
+            try {
+              input.showPicker();
+            } catch (_) {
+              input.focus();
+            }
+          } else {
+            input.focus();
+          }
+        }
+      }
+    });
   },
 
   bindHashChange() {
@@ -79,9 +102,14 @@ export const App = {
     }
 
     const resolvedHash = `#/${modObj.id}/${subObj.id}/${tabName}`;
+    const layoutMode = localStorage.getItem('erp_layout_mode') || 'option1';
 
-    // Render Navigation Sidebar & Breadcrumbs
-    Sidebar.render('sidebar-container', resolvedHash);
+    // Render Navigation & Breadcrumbs based on active layout mode
+    if (layoutMode === 'option2') {
+      TopNav.render('top-nav-container', resolvedHash);
+    } else {
+      Sidebar.render('sidebar-container', resolvedHash);
+    }
     Breadcrumbs.render('breadcrumbs-container', resolvedHash);
 
     const mainContainer = 'main-content-container';
@@ -114,6 +142,9 @@ export const App = {
       case 'setup':
         SetupView.render(mainContainer, tabName || 'users', resolvedHash);
         break;
+      case 'help':
+        HelpView.render(mainContainer, tabName || 'compliance-manual', resolvedHash);
+        break;
       default:
         PurchaseView.render(mainContainer, 'rm-dashboard', '#/purchase/dashboard/rm-dashboard');
         break;
@@ -133,35 +164,63 @@ export const App = {
   },
 
   ensureShellMounted() {
-    const existing = document.getElementById('erp-app-shell');
+    const layoutMode = localStorage.getItem('erp_layout_mode') || 'option1';
+    let existing = document.getElementById('erp-app-shell');
+    if (existing && existing.dataset.layout !== layoutMode) {
+      existing.remove();
+      existing = null;
+    }
+
     if (!existing) {
-      const isCollapsed = Sidebar.isCollapsed;
-      const sidebarW = isCollapsed ? 'w-[68px]' : 'w-72';
-      const layoutMl = isCollapsed ? 'ml-[68px]' : 'ml-72';
-
-      document.getElementById('app-root').innerHTML = `
-        <div id="erp-app-shell" class="min-h-screen bg-[#F4F5F7]">
-          <!-- Left Fixed Sidebar (Expandable / Collapsible Icon-Only Mode) -->
-          <div id="sidebar-container" class="fixed top-0 left-0 bottom-0 ${sidebarW} z-40 transition-all duration-300"></div>
-
-          <!-- Main Layout Wrapper (offset by fixed sidebar width) -->
-          <div id="main-layout-wrapper" class="${layoutMl} flex flex-col min-h-screen transition-all duration-300">
-            <!-- Top Sticky Header -->
-            <div id="header-container" class="sticky top-0 z-30 bg-white"></div>
-
-            <!-- Breadcrumbs Bar -->
-            <div class="px-6 py-2 bg-white border-b border-[#DFE1E6] flex items-center justify-between sticky top-14 z-20 shadow-2xs">
-              <div id="breadcrumbs-container"></div>
+      if (layoutMode === 'option2') {
+        document.getElementById('app-root').innerHTML = `
+          <div id="erp-app-shell" data-layout="option2" class="min-h-screen bg-[#F4F5F7]">
+            <!-- Fixed / Sticky Top Header & Breadcrumbs Wrapper (Option 2) -->
+            <div class="sticky top-0 z-40 shadow-xs">
+              <div id="top-nav-container"></div>
+              <!-- Breadcrumbs Bar (Fixed in position right below Top Navigation) -->
+              <div class="px-6 py-2 bg-[#DEEBFF] border-b border-[#B3D4FF] flex items-center justify-between shadow-2xs">
+                <div id="breadcrumbs-container"></div>
+              </div>
             </div>
 
-            <!-- Module Subview Injected Here (Full-Width Responsive UI) -->
-            <main id="main-content-container" class="p-6 flex-1 w-full"></main>
+            <!-- Main Layout Wrapper (full width, zero left margin) -->
+            <div id="main-layout-wrapper" class="w-full flex flex-col flex-1 transition-all duration-300">
+              <!-- Module Subview Injected Here (Full-Width Responsive UI) -->
+              <main id="main-content-container" class="p-6 flex-1 w-full max-w-[1720px] mx-auto"></main>
+            </div>
           </div>
-        </div>
-      `;
+        `;
+      } else {
+        const isCollapsed = Sidebar.isCollapsed;
+        const sidebarW = isCollapsed ? 'w-[68px]' : 'w-72';
+        const layoutMl = isCollapsed ? 'ml-[68px]' : 'ml-72';
 
-      // Mount Header
-      Header.render('header-container');
+        document.getElementById('app-root').innerHTML = `
+          <div id="erp-app-shell" data-layout="option1" class="min-h-screen bg-[#F4F5F7]">
+            <!-- Left Fixed Sidebar (Expandable / Collapsible Icon-Only Mode) -->
+            <div id="sidebar-container" class="fixed top-0 left-0 bottom-0 ${sidebarW} z-40 transition-all duration-300"></div>
+
+            <!-- Main Layout Wrapper (offset by fixed sidebar width) -->
+            <div id="main-layout-wrapper" class="${layoutMl} flex flex-col min-h-screen transition-all duration-300">
+              <!-- Fixed / Sticky Top Header & Breadcrumbs Wrapper (Option 1) -->
+              <div class="sticky top-0 z-30 shadow-xs">
+                <div id="header-container" class="bg-white"></div>
+                <!-- Breadcrumbs Bar (Fixed in position right below Header) -->
+                <div class="px-6 py-2 bg-[#DEEBFF] border-b border-[#B3D4FF] flex items-center justify-between shadow-2xs">
+                  <div id="breadcrumbs-container"></div>
+                </div>
+              </div>
+
+              <!-- Module Subview Injected Here (Full-Width Responsive UI) -->
+              <main id="main-content-container" class="p-6 flex-1 w-full"></main>
+            </div>
+          </div>
+        `;
+
+        // Mount Header
+        Header.render('header-container');
+      }
     }
   },
 
@@ -368,6 +427,16 @@ export const App = {
       });
     });
   }
+};
+
+// Expose App and switchERPLayout globally
+window.App = App;
+window.switchERPLayout = (mode) => {
+  localStorage.setItem('erp_layout_mode', mode);
+  const shell = document.getElementById('erp-app-shell');
+  if (shell) shell.remove();
+  App.route();
+  Toast.show(`Switched to ${mode === 'option2' ? 'Option 2 (Top Navigation)' : 'Option 1 (Sidebar Navigation)'}`, 'info', 'Layout Switched');
 };
 
 // Auto boot on DOM load or immediately if already ready

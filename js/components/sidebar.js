@@ -1,5 +1,5 @@
 // Navigation Hierarchy: Main Menu -> Sub Menu -> On-Screen Tabs
-import { LOGO_WHITE } from '../data/logos.js';
+import { LOGO_COLOR, LOGO_WHITE } from '../data/logos.js';
 
 export const NAV_HIERARCHY = [
   {
@@ -407,7 +407,7 @@ export const NAV_HIERARCHY = [
   },
   {
     id: "setup",
-    title: "Setup",
+    title: "Settings",
     icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
     submenus: [
       {
@@ -449,6 +449,33 @@ export const NAV_HIERARCHY = [
           { id: "general-settings", label: "General Settings", hash: "#/setup/system-config/general-settings" },
           { id: "number-sequences", label: "Number Sequences", hash: "#/setup/system-config/number-sequences" },
           { id: "roles-permissions", label: "Roles & Permissions", hash: "#/setup/system-config/roles-permissions" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "help",
+    title: "Help",
+    icon: `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+    submenus: [
+      {
+        id: "documentation",
+        title: "Documentation & SOPs",
+        defaultTab: "compliance-manual",
+        tabs: [
+          { id: "compliance-manual", label: "Compliance & SOP Manual", hash: "#/help/documentation/compliance-manual" },
+          { id: "user-guides", label: "Module User Guides", hash: "#/help/documentation/user-guides" },
+          { id: "antibiotic-protocols", label: "Antibiotic & Testing Protocols", hash: "#/help/documentation/antibiotic-protocols" }
+        ]
+      },
+      {
+        id: "support-tickets",
+        title: "Support & Helpdesk",
+        defaultTab: "it-support",
+        tabs: [
+          { id: "it-support", label: "IT Helpdesk & Tickets", hash: "#/help/support-tickets/it-support" },
+          { id: "system-status", label: "System Health & Status", hash: "#/help/support-tickets/system-status" },
+          { id: "release-notes", label: "Release Notes & Changelog", hash: "#/help/support-tickets/release-notes" }
         ]
       }
     ]
@@ -507,22 +534,22 @@ export const Sidebar = {
     if (this.isCollapsed) {
       // Collapsed Icon-Only Sidebar Mode (Width: 68px)
       container.innerHTML = `
-        <aside id="erp-sidebar" class="bg-[#0747A6] text-[#DEEBFF] w-[68px] h-full flex flex-col transition-all duration-300 select-none shadow-xl border-r border-[#00388B]">
+        <aside id="erp-sidebar" class="bg-gradient-to-b from-[#0747A6] via-[#053787] to-[#002766] text-[#DEEBFF] w-[68px] h-full flex flex-col transition-all duration-300 select-none shadow-xl border-r border-[#002766]">
           <!-- Collapsed Logo Icon Header -->
-          <div class="h-14 px-2 py-2 flex items-center justify-center border-b border-[#00388B] bg-[#002766] shrink-0" title="Devi Fisheries ERP">
-            <div class="w-9 h-9 rounded-lg bg-[#0052CC] flex items-center justify-center font-black text-white text-xs shadow-xs border border-[#4C9AFF]">
+          <div class="h-14 px-2 py-2 flex items-center justify-center border-b border-white/10 bg-[#002766]/80 shrink-0" title="Devi Fisheries ERP">
+            <div class="w-9 h-9 rounded-lg bg-[#0052CC] border border-[#4C9AFF]/50 flex items-center justify-center font-black text-white text-xs shadow-xs">
               DFL
             </div>
           </div>
 
           <!-- Navigation Scrollable Icons Area -->
-          <div class="flex-1 overflow-y-auto py-3 px-2 space-y-2 overflow-x-visible" id="sidebar-nav-groups">
+          <div class="flex-1 overflow-y-auto py-3 px-2 space-y-2 overflow-x-visible bg-gradient-to-b from-[#0747A6] via-[#053787] to-[#002766]" id="sidebar-nav-groups">
             ${this.renderCollapsedNavHierarchy()}
           </div>
 
           <!-- Bottom Expand Button -->
-          <div class="p-2 border-t border-[#00388B] bg-[#002766]/60 shrink-0">
-            <button id="sidebar-bottom-expand-btn" class="w-full h-9 flex items-center justify-center text-[#8EB7FF] hover:text-white hover:bg-[#0052CC] rounded-lg transition-colors cursor-pointer" title="Expand Sidebar">
+          <div class="p-2 border-t border-white/10 bg-[#002766]/60 shrink-0">
+            <button id="sidebar-bottom-expand-btn" class="w-full h-8 flex items-center justify-center text-[#8EB7FF] hover:text-white hover:bg-white/10 rounded-md transition-colors cursor-pointer" title="Expand Sidebar">
               <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
             </button>
           </div>
@@ -531,21 +558,26 @@ export const Sidebar = {
     } else {
       // Expanded Full Sidebar Mode (Width: 288px)
       container.innerHTML = `
-        <aside id="erp-sidebar" class="bg-[#0747A6] text-[#DEEBFF] w-72 h-full flex flex-col transition-all duration-300 select-none shadow-xl border-r border-[#00388B]">
+        <aside id="erp-sidebar" class="bg-gradient-to-b from-[#0747A6] via-[#053787] to-[#002766] text-[#DEEBFF] w-72 h-full flex flex-col transition-all duration-300 select-none shadow-xl border-r border-[#002766]">
           <!-- Logo Branding Header -->
-          <div class="h-14 px-4 py-2 flex items-center justify-between border-b border-[#00388B] bg-[#002766] shrink-0">
-            <div class="flex items-center gap-3">
-              <img src="${LOGO_WHITE}" alt="Devi Fisheries" class="h-9 w-auto max-w-[130px] object-contain shrink-0" />
-              <div class="flex flex-col border-l border-[#0052CC] pl-2.5">
-                <span class="font-extrabold text-xs tracking-wider text-white leading-tight">ERP</span>
-                <span class="text-[9px] text-[#8EB7FF] font-semibold leading-tight mt-0.5">Cloud</span>
-              </div>
+          <div class="h-14 px-4 py-2 flex items-center justify-between border-b border-white/10 bg-[#002766]/80 shrink-0">
+            <div class="flex items-center gap-2.5">
+              <img src="${LOGO_WHITE}" alt="Devi Fisheries" class="h-8 w-auto max-w-[125px] object-contain shrink-0" />
+              <span class="text-[10px] font-bold text-white bg-[#0052CC] border border-[#4C9AFF]/40 px-2 py-0.5 rounded tracking-wider shadow-2xs">ERP</span>
             </div>
           </div>
 
           <!-- Navigation Scrollable Area -->
-          <div class="flex-1 overflow-y-auto py-3 px-3 space-y-1.5" id="sidebar-nav-groups">
+          <div class="flex-1 overflow-y-auto py-3 px-3 space-y-1 bg-gradient-to-b from-[#0747A6] via-[#053787] to-[#002766]" id="sidebar-nav-groups">
             ${this.renderNavHierarchy()}
+          </div>
+
+          <!-- Bottom Collapse Button -->
+          <div class="p-2.5 border-t border-white/10 bg-[#002766]/60 shrink-0">
+            <button id="sidebar-bottom-expand-btn" class="w-full h-8 flex items-center justify-center gap-2 text-[#8EB7FF] hover:text-white hover:bg-white/10 rounded-md transition-colors cursor-pointer" title="Collapse Sidebar">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+              <span class="text-xs font-semibold">Collapse Sidebar</span>
+            </button>
           </div>
         </aside>
       `;
@@ -561,18 +593,21 @@ export const Sidebar = {
       let submenusHtml = '';
       if (isExpanded) {
         submenusHtml = `
-          <div class="mt-1 ml-2 mr-1 pl-3 pr-2 py-1.5 space-y-1 bg-[#00317D]/70 rounded-lg border-l-2 border-[#4C9AFF]">
+          <div class="mt-1 ml-4 pl-3 py-1 space-y-1 border-l-2 border-[#4C9AFF]/60">
             ${mod.submenus.map(sub => {
               const isSubActive = sub.id === this.activeSubmenuId;
-              const defaultHash = sub.tabs[0].hash;
+              const defaultHash = sub.tabs[0]?.hash || `/#/${mod.id}/${sub.id}`;
 
               return `
-                <div>
+                <div class="nav-submenu-block">
                   <a 
                     href="${defaultHash}" 
-                    class="block px-3 py-2 rounded-md text-xs transition-all leading-snug ${isSubActive ? 'bg-[#DEEBFF] text-[#0052CC] font-bold shadow-sm' : 'text-[#DEEBFF] hover:bg-[#0052CC] hover:text-white'}"
+                    class="flex items-center px-2.5 py-1.5 rounded-md text-xs font-semibold transition-all ${isSubActive ? 'bg-white text-[#0052CC] font-bold shadow-xs' : 'text-[#DEEBFF] hover:bg-[#00388B] hover:text-white'}"
                   >
-                    <span>${sub.title}</span>
+                    <div class="flex items-center gap-2 truncate">
+                      <span class="w-1.5 h-1.5 rounded-full ${isSubActive ? 'bg-[#0052CC]' : 'bg-[#8EB7FF]/70'} shrink-0"></span>
+                      <span class="truncate">${sub.title}</span>
+                    </div>
                   </a>
                 </div>
               `;
@@ -585,14 +620,14 @@ export const Sidebar = {
         <div class="nav-module-group mb-1">
           <button 
             data-module-id="${mod.id}" 
-            class="sidebar-mod-btn w-full px-3.5 py-2.5 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${isExpanded ? 'bg-[#0052CC] text-white shadow-xs' : 'text-[#DEEBFF] hover:bg-[#00388B]'}"
+            class="sidebar-mod-btn w-full px-3 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${isExpanded ? 'bg-[#0052CC] text-white shadow-xs' : 'text-[#DEEBFF] hover:bg-[#00388B] hover:text-white'}"
           >
-            <div class="flex items-center gap-3">
-              <span class="${isExpanded ? 'text-white' : 'text-[#8EB7FF]'}">${mod.icon}</span>
-              <span class="text-xs tracking-tight">${mod.title}</span>
+            <div class="flex items-center gap-2.5 truncate">
+              <span class="w-4 h-4 flex items-center justify-center shrink-0 ${isExpanded ? 'text-white' : 'text-[#8EB7FF]'}">${mod.icon}</span>
+              <span class="text-xs tracking-tight truncate">${mod.title}</span>
             </div>
-            <div class="flex items-center gap-1.5">
-              <svg class="w-4 h-4 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <div class="flex items-center gap-1 shrink-0">
+              <svg class="w-3.5 h-3.5 transform transition-transform duration-200 ${isExpanded ? 'rotate-90 text-white' : 'text-[#8EB7FF]'}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </div>
           </button>
           ${submenusHtml}
@@ -611,32 +646,31 @@ export const Sidebar = {
           <!-- Icon Button -->
           <button 
             data-module-id="${mod.id}"
-            class="sidebar-mod-btn w-11 h-11 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer ${isCurrentMod ? 'bg-[#0052CC] text-white shadow-md ring-2 ring-[#4C9AFF]' : 'text-[#8EB7FF] hover:bg-[#00388B] hover:text-white'}"
+            class="sidebar-mod-btn w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer ${isCurrentMod ? 'bg-white text-[#0052CC] shadow-md ring-2 ring-[#4C9AFF] font-bold' : 'text-[#8EB7FF] hover:bg-[#00388B] hover:text-white'}"
             title="${mod.title}"
           >
-            <span class="w-5 h-5 flex items-center justify-center">${mod.icon}</span>
+            <span class="w-4 h-4 flex items-center justify-center">${mod.icon}</span>
           </button>
 
           <!-- Floating Flyout Menu on Hover -->
-          <div class="absolute left-full top-0 ml-2.5 w-60 bg-[#002766] border border-[#0052CC] rounded-xl shadow-2xl p-2.5 hidden group-hover:block z-50 transition-all pointer-events-auto">
+          <div class="absolute left-full top-0 ml-2 w-60 bg-[#002766] border border-[#0052CC] rounded-xl shadow-2xl p-2.5 hidden group-hover:block z-50 transition-all pointer-events-auto">
             <!-- Module Title in Flyout -->
-            <div class="flex items-center gap-2 px-2.5 py-1.5 border-b border-[#00388B] mb-1.5 text-white">
+            <div class="flex items-center gap-2 px-2.5 py-1.5 border-b border-[#00388B] mb-1.5 text-white font-bold text-xs">
               <span class="text-[#4C9AFF]">${mod.icon}</span>
-              <span class="font-extrabold text-xs tracking-wide">${mod.title}</span>
+              <span class="tracking-wide">${mod.title}</span>
             </div>
 
             <!-- Submenus List in Flyout -->
             <div class="space-y-1">
               ${mod.submenus.map(sub => {
                 const isSubActive = isCurrentMod && (sub.id === this.activeSubmenuId);
-                const defaultHash = sub.tabs[0].hash;
+                const defaultHash = sub.tabs[0]?.hash || `/#/${mod.id}/${sub.id}`;
                 return `
                   <a 
                     href="${defaultHash}" 
-                    class="flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-semibold transition-all ${isSubActive ? 'bg-[#0052CC] text-white shadow-xs' : 'text-[#DEEBFF] hover:bg-[#00388B] hover:text-white'}"
+                    class="flex items-center px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${isSubActive ? 'bg-white text-[#0052CC] font-bold shadow-xs' : 'text-[#DEEBFF] hover:bg-[#00388B] hover:text-white'}"
                   >
                     <span>${sub.title}</span>
-                    <span class="text-[10px] text-[#8EB7FF] opacity-70">→</span>
                   </a>
                 `;
               }).join('')}

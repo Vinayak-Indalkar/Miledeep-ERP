@@ -12,12 +12,18 @@ export const Header = {
     if (!container) return;
 
     container.innerHTML = `
-      <header class="bg-white border-b border-[#DFE1E6] h-14 px-4 flex items-center justify-between sticky top-0 z-30 select-none">
-        <!-- Left: Hamburger Toggle Menu -->
+      <header class="bg-white border-b border-[#DFE1E6] h-14 px-4 flex items-center justify-between select-none">
+        <!-- Left: Hamburger Toggle Menu & Welcome Text -->
         <div class="flex items-center gap-3">
           <button id="sidebar-toggle-btn" class="p-2 text-[#5E6C84] hover:text-[#0052CC] hover:bg-[#DEEBFF] rounded-md transition-colors cursor-pointer" title="Toggle Navigation Sidebar">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
+
+          <!-- Welcome Text -->
+          <div class="flex items-center gap-1.5 text-sm sm:text-base text-[#5E6C84]">
+            <span>Welcome,</span>
+            <span class="font-bold text-[#172B4D] text-base sm:text-lg">${ERP_DATA.currentUser.name}</span>
+          </div>
         </div>
 
         <!-- Center: Spacer -->
@@ -68,10 +74,6 @@ export const Header = {
             <span class="hidden sm:inline">Tour Guide</span>
           </button>
 
-          <!-- Help / Docs Button -->
-          <button id="header-help-btn" class="p-1.5 text-[#5E6C84] hover:text-[#172B4D] hover:bg-[#EBECF0] rounded transition-colors cursor-pointer" title="ERP Help & Fishery Compliance Manual">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </button>
 
           <!-- User Profile Dropdown -->
           <div class="relative pl-1 border-l border-[#DFE1E6]">
@@ -94,6 +96,8 @@ export const Header = {
                   ${ERP_DATA.currentUser.role}
                 </div>
               </div>
+
+
 
               <div class="p-1 border-b border-[#EBECF0]">
                 <button id="start-tour-dropdown-btn" class="w-full text-left px-3 py-2 hover:bg-[#DEEBFF] text-[#0052CC] rounded font-semibold flex items-center gap-2 transition-colors cursor-pointer">

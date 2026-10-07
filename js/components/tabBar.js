@@ -22,25 +22,77 @@ export const TabBar = {
     const currentTabId = tabId || submenu.defaultTab;
 
     container.innerHTML = `
-      <div class="border-b border-[#DFE1E6] mb-4 flex items-center justify-between gap-4 flex-wrap bg-white px-4 pt-1 rounded-t-lg shadow-xs">
-        <!-- Tabs Navigation List -->
-        <div class="flex items-center gap-1 overflow-x-auto pb-[-1px]">
+      <nav aria-label="${submenu.title} tabs navigation" class="mb-4">
+        <div 
+          role="tablist" 
+          aria-label="${submenu.title} views" 
+          id="${containerId}-tablist"
+          class="flex items-center gap-1.5 overflow-x-auto bg-white p-1.5 rounded-lg border border-[#DFE1E6] shadow-2xs"
+        >
           ${submenu.tabs.map(tab => {
             const isActive = tab.id === currentTabId;
             return `
               <a 
+                id="tab-${tab.id}"
+                role="tab"
                 href="${tab.hash}" 
-                class="px-3.5 py-2.5 text-xs font-semibold whitespace-nowrap transition-all border-b-2 flex items-center gap-1.5 ${isActive ? 'tab-active border-[#0052CC] text-[#0052CC] bg-[#FAFBFC]' : 'border-transparent text-[#5E6C84] hover:text-[#172B4D] hover:border-[#DFE1E6]'}"
+                aria-selected="${isActive ? 'true' : 'false'}"
+                tabindex="${isActive ? '0' : '-1'}"
+                aria-controls="panel-${tab.id}"
+                class="px-3.5 py-1.5 min-h-[32px] text-xs font-semibold rounded-md whitespace-nowrap transition-all flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0052CC] focus-visible:ring-offset-1 ${isActive ? 'tab-active bg-[#0052CC] text-white shadow-2xs' : 'text-[#42526E] hover:text-[#0052CC] hover:bg-[#F4F5F7]'}"
               >
                 <span>${tab.label}</span>
-                ${tab.highlight ? `<span class="w-2 h-2 rounded-full bg-[#FFAB00]"></span>` : ''}
+                ${tab.highlight ? `
+                  <span class="w-1.5 h-1.5 rounded-full ${isActive ? 'bg-white' : 'bg-[#FFAB00]'}" aria-hidden="true"></span>
+                  <span class="sr-only">(Priority Feature)</span>
+                ` : ''}
               </a>
             `;
           }).join('')}
         </div>
-      </div>
+      </nav>
     `;
 
+    this.bindKeyboardNav(containerId);
+
     return { module, submenu, currentTabId };
+  },
+
+  bindKeyboardNav(containerId) {
+    const tablistEl = document.getElementById(`${containerId}-tablist`);
+    if (!tablistEl) return;
+
+    const tabElements = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
+    if (!tabElements.length) return;
+
+    tabElements.forEach((tabEl, index) => {
+      tabEl.addEventListener('keydown', (e) => {
+        let targetIndex = -1;
+
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          targetIndex = (index + 1) % tabElements.length;
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          targetIndex = (index - 1 + tabElements.length) % tabElements.length;
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          targetIndex = 0;
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          targetIndex = tabElements.length - 1;
+        } else if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          tabEl.click();
+          return;
+        }
+
+        if (targetIndex !== -1) {
+          const targetTab = tabElements[targetIndex];
+          targetTab.focus();
+          targetTab.click();
+        }
+      });
+    });
   }
 };

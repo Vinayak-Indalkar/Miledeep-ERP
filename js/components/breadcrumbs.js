@@ -37,15 +37,15 @@ export const Breadcrumbs = {
     }
 
     const html = `
-      <nav class="flex items-center gap-1.5 text-xs text-[#5E6C84] py-1 select-none flex-wrap" aria-label="Breadcrumb">
+      <nav class="flex items-center gap-1.5 text-xs text-[#0747A6] py-1 select-none flex-wrap" aria-label="Breadcrumb">
         ${crumbs.map((c, idx) => {
           const isLast = idx === crumbs.length - 1;
-          const separator = !isLast ? `<span class="text-[#8993A4] text-[10px]">/</span>` : '';
+          const separator = !isLast ? `<span class="text-[#0052CC]/40 font-bold text-[10px]">/</span>` : '';
           
           if (c.active || isLast || !c.hash) {
-            return `<span class="font-semibold text-[#172B4D] truncate max-w-xs">${c.label}</span> ${separator}`;
+            return `<span class="font-bold text-[#172B4D] truncate max-w-xs">${c.label}</span> ${separator}`;
           } else {
-            return `<a href="${c.hash}" class="hover:text-[#0052CC] hover:underline transition-colors truncate max-w-xs">${c.label}</a> ${separator}`;
+            return `<a href="${c.hash}" class="text-[#0052CC] hover:text-[#0747A6] hover:underline font-medium transition-colors truncate max-w-xs">${c.label}</a> ${separator}`;
           }
         }).join('')}
       </nav>

@@ -97,68 +97,15 @@ export const SetupView = {
           </div>
         </div>
 
-        <!-- Filter Bar -->
-        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs">
-          <div class="flex items-center justify-between pb-3 border-b border-[#EBECF0]">
-            <h3 class="text-sm font-bold text-[#172B4D]">Search & Filters</h3>
-            <div class="flex items-center gap-2">
-              <button id="users-toggle-filter-btn" class="px-2.5 py-1 text-xs font-semibold text-[#0052CC] hover:bg-[#DEEBFF] rounded transition-colors flex items-center gap-1.5 cursor-pointer">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                <span id="users-toggle-filter-text">Hide Filter</span>
-              </button>
-              <button id="btn-create-user-modal" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm cursor-pointer">
-                <span>Register New User</span>
-              </button>
-            </div>
+        <!-- Action Header -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-base font-bold text-[#172B4D]">Enterprise User Directory</h2>
+            <p class="text-xs text-[#5E6C84]">Manage user accounts, roles and facility permissions</p>
           </div>
-
-          <div id="users-filter-body" class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
-            <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SEARCH USER</label>
-              <input type="text" id="user-search-input" value="${this.activeFilter.searchTerm}" placeholder="Name, Email, Phone..." class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
-            </div>
-
-            <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">ROLE</label>
-              <select id="user-role-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="ALL">All Roles (Select)</option>
-                ${ERP_DATA.roles.map(r => `<option value="${r.name}" ${this.activeFilter.role === r.name ? 'selected' : ''}>${r.name}</option>`).join('')}
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">DEPARTMENT</label>
-              <select id="user-dept-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="ALL">All Departments</option>
-                <option value="Executive Management" ${this.activeFilter.department === 'Executive Management' ? 'selected' : ''}>Executive Management</option>
-                <option value="Quality Assurance" ${this.activeFilter.department === 'Quality Assurance' ? 'selected' : ''}>Quality Assurance</option>
-                <option value="Raw Material Purchase" ${this.activeFilter.department === 'Raw Material Purchase' ? 'selected' : ''}>Raw Material Purchase</option>
-                <option value="Processing Plant Operations" ${this.activeFilter.department === 'Processing Plant Operations' ? 'selected' : ''}>Plant Operations</option>
-                <option value="Coldstore & Warehousing" ${this.activeFilter.department === 'Coldstore & Warehousing' ? 'selected' : ''}>Coldstore & Warehousing</option>
-                <option value="Accounts & Finance" ${this.activeFilter.department === 'Accounts & Finance' ? 'selected' : ''}>Accounts & Finance</option>
-                <option value="Export Logistics" ${this.activeFilter.department === 'Export Logistics' ? 'selected' : ''}>Export Logistics</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">STATUS</label>
-              <select id="user-status-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="ALL">All Status</option>
-                <option value="Active" ${this.activeFilter.status === 'Active' ? 'selected' : ''}>Active</option>
-                <option value="Inactive" ${this.activeFilter.status === 'Inactive' ? 'selected' : ''}>Inactive</option>
-              </select>
-            </div>
-
-            <div class="flex items-end gap-2">
-              <button id="users-apply-filter-btn" class="btn-primary w-full py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                <span>Search</span>
-              </button>
-              <button id="users-reset-filter-btn" class="px-2.5 py-1.5 bg-[#EBECF0] hover:bg-[#DFE1E6] text-[#42526E] rounded text-xs font-semibold cursor-pointer">
-                Reset
-              </button>
-            </div>
-          </div>
+          <button id="btn-create-user-modal" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm cursor-pointer">
+            <span>Register New User</span>
+          </button>
         </div>
 
         <!-- Users Table Card -->
@@ -611,7 +558,7 @@ export const SetupView = {
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Save Changes',
+          label: 'Update',
           type: 'primary',
           onClick: (m) => {
             user.name = document.getElementById('edit-user-name')?.value || user.name;
@@ -733,7 +680,7 @@ export const SetupView = {
         <div class="p-4 overflow-y-auto space-y-4 flex-1">
           <!-- Profile Card -->
           <div class="p-3 border border-[#DFE1E6] rounded-xl bg-white space-y-2">
-            <h4 class="font-bold text-[#172B4D] border-b border-[#EBECF0] pb-1.5 uppercase text-[10px] tracking-wider text-[#5E6C84]">Personal & Access Details</h4>
+            <h4 class="font-bold text-[#172B4D] pb-1.5 uppercase text-[10px] tracking-wider text-[#5E6C84]">Personal & Access Details</h4>
             <div class="grid grid-cols-2 gap-2 text-xs">
               <div><span class="text-[#6B778C]">Email:</span> <div class="font-semibold text-[#172B4D]">${user.email}</div></div>
               <div><span class="text-[#6B778C]">Phone:</span> <div class="font-semibold text-[#172B4D]">${user.phone}</div></div>
@@ -746,7 +693,7 @@ export const SetupView = {
 
           <!-- Plant Clearances -->
           <div class="p-3 border border-[#DFE1E6] rounded-xl bg-white space-y-2">
-            <h4 class="font-bold text-[#172B4D] border-b border-[#EBECF0] pb-1.5 uppercase text-[10px] tracking-wider text-[#5E6C84]">Authorized Processing Units</h4>
+            <h4 class="font-bold text-[#172B4D] pb-1.5 uppercase text-[10px] tracking-wider text-[#5E6C84]">Authorized Processing Units</h4>
             <div class="flex items-center gap-1.5 flex-wrap">
               ${user.plantAccess.map(p => `<span class="lozenge lozenge-inprogress text-[11px]">${p}</span>`).join('')}
             </div>
@@ -754,7 +701,7 @@ export const SetupView = {
 
           <!-- Effective Permissions Matrix -->
           <div class="p-3 border border-[#DFE1E6] rounded-xl bg-white space-y-2">
-            <h4 class="font-bold text-[#172B4D] border-b border-[#EBECF0] pb-1.5 uppercase text-[10px] tracking-wider text-[#5E6C84]">Module Access Rights</h4>
+            <h4 class="font-bold text-[#172B4D] pb-1.5 uppercase text-[10px] tracking-wider text-[#5E6C84]">Module Access Rights</h4>
             <div class="divide-y divide-[#EBECF0] text-[11px]">
               ${ERP_DATA.modulePermissions.map(m => `
                 <div class="py-1.5 flex items-center justify-between">
@@ -801,7 +748,6 @@ export const SetupView = {
         <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs flex items-center justify-between flex-wrap gap-3">
           <div>
             <h3 class="text-sm font-bold text-[#172B4D]">Role-Based Access Control (RBAC)</h3>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Define persona permissions, functional authorities, and departmental security profiles.</p>
           </div>
           <button id="btn-create-role-modal" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm cursor-pointer">
             <span>Create New Role</span>
@@ -953,7 +899,7 @@ export const SetupView = {
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Save Role',
+          label: 'Update',
           type: 'primary',
           onClick: (m) => {
             role.name = document.getElementById('edit-role-name')?.value || role.name;
@@ -997,11 +943,7 @@ export const SetupView = {
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
             </div>
             <div>
-              <div class="flex items-center gap-2">
-                <h3 class="text-sm font-bold text-[#172B4D]">Enterprise Module Permission Matrix</h3>
-                <span class="lozenge lozenge-inprogress text-[10px]">${ERP_DATA.modulePermissions.length} Total Sub-Modules</span>
-              </div>
-              <p class="text-xs text-[#5E6C84]">Granular role-based access control across all 32 legacy domains and functional processing workflows.</p>
+              <h3 class="text-sm font-bold text-[#172B4D]">Enterprise Module Permission Matrix</h3>
             </div>
           </div>
 
@@ -1015,24 +957,8 @@ export const SetupView = {
           </div>
         </div>
 
-        <!-- Filter & Search Toolbar -->
-        <div class="bg-white rounded-xl border border-[#DFE1E6] p-3 shadow-2xs flex items-center justify-between flex-wrap gap-3 text-xs">
-          <div class="flex items-center gap-2 flex-1 max-w-lg">
-            <div class="relative flex-1">
-              <input 
-                type="text" 
-                id="perm-search-input" 
-                value="${this.permissionSearchTerm}" 
-                placeholder="Search sub-modules (e.g., Antibiotic, Deheading, Coldstore, BAP, Anti-Dumping)..." 
-                class="w-full text-xs pl-8 pr-3 py-1.5 bg-[#FAFBFC] border border-[#DFE1E6] rounded focus:bg-white focus:outline-none focus:border-[#0052CC]"
-              />
-              <svg class="w-3.5 h-3.5 text-[#6B778C] absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            </div>
-            <select id="perm-category-select" class="text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-              <option value="ALL">All Categories (${categories.length})</option>
-              ${categories.map(c => `<option value="${c}" ${this.permissionCategoryFilter === c ? 'selected' : ''}>${c}</option>`).join('')}
-            </select>
-          </div>
+        <!-- Action Toolbar -->
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-3 shadow-2xs flex items-center justify-end flex-wrap gap-3 text-xs">
 
           <!-- Bulk Quick Preset Actions -->
           <div class="flex items-center gap-2">
@@ -1206,7 +1132,6 @@ export const SetupView = {
         <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs flex items-center justify-between flex-wrap gap-2">
           <div>
             <h3 class="text-sm font-bold text-[#172B4D]">User Session & Security Audit Trail</h3>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Immutable tracking of user authentication, master data modifications, and authorization approvals.</p>
           </div>
           <button id="logs-export-btn" class="px-3 py-1.5 border border-[#DFE1E6] hover:bg-[#FAFBFC] rounded text-xs font-semibold text-[#42526E] flex items-center gap-1.5 cursor-pointer">
             <svg class="w-4 h-4 text-[#36B37E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>

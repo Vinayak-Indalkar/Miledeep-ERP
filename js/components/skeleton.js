@@ -92,7 +92,7 @@ export const Skeleton = {
     return `
       <div class="space-y-4 animate-fade-in select-none">
         <!-- Title & Action Bar Skeleton -->
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div class="space-y-2">
             <div class="skeleton-shimmer h-6 w-60 rounded"></div>
             <div class="skeleton-shimmer h-3.5 w-96 rounded"></div>

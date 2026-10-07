@@ -7,6 +7,7 @@ import { Modal } from '../components/modal.js';
 import { Toast } from '../components/toast.js';
 import { TabBar } from '../components/tabBar.js';
 import { Skeleton } from '../components/skeleton.js';
+import { renderEmptyState } from '../components/emptyState.js';
 
 export const PurchaseView = {
   // Store local state for CRUD & filter presets
@@ -149,15 +150,29 @@ export const PurchaseView = {
   ],
 
   commercialTxns: [
-    { txnId: 'CTX-2026-0041', date: '2026-10-04', supplier: 'Godavari Coastal Aqua Farms', description: 'Raw Material Harvest Intake Lot LOT-2026-00125', amountUsd: 9156, amountInr: 760000, type: 'PURCHASE_PAYABLE', status: 'POSTED' },
-    { txnId: 'CTX-2026-0040', date: '2026-10-03', supplier: 'Sagar Marine Hatcheries', description: 'Black Tiger Harvest Booking PB-2026-092 Advance', amountUsd: 5000, amountInr: 415000, type: 'ADVANCE_PAID', status: 'POSTED' },
-    { txnId: 'CTX-2026-0039', date: '2026-10-01', supplier: 'Krishna Delta Prawn Harvesters', description: 'Ice & Crate Transportation Settlement', amountUsd: 820, amountInr: 68060, type: 'LOGISTICS_FEE', status: 'CLEARED' }
+    { sNo: 1, txnId: 'CTX-2026-0045', date: '07/10/2026', rawDate: '2026-10-07', center: 'Visakhapatnam Gate Dock', supplier: 'Sri Sai Aqua Farms & Seedlings', agent: 'East Coast Brokers', description: 'Raw Material Intake Harvest Lot LOT-2026-00128', plant: 'DFL UNIT-1 (VSP)', amountInr: 1900000, amountUsd: 22891, type: 'PURCHASE_PAYABLE', status: 'PENDING' },
+    { sNo: 2, txnId: 'CTX-2026-0044', date: '06/10/2026', rawDate: '2026-10-06', center: 'Machilipatnam Delta #3', supplier: 'Krishna Delta Prawn Harvesters', agent: 'Direct Farmer', description: 'Coldstore Direct Staging Freight Reimbursement', plant: 'DFL UNIT-4 (PND)', amountInr: 120350, amountUsd: 1450, type: 'LOGISTICS_FEE', status: 'CLEARED' },
+    { sNo: 3, txnId: 'CTX-2026-0043', date: '06/10/2026', rawDate: '2026-10-06', center: 'Amalapuram Harvesters #4', supplier: 'Konaseema Marine Harvesters', agent: 'Coastal Marine Agency', description: 'Agent Procurement Commission Settlement #AG-104', plant: 'DFL UNIT-6 (JPT-II)', amountInr: 81340, amountUsd: 980, type: 'COMMISSION_FEE', status: 'SETTLED' },
+    { sNo: 4, txnId: 'CTX-2026-0042', date: '05/10/2026', rawDate: '2026-10-05', center: 'Ongole Coastal Hub #1', supplier: 'Nellore Brackish Aqua Cultivators', agent: 'Nellore Aqua Syndicate', description: 'Harvest Contract Booking Advance PB-2026-108', plant: 'DFL UNIT-2 (KKD)', amountInr: 498000, amountUsd: 6000, type: 'ADVANCE_PAID', status: 'POSTED' },
+    { sNo: 5, txnId: 'CTX-2026-0041', date: '04/10/2026', rawDate: '2026-10-04', center: 'Bhimavaram Center #1', supplier: 'Godavari Coastal Aqua Farms', agent: 'Delta Seafood Associates', description: 'Raw Material Harvest Intake Lot LOT-2026-00125', plant: 'DFL UNIT-5 (JPT)', amountInr: 760000, amountUsd: 9156, type: 'PURCHASE_PAYABLE', status: 'POSTED' },
+    { sNo: 6, txnId: 'CTX-2026-0040', date: '03/10/2026', rawDate: '2026-10-03', center: 'Kakinada Sea Intake #2', supplier: 'Sagar Marine Hatcheries & Cultivators', agent: 'Sagar Marine Brokers', description: 'Black Tiger Harvest Booking PB-2026-092 Advance', plant: 'DFL UNIT-3 (PSP)', amountInr: 415000, amountUsd: 5000, type: 'ADVANCE_PAID', status: 'POSTED' },
+    { sNo: 7, txnId: 'CTX-2026-0039', date: '01/10/2026', rawDate: '2026-10-01', center: 'Machilipatnam Delta #3', supplier: 'Krishna Delta Prawn Harvesters', agent: 'Direct Farmer', description: 'Ice & Crate Transportation Settlement', plant: 'DFL UNIT-4 (PND)', amountInr: 68060, amountUsd: 820, type: 'LOGISTICS_FEE', status: 'CLEARED' },
+    { sNo: 8, txnId: 'CTX-2026-0038', date: '30/09/2026', rawDate: '2026-09-30', center: 'Visakhapatnam Gate Dock', supplier: 'East Coast Aqua Society', agent: 'East Coast Brokers', description: 'Deep Sea Barramundi Lot Weighment Settlement', plant: 'DFL UNIT-1 (VSP)', amountInr: 576000, amountUsd: 6939, type: 'PURCHASE_PAYABLE', status: 'SETTLED' },
+    { sNo: 9, txnId: 'CTX-2026-0037', date: '28/09/2026', rawDate: '2026-09-28', center: 'Ongole Coastal Hub #1', supplier: 'Coastal Andhra Aquatics', agent: 'Nellore Aqua Syndicate', description: 'Section 194Q TDS Statutory Tax Provision', plant: 'DFL UNIT-2 (KKD)', amountInr: 25730, amountUsd: 310, type: 'TDS_PAYABLE', status: 'POSTED' },
+    { sNo: 10, txnId: 'CTX-2026-0036', date: '25/09/2026', rawDate: '2026-09-25', center: 'Bhimavaram Center #1', supplier: 'Godavari Coastal Aqua Farms', agent: 'Coastal Marine Agency', description: 'Grade Quality Yield Incentive Credit Bonus', plant: 'DFL UNIT-5 (JPT)', amountInr: 44820, amountUsd: 540, type: 'ADJUSTMENT_CREDIT', status: 'CLEARED' }
   ],
 
   paymentsList: [
-    { voucherNo: 'PAY-2026-051', paymentDate: '2026-10-04', supplierName: 'Godavari Coastal Aqua Farms', billNo: 'BILL-2026-118', bankRef: 'HDFC-RTGS-990184', amountInr: 380000, amountUsd: 4578, paymentMode: 'RTGS / Bank Wire', status: 'COMPLETED' },
-    { voucherNo: 'PAY-2026-048', paymentDate: '2026-10-02', supplierName: 'Sagar Marine Hatcheries', billNo: 'BILL-2026-117', bankRef: 'SBI-NEFT-440192', amountInr: 1085000, amountUsd: 13072, paymentMode: 'NEFT', status: 'COMPLETED' },
-    { voucherNo: 'PAY-2026-042', paymentDate: '2026-09-30', supplierName: 'Krishna Delta Prawn Harvesters', billNo: 'BILL-2026-115', bankRef: 'ICICI-IMPS-889102', amountInr: 1512000, amountUsd: 18216, paymentMode: 'Direct Bank Transfer', status: 'COMPLETED' }
+    { sNo: 1, voucherNo: 'PAY-2026-055', paymentDate: '07/10/2026', rawDate: '2026-10-07', center: 'Visakhapatnam Gate Dock', type: 'PURCHASE_PAYABLE', supplierName: 'Sri Sai Aqua Farms & Seedlings', agent: 'East Coast Brokers', plant: 'DFL UNIT-1 (VSP)', billNo: 'BILL-2026-121', bankRef: 'HDFC-RTGS-991204', amountInr: 1450000, amountUsd: 17469, paymentMode: 'RTGS / Bank Wire', status: 'COMPLETED' },
+    { sNo: 2, voucherNo: 'PAY-2026-054', paymentDate: '06/10/2026', rawDate: '2026-10-06', center: 'Machilipatnam Delta #3', type: 'LOGISTICS_FEE', supplierName: 'Krishna Delta Prawn Harvesters', agent: 'Direct Farmer', plant: 'DFL UNIT-4 (PND)', billNo: 'BILL-2026-120', bankRef: 'SBI-NEFT-881920', amountInr: 890000, amountUsd: 10722, paymentMode: 'NEFT', status: 'COMPLETED' },
+    { sNo: 3, voucherNo: 'PAY-2026-053', paymentDate: '06/10/2026', rawDate: '2026-10-06', center: 'Amalapuram Harvesters #4', type: 'COMMISSION_FEE', supplierName: 'Konaseema Marine Harvesters', agent: 'Coastal Marine Agency', plant: 'DFL UNIT-6 (JPT-II)', billNo: 'BILL-2026-119', bankRef: 'ICICI-IMPS-774019', amountInr: 520000, amountUsd: 6265, paymentMode: 'Direct Bank Transfer', status: 'PROCESSING' },
+    { sNo: 4, voucherNo: 'PAY-2026-052', paymentDate: '05/10/2026', rawDate: '2026-10-05', center: 'Ongole Coastal Hub #1', type: 'ADVANCE_PAID', supplierName: 'Nellore Brackish Aqua Cultivators', agent: 'Nellore Aqua Syndicate', plant: 'DFL UNIT-2 (KKD)', billNo: 'BILL-2026-116', bankRef: 'AXIS-RTGS-552910', amountInr: 1200000, amountUsd: 14457, paymentMode: 'RTGS / Bank Wire', status: 'COMPLETED' },
+    { sNo: 5, voucherNo: 'PAY-2026-051', paymentDate: '04/10/2026', rawDate: '2026-10-04', center: 'Bhimavaram Center #1', type: 'PURCHASE_PAYABLE', supplierName: 'Godavari Coastal Aqua Farms', agent: 'Delta Seafood Associates', plant: 'DFL UNIT-5 (JPT)', billNo: 'BILL-2026-118', bankRef: 'HDFC-RTGS-990184', amountInr: 380000, amountUsd: 4578, paymentMode: 'RTGS / Bank Wire', status: 'COMPLETED' },
+    { sNo: 6, voucherNo: 'PAY-2026-050', paymentDate: '03/10/2026', rawDate: '2026-10-03', center: 'Visakhapatnam Gate Dock', type: 'PURCHASE_PAYABLE', supplierName: 'East Coast Aqua Society', agent: 'East Coast Brokers', plant: 'DFL UNIT-1 (VSP)', billNo: 'BILL-2026-114', bankRef: 'SBI-NEFT-441029', amountInr: 350000, amountUsd: 4216, paymentMode: 'NEFT', status: 'PENDING' },
+    { sNo: 7, voucherNo: 'PAY-2026-049', paymentDate: '02/10/2026', rawDate: '2026-10-02', center: 'Ongole Coastal Hub #1', type: 'TDS_PAYABLE', supplierName: 'Coastal Andhra Aquatics', agent: 'Nellore Aqua Syndicate', plant: 'DFL UNIT-2 (KKD)', billNo: 'BILL-2026-113', bankRef: 'CANARA-CHQ-104921', amountInr: 410000, amountUsd: 4939, paymentMode: 'Cheque Disbursement', status: 'HELD' },
+    { sNo: 8, voucherNo: 'PAY-2026-048', paymentDate: '02/10/2026', rawDate: '2026-10-02', center: 'Kakinada Sea Intake #2', type: 'ADVANCE_PAID', supplierName: 'Sagar Marine Hatcheries & Cultivators', agent: 'Sagar Marine Brokers', plant: 'DFL UNIT-3 (PSP)', billNo: 'BILL-2026-117', bankRef: 'SBI-NEFT-440192', amountInr: 1085000, amountUsd: 13072, paymentMode: 'NEFT', status: 'COMPLETED' },
+    { sNo: 9, voucherNo: 'PAY-2026-045', paymentDate: '01/10/2026', rawDate: '2026-10-01', center: 'Visakhapatnam Gate Dock', type: 'PURCHASE_PAYABLE', supplierName: 'Sri Sai Aqua Farms & Seedlings', agent: 'East Coast Brokers', plant: 'DFL UNIT-1 (VSP)', billNo: 'BILL-2026-112', bankRef: 'HDFC-RTGS-330192', amountInr: 950000, amountUsd: 11445, paymentMode: 'RTGS / Bank Wire', status: 'COMPLETED' },
+    { sNo: 10, voucherNo: 'PAY-2026-042', paymentDate: '30/09/2026', rawDate: '2026-09-30', center: 'Machilipatnam Delta #3', type: 'PURCHASE_PAYABLE', supplierName: 'Krishna Delta Prawn Harvesters', agent: 'Direct Farmer', plant: 'DFL UNIT-4 (PND)', billNo: 'BILL-2026-115', bankRef: 'ICICI-IMPS-889102', amountInr: 1512000, amountUsd: 18216, paymentMode: 'Direct Bank Transfer', status: 'COMPLETED' }
   ],
 
   centersList: [
@@ -191,20 +206,22 @@ export const PurchaseView = {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    // Render On-Screen Tabs Header
+    // Render On-Screen Tabs Header (omitted for Payments submenu as requested)
+    const isPayments = (activeHash || '').includes('/payments') || subPage === 'payment-summary' || subPage === 'bill-date-payment';
+
     container.innerHTML = `
-      <div id="purchase-tab-bar-container"></div>
+      ${!isPayments ? '<div id="purchase-tab-bar-container"></div>' : ''}
       <div id="purchase-subpage-content"></div>
     `;
 
-    TabBar.render('purchase-tab-bar-container', activeHash);
+    if (!isPayments) {
+      TabBar.render('purchase-tab-bar-container', activeHash);
+    }
     const subContainer = document.getElementById('purchase-subpage-content');
 
     // Display instant Skeleton Shimmer Placeholder matching the target tab
-    if (subPage === 'rm-dashboard') {
+    if (subPage === 'rm-dashboard' || subPage === 'commercial-dashboard') {
       subContainer.innerHTML = Skeleton.renderDashboard();
-    } else if (subPage === 'commercial-dashboard') {
-      subContainer.innerHTML = Skeleton.renderReportsGrid();
     } else {
       subContainer.innerHTML = Skeleton.renderTable(6, 6);
     }
@@ -263,10 +280,16 @@ export const PurchaseView = {
   renderRMDashboard(container) {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
+        <!-- Top Page Title Header -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+          <div>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Raw Material Dashboard</h1>
+          </div>
+        </div>
         
         <!-- Main Dashboard Header Card with Collapsible Filters -->
         <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs">
-          <div class="flex items-center justify-between pb-3 border-b border-[#EBECF0]">
+          <div class="flex items-center justify-between pb-1">
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
               <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
@@ -279,7 +302,7 @@ export const PurchaseView = {
                 <span>Reset</span>
               </button>
 
-              <button type="button" onclick="const b = document.getElementById('rm-filter-body'); const t = this.querySelector('.rm-toggle-text'); const ic = this.querySelector('svg'); b.classList.toggle('hidden'); if(b.classList.contains('hidden')){ t.innerText='Show Filter'; ic.classList.add('-rotate-90'); this.className='text-xs font-semibold text-[#5E6C84] bg-[#FAFBFC] hover:bg-[#EBECF0] px-3 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer'; } else { t.innerText='Hide Filter'; ic.classList.remove('-rotate-90'); this.className='text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer'; }" class="text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+              <button type="button" onclick="const b = document.getElementById('rm-filter-body'); const t = this.querySelector('.rm-toggle-text'); const ic = this.querySelector('svg'); const h = b ? b.previousElementSibling : null; b.classList.toggle('hidden'); if(b.classList.contains('hidden')){ t.innerText='Show Filter'; ic.classList.add('-rotate-90'); if(h){ h.classList.remove('pb-1'); h.classList.add('pb-0'); } this.className='text-xs font-semibold text-[#5E6C84] bg-[#FAFBFC] hover:bg-[#EBECF0] px-3 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer'; } else { t.innerText='Hide Filter'; ic.classList.remove('-rotate-90'); if(h){ h.classList.add('pb-1'); h.classList.remove('pb-0'); } this.className='text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer'; }" class="text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
                 <svg class="w-3.5 h-3.5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 <span class="rm-toggle-text">Hide Filter</span>
               </button>
@@ -287,7 +310,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid -->
-          <div id="rm-filter-body" class="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs transition-all duration-200">
+          <div id="rm-filter-body" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SPECIES</label>
               <select class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
@@ -321,16 +344,26 @@ export const PurchaseView = {
 
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">FROM DATE</label>
-              <input type="text" value="${new Date().toLocaleDateString('en-GB')}" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <div class="erp-date-wrapper">
+                <input type="date" value="2026-10-05" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
             </div>
 
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">TO DATE</label>
-              <input type="text" value="${new Date().toLocaleDateString('en-GB')}" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <div class="erp-date-wrapper">
+                <input type="date" value="2026-10-06" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
             </div>
 
-            <div class="flex items-end gap-2">
-              <button onclick="Toast.show('Dashboard filters applied successfully', 'info');" class="btn-primary w-full py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
+            <div class="flex items-end">
+              <button onclick="Toast.show('Dashboard filters applied successfully', 'info');" class="btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <span>Search</span>
               </button>
@@ -431,7 +464,7 @@ export const PurchaseView = {
 
         <!-- Section 3 from Screenshot 3: Time Vs Price Analysis + Abstract Cards -->
         <div class="bg-white p-4 rounded-xl border border-[#DFE1E6] shadow-xs space-y-4">
-          <div class="flex items-center justify-between flex-wrap gap-2 border-b border-[#EBECF0] pb-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
             <div>
               <h3 class="font-bold text-base text-[#172B4D]">Time Vs Price Analysis</h3>
               <p class="text-xs text-[#6B778C]">Daily trend curves across count sizes (80, 90, 100 counts/kg)</p>
@@ -630,132 +663,281 @@ export const PurchaseView = {
   },
 
   // =========================================================================
-  // SUB MENU: DASHBOARD -> TAB 2: COMMERCIAL DASHBOARD + PURCHASE REPORTS GRID
+  // =========================================================================
+  // SUB MENU: DASHBOARD -> TAB 2: COMMERCIAL DASHBOARD (SCREENSHOT MATCHING)
   // =========================================================================
   renderCommercialDashboard(container) {
-    container.innerHTML = `
-      <div class="space-y-5 animate-fade-in">
-        <!-- Purchase Reports Grid matching Screenshot 4 -->
-        <div class="bg-white p-5 rounded-xl border border-[#DFE1E6] shadow-xs">
-          <h2 class="text-base font-extrabold text-[#172B4D] mb-4 flex items-center gap-2 border-b border-[#EBECF0] pb-2.5">
-            <span>Purchase Reports</span>
-            <span class="lozenge lozenge-purple text-[10px]">15 Report Extractors Active</span>
-          </h2>
+    // Station Data Dictionary matching the exact screenshot metrics
+    const stationData = {
+      'ALL': {
+        name: 'All Purchase Station',
+        totalLots: 152,
+        abLots: 0,
+        returnLots: 0,
+        borderCounts: 85,
+        gradingPendings: 133,
+        billPendings: 69,
+        purchaseQtyTotal: '293.35',
+        siteWeightment: '208.13T',
+        siteWeightmentVal: 208.13,
+        plantWeightment: '85.22T',
+        plantWeightmentVal: 85.22,
+        dailyLabels: ['01-10-26', '01-10-26', '02-10-26', '05-10-26'],
+        dailyData: [30.00, 165.00, 90.00, 0.00],
+        headlessTotal: '207.34',
+        honQty: '293.35',
+        honPacked: '0',
+        avgYield: '70.68',
+        headlessBars: [
+          0.8, 1.2, 3.4, 0.5, 2.1, 7.8, 0.9, 14.5, 0.8, 22.4,
+          16.8, 21.2, 2.3, 0.9, 2.5, 8.2, 0.9, 2.1, 3.6, 6.2,
+          1.8, 4.2, 5.1, 1.4, 0.7, 1.5, 0.6, 0.4, 0.2, 0.5
+        ],
+        suppliersCount: 55,
+        suppliersList: [
+          { name: 'P BABUJI', lots: 6 },
+          { name: 'MAA SAREI TRADERS', lots: 5 },
+          { name: 'PERICHERLA AVINASH', lots: 4 },
+          { name: 'SAIKRISHNAAGROFARMS', lots: 3 },
+          { name: 'VARSHITHA TRADERS', lots: 3 },
+          { name: 'DEVI FISHERIES LIMITED', lots: 3 },
+          { name: 'RAMESH CHANDRA SARAKAR', lots: 2 },
+          { name: 'PRASANTHI AQUA FEEDS', lots: 2 },
+          { name: 'K.V.RAMA RAJU', lots: 2 },
+          { name: 'MEENAKSHI FISHERIES', lots: 2 },
+          { name: 'M.V.S.R.S.Y.PRASAD RAJU', lots: 2 },
+          { name: 'K.SRINIVAS', lots: 2 },
+          { name: 'SRAVANTHI AQUA FARMS', lots: 2 },
+          { name: 'DATLA KIRAN KUMAR RAJU', lots: 2 },
+          { name: 'P.SRINIVASA RAO', lots: 2 },
+          { name: 'VIJAYA LAKSHMI ENTERPRISES', lots: 2 },
+          { name: 'P.VAMSI KRISHNA RAJU', lots: 1 },
+          { name: 'P.RAMARAO', lots: 1 },
+          { name: 'P.CHINTA RAO', lots: 1 },
+          { name: 'P.BHASKARRAO', lots: 1 },
+          { name: 'P V R ENTERPRISES', lots: 1 },
+          { name: 'DEVI AQUA TRADERS', lots: 1 },
+          { name: 'CH.CHANDRA SEKHAR', lots: 1 },
+          { name: 'B.SRINIVASA RAO', lots: 1 },
+          { name: 'BH.SRINIVASA RAO', lots: 1 },
+          { name: 'INDRA TRADERS (KINDRA VENKATA)', lots: 1 },
+          { name: 'VATTURI CHANDRAKALA', lots: 1 },
+          { name: 'K.GOPAL NAIDU', lots: 1 },
+          { name: 'BIO BELL', lots: 1 },
+          { name: 'ANUSHA', lots: 1 },
+          { name: 'Other Active Suppliers (25)', lots: 93 }
+        ]
+      },
+      'SKM': {
+        name: 'Srikakulam Station (SKM)',
+        totalLots: 48,
+        abLots: 0,
+        returnLots: 0,
+        borderCounts: 28,
+        gradingPendings: 42,
+        billPendings: 21,
+        purchaseQtyTotal: '94.60',
+        siteWeightment: '68.20T',
+        siteWeightmentVal: 68.20,
+        plantWeightment: '26.40T',
+        plantWeightmentVal: 26.40,
+        dailyLabels: ['01-10-26', '01-10-26', '02-10-26', '05-10-26'],
+        dailyData: [12.00, 52.00, 30.60, 0.00],
+        headlessTotal: '66.85',
+        honQty: '94.60',
+        honPacked: '0',
+        avgYield: '70.66',
+        headlessBars: [
+          0.3, 0.4, 1.1, 0.2, 0.7, 2.5, 0.3, 4.6, 0.3, 7.2,
+          5.4, 6.8, 0.8, 0.3, 0.8, 2.6, 0.3, 0.7, 1.2, 2.0,
+          0.6, 1.3, 1.6, 0.5, 0.2, 0.5, 0.2, 0.1, 0.1, 0.2
+        ],
+        suppliersCount: 18,
+        suppliersList: [
+          { name: 'P BABUJI', lots: 4 },
+          { name: 'MAA SAREI TRADERS', lots: 3 },
+          { name: 'SAIKRISHNAAGROFARMS', lots: 3 },
+          { name: 'RAMESH CHANDRA SARAKAR', lots: 2 },
+          { name: 'VARSHITHA TRADERS', lots: 2 },
+          { name: 'Other Active Suppliers (13)', lots: 34 }
+        ]
+      },
+      'RPL': {
+        name: 'Rajahmundry Plant (RPL)',
+        totalLots: 36,
+        abLots: 0,
+        returnLots: 0,
+        borderCounts: 19,
+        gradingPendings: 31,
+        billPendings: 16,
+        purchaseQtyTotal: '68.45',
+        siteWeightment: '48.15T',
+        siteWeightmentVal: 48.15,
+        plantWeightment: '20.30T',
+        plantWeightmentVal: 20.30,
+        dailyLabels: ['01-10-26', '01-10-26', '02-10-26', '05-10-26'],
+        dailyData: [8.00, 38.45, 22.00, 0.00],
+        headlessTotal: '48.38',
+        honQty: '68.45',
+        honPacked: '0',
+        avgYield: '70.68',
+        headlessBars: [
+          0.2, 0.3, 0.8, 0.1, 0.5, 1.8, 0.2, 3.4, 0.2, 5.2,
+          3.9, 4.9, 0.5, 0.2, 0.6, 1.9, 0.2, 0.5, 0.8, 1.4,
+          0.4, 1.0, 1.2, 0.3, 0.2, 0.3, 0.1, 0.1, 0.1, 0.1
+        ],
+        suppliersCount: 14,
+        suppliersList: [
+          { name: 'PERICHERLA AVINASH', lots: 4 },
+          { name: 'DEVI FISHERIES LIMITED', lots: 3 },
+          { name: 'PRASANTHI AQUA FEEDS', lots: 2 },
+          { name: 'MEENAKSHI FISHERIES', lots: 2 },
+          { name: 'Other Active Suppliers (10)', lots: 25 }
+        ]
+      },
+      'KKD': {
+        name: 'Kakinada Dock (KKD)',
+        totalLots: 38,
+        abLots: 0,
+        returnLots: 0,
+        borderCounts: 22,
+        gradingPendings: 34,
+        billPendings: 18,
+        purchaseQtyTotal: '72.80',
+        siteWeightment: '51.90T',
+        siteWeightmentVal: 51.90,
+        plantWeightment: '20.90T',
+        plantWeightmentVal: 20.90,
+        dailyLabels: ['01-10-26', '01-10-26', '02-10-26', '05-10-26'],
+        dailyData: [6.00, 42.80, 24.00, 0.00],
+        headlessTotal: '51.45',
+        honQty: '72.80',
+        honPacked: '0',
+        avgYield: '70.67',
+        headlessBars: [
+          0.2, 0.3, 0.9, 0.1, 0.5, 2.0, 0.2, 3.6, 0.2, 5.6,
+          4.2, 5.3, 0.6, 0.2, 0.6, 2.1, 0.2, 0.5, 0.9, 1.5,
+          0.5, 1.0, 1.3, 0.4, 0.2, 0.4, 0.1, 0.1, 0.1, 0.1
+        ],
+        suppliersCount: 15,
+        suppliersList: [
+          { name: 'K.V.RAMA RAJU', lots: 2 },
+          { name: 'M.V.S.R.S.Y.PRASAD RAJU', lots: 2 },
+          { name: 'DATLA KIRAN KUMAR RAJU', lots: 2 },
+          { name: 'SRAVANTHI AQUA FARMS', lots: 2 },
+          { name: 'Other Active Suppliers (11)', lots: 30 }
+        ]
+      },
+      'BVM': {
+        name: 'Bhimavaram Center (BVM)',
+        totalLots: 30,
+        abLots: 0,
+        returnLots: 0,
+        borderCounts: 16,
+        gradingPendings: 26,
+        billPendings: 14,
+        purchaseQtyTotal: '57.50',
+        siteWeightment: '39.88T',
+        siteWeightmentVal: 39.88,
+        plantWeightment: '17.62T',
+        plantWeightmentVal: 17.62,
+        dailyLabels: ['01-10-26', '01-10-26', '02-10-26', '05-10-26'],
+        dailyData: [4.00, 31.75, 13.40, 0.00],
+        headlessTotal: '40.66',
+        honQty: '57.50',
+        honPacked: '0',
+        avgYield: '70.71',
+        headlessBars: [
+          0.1, 0.2, 0.7, 0.1, 0.4, 1.5, 0.2, 2.8, 0.2, 4.4,
+          3.3, 4.2, 0.5, 0.2, 0.5, 1.6, 0.2, 0.4, 0.7, 1.2,
+          0.4, 0.8, 1.0, 0.3, 0.1, 0.3, 0.1, 0.1, 0.1, 0.1
+        ],
+        suppliersCount: 12,
+        suppliersList: [
+          { name: 'P.SRINIVASA RAO', lots: 2 },
+          { name: 'VIJAYA LAKSHMI ENTERPRISES', lots: 2 },
+          { name: 'K.SRINIVAS', lots: 2 },
+          { name: 'Other Active Suppliers (9)', lots: 24 }
+        ]
+      },
+      'VSP': {
+        name: 'Visakhapatnam Gate (VSP)',
+        totalLots: 24,
+        abLots: 0,
+        returnLots: 0,
+        borderCounts: 12,
+        gradingPendings: 18,
+        billPendings: 10,
+        purchaseQtyTotal: '45.20',
+        siteWeightment: '31.50T',
+        siteWeightmentVal: 31.50,
+        plantWeightment: '13.70T',
+        plantWeightmentVal: 13.70,
+        dailyLabels: ['01-10-26', '01-10-26', '02-10-26', '05-10-26'],
+        dailyData: [3.00, 24.20, 18.00, 0.00],
+        headlessTotal: '31.95',
+        honQty: '45.20',
+        honPacked: '0',
+        avgYield: '70.69',
+        headlessBars: [
+          0.1, 0.2, 0.5, 0.1, 0.3, 1.2, 0.2, 2.2, 0.2, 3.5,
+          2.6, 3.3, 0.4, 0.1, 0.4, 1.3, 0.1, 0.3, 0.6, 0.9,
+          0.3, 0.6, 0.8, 0.2, 0.1, 0.2, 0.1, 0.1, 0.1, 0.1
+        ],
+        suppliersCount: 10,
+        suppliersList: [
+          { name: 'DEVI AQUA TRADERS', lots: 2 },
+          { name: 'CH.CHANDRA SEKHAR', lots: 2 },
+          { name: 'B.SRINIVASA RAO', lots: 2 },
+          { name: 'Other Active Suppliers (7)', lots: 18 }
+        ]
+      }
+    };
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
-            ${this.purchaseReportsList.map(rpt => `
-              <div 
-                class="purchase-report-card bg-[#FAFBFC] hover:bg-white border border-[#DFE1E6] hover:border-[#0052CC] p-3.5 rounded-lg transition-all shadow-2xs hover:shadow cursor-pointer flex flex-col justify-between group"
-                data-report-title="${rpt.title}"
-              >
-                <div>
-                  <div class="w-8 h-8 rounded-md ${rpt.color} flex items-center justify-center text-sm font-bold mb-2 shadow-2xs">
-                    ${rpt.icon}
-                  </div>
-                  <h4 class="font-bold text-xs text-[#172B4D] group-hover:text-[#0052CC] transition-colors leading-tight">${rpt.title}</h4>
-                  <p class="text-[10px] text-[#6B778C] mt-1 leading-snug">${rpt.desc}</p>
-                </div>
-                <div class="mt-3 pt-2 border-t border-[#EBECF0] flex items-center justify-between text-[10px] text-[#0052CC] font-semibold opacity-80 group-hover:opacity-100">
-                  <span>Generate Extract</span>
-                  <span>→</span>
-                </div>
-              </div>
-            `).join('')}
+    const pieColors = [
+      '#FF7043', '#42A5F5', '#66BB6A', '#FFA726', '#AB47BC', '#26C6DA', '#EC407A', '#5C6BC0',
+      '#9CCC65', '#FFCA28', '#26A69A', '#7E57C2', '#FF8A65', '#29B6F6', '#81C784', '#FFB74D',
+      '#BA68C8', '#4DD0E1', '#F06292', '#7986CB', '#AED581', '#FFD54F', '#4DB6AC', '#9575CD',
+      '#FFAB91', '#4FC3F7', '#A5D6A7', '#FFE082', '#CE93D8', '#80DEEA', '#F48FB1', '#9FA8DA'
+    ];
+
+    // Render Clean Container Layout matching Screenshot Exactly
+    container.innerHTML = `
+      <div class="space-y-4 animate-fade-in text-[#172B4D]">
+        <!-- Top Page Title Header -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+          <div>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Commercial Dashboard</h1>
           </div>
         </div>
 
-        <!-- Commercial Benchmark CRUD Table -->
-        <div id="commercial-rates-table-container"></div>
-      </div>
-    `;
-
-    const ratesTable = new DataTable({
-      containerId: 'commercial-rates-table-container',
-      data: this.commercialRates,
-      keyField: 'id',
-      tableTitle: 'Active Species & Count-Wise Procurement Price Benchmarks (CRUD)',
-      columns: [
-        { field: 'id', header: 'Rate ID', render: (v) => `<span class=" font-bold text-[#0052CC]">${v}</span>` },
-        { field: 'species', header: 'Species' },
-        { field: 'count', header: 'Count / Grade' },
-        { field: 'rateInr', header: 'Benchmark Rate (INR)', render: (v) => `<span class="font-bold">₹ ${v} / KG</span>` },
-        { field: 'rateUsd', header: 'USD Equivalent', render: (v) => `<span class=" text-[#006644] font-bold">$ ${v.toFixed(2)}</span>` },
-        { field: 'effectiveDate', header: 'Effective Date' },
-        { field: 'status', header: 'Status', type: 'status' }
-      ],
-      actions: [
-        {
-          label: 'Edit',
-          icon: `<svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
-          onClick: (row) => PurchaseView.openEditCommercialRateModal(row, ratesTable)
-        },
-        {
-          label: 'Delete',
-          icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
-          onClick: (row) => PurchaseView.deleteCommercialRate(row, ratesTable)
-        }
-      ]
-    });
-
-    // Report Card click simulation
-    document.querySelectorAll('.purchase-report-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const title = card.dataset.reportTitle;
-        Modal.open({
-          title: `Generated Extract: ${title}`,
-          size: 'md',
-          content: `
-            <div class="space-y-3 text-xs">
-              <div class="p-3 bg-[#DEEBFF] text-[#0747A6] rounded border border-[#B3D4FF]">
-                <strong>Report Generated:</strong> Extraction for <strong>${title}</strong> covering FY 2026-2027 cycle completed with 151 records.
-              </div>
-              <div class="grid grid-cols-2 gap-2">
-                <div class="p-2 border border-[#EBECF0] rounded">
-                  <span class="text-[#6B778C]">Total Records:</span>
-                  <div class="font-bold text-[#172B4D]">151 Lots</div>
-                </div>
-                <div class="p-2 border border-[#EBECF0] rounded">
-                  <span class="text-[#6B778C]">Total Weight:</span>
-                  <div class="font-bold  text-[#006644]">142,500 KG</div>
-                </div>
-              </div>
-            </div>
-          `,
-          footerButtons: [
-            { label: 'Download CSV', type: 'primary', onClick: (m) => { m.close(); Toast.show(`${title} CSV downloaded.`, 'success'); } },
-            { label: 'Close', type: 'secondary', onClick: (m) => m.close() }
-          ]
-        });
-      });
-    });
-  },
-
-  // =========================================================================
-  // SUB MENU: OPERATIONS -> TAB 1: LOT TRACKING
-  // =========================================================================
-  renderLotTracking(container) {
-    container.innerHTML = `
-      <div class="space-y-4 animate-fade-in">
-        <!-- PURCHASE DETAILS Filter Card matching Screenshot -->
+        <!-- Collapsible Search & Filters Card -->
         <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs">
-          <div class="flex items-center justify-between pb-3 border-b border-[#EBECF0]">
+          <div class="flex items-center justify-between pb-1">
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-              <h3 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">PURCHASE DETAILS</h3>
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+              <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
             </div>
-            
+
+            <!-- Filter Controls: Reset & Toggle Open/Close -->
             <div class="flex items-center gap-2">
-              <button id="btn-create-lot-modal" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs">
-                <span>Register New Lot</span>
+              <button type="button" id="comm-filter-reset-btn" class="text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] hover:bg-[#F4F5F7] px-2.5 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-colors cursor-pointer" title="Reset all filters">
+                <svg class="w-3.5 h-3.5 text-[#6B778C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                <span>Reset</span>
+              </button>
+
+              <button type="button" id="comm-filter-toggle-btn" class="text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+                <svg class="w-3.5 h-3.5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <span class="comm-toggle-text">Hide Filter</span>
               </button>
             </div>
           </div>
 
-          <!-- Filter Controls -->
-          <div class="mt-4 grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+          <!-- Collapsible Filter Inputs Grid -->
+          <div id="comm-filter-body" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">PURCHASE STATION</label>
-              <select id="lot-station-filter" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
+              <select id="comm-station-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
                 <option value="ALL">All Purchase Station</option>
                 <option value="SKM">Srikakulam Station (SKM)</option>
                 <option value="RPL">Rajahmundry Plant (RPL)</option>
@@ -766,36 +948,638 @@ export const PurchaseView = {
             </div>
 
             <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">YEAR</label>
+              <select id="comm-year-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+              </select>
+            </div>
+
+            <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">MONTH</label>
-              <select id="lot-month-filter" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
-                <option selected>October</option>
-                <option>September</option>
-                <option>August</option>
-                <option>July</option>
-                <option>June</option>
-                <option>May</option>
-                <option>April</option>
-                <option>March</option>
-                <option>February</option>
-                <option>January</option>
-                <option>December</option>
-                <option>November</option>
+              <select id="comm-month-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="October">October</option>
+                <option value="September">September</option>
+                <option value="August">August</option>
+                <option value="July">July</option>
+                <option value="June">June</option>
+                <option value="May">May</option>
+                <option value="April">April</option>
+                <option value="March">March</option>
+                <option value="February">February</option>
+                <option value="January">January</option>
+                <option value="December">December</option>
+                <option value="November">November</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">FROM DATE</label>
+              <div class="erp-date-wrapper">
+                <input type="date" id="comm-from-date" value="2026-10-01" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">TO DATE</label>
+              <div class="erp-date-wrapper">
+                <input type="date" id="comm-to-date" value="2026-10-06" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Second Row: Search Button -->
+            <div class="lg:col-span-5 flex items-center justify-start pt-1">
+              <button type="button" id="comm-search-btn" class="btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Dashboard Content Grid -->
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-4 items-start">
+          <!-- Left Main Area (KPIs + Daily Bar + Headless Details) -->
+          <div class="xl:col-span-8 space-y-4">
+            <!-- 6 KPI Dashlet Cards Grid (2 rows x 3 columns) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              <!-- Total Lots (Blue) -->
+              <div class="bg-gradient-to-r from-[#DEEBFF]/80 to-white border border-[#B3D4FF] rounded-xl p-4 shadow-xs flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#0052CC] uppercase tracking-wider">TOTAL LOTS</span>
+                  <div class="text-2xl font-black text-[#172B4D] mt-1" id="comm-kpi-total-lots">152</div>
+                </div>
+                <div class="w-10 h-10 rounded-lg bg-[#B3D4FF]/60 flex items-center justify-center text-[#0052CC]">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                </div>
+              </div>
+
+              <!-- AB+ Lots (Green) -->
+              <div class="bg-gradient-to-r from-[#E3FCEF]/80 to-white border border-[#ABF5D1] rounded-xl p-4 shadow-xs flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#006644] uppercase tracking-wider">AB+ LOTS</span>
+                  <div class="text-2xl font-black text-[#172B4D] mt-1" id="comm-kpi-ab-lots">0</div>
+                </div>
+                <div class="w-10 h-10 rounded-lg bg-[#ABF5D1]/60 flex items-center justify-center text-[#006644]">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18v4H3V3zm2 4v13a1 1 0 001 1h12a1 1 0 001-1V7M9 11v6m6-6v6"/></svg>
+                </div>
+              </div>
+
+              <!-- Return Lots (Red) -->
+              <div class="bg-gradient-to-r from-[#FFEBE6]/80 to-white border border-[#FFBDAD] rounded-xl p-4 shadow-xs flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#BF2600] uppercase tracking-wider">RETURN LOTS</span>
+                  <div class="text-2xl font-black text-[#BF2600] mt-1" id="comm-kpi-return-lots">0</div>
+                </div>
+                <div class="w-10 h-10 rounded-lg bg-[#FFBDAD]/60 flex items-center justify-center text-[#BF2600]">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                </div>
+              </div>
+
+              <!-- Border Counts (Purple) -->
+              <div class="bg-gradient-to-r from-[#EAE6FF]/80 to-white border border-[#C0B6F2] rounded-xl p-4 shadow-xs flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#5243AA] uppercase tracking-wider">BORDER COUNTS</span>
+                  <div class="text-2xl font-black text-[#172B4D] mt-1" id="comm-kpi-border-counts">85</div>
+                </div>
+                <div class="w-10 h-10 rounded-lg bg-[#C0B6F2]/60 flex items-center justify-center text-[#5243AA]">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                </div>
+              </div>
+
+              <!-- Grading Pendings (Amber/Yellow) -->
+              <div class="bg-gradient-to-r from-[#FFF0B3]/80 to-white border border-[#FFE380] rounded-xl p-4 shadow-xs flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#8F4D00] uppercase tracking-wider">GRADING PENDINGS</span>
+                  <div class="text-2xl font-black text-[#8F4D00] mt-1" id="comm-kpi-grading-pendings">133</div>
+                </div>
+                <div class="w-10 h-10 rounded-lg bg-[#FFE380]/60 flex items-center justify-center text-[#8F4D00]">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+              </div>
+
+              <!-- Bill Pendings (Cyan/Teal) -->
+              <div class="bg-gradient-to-r from-[#E6FCFF]/80 to-white border border-[#B6F0FF] rounded-xl p-4 shadow-xs flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#008DA6] uppercase tracking-wider">BILL PENDINGS</span>
+                  <div class="text-2xl font-black text-[#008DA6] mt-1" id="comm-kpi-bill-pendings">69</div>
+                </div>
+                <div class="w-10 h-10 rounded-lg bg-[#B6F0FF]/60 flex items-center justify-center text-[#008DA6]">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Daily Purchase Analytics Bar Chart -->
+            <div class="bg-white p-4 rounded-xl border border-[#DFE1E6] shadow-2xs">
+              <h3 class="font-bold text-sm text-[#172B4D] mb-3">Daily Purchase Analytics</h3>
+              <div class="h-[210px] w-full">
+                <canvas id="comm-daily-purchase-canvas"></canvas>
+              </div>
+            </div>
+
+            <!-- Headless Details Bar Chart with Checkbox Legend -->
+            <div class="bg-white p-4 rounded-xl border border-[#DFE1E6] shadow-2xs">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-bold text-sm text-[#172B4D]">Headless Details - <span id="comm-headless-total">207.34</span> T</h3>
+              </div>
+              <div class="h-[190px] w-full">
+                <canvas id="comm-headless-canvas"></canvas>
+              </div>
+              <div class="mt-3 pt-3 border-t border-[#F4F5F7] flex flex-wrap items-center justify-around gap-4 text-xs font-semibold text-[#172B4D]">
+                <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+                  <input type="checkbox" id="comm-chk-hon-qty" checked class="w-4 h-4 rounded text-[#0052CC] focus:ring-[#0052CC] border-[#DFE1E6]" />
+                  <span>Hon Qty- <span id="comm-val-hon-qty">293.35</span> T</span>
+                </label>
+                <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+                  <input type="checkbox" id="comm-chk-hon-packed" checked class="w-4 h-4 rounded text-[#0052CC] focus:ring-[#0052CC] border-[#DFE1E6]" />
+                  <span>Hon Packed- <span id="comm-val-hon-packed">0</span> T</span>
+                </label>
+                <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+                  <input type="checkbox" id="comm-chk-avg-yield" checked class="w-4 h-4 rounded text-[#0052CC] focus:ring-[#0052CC] border-[#DFE1E6]" />
+                  <span>Avg Yield- <span id="comm-val-avg-yield">70.68</span> %</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (Purchase Quantity Donut + Suppliers Pie) -->
+          <div class="xl:col-span-4 space-y-4">
+            <!-- Purchase Quantity Card with Donut Chart -->
+            <div class="bg-white p-4 rounded-xl border border-[#DFE1E6] shadow-2xs flex flex-col justify-between">
+              <h3 class="font-bold text-sm text-[#172B4D] mb-1">Purchase Quantity - <span id="comm-purchase-qty-title">293.35</span> T</h3>
+              <div class="h-[210px] w-full flex items-center justify-center my-1">
+                <canvas id="comm-purchase-qty-canvas"></canvas>
+              </div>
+              <div class="mt-2 pt-3 border-t border-[#F4F5F7] grid grid-cols-2 text-center">
+                <div class="flex flex-col items-center">
+                  <div class="flex items-center gap-1.5 text-xs text-[#6B778C] font-medium">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E91E63]"></span>
+                    <span>Site Weightment</span>
+                  </div>
+                  <span class="text-xs font-bold text-[#172B4D] mt-1" id="comm-site-weightment">208.13T</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <div class="flex items-center gap-1.5 text-xs text-[#6B778C] font-medium">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E65100]"></span>
+                    <span>Plant Weightment</span>
+                  </div>
+                  <span class="text-xs font-bold text-[#172B4D] mt-1" id="comm-plant-weightment">85.22T</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Suppliers Supplied Lots Card with Multi-slice Pie Chart -->
+            <div class="bg-white p-4 rounded-xl border border-[#DFE1E6] shadow-2xs flex flex-col justify-between">
+              <h3 class="font-bold text-sm text-[#172B4D] mb-1">Suppliers Supplied Lots - <span id="comm-supp-lots">152</span> Lots / <span id="comm-supp-count">55</span> Suppliers</h3>
+              <div class="h-[260px] w-full flex items-center justify-center my-1">
+                <canvas id="comm-suppliers-canvas"></canvas>
+              </div>
+              <!-- Supplier Breakdown List with Color Indicators -->
+              <div class="mt-2 pt-2 border-t border-[#F4F5F7] max-h-[105px] overflow-y-auto space-y-1 pr-1" id="comm-supplier-breakdown">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Internal charts instance registry
+    let activeCharts = {
+      daily: null,
+      headless: null,
+      donut: null,
+      suppliers: null
+    };
+
+    const destroyCharts = () => {
+      if (activeCharts.daily) { activeCharts.daily.destroy(); activeCharts.daily = null; }
+      if (activeCharts.headless) { activeCharts.headless.destroy(); activeCharts.headless = null; }
+      if (activeCharts.donut) { activeCharts.donut.destroy(); activeCharts.donut = null; }
+      if (activeCharts.suppliers) { activeCharts.suppliers.destroy(); activeCharts.suppliers = null; }
+    };
+
+    // Update and Render function
+    const applyStationData = (stationKey) => {
+      const d = stationData[stationKey] || stationData['ALL'];
+
+      // 1. Update KPI Values
+      const elTotalLots = document.getElementById('comm-kpi-total-lots');
+      const elAbLots = document.getElementById('comm-kpi-ab-lots');
+      const elReturnLots = document.getElementById('comm-kpi-return-lots');
+      const elBorderCounts = document.getElementById('comm-kpi-border-counts');
+      const elGradingPendings = document.getElementById('comm-kpi-grading-pendings');
+      const elBillPendings = document.getElementById('comm-kpi-bill-pendings');
+
+      if (elTotalLots) elTotalLots.textContent = d.totalLots;
+      if (elAbLots) elAbLots.textContent = d.abLots;
+      if (elReturnLots) elReturnLots.textContent = d.returnLots;
+      if (elBorderCounts) elBorderCounts.textContent = d.borderCounts;
+      if (elGradingPendings) elGradingPendings.textContent = d.gradingPendings;
+      if (elBillPendings) elBillPendings.textContent = d.billPendings;
+
+      // 2. Update Headless Details Card Header & Checkbox text
+      const elHeadlessTotal = document.getElementById('comm-headless-total');
+      const elValHonQty = document.getElementById('comm-val-hon-qty');
+      const elValHonPacked = document.getElementById('comm-val-hon-packed');
+      const elValAvgYield = document.getElementById('comm-val-avg-yield');
+
+      if (elHeadlessTotal) elHeadlessTotal.textContent = d.headlessTotal;
+      if (elValHonQty) elValHonQty.textContent = d.honQty;
+      if (elValHonPacked) elValHonPacked.textContent = d.honPacked;
+      if (elValAvgYield) elValAvgYield.textContent = d.avgYield;
+
+      // 3. Update Purchase Quantity Header & Legend
+      const elPurchaseQtyTitle = document.getElementById('comm-purchase-qty-title');
+      const elSiteWeightment = document.getElementById('comm-site-weightment');
+      const elPlantWeightment = document.getElementById('comm-plant-weightment');
+
+      if (elPurchaseQtyTitle) elPurchaseQtyTitle.textContent = d.purchaseQtyTotal;
+      if (elSiteWeightment) elSiteWeightment.textContent = d.siteWeightment;
+      if (elPlantWeightment) elPlantWeightment.textContent = d.plantWeightment;
+
+      // 4. Update Suppliers Header & Breakdown list
+      const elSuppLots = document.getElementById('comm-supp-lots');
+      const elSuppCount = document.getElementById('comm-supp-count');
+      const elSuppBreakdown = document.getElementById('comm-supplier-breakdown');
+
+      if (elSuppLots) elSuppLots.textContent = d.totalLots;
+      if (elSuppCount) elSuppCount.textContent = d.suppliersCount;
+
+      if (elSuppBreakdown) {
+        elSuppBreakdown.innerHTML = d.suppliersList.map((s, idx) => `
+          <div class="flex items-center justify-between text-[#172B4D] hover:bg-[#F4F5F7] px-2 py-0.5 rounded cursor-default transition-colors">
+            <div class="flex items-center gap-1.5 truncate">
+              <span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${pieColors[idx % pieColors.length]}"></span>
+              <span class="truncate font-medium text-[10px] text-[#42526E]">${s.name}</span>
+            </div>
+            <span class="font-bold text-[10px] text-[#0052CC] shrink-0 ml-2">${s.lots} Lots</span>
+          </div>
+        `).join('');
+      }
+
+      // 5. Clean up old charts before rendering new ones
+      destroyCharts();
+
+      // Chart A: Daily Purchase Analytics Bar Chart
+      const dailyCanvas = document.getElementById('comm-daily-purchase-canvas');
+      if (dailyCanvas && typeof Chart !== 'undefined') {
+        activeCharts.daily = new Chart(dailyCanvas, {
+          type: 'bar',
+          data: {
+            labels: d.dailyLabels,
+            datasets: [{
+              data: d.dailyData,
+              backgroundColor: '#5C6BC0',
+              borderRadius: 2,
+              barThickness: 34
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#172B4D',
+                titleFont: { size: 11, family: 'Inter' },
+                bodyFont: { size: 10, family: 'Inter' },
+                padding: 6,
+                callbacks: {
+                  label: (ctx) => `Intake: ${ctx.parsed.y.toFixed(2)} T`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { font: { size: 10, family: 'Inter' }, color: '#6B778C' }
+              },
+              y: {
+                beginAtZero: true,
+                max: 200,
+                ticks: {
+                  stepSize: 40,
+                  font: { size: 10, family: 'Inter' },
+                  color: '#6B778C',
+                  callback: (v) => v.toFixed(2)
+                },
+                grid: { color: '#F4F5F7' }
+              }
+            }
+          }
+        });
+      }
+
+      // Chart B: Headless Details Bar Chart
+      const headlessCanvas = document.getElementById('comm-headless-canvas');
+      if (headlessCanvas && typeof Chart !== 'undefined') {
+        const headlessLabels = [
+          '10/20', '16/20', '21/25', '26/30', '31/35', '36/40', '41/50', '51/60', '61/70', '71/90',
+          '91/110', '111/130', '131/150', '151/200', '201/300', '301/500', 'BKN-1', 'BKN-2', 'BKN-3', 'HL-1',
+          'HL-2', 'HL-3', 'EZP-1', 'EZP-2', 'PUD-1', 'PUD-2', 'PDTO-1', 'PDTO-2', 'CPTO', 'VAL-1'
+        ];
+        activeCharts.headless = new Chart(headlessCanvas, {
+          type: 'bar',
+          data: {
+            labels: headlessLabels,
+            datasets: [{
+              data: d.headlessBars,
+              backgroundColor: '#5C6BC0',
+              barThickness: 4,
+              borderRadius: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#172B4D',
+                titleFont: { size: 11, family: 'Inter' },
+                bodyFont: { size: 10, family: 'Inter' },
+                padding: 6,
+                callbacks: {
+                  label: (ctx) => `Grade ${ctx.label}: ${ctx.parsed.y} T`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { display: false }
+              },
+              y: {
+                display: false,
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // Chart C: Purchase Quantity Donut Chart
+      const donutCanvas = document.getElementById('comm-purchase-qty-canvas');
+      if (donutCanvas && typeof Chart !== 'undefined') {
+        activeCharts.donut = new Chart(donutCanvas, {
+          type: 'doughnut',
+          data: {
+            labels: ['Site Weightment', 'Plant WeightMent'],
+            datasets: [{
+              data: [d.siteWeightmentVal, d.plantWeightmentVal],
+              backgroundColor: ['#E91E63', '#E65100'],
+              hoverBackgroundColor: ['#D81B60', '#DD2C00'],
+              borderWidth: 2,
+              borderColor: '#FFFFFF'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '66%',
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#172B4D',
+                titleFont: { size: 11, family: 'Inter' },
+                bodyFont: { size: 10, family: 'Inter' },
+                padding: 6,
+                callbacks: {
+                  label: (ctx) => `${ctx.label}: ${ctx.parsed} T`
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Chart D: Suppliers Supplied Lots Pie Chart
+      const suppliersCanvas = document.getElementById('comm-suppliers-canvas');
+      if (suppliersCanvas && typeof Chart !== 'undefined') {
+        const suppLabels = d.suppliersList.map(s => `${s.name} (${s.lots} Lots)`);
+        const suppLotsData = d.suppliersList.map(s => s.lots);
+        activeCharts.suppliers = new Chart(suppliersCanvas, {
+          type: 'pie',
+          data: {
+            labels: suppLabels,
+            datasets: [{
+              data: suppLotsData,
+              backgroundColor: pieColors.slice(0, suppLotsData.length),
+              borderWidth: 1,
+              borderColor: '#FFFFFF'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#172B4D',
+                titleFont: { size: 11, family: 'Inter' },
+                bodyFont: { size: 10, family: 'Inter' },
+                padding: 6,
+                callbacks: {
+                  label: (ctx) => ctx.label
+                }
+              }
+            }
+          }
+        });
+      }
+    };
+
+    // Initialize with baseline 'ALL' data
+    setTimeout(() => {
+      applyStationData('ALL');
+    }, 50);
+
+    // Filter Change & Search Action Listeners
+    const stationFilter = document.getElementById('comm-station-filter');
+    const yearFilter = document.getElementById('comm-year-filter');
+    const monthFilter = document.getElementById('comm-month-filter');
+    const searchBtn = document.getElementById('comm-search-btn');
+
+    const handleFilterUpdate = () => {
+      const selectedStation = stationFilter ? stationFilter.value : 'ALL';
+      const selectedYear = yearFilter ? yearFilter.value : '2026';
+      const selectedMonth = monthFilter ? monthFilter.value : 'October';
+      const stationObj = stationData[selectedStation] || stationData['ALL'];
+
+      applyStationData(selectedStation);
+      Toast.show(`Commercial Analytics loaded for ${stationObj.name} (${selectedMonth} ${selectedYear})`, 'success');
+    };
+
+    if (searchBtn) {
+      searchBtn.addEventListener('click', handleFilterUpdate);
+    }
+    if (stationFilter) {
+      stationFilter.addEventListener('change', handleFilterUpdate);
+    }
+    if (yearFilter) {
+      yearFilter.addEventListener('change', handleFilterUpdate);
+    }
+    if (monthFilter) {
+      monthFilter.addEventListener('change', handleFilterUpdate);
+    }
+
+    // Reset button
+    const resetBtn = document.getElementById('comm-filter-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (stationFilter) stationFilter.selectedIndex = 0;
+        if (yearFilter) yearFilter.selectedIndex = 0;
+        if (monthFilter) monthFilter.selectedIndex = 0;
+        const fromDate = document.getElementById('comm-from-date');
+        const toDate = document.getElementById('comm-to-date');
+        if (fromDate) fromDate.value = '2026-10-01';
+        if (toDate) toDate.value = '2026-10-06';
+        applyStationData('ALL');
+        Toast.show('Filters reset', 'info');
+      });
+    }
+
+    // Toggle Hide/Show Filter button
+    const toggleBtn = document.getElementById('comm-filter-toggle-btn');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const b = document.getElementById('comm-filter-body');
+        const t = toggleBtn.querySelector('.comm-toggle-text');
+        const ic = toggleBtn.querySelector('svg');
+        if (b) {
+          b.classList.toggle('hidden');
+          const h = b.previousElementSibling;
+          if (b.classList.contains('hidden')) {
+            if (h) { h.classList.remove('pb-1'); h.classList.add('pb-0'); }
+            if (t) t.innerText = 'Show Filter';
+            if (ic) ic.classList.add('-rotate-90');
+            toggleBtn.className = 'text-xs font-semibold text-[#5E6C84] bg-[#FAFBFC] hover:bg-[#EBECF0] px-3 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer';
+          } else {
+            if (h) { h.classList.add('pb-1'); h.classList.remove('pb-0'); }
+            if (t) t.innerText = 'Hide Filter';
+            if (ic) ic.classList.remove('-rotate-90');
+            toggleBtn.className = 'text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer';
+          }
+        }
+      });
+    }
+
+    // Checkbox toggles for headless details
+    const chkHonQty = document.getElementById('comm-chk-hon-qty');
+    const chkHonPacked = document.getElementById('comm-chk-hon-packed');
+    const chkAvgYield = document.getElementById('comm-chk-avg-yield');
+
+    [chkHonQty, chkHonPacked, chkAvgYield].forEach(chk => {
+      if (chk) {
+        chk.addEventListener('change', (e) => {
+          const label = e.target.parentElement.textContent.trim();
+          Toast.show(`${label} metric visibility ${e.target.checked ? 'enabled' : 'hidden'}`, 'info');
+        });
+      }
+    });
+  },
+
+  // =========================================================================
+  // SUB MENU: OPERATIONS -> TAB 1: LOT TRACKING
+  // =========================================================================
+  renderLotTracking(container) {
+    container.innerHTML = `
+      <div class="space-y-4 animate-fade-in">
+        <!-- Header with Title -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+          <div>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Lot Tracking</h1>
+          </div>
+        </div>
+
+        <!-- Search / Filter Fields (matching bookings list UI) -->
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
+          <div class="flex items-center justify-between pb-1">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
+            </div>
+
+            <!-- Filter Controls: Reset & Toggle Open/Close -->
+            <div class="flex items-center gap-2">
+              <button type="button" id="lot-top-reset-btn" class="dt-top-filter-reset-btn text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] hover:bg-[#F4F5F7] px-2.5 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-colors cursor-pointer" title="Reset all filters">
+                <svg class="w-3.5 h-3.5 text-[#6B778C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>Reset</span>
+              </button>
+
+              <button type="button" id="lot-top-toggle-btn" class="dt-top-filter-toggle-btn text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+                <svg class="w-3.5 h-3.5 dt-top-filter-toggle-icon transform transition-transform duration-200" id="lot-top-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <span class="dt-top-filter-toggle-text" id="lot-top-toggle-text">Hide Filter</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Collapsible Filter Inputs Grid (5 columns) -->
+          <div id="lot-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">PURCHASE STATION</label>
+              <select id="lot-station-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Purchase Station</option>
+                <option value="SKM">Srikakulam Station (SKM)</option>
+                <option value="RPL">Rajahmundry Plant (RPL)</option>
+                <option value="KKD">Kakinada Dock (KKD)</option>
+                <option value="BVM">Bhimavaram Center (BVM)</option>
+                <option value="VSP">Visakhapatnam Gate (VSP)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SPECIES</label>
+              <select id="lot-species-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Species (Select)</option>
+                <option value="Vannamei">Vannamei (VM)</option>
+                <option value="Black Tiger">Black Tiger (BT)</option>
+                <option value="Asian Seabass">Asian Seabass</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">MONTH</label>
+              <select id="lot-month-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Months</option>
+                <option value="October" selected>October</option>
+                <option value="September">September</option>
+                <option value="August">August</option>
+                <option value="July">July</option>
+                <option value="June">June</option>
+                <option value="May">May</option>
+                <option value="April">April</option>
+                <option value="March">March</option>
+                <option value="February">February</option>
+                <option value="January">January</option>
+                <option value="December">December</option>
+                <option value="November">November</option>
               </select>
             </div>
 
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">YEAR</label>
-              <select id="lot-year-filter" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
-                <option selected>2026</option>
-                <option>2025</option>
-                <option>2024</option>
+              <select id="lot-year-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Years</option>
+                <option value="2026" selected>2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
               </select>
             </div>
 
             <div class="flex items-end">
-              <button id="lot-search-btn" type="button" class="btn-primary w-full py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
+              <button type="button" id="lot-search-btn" class="dt-top-filter-search-btn btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <span>Search</span>
-                <span>→</span>
               </button>
             </div>
           </div>
@@ -871,46 +1655,76 @@ export const PurchaseView = {
           render: (val) => `<span class="text-[#172B4D] font-medium">${val || 0}</span>` 
         }
       ],
-      actions: [
-        {
-          label: 'Trace',
-          icon: `<span class="btn-primary px-2 py-0.5 rounded text-[10px] flex items-center gap-1">Trace →</span>`,
-          onClick: (row) => PurchaseView.showLotTraceabilityDrawer(row)
-        },
-        {
-          label: 'Edit',
-          icon: `<svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
-          onClick: (row) => PurchaseView.openEditLotModal(row, tableInstance)
-        },
-        {
-          label: 'Delete',
-          icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
-          onClick: (row) => PurchaseView.deleteLot(row, tableInstance)
-        }
-      ],
       onRowClick: (row) => PurchaseView.showLotTraceabilityDrawer(row)
     });
 
+    const filterStation = document.getElementById('lot-station-filter');
+    const filterSpecies = document.getElementById('lot-species-filter');
+    const filterMonth = document.getElementById('lot-month-filter');
+    const filterYear = document.getElementById('lot-year-filter');
     const searchBtn = document.getElementById('lot-search-btn');
-    if (searchBtn) {
-      searchBtn.addEventListener('click', () => {
-        const stationVal = document.getElementById('lot-station-filter')?.value;
-        const monthVal = document.getElementById('lot-month-filter')?.value;
-        const yearVal = document.getElementById('lot-year-filter')?.value;
+    const resetBtn = document.getElementById('lot-top-reset-btn');
+    const toggleBtn = document.getElementById('lot-top-toggle-btn');
+    const filterBody = document.getElementById('lot-top-filter-body');
+    const toggleText = document.getElementById('lot-top-toggle-text');
+    const toggleIcon = document.getElementById('lot-top-toggle-icon');
 
-        if (stationVal && stationVal !== 'ALL') {
-          tableInstance.searchTerm = stationVal;
+    // Toggle hide/show filter
+    if (toggleBtn && filterBody) {
+      let isCollapsed = false;
+      toggleBtn.addEventListener('click', () => {
+        isCollapsed = !isCollapsed;
+        const h = filterBody.previousElementSibling;
+        if (isCollapsed) {
+          filterBody.classList.add('hidden');
+          if (h) { h.classList.remove('pb-1'); h.classList.add('pb-0'); }
+          if (toggleText) toggleText.innerText = 'Show Filter';
+          if (toggleIcon) toggleIcon.classList.add('-rotate-90');
+          toggleBtn.classList.remove('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.add('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
         } else {
-          tableInstance.searchTerm = '';
+          filterBody.classList.remove('hidden');
+          if (h) { h.classList.add('pb-1'); h.classList.remove('pb-0'); }
+          if (toggleText) toggleText.innerText = 'Hide Filter';
+          if (toggleIcon) toggleIcon.classList.remove('-rotate-90');
+          toggleBtn.classList.add('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.remove('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
         }
-        tableInstance.applyFilters();
-        Toast.show(`Filtered lots for ${stationVal === 'ALL' ? 'All Stations' : stationVal} - ${monthVal} ${yearVal}`, 'info');
       });
     }
 
-    const createLotBtn = document.getElementById('btn-create-lot-modal');
-    if (createLotBtn) {
-      createLotBtn.addEventListener('click', () => PurchaseView.openCreateLotModal(tableInstance));
+    const applyLotFilters = () => {
+      const stationVal = filterStation ? filterStation.value : 'ALL';
+      const speciesVal = filterSpecies ? filterSpecies.value : 'ALL';
+      const monthVal = filterMonth ? filterMonth.value : 'ALL';
+      const yearVal = filterYear ? filterYear.value : 'ALL';
+
+      let filtered = ERP_DATA.lots;
+      if (stationVal && stationVal !== 'ALL') {
+        filtered = filtered.filter(l => l.currentLocation && l.currentLocation.includes(stationVal));
+      }
+      if (speciesVal && speciesVal !== 'ALL') {
+        filtered = filtered.filter(l => l.species && l.species.includes(speciesVal));
+      }
+      tableInstance.setData(filtered);
+      Toast.show(`Filtered ${filtered.length} lot records.`, 'info', 'Search Results');
+    };
+
+    if (searchBtn) searchBtn.addEventListener('click', applyLotFilters);
+    if (filterStation) filterStation.addEventListener('change', applyLotFilters);
+    if (filterSpecies) filterSpecies.addEventListener('change', applyLotFilters);
+    if (filterMonth) filterMonth.addEventListener('change', applyLotFilters);
+    if (filterYear) filterYear.addEventListener('change', applyLotFilters);
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (filterStation) filterStation.value = 'ALL';
+        if (filterSpecies) filterSpecies.value = 'ALL';
+        if (filterMonth) filterMonth.value = 'ALL';
+        if (filterYear) filterYear.value = 'ALL';
+        tableInstance.setData(ERP_DATA.lots);
+        Toast.show('Filters have been reset. Displaying all lots.', 'info');
+      });
     }
   },
 
@@ -920,24 +1734,21 @@ export const PurchaseView = {
   renderBookings(container) {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div>
-            <div class="flex items-center gap-2">
-              <h1 class="text-xl font-extrabold text-[#172B4D]">Pre-Harvest Pond Bookings & Farmer Contracts</h1>
-              <span class="lozenge lozenge-blue font-bold text-xs">${this.bookingsList.length} Bookings</span>
-            </div>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Pre-harvest agreements, pond reservations, expected harvest schedules, advances, and plant destination routing.</p>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Bookings</h1>
           </div>
           <div class="flex items-center gap-2">
             <button id="btn-create-booking" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
-              <span>New Booking</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>Create Booking</span>
             </button>
           </div>
         </div>
 
         <!-- Search / Filter Fields: Select Purchase, Select Arrival Plant, Date -->
         <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
-          <div class="flex items-center justify-between pb-3 border-b border-[#EBECF0]">
+          <div class="flex items-center justify-between pb-1">
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
               <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
@@ -958,7 +1769,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid -->
-          <div id="booking-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
+          <div id="booking-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT PURCHASE</label>
               <select id="booking-top-purchase-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
@@ -986,11 +1797,16 @@ export const PurchaseView = {
 
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">DATE</label>
-              <input type="date" id="booking-top-date-input" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+              <div class="erp-date-wrapper">
+                <input type="date" id="booking-top-date-input" value="2026-10-06" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
             </div>
 
-            <div class="flex items-end gap-2">
-              <button type="button" id="booking-top-search-btn" class="dt-top-filter-search-btn btn-primary w-full py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
+            <div class="flex items-end">
+              <button type="button" id="booking-top-search-btn" class="dt-top-filter-search-btn btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 <span>Search</span>
               </button>
@@ -999,8 +1815,69 @@ export const PurchaseView = {
         </div>
 
         <div id="bookings-table-container"></div>
+        <div id="bookings-totals-container" class="mt-4"></div>
       </div>
     `;
+
+    const renderBookingTotals = (list) => {
+      const totalsContainer = document.getElementById('bookings-totals-container');
+      if (!totalsContainer) return;
+      
+      const count = list.length;
+      const totalWeight = list.reduce((sum, b) => sum + (parseFloat(b.bookingWeight || b.bookedQty) || 0), 0);
+      const totalValue = list.reduce((sum, b) => {
+        const wt = parseFloat(b.bookingWeight || b.bookedQty) || 0;
+        const rt = parseFloat(b.bookingRate) || 420;
+        return sum + (wt * rt);
+      }, 0);
+      const avgRate = totalWeight > 0 ? (totalValue / totalWeight) : 0;
+
+      totalsContainer.innerHTML = `
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs">
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Bookings Total Summary</h3>
+            </div>
+            <span class="text-xs text-[#5E6C84]">Showing totals for <strong class="text-[#172B4D]">${count}</strong> ${count === 1 ? 'Booking' : 'Bookings'}</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL BOOKINGS</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-lg font-extrabold text-[#172B4D]">${count} Bookings</span>
+                <span class="text-[10px] text-[#0052CC] font-semibold bg-[#DEEBFF] px-1.5 py-0.5 rounded">Active Entries</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL BOOKING WEIGHT</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-lg font-extrabold text-[#006644]">${totalWeight.toLocaleString()} KG</span>
+                <span class="text-[10px] text-[#006644] font-semibold bg-[#E3FCEF] px-1.5 py-0.5 rounded">Volume Target</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL ESTIMATED VALUE</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-lg font-extrabold text-[#0052CC]">₹ ${Math.round(totalValue).toLocaleString()}</span>
+                <span class="text-[10px] text-[#5E6C84] font-medium">INR</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">AVERAGE BOOKING RATE</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-lg font-extrabold text-[#172B4D]">₹ ${avgRate.toFixed(2)} / KG</span>
+                <span class="text-[10px] text-[#006644] font-semibold bg-[#E3FCEF] px-1.5 py-0.5 rounded">Weighted Avg</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    };
 
     const bookingsTable = new DataTable({
       containerId: 'bookings-table-container',
@@ -1009,6 +1886,8 @@ export const PurchaseView = {
       tableTitle: 'Bookings List',
       searchable: false,
       hideTopFilterBar: true,
+      showCopy: false,
+      onDataChange: (data) => renderBookingTotals(data),
       columns: [
         { 
           field: 'sNo', 
@@ -1063,22 +1942,28 @@ export const PurchaseView = {
       ],
       actions: [
         {
-          label: 'View',
-          icon: `<svg class="w-4 h-4 text-[#5E6C84]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
-          onClick: (row) => PurchaseView.showBookingDetails(row)
-        },
-        {
           label: 'Edit',
           icon: `<svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
           onClick: (row) => PurchaseView.openEditBookingModal(row, bookingsTable)
+        },
+        {
+          label: 'Download',
+          icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
+          onClick: (row) => PurchaseView.downloadRecord(row)
         },
         {
           label: 'Delete',
           icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
           onClick: (row) => PurchaseView.deleteBooking(row, bookingsTable)
         }
-      ]
+      ],
+      onRowClick: (row) => PurchaseView.showBookingDetails(row)
     });
+
+    this.bookingsTable = bookingsTable;
+    PurchaseView.bookingsTable = bookingsTable;
+
+    renderBookingTotals(this.bookingsList);
 
     window.__viewBookingDetails = (bkgNo) => {
       const b = this.bookingsList.find(x => x.bookingNo === bkgNo);
@@ -1100,14 +1985,17 @@ export const PurchaseView = {
       let isCollapsed = false;
       toggleBtn.addEventListener('click', () => {
         isCollapsed = !isCollapsed;
+        const h = filterBody.previousElementSibling;
         if (isCollapsed) {
           filterBody.classList.add('hidden');
+          if (h) { h.classList.remove('pb-1'); h.classList.add('pb-0'); }
           if (toggleText) toggleText.innerText = 'Show Filter';
           if (toggleIcon) toggleIcon.classList.add('-rotate-90');
           toggleBtn.classList.remove('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
           toggleBtn.classList.add('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
         } else {
           filterBody.classList.remove('hidden');
+          if (h) { h.classList.add('pb-1'); h.classList.remove('pb-0'); }
           if (toggleText) toggleText.innerText = 'Hide Filter';
           if (toggleIcon) toggleIcon.classList.remove('-rotate-90');
           toggleBtn.classList.add('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
@@ -1119,16 +2007,25 @@ export const PurchaseView = {
     const applyBookingFilters = () => {
       const pVal = filterPurchase ? filterPurchase.value : 'ALL';
       const plVal = filterPlant ? filterPlant.value : 'ALL';
-      const dVal = filterDate ? filterDate.value : '';
+      const dVal = (filterDate ? filterDate.value : '').trim();
+      let dValAlt = '';
+      if (/^\d{4}-\d{2}-\d{2}$/.test(dVal)) {
+        const [y, m, d] = dVal.split('-');
+        dValAlt = `${d}/${m}/${y}`;
+      } else if (/^\d{2}\/\d{2}\/\d{4}$/.test(dVal)) {
+        const [d, m, y] = dVal.split('/');
+        dValAlt = `${y}-${m}-${d}`;
+      }
 
       const filtered = this.bookingsList.filter(b => {
         const matchPurchase = (pVal === 'ALL') || (b.purchaseType === pVal);
         const matchPlant = (plVal === 'ALL') || (b.arrivalPlant === plVal) || (b.arrivalPlant && b.arrivalPlant.includes(plVal));
-        const matchDate = !dVal || (b.bookingDate === dVal) || (b.expectedDate === dVal);
+        const matchDate = !dVal || (b.bookingDate === dVal) || (b.expectedDate === dVal) || (dValAlt && (b.bookingDate === dValAlt || b.expectedDate === dValAlt)) || (b.bookingDate && b.bookingDate.includes(dVal));
         return matchPurchase && matchPlant && matchDate;
       });
 
       bookingsTable.setData(filtered);
+      renderBookingTotals(filtered);
       Toast.show(`Filtered ${filtered.length} booking records.`, 'info', 'Search Results');
     };
 
@@ -1143,6 +2040,7 @@ export const PurchaseView = {
         if (filterPlant) filterPlant.value = 'ALL';
         if (filterDate) filterDate.value = '';
         bookingsTable.setData(this.bookingsList);
+        renderBookingTotals(this.bookingsList);
         Toast.show('Filters have been reset. Displaying all bookings.', 'info');
       });
     }
@@ -1160,16 +2058,13 @@ export const PurchaseView = {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
         <!-- Header with Title and Create Button -->
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div>
-            <div class="flex items-center gap-2">
-              <h1 class="text-xl font-extrabold text-[#172B4D]">Raw Material Arrivals</h1>
-              <span class="lozenge lozenge-blue font-bold text-xs" id="rm-arrivals-count-badge">${this.rmArrivalsList.length} Records</span>
-            </div>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Physical intake of fresh harvest catch, dock weighbridge readings, and processing balance ledgers.</p>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Raw Material Arrivals</h1>
           </div>
           <div class="flex items-center gap-2">
             <button id="btn-create-arrival-modal" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
               <span>Create RM Arrival</span>
             </button>
           </div>
@@ -1177,7 +2072,7 @@ export const PurchaseView = {
 
         <!-- Search / Filter Fields: Date, Company, Species, Plant, Center, Weight, Amount, Average Rate -->
         <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
-          <div class="flex items-center justify-between pb-3 border-b border-[#EBECF0]">
+          <div class="flex items-center justify-between pb-1">
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
               <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
@@ -1198,10 +2093,15 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid -->
-          <div id="rm-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 text-xs transition-all duration-200">
+          <div id="rm-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">DATE</label>
-              <input type="text" id="rm-top-date-input" value="06/10/2026" placeholder="06/10/2026" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+              <div class="erp-date-wrapper">
+                <input type="date" id="rm-top-date-input" value="2026-10-06" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
             </div>
 
             <div>
@@ -1264,20 +2164,90 @@ export const PurchaseView = {
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">AVERAGE RATE</label>
               <input type="text" id="rm-top-avgrate-input" placeholder="Enter Average Rate" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
             </div>
-          </div>
 
-          <div class="mt-3 flex justify-end">
-            <button type="button" id="rm-top-search-btn" class="dt-top-filter-search-btn btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-              <span>Search</span>
-            </button>
+            <div class="flex items-end">
+              <button type="button" id="rm-top-search-btn" class="dt-top-filter-search-btn btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Search</span>
+              </button>
+            </div>
           </div>
         </div>
 
         <!-- Table Container -->
         <div id="rm-arrivals-table-container"></div>
+        <div id="rm-arrivals-totals-container" class="mt-4"></div>
       </div>
     `;
+
+    const renderRMArrivalsTotals = (list) => {
+      const totalsContainer = document.getElementById('rm-arrivals-totals-container');
+      if (!totalsContainer) return;
+
+      const count = list.length;
+      const totalWeight = list.reduce((sum, r) => sum + (parseFloat(r.weight) || 0), 0);
+      const totalBalanceWeight = list.reduce((sum, r) => sum + (parseFloat(r.balanceWeight) || 0), 0);
+      const totalAmount = list.reduce((sum, r) => sum + (parseFloat(r.amount) || 0), 0);
+      const totalBalanceAmount = list.reduce((sum, r) => sum + (parseFloat(r.balanceAmount) || 0), 0);
+      const avgRate = totalWeight > 0 ? (totalAmount / totalWeight) : 0;
+
+      totalsContainer.innerHTML = `
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs">
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Raw Material Arrivals Total Summary</h3>
+            </div>
+            <span class="text-xs text-[#5E6C84]">Showing totals for <strong class="text-[#172B4D]">${count}</strong> ${count === 1 ? 'Arrival' : 'Arrivals'}</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL ARRIVALS</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#172B4D]">${count} Batches</span>
+                <span class="text-[10px] text-[#0052CC] font-semibold bg-[#DEEBFF] px-1.5 py-0.5 rounded">Intake</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL WEIGHT</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#006644]">${totalWeight.toLocaleString()} KG</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">BALANCE WEIGHT</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#FF8B00]">${totalBalanceWeight.toLocaleString()} KG</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL AMOUNT</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#172B4D]">₹ ${Math.round(totalAmount).toLocaleString()}</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">BALANCE AMOUNT</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#6554C0]">₹ ${Math.round(totalBalanceAmount).toLocaleString()}</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">AVERAGE RATE</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#0052CC]">₹ ${avgRate.toFixed(2)} / KG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    };
 
     const arrivalsTable = new DataTable({
       containerId: 'rm-arrivals-table-container',
@@ -1287,6 +2257,8 @@ export const PurchaseView = {
       tableTitle: 'Raw Material Arrivals List',
       searchable: false,
       hideTopFilterBar: true,
+      showCopy: false,
+      onDataChange: (data) => renderRMArrivalsTotals(data),
       columns: [
         { 
           field: 'sNo', 
@@ -1346,22 +2318,28 @@ export const PurchaseView = {
       ],
       actions: [
         {
-          label: 'View',
-          icon: `<svg class="w-4 h-4 text-[#5E6C84]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
-          onClick: (row) => PurchaseView.showArrivalDetails(row)
-        },
-        {
           label: 'Edit',
           icon: `<svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
           onClick: (row) => PurchaseView.openEditArrivalModal(row, arrivalsTable)
+        },
+        {
+          label: 'Download',
+          icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
+          onClick: (row) => PurchaseView.downloadRecord(row)
         },
         {
           label: 'Delete',
           icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
           onClick: (row) => PurchaseView.deleteArrival(row, arrivalsTable)
         }
-      ]
+      ],
+      onRowClick: (row) => PurchaseView.showArrivalDetails(row)
     });
+
+    this.arrivalsTable = arrivalsTable;
+    PurchaseView.arrivalsTable = arrivalsTable;
+
+    renderRMArrivalsTotals(this.rmArrivalsList);
 
     const filterDate = document.getElementById('rm-top-date-input');
     const filterCompany = document.getElementById('rm-top-company-select');
@@ -1383,14 +2361,17 @@ export const PurchaseView = {
       let isCollapsed = false;
       toggleBtn.addEventListener('click', () => {
         isCollapsed = !isCollapsed;
+        const h = filterBody.previousElementSibling;
         if (isCollapsed) {
           filterBody.classList.add('hidden');
+          if (h) { h.classList.remove('pb-1'); h.classList.add('pb-0'); }
           if (toggleText) toggleText.innerText = 'Show Filter';
           if (toggleIcon) toggleIcon.classList.add('-rotate-90');
           toggleBtn.classList.remove('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
           toggleBtn.classList.add('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
         } else {
           filterBody.classList.remove('hidden');
+          if (h) { h.classList.add('pb-1'); h.classList.remove('pb-0'); }
           if (toggleText) toggleText.innerText = 'Hide Filter';
           if (toggleIcon) toggleIcon.classList.remove('-rotate-90');
           toggleBtn.classList.add('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
@@ -1401,6 +2382,14 @@ export const PurchaseView = {
 
     const applyRMFilters = () => {
       const dVal = (filterDate ? filterDate.value : '').trim();
+      let dValAlt = '';
+      if (/^\d{4}-\d{2}-\d{2}$/.test(dVal)) {
+        const [y, m, d] = dVal.split('-');
+        dValAlt = `${d}/${m}/${y}`;
+      } else if (/^\d{2}\/\d{2}\/\d{4}$/.test(dVal)) {
+        const [d, m, y] = dVal.split('/');
+        dValAlt = `${y}-${m}-${d}`;
+      }
       const compVal = filterCompany ? filterCompany.value : 'ALL';
       const specVal = filterSpecies ? filterSpecies.value : 'ALL';
       const plVal = filterPlant ? filterPlant.value : 'ALL';
@@ -1410,7 +2399,7 @@ export const PurchaseView = {
       const rateVal = filterAvgRate ? parseFloat(filterAvgRate.value) : null;
 
       const filtered = this.rmArrivalsList.filter(item => {
-        const matchDate = !dVal || (item.date && item.date.includes(dVal));
+        const matchDate = !dVal || (item.date && (item.date.includes(dVal) || (dValAlt && item.date.includes(dValAlt))));
         const matchComp = (compVal === 'ALL') || (item.company === compVal);
         const matchSpec = (specVal === 'ALL') || (item.species === specVal);
         const matchPlant = (plVal === 'ALL') || (item.plant === plVal) || (item.plant && item.plant.includes(plVal));
@@ -1423,6 +2412,7 @@ export const PurchaseView = {
       });
 
       arrivalsTable.setData(filtered);
+      renderRMArrivalsTotals(filtered);
       Toast.show(`Filtered ${filtered.length} raw material arrival records.`, 'info', 'Search Results');
     };
 
@@ -1443,6 +2433,7 @@ export const PurchaseView = {
         if (filterAmount) filterAmount.value = '';
         if (filterAvgRate) filterAvgRate.value = '';
         arrivalsTable.setData(this.rmArrivalsList);
+        renderRMArrivalsTotals(this.rmArrivalsList);
         Toast.show('Filters have been reset. Displaying all RM arrivals.', 'info');
       });
     }
@@ -1463,138 +2454,193 @@ export const PurchaseView = {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
         <!-- Header with Title and Create Button -->
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div>
-            <div class="flex items-center gap-2">
-              <h1 class="text-xl font-extrabold text-[#172B4D]">Arrivals Register (Center Catch Inward)</h1>
-              <span class="lozenge lozenge-blue font-bold text-xs">${ERP_DATA.arrivals.length} Receipts</span>
-            </div>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Procurement center intake records, crates tally, icing checks, and farm-to-dock harvest receipts.</p>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Arrivals Register</h1>
           </div>
           <div class="flex items-center gap-2">
             <button id="btn-create-arrival-record" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
               <span>Create Arrival</span>
             </button>
           </div>
         </div>
 
-        <!-- 4 KPI Summary Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <div class="bg-white p-3.5 rounded-xl border border-[#DFE1E6] shadow-xs">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">Total Net Catch</span>
-            <div class="flex items-baseline justify-between">
-              <span class="text-xl font-extrabold text-[#006644]">${totalCatchKg.toLocaleString()} KG</span>
-              <span class="text-[10px] text-[#006644] font-semibold bg-[#E3FCEF] px-1.5 py-0.5 rounded">Intake Verified</span>
+        <!-- Table Mount Point -->
+        <div id="center-arrivals-table-container"></div>
+        <div id="arrivals-totals-container" class="mt-4"></div>
+      </div>
+    `;
+
+    const renderArrivalsTotals = (list) => {
+      const totalsContainer = document.getElementById('arrivals-totals-container');
+      if (!totalsContainer) return;
+
+      const count = list.length;
+      const totalWeight = list.reduce((sum, r) => sum + (parseFloat(r.arrivalWeight || r.netCatchKg) || 0), 0);
+      const totalCrates = list.reduce((sum, r) => sum + (parseInt(r.cratesIn) || 0), 0);
+      const totalAmt = list.reduce((sum, r) => {
+        const wt = parseFloat(r.arrivalWeight || r.netCatchKg) || 0;
+        const rt = parseFloat(r.arrivalRate || r.ratePerKg) || 425;
+        return sum + (r.totalAmt ? parseFloat(r.totalAmt) : (wt * rt));
+      }, 0);
+      const avgRate = totalWeight > 0 ? (totalAmt / totalWeight) : 0;
+
+      totalsContainer.innerHTML = `
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs">
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Arrivals Total Summary</h3>
             </div>
+            <span class="text-xs text-[#5E6C84]">Showing totals for <strong class="text-[#172B4D]">${count}</strong> ${count === 1 ? 'Arrival' : 'Arrivals'}</span>
           </div>
 
-          <div class="bg-white p-3.5 rounded-xl border border-[#DFE1E6] shadow-xs">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">Active Centers</span>
-            <div class="flex items-baseline justify-between">
-              <span class="text-xl font-extrabold text-[#0052CC]">5 Centers</span>
-              <span class="text-[10px] text-[#0052CC] font-semibold bg-[#DEEBFF] px-1.5 py-0.5 rounded">All Active</span>
+          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-3">
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL ARRIVALS</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#172B4D]">${count} Receipts</span>
+                <span class="text-[10px] text-[#0052CC] font-semibold bg-[#DEEBFF] px-1.5 py-0.5 rounded">Verified</span>
+              </div>
             </div>
-          </div>
 
-          <div class="bg-white p-3.5 rounded-xl border border-[#DFE1E6] shadow-xs">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">Crates Inward</span>
-            <div class="flex items-baseline justify-between">
-              <span class="text-xl font-extrabold text-[#172B4D]">${totalCrates.toLocaleString()} Crates</span>
-              <span class="text-[10px] text-[#6B778C] font-semibold bg-[#F4F5F7] px-1.5 py-0.5 rounded">100% Retained</span>
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL ARRIVAL WEIGHT</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#006644]">${totalWeight.toLocaleString()} KG</span>
+                <span class="text-[10px] text-[#006644] font-semibold bg-[#E3FCEF] px-1.5 py-0.5 rounded">Net Catch</span>
+              </div>
             </div>
-          </div>
 
-          <div class="bg-white p-3.5 rounded-xl border border-[#DFE1E6] shadow-xs">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">Avg Core Temp</span>
-            <div class="flex items-baseline justify-between">
-              <span class="text-xl font-extrabold text-[#0747A6]">2.6 °C</span>
-              <span class="text-[10px] text-[#006644] font-semibold bg-[#E3FCEF] px-1.5 py-0.5 rounded">HACCP Target &lt; 4°C</span>
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL CRATES</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#172B4D]">${totalCrates.toLocaleString()} Crates</span>
+                <span class="text-[10px] text-[#5E6C84] font-medium">Inward</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">TOTAL AMOUNT</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#172B4D]">₹ ${Math.round(totalAmt).toLocaleString()}</span>
+                <span class="text-[10px] text-[#006644] font-semibold bg-[#E3FCEF] px-1.5 py-0.5 rounded">Catch Val</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0]">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#5E6C84] block mb-1">AVERAGE RATE</span>
+              <div class="flex items-baseline justify-between">
+                <span class="text-base font-extrabold text-[#0052CC]">₹ ${avgRate.toFixed(2)} / KG</span>
+                <span class="text-[10px] text-[#0052CC] font-semibold bg-[#DEEBFF] px-1.5 py-0.5 rounded">Benchmark</span>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Table Mount Point -->
-        <div id="center-arrivals-table-container"></div>
-      </div>
-    `;
+      `;
+    };
 
     const arrivalsTable = new DataTable({
       containerId: 'center-arrivals-table-container',
       data: ERP_DATA.arrivals,
       keyField: 'id',
       pageSize: 10,
+      hideTopFilterBar: false,
+      showCopy: false,
       tableTitle: 'Center Inward Catch Receipts & Dispatch Register (CRUD)',
+      onDataChange: (data) => renderArrivalsTotals(data),
       columns: [
         { 
-          field: 'arrivalCode', 
-          header: 'Arrival Code', 
-          render: (val, row) => `<span class="font-bold text-[#0052CC] hover:underline cursor-pointer" onclick="window.__viewArrivalRecord('${row.id}')">${val}</span>` 
+          field: 'sNo', 
+          header: 'S.No', 
+          render: (v, r, i) => `<span class="font-bold text-[#5E6C84]">${i !== undefined ? i + 1 : 1}</span>` 
         },
         { 
-          field: 'date', 
-          header: 'Date & Time', 
-          render: (val, row) => `<div><span class="font-medium text-[#172B4D]">${val}</span><div class="text-[10px] text-[#6B778C]">${row.time || 'Morning'}</div></div>` 
+          field: 'arrivalCode', 
+          header: 'Arrival Number', 
+          render: (val, row) => `<span class="font-bold text-[#0052CC] hover:underline cursor-pointer" onclick="window.__viewArrivalRecord('${row.id}')">${val || row.arrivalNumber}</span>` 
         },
-        { field: 'center', header: 'Center / Station' },
+        { 
+          field: 'arrivalDate', 
+          header: 'Arrival Date', 
+          render: (val, row) => `<span class="font-medium text-[#172B4D]">${val || row.date}</span>` 
+        },
+        { 
+          field: 'arrivalPlant', 
+          header: 'Arrival Plant', 
+          render: (val, row) => `<span class="font-semibold text-[#0052CC]">${val || row.plant || 'DFL UNIT-5 (JPT)'}</span>` 
+        },
+        { 
+          field: 'purchaseType', 
+          header: 'Purchase Type', 
+          render: (val) => `<span class="font-medium text-[#172B4D] bg-[#F4F5F7] px-2 py-0.5 rounded text-[11px] border border-[#DFE1E6]">${val || 'Site Weightment'}</span>` 
+        },
         { 
           field: 'supplier', 
-          header: 'Farmer / Supplier', 
-          render: (val, row) => `<div><span class="font-semibold text-[#172B4D]">${val}</span><div class="text-[10px] text-[#6B778C]">${row.pond}</div></div>` 
-        },
-        { 
-          field: 'species', 
-          header: 'Species & Count', 
-          render: (val, row) => `<div><span class="font-medium text-[#172B4D]">${val}</span><div class="text-[10px] font-bold text-[#0052CC]">${row.countRange}</div></div>` 
-        },
-        { 
-          field: 'cratesIn', 
-          header: 'Crates (In/Out)', 
-          render: (val, row) => `<span class="font-bold">${val} / ${row.cratesOut || val}</span>` 
-        },
-        { 
-          field: 'netCatchKg', 
-          header: 'Net Catch (KG)', 
-          render: (val) => `<span class="font-extrabold text-[#006644]">${val.toLocaleString()} KG</span>` 
-        },
-        { 
-          field: 'temperature', 
-          header: 'Temp (°C)', 
-          render: (val) => {
-            const num = parseFloat(val) || 2.5;
-            const cls = num <= 3.0 ? 'lozenge-success' : 'lozenge-warning';
-            return `<span class="lozenge ${cls}">${val}</span>`;
-          } 
-        },
-        { 
-          field: 'vehicleNo', 
-          header: 'Vehicle & Driver', 
-          render: (val, row) => `<div><span class="font-bold text-[#172B4D]">${val}</span><div class="text-[10px] text-[#6B778C]">${row.driverName}</div></div>` 
+          header: 'Supplier', 
+          render: (val) => `<span class="font-semibold text-[#172B4D]">${val}</span>` 
         },
         { 
           field: 'graderName', 
-          header: 'Grader / Lead', 
-          render: (val, row) => `<div><span class="text-[#172B4D]">${val}</span><div class="text-[10px] text-[#6B778C]">${row.supervisor}</div></div>` 
+          header: 'Grader', 
+          render: (val) => `<span class="text-[#172B4D]">${val || 'B. Venkatesh'}</span>` 
         },
-        { field: 'status', header: 'Status', type: 'status' }
+        { 
+          field: 'agent', 
+          header: 'Agent', 
+          render: (val) => `<span class="text-[#5E6C84]">${val || 'Direct'}</span>` 
+        },
+        { 
+          field: 'arrivalCount', 
+          header: 'Arrival Count', 
+          render: (val, row) => `<span class="font-bold text-[#0052CC]">${val || row.countRange || '44 pcs/kg'}</span>` 
+        },
+        { 
+          field: 'arrivalWeight', 
+          header: 'Arrival Weight', 
+          render: (val, row) => `<span class="font-extrabold text-[#006644]">${(typeof val === 'number' ? val : (row.netCatchKg || 0)).toLocaleString()} KG</span>` 
+        },
+        { 
+          field: 'arrivalRate', 
+          header: 'Arrival Rate', 
+          render: (val, row) => `<span class="font-bold text-[#172B4D]">₹ ${val || row.ratePerKg || 425}</span>` 
+        },
+        { 
+          field: 'totalAmt', 
+          header: 'Total Amt', 
+          render: (val, row) => {
+            const wt = row.arrivalWeight || row.netCatchKg || 0;
+            const rt = row.arrivalRate || row.ratePerKg || 425;
+            const tot = row.totalAmt ? row.totalAmt : (wt * rt);
+            return `<span class="font-extrabold text-[#172B4D]">₹ ${Math.round(tot).toLocaleString()}</span>`;
+          } 
+        }
       ],
       actions: [
-        {
-          label: 'View',
-          icon: `<svg class="w-4 h-4 text-[#5E6C84]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
-          onClick: (row) => PurchaseView.showArrivalRecordDetails(row)
-        },
         {
           label: 'Edit',
           icon: `<svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
           onClick: (row) => PurchaseView.openEditArrivalRecordModal(row, arrivalsTable)
         },
         {
+          label: 'Download',
+          icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
+          onClick: (row) => PurchaseView.downloadRecord(row)
+        },
+        {
           label: 'Delete',
           icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
           onClick: (row) => PurchaseView.deleteArrivalRecord(row, arrivalsTable)
         }
-      ]
+      ],
+      onRowClick: (row) => PurchaseView.showArrivalRecordDetails(row)
     });
+
+    this.arrivalRecordsTable = arrivalsTable;
+    PurchaseView.arrivalRecordsTable = arrivalsTable;
+
+    renderArrivalsTotals(ERP_DATA.arrivals);
 
     window.__viewArrivalRecord = (id) => {
       const item = ERP_DATA.arrivals.find(a => a.id === id);
@@ -1610,58 +2656,375 @@ export const PurchaseView = {
   // =========================================================================
   // SUB MENU: TRANSACTIONS & BILLS -> TAB 1: SUPPLIER BILL SUMMARY
   // =========================================================================
+  // SUB MENU: TRANSACTIONS & BILLS -> TAB 1: SUPPLIER BILL SUMMARY
+  // =========================================================================
   renderSupplierBills(container) {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
-          <div>
-            <h1 class="text-xl font-extrabold text-[#172B4D]">Supplier Bill Summary & Farmer Invoices</h1>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Commercial bills, count deductions, payment terms, and disbursement status.</p>
+        <!-- Page Title Header -->
+        <div class="mb-3">
+          <h1 class="text-xl font-extrabold text-[#172B4D]">Supplier Bill Summary</h1>
+        </div>
+
+        <!-- Search / Filter Fields Card -->
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
+          <div class="flex items-center justify-between pb-1">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
+            </div>
+
+            <!-- Filter Controls: Reset & Toggle Open/Close -->
+            <div class="flex items-center gap-2">
+              <button type="button" id="bill-top-reset-btn" class="dt-top-filter-reset-btn text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] hover:bg-[#F4F5F7] px-2.5 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-colors cursor-pointer" title="Reset all filters">
+                <svg class="w-3.5 h-3.5 text-[#6B778C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>Reset</span>
+              </button>
+
+              <button type="button" id="bill-top-toggle-btn" class="dt-top-filter-toggle-btn text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+                <svg class="w-3.5 h-3.5 dt-top-filter-toggle-icon transform transition-transform duration-200" id="bill-top-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <span class="dt-top-filter-toggle-text" id="bill-top-toggle-text">Hide Filter</span>
+              </button>
+            </div>
           </div>
-          <div class="flex items-center gap-2">
-            <button id="btn-create-supplier-bill" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs">
-              <span>Generate Bill</span>
-            </button>
+
+          <!-- Collapsible Filter Inputs Grid (Max 5 Columns) -->
+          <div id="bill-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 text-xs transition-all duration-200">
+            <!-- 1. Select Purchase -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT PURCHASE</label>
+              <select id="bill-top-purchase-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Purchases</option>
+                <option value="Direct Farmer Procurement">Direct Farmer Procurement</option>
+                <option value="Hatchery Buyback Contract">Hatchery Buyback Contract</option>
+                <option value="Agent Procurement Order">Agent Procurement Order</option>
+                <option value="Corporate Feed-Linked Booking">Corporate Feed-Linked Booking</option>
+                <option value="Spot Market Purchase">Spot Market Purchase</option>
+              </select>
+            </div>
+
+            <!-- 2. Select Arrival Plant -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT ARRIVAL PLANT</label>
+              <select id="bill-top-plant-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Arrival Plants</option>
+                <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
+              </select>
+            </div>
+
+            <!-- 3. From Date -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">FROM DATE</label>
+              <div class="erp-date-wrapper">
+                <input type="date" id="bill-top-from-date" value="2026-10-07" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 4. To Date -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">TO DATE</label>
+              <div class="erp-date-wrapper">
+                <input type="date" id="bill-top-to-date" value="2026-10-07" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 5. Select Supplier -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT SUPPLIER</label>
+              <select id="bill-top-supplier-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Suppliers</option>
+                <option value="Godavari Coastal Aqua Farms">Godavari Coastal Aqua Farms</option>
+                <option value="Sagar Marine Hatcheries & Cultivators">Sagar Marine Hatcheries</option>
+                <option value="Krishna Delta Prawn Harvesters">Krishna Delta Prawn Harvesters</option>
+                <option value="Konaseema Marine Harvesters Syndicate">Konaseema Marine Harvesters</option>
+                <option value="Nellore Brackish Aqua Cultivators">Nellore Brackish Aqua Cultivators</option>
+                <option value="Sri Sai Aqua Farms & Seedlings">Sri Sai Aqua Farms</option>
+                <option value="East Coast Aqua Society">East Coast Aqua Society</option>
+                <option value="Coastal Andhra Aquatics">Coastal Andhra Aquatics</option>
+              </select>
+            </div>
+
+            <!-- 6. Select Agent -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT AGENT</label>
+              <select id="bill-top-agent-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Agents</option>
+                <option value="Coastal Marine Agency">Coastal Marine Agency</option>
+                <option value="Sagar Marine Brokers">Sagar Marine Brokers</option>
+                <option value="Direct Farmer">Direct Farmer</option>
+                <option value="Delta Seafood Associates">Delta Seafood Associates</option>
+                <option value="Nellore Aqua Syndicate">Nellore Aqua Syndicate</option>
+                <option value="East Coast Brokers">East Coast Brokers</option>
+              </select>
+            </div>
+
+            <!-- 7. Status -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">STATUS</label>
+              <select id="bill-top-status-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="Pending" selected>Pending</option>
+                <option value="ALL">All Status</option>
+                <option value="Approved">Approved</option>
+                <option value="Paid">Paid</option>
+                <option value="Partially Paid">Partially Paid</option>
+                <option value="Overdue">Overdue</option>
+              </select>
+            </div>
+
+            <!-- 8. Search Action Button -->
+            <div class="flex items-end">
+              <button type="button" id="bill-top-search-btn" class="btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]" title="Apply Filters">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Search</span>
+              </button>
+            </div>
           </div>
         </div>
 
+        <!-- Table Container -->
         <div id="supplier-bills-table-container"></div>
       </div>
     `;
 
+    // Helper: Determine Status Lozenge Styling
+    const getStatusLozenge = (status) => {
+      const s = String(status || '').toLowerCase();
+      if (s.includes('paid') && !s.includes('partially')) {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#E3FCEF] text-[#006644] border border-[#ABF5D1]">Paid</span>`;
+      }
+      if (s.includes('approved')) {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF]">Approved</span>`;
+      }
+      if (s.includes('overdue')) {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD]">Overdue</span>`;
+      }
+      if (s.includes('partially')) {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#FFF0B3] text-[#8F4D00] border border-[#FFE380]">Partially Paid</span>`;
+      }
+      return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#FFF0B3] text-[#8F4D00] border border-[#FFE380]">Pending</span>`;
+    };
+
+    // Initial Filter: Status is 'Pending' by default as requested
+    const initialData = ERP_DATA.supplierBills.filter(b => String(b.status).toLowerCase() === 'pending');
+
+    // Initialize DataTable with exact user requested columns
     const billsTable = new DataTable({
       containerId: 'supplier-bills-table-container',
-      data: ERP_DATA.supplierBills,
+      data: initialData.length > 0 ? initialData : ERP_DATA.supplierBills,
       keyField: 'billNo',
-      tableTitle: 'Supplier Commercial Invoices (CRUD)',
+      tableTitle: 'Supplier Bills List',
+      showCopy: false,
       columns: [
-        { field: 'billNo', header: 'Bill Number', render: (v) => `<span class=" font-bold text-[#0052CC]">${v}</span>` },
-        { field: 'supplierName', header: 'Supplier' },
-        { field: 'lotNumber', header: 'Linked Lot', render: (v) => `<span class="">${v}</span>` },
-        { field: 'weightKg', header: 'Weight (KG)', render: (v) => `<span class="">${v.toLocaleString()} KG</span>` },
-        { field: 'ratePerKg', header: 'Rate (INR/KG)', render: (v) => `₹ ${v}` },
-        { field: 'totalAmountInr', header: 'Total INR', render: (v) => `<span class="font-bold">₹ ${v.toLocaleString()}</span>` },
-        { field: 'totalAmountUsd', header: 'Total USD', render: (v) => `<span class="font-bold  text-[#006644]">$ ${v.toLocaleString()}</span>` },
-        { field: 'dueDate', header: 'Due Date' },
-        { field: 'status', header: 'Status', type: 'status' }
+        { 
+          field: 'sNo', 
+          header: 'S.No',
+          render: (v, row, idx) => `<span class="font-medium text-[#5E6C84]">${v || (idx + 1)}</span>`
+        },
+        { 
+          field: 'arrivalNumber', 
+          header: 'Arrival Number', 
+          render: (v, row) => `
+            <div>
+              <span class="font-bold text-[#0052CC] hover:underline cursor-pointer" title="Click to view details">${v || row.billNo}</span>
+              <span class="text-[10px] text-[#5E6C84] block">${row.billNo}</span>
+            </div>
+          ` 
+        },
+        { 
+          field: 'arrivalDate', 
+          header: 'Arrival Date', 
+          render: (v, row) => `<span class="text-[#172B4D]">${v || row.billDate || '07/10/2026'}</span>` 
+        },
+        { 
+          field: 'supplier', 
+          header: 'Supplier',
+          render: (v, row) => `<span class="font-medium text-[#172B4D]">${v || row.supplierName}</span>`
+        },
+        { 
+          field: 'agent', 
+          header: 'Agent',
+          render: (v) => `<span class="text-[#5E6C84]">${v || 'Direct Farmer'}</span>`
+        },
+        { 
+          field: 'arrivalCount', 
+          header: 'Arrival Count',
+          render: (v, row) => `<span class="text-[#172B4D] font-medium">${v || row.count || '40 Count'}</span>`
+        },
+        { 
+          field: 'arrivalWeight', 
+          header: 'Arrival Weight', 
+          render: (v, row) => {
+            const wt = v || row.weightKg || 0;
+            return `<span class="font-bold text-[#172B4D]">${wt.toLocaleString()} KG</span>`;
+          }
+        },
+        { 
+          field: 'totalBillAmount', 
+          header: 'Total Bill Amount', 
+          render: (v, row) => {
+            const amt = v || row.totalAmountInr || 0;
+            const usd = row.totalAmountUsd ? `($ ${row.totalAmountUsd.toLocaleString()})` : '';
+            return `
+              <div>
+                <span class="font-bold text-[#172B4D]">₹ ${amt.toLocaleString()}</span>
+                <span class="text-[10px] text-[#5E6C84] block font-normal">${usd}</span>
+              </div>
+            `;
+          }
+        },
+        { 
+          field: 'status', 
+          header: 'Status', 
+          render: (v) => getStatusLozenge(v)
+        }
       ],
       actions: [
         {
-          label: 'Edit',
-          icon: `<svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
-          onClick: (row) => PurchaseView.openEditBillModal(row, billsTable)
+          label: 'Download',
+          icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
+          onClick: (row) => PurchaseView.downloadRecord(row)
         },
         {
           label: 'Delete',
           icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
           onClick: (row) => PurchaseView.deleteBill(row, billsTable)
         }
-      ]
+      ],
+      onRowClick: (row) => PurchaseView.showBillDetails(row)
     });
 
-    const createBillBtn = document.getElementById('btn-create-supplier-bill');
-    if (createBillBtn) {
-      createBillBtn.addEventListener('click', () => PurchaseView.openCreateBillModal(billsTable));
+    this.billsTable = billsTable;
+    PurchaseView.billsTable = billsTable;
+
+    // Apply Filter Search Button Logic
+    const applyFilter = () => {
+      const purchaseVal = document.getElementById('bill-top-purchase-select')?.value || 'ALL';
+      const plantVal = document.getElementById('bill-top-plant-select')?.value || 'ALL';
+      const fromDateVal = document.getElementById('bill-top-from-date')?.value || '';
+      const toDateVal = document.getElementById('bill-top-to-date')?.value || '';
+      const supplierVal = document.getElementById('bill-top-supplier-select')?.value || 'ALL';
+      const agentVal = document.getElementById('bill-top-agent-select')?.value || 'ALL';
+      const statusVal = document.getElementById('bill-top-status-select')?.value || 'ALL';
+
+      let filtered = [...ERP_DATA.supplierBills];
+
+      // 1. Filter Purchase Type
+      if (purchaseVal !== 'ALL') {
+        filtered = filtered.filter(b => (b.purchase || '').toLowerCase() === purchaseVal.toLowerCase());
+      }
+
+      // 2. Filter Plant
+      if (plantVal !== 'ALL') {
+        filtered = filtered.filter(b => (b.plant || '').toLowerCase() === plantVal.toLowerCase());
+      }
+
+      // 3. Filter Supplier
+      if (supplierVal !== 'ALL') {
+        filtered = filtered.filter(b => (b.supplier || b.supplierName || '').toLowerCase().includes(supplierVal.toLowerCase()));
+      }
+
+      // 4. Filter Agent
+      if (agentVal !== 'ALL') {
+        filtered = filtered.filter(b => (b.agent || '').toLowerCase().includes(agentVal.toLowerCase()));
+      }
+
+      // 5. Filter Status
+      if (statusVal !== 'ALL') {
+        filtered = filtered.filter(b => String(b.status || '').toLowerCase() === statusVal.toLowerCase());
+      }
+
+      // 6. Filter Date Range
+      if (fromDateVal && toDateVal) {
+        filtered = filtered.filter(b => {
+          const itemDate = b.rawDate || '';
+          if (!itemDate) return true;
+          return itemDate >= fromDateVal && itemDate <= toDateVal;
+        });
+      } else if (fromDateVal) {
+        filtered = filtered.filter(b => {
+          const itemDate = b.rawDate || '';
+          return !itemDate || itemDate >= fromDateVal;
+        });
+      } else if (toDateVal) {
+        filtered = filtered.filter(b => {
+          const itemDate = b.rawDate || '';
+          return !itemDate || itemDate <= toDateVal;
+        });
+      }
+
+      billsTable.setData(filtered);
+      Toast.show(`Filtered records: ${filtered.length} supplier ${filtered.length === 1 ? 'bill' : 'bills'} found.`, 'info');
+    };
+
+    // Search button click
+    const searchBtn = document.getElementById('bill-top-search-btn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', applyFilter);
+    }
+
+    // Reset button click
+    const resetBtn = document.getElementById('bill-top-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        const pSel = document.getElementById('bill-top-purchase-select');
+        const plSel = document.getElementById('bill-top-plant-select');
+        const fdInput = document.getElementById('bill-top-from-date');
+        const tdInput = document.getElementById('bill-top-to-date');
+        const sSel = document.getElementById('bill-top-supplier-select');
+        const aSel = document.getElementById('bill-top-agent-select');
+        const stSel = document.getElementById('bill-top-status-select');
+
+        if (pSel) pSel.value = 'ALL';
+        if (plSel) plSel.value = 'ALL';
+        if (fdInput) fdInput.value = '2026-10-07';
+        if (tdInput) tdInput.value = '2026-10-07';
+        if (sSel) sSel.value = 'ALL';
+        if (aSel) aSel.value = 'ALL';
+        if (stSel) stSel.value = 'ALL';
+
+        billsTable.setData(ERP_DATA.supplierBills);
+        Toast.show('Filters reset. Displaying all supplier bills.', 'info');
+      });
+    }
+
+    // Toggle Filter open/close
+    const toggleBtn = document.getElementById('bill-top-toggle-btn');
+    const filterBody = document.getElementById('bill-top-filter-body');
+    const toggleIcon = document.getElementById('bill-top-toggle-icon');
+    const toggleText = document.getElementById('bill-top-toggle-text');
+    let isCollapsed = false;
+
+    if (toggleBtn && filterBody) {
+      toggleBtn.addEventListener('click', () => {
+        isCollapsed = !isCollapsed;
+        const h = filterBody.previousElementSibling;
+        if (isCollapsed) {
+          filterBody.classList.add('hidden');
+          if (h) { h.classList.remove('pb-1'); h.classList.add('pb-0'); }
+          if (toggleText) toggleText.innerText = 'Show Filter';
+          if (toggleIcon) toggleIcon.classList.add('-rotate-90');
+          toggleBtn.classList.remove('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.add('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        } else {
+          filterBody.classList.remove('hidden');
+          if (h) { h.classList.add('pb-1'); h.classList.remove('pb-0'); }
+          if (toggleText) toggleText.innerText = 'Hide Filter';
+          if (toggleIcon) toggleIcon.classList.remove('-rotate-90');
+          toggleBtn.classList.add('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.remove('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        }
+      });
     }
   },
 
@@ -1671,130 +3034,484 @@ export const PurchaseView = {
   renderCommercialTransactions(container) {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
+        <!-- Page Title Header -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
           <div>
-            <h1 class="text-xl font-extrabold text-[#172B4D]">Commercial General Ledger & Transactions</h1>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Procurement journal entries, raw material freight, advance adjustments, and payments.</p>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Commercial Transactions</h1>
           </div>
           <div class="flex items-center gap-2">
-            <button id="btn-add-txn" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs">
-              <span>Record Journal Entry</span>
+            <button id="btn-pay-commercial" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              <span>Pay</span>
             </button>
           </div>
         </div>
 
+        <!-- Search / Filter Fields Card (5 Fields) -->
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
+          <div class="flex items-center justify-between pb-1">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
+            </div>
+
+            <!-- Filter Controls: Reset & Toggle Open/Close -->
+            <div class="flex items-center gap-2">
+              <button type="button" id="ctx-top-reset-btn" class="dt-top-filter-reset-btn text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] hover:bg-[#F4F5F7] px-2.5 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-colors cursor-pointer" title="Reset all filters">
+                <svg class="w-3.5 h-3.5 text-[#6B778C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>Reset</span>
+              </button>
+
+              <button type="button" id="ctx-top-toggle-btn" class="dt-top-filter-toggle-btn text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+                <svg class="w-3.5 h-3.5 dt-top-filter-toggle-icon transform transition-transform duration-200" id="ctx-top-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <span class="dt-top-filter-toggle-text" id="ctx-top-toggle-text">Hide Filter</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Collapsible Filter Inputs Grid (Max 5 Columns) -->
+          <div id="ctx-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
+            <!-- 1. Select Center -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT CENTER</label>
+              <select id="ctx-top-center-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Centers</option>
+                <option value="Bhimavaram Center #1">Bhimavaram Center #1</option>
+                <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
+                <option value="Amalapuram Harvesters #4">Amalapuram Harvesters #4</option>
+                <option value="Machilipatnam Delta #3">Machilipatnam Delta #3</option>
+                <option value="Ongole Coastal Hub #1">Ongole Coastal Hub #1</option>
+                <option value="Visakhapatnam Gate Dock">Visakhapatnam Gate Dock</option>
+              </select>
+            </div>
+
+            <!-- 2. Select Type -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT TYPE</label>
+              <select id="ctx-top-type-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Types</option>
+                <option value="PURCHASE_PAYABLE">Purchase Payable</option>
+                <option value="ADVANCE_PAID">Advance Paid</option>
+                <option value="LOGISTICS_FEE">Logistics Fee</option>
+                <option value="COMMISSION_FEE">Commission Fee</option>
+                <option value="ADJUSTMENT_CREDIT">Adjustment Credit</option>
+                <option value="TDS_PAYABLE">TDS Payable</option>
+              </select>
+            </div>
+
+            <!-- 3. Select Supplier -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT SUPPLIER</label>
+              <select id="ctx-top-supplier-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Suppliers</option>
+                <option value="Sri Sai Aqua Farms">Sri Sai Aqua Farms</option>
+                <option value="Krishna Delta Prawn Harvesters">Krishna Delta Prawn Harvesters</option>
+                <option value="Konaseema Marine Harvesters">Konaseema Marine Harvesters</option>
+                <option value="Nellore Brackish Aqua Cultivators">Nellore Brackish Aqua Cultivators</option>
+                <option value="Godavari Coastal Aqua Farms">Godavari Coastal Aqua Farms</option>
+                <option value="Sagar Marine Hatcheries">Sagar Marine Hatcheries</option>
+                <option value="East Coast Aqua Society">East Coast Aqua Society</option>
+                <option value="Coastal Andhra Aquatics">Coastal Andhra Aquatics</option>
+              </select>
+            </div>
+
+            <!-- 4. Select Agent -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT AGENT</label>
+              <select id="ctx-top-agent-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Agents</option>
+                <option value="Direct Farmer">Direct Farmer</option>
+                <option value="Coastal Marine Agency">Coastal Marine Agency</option>
+                <option value="Sagar Marine Brokers">Sagar Marine Brokers</option>
+                <option value="Delta Seafood Associates">Delta Seafood Associates</option>
+                <option value="Nellore Aqua Syndicate">Nellore Aqua Syndicate</option>
+                <option value="East Coast Brokers">East Coast Brokers</option>
+              </select>
+            </div>
+
+            <!-- 5. Date -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">DATE</label>
+              <div class="erp-date-wrapper w-full">
+                <input type="date" id="ctx-top-date" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 6. Search Action Button (Second Row) -->
+            <div class="flex items-end">
+              <button type="button" id="ctx-top-search-btn" class="btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]" title="Apply Filters">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Container -->
         <div id="commercial-txns-table-container"></div>
       </div>
     `;
+
+    // Type Badge Helper
+    const getTypeBadge = (type) => {
+      const t = String(type || '').toUpperCase();
+      let colorClass = 'bg-[#DEEBFF] text-[#0052CC] border-[#B3D4FF]';
+      if (t.includes('ADVANCE')) {
+        colorClass = 'bg-[#FFF0B3] text-[#8F4D00] border-[#FFE380]';
+      } else if (t.includes('LOGISTICS')) {
+        colorClass = 'bg-[#EAE6FF] text-[#403294] border-[#D3CAFF]';
+      } else if (t.includes('COMMISSION')) {
+        colorClass = 'bg-[#E6FCFF] text-[#008DA6] border-[#B6F0FF]';
+      } else if (t.includes('ADJUSTMENT')) {
+        colorClass = 'bg-[#E3FCEF] text-[#006644] border-[#ABF5D1]';
+      } else if (t.includes('TDS')) {
+        colorClass = 'bg-[#FFEBE6] text-[#BF2600] border-[#FFBDAD]';
+      }
+      return `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold border ${colorClass}">${t.replace(/_/g, ' ')}</span>`;
+    };
+
+    // Status Badge Helper
+    const getLedgerStatusBadge = (status) => {
+      const s = String(status || '').toUpperCase();
+      if (s === 'CLEARED' || s === 'SETTLED') {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#E3FCEF] text-[#006644] border border-[#ABF5D1]">${s}</span>`;
+      }
+      if (s === 'POSTED') {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF]">POSTED</span>`;
+      }
+      return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#FFF0B3] text-[#8F4D00] border border-[#FFE380]">${s || 'PENDING'}</span>`;
+    };
 
     const txnsTable = new DataTable({
       containerId: 'commercial-txns-table-container',
       data: this.commercialTxns,
       keyField: 'txnId',
-      tableTitle: 'Commercial Transactions Ledger (CRUD)',
+      tableTitle: 'Commercial Transactions List',
+      showCopy: false,
       columns: [
-        { field: 'txnId', header: 'Txn Ref', render: (v) => `<span class=" font-bold text-[#0052CC]">${v}</span>` },
-        { field: 'date', header: 'Date' },
-        { field: 'supplier', header: 'Party / Supplier' },
-        { field: 'description', header: 'Description' },
-        { field: 'amountInr', header: 'Amount (INR)', render: (v) => `<span class="font-bold">₹ ${v.toLocaleString()}</span>` },
-        { field: 'amountUsd', header: 'Amount (USD)', render: (v) => `<span class=" text-[#006644] font-bold">$ ${v.toLocaleString()}</span>` },
-        { field: 'type', header: 'Type', type: 'status' },
-        { field: 'status', header: 'Ledger Status', type: 'status' }
+        { 
+          field: 'sNo', 
+          header: 'S.No',
+          render: (v, row, idx) => `<span class="font-medium text-[#5E6C84]">${v || (idx + 1)}</span>`
+        },
+        { 
+          field: 'txnId', 
+          header: 'Txn Ref', 
+          render: (v) => `<span class="font-bold text-[#0052CC] hover:underline cursor-pointer" title="Click to view details">${v}</span>` 
+        },
+        { 
+          field: 'date', 
+          header: 'Date',
+          render: (v, row) => `<span class="text-[#172B4D]">${v || row.rawDate}</span>` 
+        },
+        { 
+          field: 'center', 
+          header: 'Center',
+          render: (v) => `<span class="text-[#172B4D] font-medium">${v || '-'}</span>`
+        },
+        { 
+          field: 'supplier', 
+          header: 'Party / Supplier',
+          render: (v) => `<span class="font-medium text-[#172B4D]">${v}</span>`
+        },
+        { 
+          field: 'agent', 
+          header: 'Agent',
+          render: (v) => `<span class="text-[#5E6C84]">${v || 'Direct Farmer'}</span>`
+        },
+        { 
+          field: 'description', 
+          header: 'Description',
+          render: (v) => `<span class="text-[#5E6C84] truncate max-w-xs block" title="${v}">${v}</span>`
+        },
+        { 
+          field: 'amountInr', 
+          header: 'Amount (INR)', 
+          render: (v) => `<span class="font-bold text-[#172B4D]">₹ ${(parseFloat(v) || 0).toLocaleString()}</span>` 
+        },
+        { 
+          field: 'amountUsd', 
+          header: 'Amount (USD)', 
+          render: (v) => `<span class="text-[#006644] font-bold">$ ${(parseFloat(v) || 0).toLocaleString()}</span>` 
+        },
+        { 
+          field: 'type', 
+          header: 'Type',
+          render: (v) => getTypeBadge(v)
+        },
+        { 
+          field: 'status', 
+          header: 'Ledger Status',
+          render: (v) => getLedgerStatusBadge(v)
+        }
       ],
       actions: [
         {
+          label: 'Download',
+          icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
+          onClick: (row) => PurchaseView.downloadRecord(row)
+        },
+        {
           label: 'Delete',
           icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
-          onClick: (row) => {
-            Modal.confirm({
-              title: `Delete Transaction ${row.txnId}`,
-              message: 'Are you sure you want to void this commercial ledger transaction?',
-              isDestructive: true,
-              onConfirm: () => {
-                const idx = PurchaseView.commercialTxns.findIndex(t => t.txnId === row.txnId);
-                if (idx > -1) {
-                  PurchaseView.commercialTxns.splice(idx, 1);
-                  txnsTable.setData(PurchaseView.commercialTxns);
-                  Toast.show(`Transaction ${row.txnId} voided.`, 'success');
-                }
-              }
-            });
-          }
+          onClick: (row) => PurchaseView.deleteTransaction(row, txnsTable)
         }
-      ]
+      ],
+      onRowClick: (row) => PurchaseView.showTransactionDetails(row)
     });
 
-    const addTxnBtn = document.getElementById('btn-add-txn');
-    if (addTxnBtn) {
-      addTxnBtn.addEventListener('click', () => {
+    this.commercialTxnsTable = txnsTable;
+    PurchaseView.commercialTxnsTable = txnsTable;
+
+    // Apply Filter Search Logic
+    const applyFilter = () => {
+      const centerVal = document.getElementById('ctx-top-center-select')?.value || 'ALL';
+      const typeVal = document.getElementById('ctx-top-type-select')?.value || 'ALL';
+      const supplierVal = document.getElementById('ctx-top-supplier-select')?.value || 'ALL';
+      const agentVal = document.getElementById('ctx-top-agent-select')?.value || 'ALL';
+      const dateVal = document.getElementById('ctx-top-date')?.value || '';
+
+      let filtered = [...this.commercialTxns];
+
+      if (centerVal !== 'ALL') {
+        filtered = filtered.filter(t => (t.center || '').toLowerCase().includes(centerVal.toLowerCase()));
+      }
+      if (typeVal !== 'ALL') {
+        filtered = filtered.filter(t => (t.type || '').toUpperCase() === typeVal.toUpperCase());
+      }
+      if (supplierVal !== 'ALL') {
+        filtered = filtered.filter(t => (t.supplier || '').toLowerCase().includes(supplierVal.toLowerCase()));
+      }
+      if (agentVal !== 'ALL') {
+        filtered = filtered.filter(t => (t.agent || '').toLowerCase().includes(agentVal.toLowerCase()));
+      }
+      if (dateVal) {
+        filtered = filtered.filter(t => {
+          const itemDate = t.rawDate || '';
+          return itemDate === dateVal || itemDate.includes(dateVal);
+        });
+      }
+
+      txnsTable.setData(filtered);
+      Toast.show(`Filtered records: ${filtered.length} commercial ${filtered.length === 1 ? 'transaction' : 'transactions'} found.`, 'info');
+    };
+
+    // Search button click
+    const searchBtn = document.getElementById('ctx-top-search-btn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', applyFilter);
+    }
+
+    // Reset button click
+    const resetBtn = document.getElementById('ctx-top-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        const cSel = document.getElementById('ctx-top-center-select');
+        const tSel = document.getElementById('ctx-top-type-select');
+        const sSel = document.getElementById('ctx-top-supplier-select');
+        const aSel = document.getElementById('ctx-top-agent-select');
+        const dInput = document.getElementById('ctx-top-date');
+
+        if (cSel) cSel.value = 'ALL';
+        if (tSel) tSel.value = 'ALL';
+        if (sSel) sSel.value = 'ALL';
+        if (aSel) aSel.value = 'ALL';
+        if (dInput) dInput.value = '';
+
+        txnsTable.setData(this.commercialTxns);
+        Toast.show('Filters reset. Displaying all commercial transactions.', 'info');
+      });
+    }
+
+    // Toggle Filter open/close
+    const toggleBtn = document.getElementById('ctx-top-toggle-btn');
+    const filterBody = document.getElementById('ctx-top-filter-body');
+    const toggleIcon = document.getElementById('ctx-top-toggle-icon');
+    const toggleText = document.getElementById('ctx-top-toggle-text');
+    let isCollapsed = false;
+
+    if (toggleBtn && filterBody) {
+      toggleBtn.addEventListener('click', () => {
+        isCollapsed = !isCollapsed;
+        const h = filterBody.previousElementSibling;
+        if (isCollapsed) {
+          filterBody.classList.add('hidden');
+          if (h) { h.classList.remove('pb-1'); h.classList.add('pb-0'); }
+          if (toggleText) toggleText.innerText = 'Show Filter';
+          if (toggleIcon) toggleIcon.classList.add('-rotate-90');
+          toggleBtn.classList.remove('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.add('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        } else {
+          filterBody.classList.remove('hidden');
+          if (h) { h.classList.add('pb-1'); h.classList.remove('pb-0'); }
+          if (toggleText) toggleText.innerText = 'Hide Filter';
+          if (toggleIcon) toggleIcon.classList.remove('-rotate-90');
+          toggleBtn.classList.add('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.remove('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        }
+      });
+    }
+
+    const payBtn = document.getElementById('btn-pay-commercial');
+    if (payBtn) {
+      payBtn.addEventListener('click', () => {
         Modal.open({
-          title: 'Record Commercial Transaction Entry',
+          title: 'Disburse Commercial Payment',
           size: 'md',
           content: `
             <form class="space-y-3">
               <div class="grid grid-cols-2 gap-3">
                 <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Txn ID</label>
-                  <input type="text" value="CTX-2026-${Math.floor(1000 + Math.random() * 9000)}" readonly class="w-full text-xs  px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded" />
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Voucher No</label>
+                  <input type="text" id="pay-modal-voucher" value="PAY-2026-${Math.floor(100 + Math.random() * 900)}" readonly class="w-full text-xs px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded" />
                 </div>
                 <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Date</label>
-                  <input type="date" value="2026-10-05" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Payment Date</label>
+                  <div class="erp-date-wrapper">
+                    <input type="date" id="pay-modal-date" value="${new Date().toISOString().substring(0, 10)}" class="erp-date-input w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                    <span class="erp-date-icon">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div>
-                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Party / Supplier</label>
-                <select id="modal-txn-party" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                  ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
-                </select>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Procurement Center</label>
+                  <select id="pay-modal-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                    ${ERP_DATA.centers.map(c => `<option value="${c.name}">${c.name}</option>`).join('')}
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Payment Type</label>
+                  <select id="pay-modal-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                    <option value="PURCHASE_PAYABLE">Purchase Payable</option>
+                    <option value="LOGISTICS_FEE">Logistics Fee</option>
+                    <option value="COMMISSION_FEE">Commission Fee</option>
+                    <option value="ADVANCE_PAID">Advance Paid</option>
+                    <option value="TDS_PAYABLE">TDS Payable</option>
+                  </select>
+                </div>
               </div>
-              <div>
-                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Description</label>
-                <input type="text" id="modal-txn-desc" value="Freight and crate handling charge" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Party / Supplier</label>
+                  <select id="pay-modal-party" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                    ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Commission Agent</label>
+                  <select id="pay-modal-agent" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                    ${ERP_DATA.agents.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Payment Mode</label>
+                  <select id="pay-modal-mode" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                    <option value="RTGS / Bank Wire">RTGS / Bank Wire</option>
+                    <option value="NEFT">NEFT</option>
+                    <option value="Direct Bank Transfer">Direct Bank Transfer</option>
+                    <option value="Cheque / DD">Cheque / DD</option>
+                    <option value="Letter of Credit">Letter of Credit</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Bank Reference / UTR</label>
+                  <input type="text" id="pay-modal-ref" placeholder="e.g. HDFC-RTGS-991204" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+                </div>
               </div>
               <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs font-semibold text-[#172B4D] mb-1">Amount (INR)</label>
-                  <input type="number" id="modal-txn-inr" value="45000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
+                  <input type="number" id="pay-modal-inr" placeholder="0.00" value="750000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
                 </div>
                 <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Transaction Type</label>
-                  <select id="modal-txn-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                    <option value="LOGISTICS_FEE">LOGISTICS_FEE</option>
-                    <option value="ADVANCE_PAID">ADVANCE_PAID</option>
-                    <option value="PURCHASE_PAYABLE">PURCHASE_PAYABLE</option>
+                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Plant</label>
+                  <select id="pay-modal-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                    <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+                    <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                    <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                    <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT)</option>
+                    <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
                   </select>
                 </div>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Settlement / Commercial Remarks</label>
+                <input type="text" id="pay-modal-desc" placeholder="Settlement for RM intake / Commercial clearance" value="Settlement for RM Intake / Commercial clearance" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
               </div>
             </form>
           `,
           footerButtons: [
             { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
             { 
-              label: 'Post Transaction', 
+              label: 'Confirm & Disburse Payment', 
               type: 'primary', 
               onClick: (m) => {
-                const party = document.getElementById('modal-txn-party').value;
-                const desc = document.getElementById('modal-txn-desc').value;
-                const inr = parseFloat(document.getElementById('modal-txn-inr').value) || 0;
-                const type = document.getElementById('modal-txn-type').value;
+                const voucherNo = document.getElementById('pay-modal-voucher')?.value || `PAY-2026-${Math.floor(100 + Math.random() * 900)}`;
+                const party = document.getElementById('pay-modal-party')?.value || '';
+                const center = document.getElementById('pay-modal-center')?.value || '';
+                const agent = document.getElementById('pay-modal-agent')?.value || '';
+                const plant = document.getElementById('pay-modal-plant')?.value || '';
+                const mode = document.getElementById('pay-modal-mode')?.value || 'RTGS / Bank Wire';
+                const ref = document.getElementById('pay-modal-ref')?.value || 'HDFC-RTGS-991204';
+                const desc = document.getElementById('pay-modal-desc')?.value || 'Commercial Payment Settlement';
+                const inr = parseFloat(document.getElementById('pay-modal-inr')?.value) || 0;
+                const type = document.getElementById('pay-modal-type')?.value || 'PURCHASE_PAYABLE';
+
+                if (inr <= 0) {
+                  Toast.show('Please enter a valid payment amount.', 'warning');
+                  return;
+                }
 
                 const newTxn = {
+                  sNo: 1,
                   txnId: `CTX-2026-${Math.floor(1000 + Math.random() * 9000)}`,
-                  date: new Date().toISOString().substring(0, 10),
+                  date: new Date().toLocaleDateString('en-GB'),
+                  rawDate: new Date().toISOString().substring(0, 10),
+                  center: center,
                   supplier: party,
-                  description: desc,
+                  agent: agent,
+                  plant: plant,
+                  description: `${desc} [${mode} Ref: ${ref}]`,
                   amountInr: inr,
                   amountUsd: Math.round(inr / 83),
                   type: type,
-                  status: 'POSTED'
+                  status: 'SETTLED'
                 };
 
                 PurchaseView.commercialTxns.unshift(newTxn);
+                PurchaseView.commercialTxns.forEach((item, idx) => item.sNo = idx + 1);
                 txnsTable.setData(PurchaseView.commercialTxns);
+
+                if (PurchaseView.paymentsList) {
+                  PurchaseView.paymentsList.unshift({
+                    sNo: 1,
+                    voucherNo: voucherNo,
+                    paymentDate: new Date().toLocaleDateString('en-GB'),
+                    rawDate: new Date().toISOString().substring(0, 10),
+                    center: center,
+                    type: type,
+                    supplierName: party,
+                    agent: agent,
+                    plant: plant,
+                    billNo: 'COMM-SETTLE',
+                    bankRef: ref,
+                    amountInr: inr,
+                    amountUsd: Math.round(inr / 83),
+                    paymentMode: mode,
+                    status: 'COMPLETED'
+                  });
+                }
+
                 m.close();
-                Toast.show(`Transaction ${newTxn.txnId} posted to general ledger.`, 'success');
+                Toast.show(`Payment voucher ${voucherNo} for ₹${inr.toLocaleString('en-IN')} disbursed & recorded successfully.`, 'success');
               }
             }
           ]
@@ -1809,58 +3526,377 @@ export const PurchaseView = {
   renderPaymentSummary(container) {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
+        <!-- Page Title Header -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div>
-            <h1 class="text-xl font-extrabold text-[#172B4D]">Supplier Payment Summary & Aging</h1>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Disbursement trends, RTGS settlements, bank authorizations, and aging schedules.</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <a href="#/purchase/payments/bill-date-payment" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs">
-              <span>Record Payment</span>
-            </a>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Payments</h1>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="bg-white p-4 rounded-lg border border-[#DFE1E6] shadow-xs">
-            <span class="text-xs text-[#6B778C]">Total Paid (October)</span>
-            <div class="text-2xl font-bold text-[#006644] mt-1">$ 35,866 <span class="text-xs font-normal text-[#5E6C84]">USD</span></div>
-            <div class="text-[11px] text-[#5E6C84] mt-1">₹ 29.77 Lakhs settled via RTGS</div>
+        <!-- Search / Filter Fields Card (8 Fields, Max 5 Columns) -->
+        <div class="bg-white rounded-xl border border-[#DFE1E6] p-4 shadow-xs mb-4 transition-all duration-200">
+          <div class="flex items-center justify-between pb-1">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D]">Search &amp; Filters</h3>
+            </div>
+
+            <!-- Filter Controls: Reset & Toggle Open/Close -->
+            <div class="flex items-center gap-2">
+              <button type="button" id="pay-top-reset-btn" class="dt-top-filter-reset-btn text-xs font-semibold text-[#5E6C84] hover:text-[#172B4D] hover:bg-[#F4F5F7] px-2.5 py-1.5 rounded border border-[#DFE1E6] flex items-center gap-1.5 transition-colors cursor-pointer" title="Reset all filters">
+                <svg class="w-3.5 h-3.5 text-[#6B778C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>Reset</span>
+              </button>
+
+              <button type="button" id="pay-top-toggle-btn" class="dt-top-filter-toggle-btn text-xs font-semibold text-[#0052CC] bg-[#DEEBFF]/80 hover:bg-[#DEEBFF] px-3 py-1.5 rounded border border-[#B3D4FF] flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+                <svg class="w-3.5 h-3.5 dt-top-filter-toggle-icon transform transition-transform duration-200" id="pay-top-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <span class="dt-top-filter-toggle-text" id="pay-top-toggle-text">Hide Filter</span>
+              </button>
+            </div>
           </div>
-          <div class="bg-white p-4 rounded-lg border border-[#DFE1E6] shadow-xs">
-            <span class="text-xs text-[#6B778C]">Pending Approval Vouchers</span>
-            <div class="text-2xl font-bold text-[#FFAB00] mt-1">1 Voucher</div>
-            <div class="text-[11px] text-[#5E6C84] mt-1">Godavari Aqua ₹ 3.80 Lakhs</div>
-          </div>
-          <div class="bg-white p-4 rounded-lg border border-[#DFE1E6] shadow-xs">
-            <span class="text-xs text-[#6B778C]">Primary Disbursement Bank</span>
-            <div class="text-2xl font-bold text-[#0052CC] mt-1">State Bank of India</div>
-            <div class="text-[11px] text-[#5E6C84] mt-1">Corporate Branch (INVTZ)</div>
+
+          <!-- Collapsible Filter Inputs Grid (Max 5 Columns) -->
+          <div id="pay-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 text-xs transition-all duration-200">
+            <!-- 1. Select Center -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT CENTER</label>
+              <select id="pay-top-center-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Centers</option>
+                <option value="Bhimavaram Center #1">Bhimavaram Center #1</option>
+                <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
+                <option value="Amalapuram Harvesters #4">Amalapuram Harvesters #4</option>
+                <option value="Machilipatnam Delta #3">Machilipatnam Delta #3</option>
+                <option value="Ongole Coastal Hub #1">Ongole Coastal Hub #1</option>
+                <option value="Visakhapatnam Gate Dock">Visakhapatnam Gate Dock</option>
+              </select>
+            </div>
+
+            <!-- 2. Select Type -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT TYPE</label>
+              <select id="pay-top-type-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Types</option>
+                <option value="PURCHASE_PAYABLE">Purchase Payable</option>
+                <option value="ADVANCE_PAID">Advance Paid</option>
+                <option value="LOGISTICS_FEE">Logistics Fee</option>
+                <option value="COMMISSION_FEE">Commission Fee</option>
+                <option value="TDS_PAYABLE">TDS Payable</option>
+              </select>
+            </div>
+
+            <!-- 3. Select Supplier -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT SUPPLIER</label>
+              <select id="pay-top-supplier-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Suppliers</option>
+                <option value="Sri Sai Aqua Farms">Sri Sai Aqua Farms</option>
+                <option value="Krishna Delta Prawn Harvesters">Krishna Delta Prawn Harvesters</option>
+                <option value="Konaseema Marine Harvesters">Konaseema Marine Harvesters</option>
+                <option value="Nellore Brackish Aqua Cultivators">Nellore Brackish Aqua Cultivators</option>
+                <option value="Godavari Coastal Aqua Farms">Godavari Coastal Aqua Farms</option>
+                <option value="Sagar Marine Hatcheries">Sagar Marine Hatcheries</option>
+                <option value="East Coast Aqua Society">East Coast Aqua Society</option>
+                <option value="Coastal Andhra Aquatics">Coastal Andhra Aquatics</option>
+              </select>
+            </div>
+
+            <!-- 4. Select Agent -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT AGENT</label>
+              <select id="pay-top-agent-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Agents</option>
+                <option value="Direct Farmer">Direct Farmer</option>
+                <option value="Coastal Marine Agency">Coastal Marine Agency</option>
+                <option value="Sagar Marine Brokers">Sagar Marine Brokers</option>
+                <option value="Delta Seafood Associates">Delta Seafood Associates</option>
+                <option value="Nellore Aqua Syndicate">Nellore Aqua Syndicate</option>
+                <option value="East Coast Brokers">East Coast Brokers</option>
+              </select>
+            </div>
+
+            <!-- 5. Select Arrival Plant -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT ARRIVAL PLANT</label>
+              <select id="pay-top-plant-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Arrival Plants</option>
+                <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
+              </select>
+            </div>
+
+            <!-- 6. Select Payment Mode -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT PAYMENT MODE</label>
+              <select id="pay-top-mode-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="ALL">All Payment Modes</option>
+                <option value="RTGS">RTGS / Bank Wire</option>
+                <option value="NEFT">NEFT</option>
+                <option value="Direct Bank Transfer">Direct Bank Transfer</option>
+                <option value="Cheque">Cheque Disbursement</option>
+              </select>
+            </div>
+
+            <!-- 7. From Date -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">FROM DATE</label>
+              <div class="erp-date-wrapper w-full">
+                <input type="date" id="pay-top-from-date" value="2026-10-01" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 8. To Date -->
+            <div>
+              <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">TO DATE</label>
+              <div class="erp-date-wrapper w-full">
+                <input type="date" id="pay-top-to-date" value="2026-10-07" class="erp-date-input w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()">
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 9. Search Action Button (Second Row) -->
+            <div class="flex items-end">
+              <button type="button" id="pay-top-search-btn" class="btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]" title="Apply Filters">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span>Search</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="bg-white p-4 rounded-lg border border-[#DFE1E6] shadow-xs">
-          <h3 class="font-bold text-sm text-[#172B4D] mb-3">Recent Payment Disbursements</h3>
-          <div id="payment-summary-table-container"></div>
-        </div>
+        <!-- Table Container -->
+        <div id="payment-summary-table-container"></div>
       </div>
     `;
 
-    new DataTable({
+    // Status Badge Helper
+    const getPaymentStatusBadge = (status) => {
+      const s = String(status || '').toUpperCase();
+      if (s === 'COMPLETED') {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#E3FCEF] text-[#006644] border border-[#ABF5D1]">COMPLETED</span>`;
+      }
+      if (s === 'PROCESSING') {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF]">PROCESSING</span>`;
+      }
+      if (s === 'HELD') {
+        return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD]">HELD</span>`;
+      }
+      return `<span class="inline-flex items-center justify-center w-full px-2 py-0.5 rounded text-[11px] font-bold bg-[#FFF0B3] text-[#8F4D00] border border-[#FFE380]">PENDING</span>`;
+    };
+
+    const paymentsTable = new DataTable({
       containerId: 'payment-summary-table-container',
       data: this.paymentsList,
       keyField: 'voucherNo',
+      tableTitle: 'Payments List',
+      showCopy: false,
       columns: [
-        { field: 'voucherNo', header: 'Voucher No', render: (v) => `<span class=" font-bold text-[#0052CC]">${v}</span>` },
-        { field: 'paymentDate', header: 'Payment Date' },
-        { field: 'supplierName', header: 'Supplier' },
-        { field: 'billNo', header: 'Settled Bill' },
-        { field: 'bankRef', header: 'Bank Ref / UTR', render: (v) => `<span class=" text-xs">${v}</span>` },
-        { field: 'amountInr', header: 'Amount (INR)', render: (v) => `<span class="font-bold">₹ ${v.toLocaleString()}</span>` },
-        { field: 'amountUsd', header: 'Amount (USD)', render: (v) => `<span class=" font-bold text-[#006644]">$ ${v.toLocaleString()}</span>` },
-        { field: 'status', header: 'Status', type: 'status' }
-      ]
+        { 
+          field: 'sNo', 
+          header: 'S.No',
+          render: (v, row, idx) => `<span class="font-medium text-[#5E6C84]">${v || (idx + 1)}</span>`
+        },
+        { 
+          field: 'voucherNo', 
+          header: 'Voucher No', 
+          render: (v) => `<span class="font-bold text-[#0052CC] hover:underline cursor-pointer" title="Click to view details">${v}</span>` 
+        },
+        { 
+          field: 'paymentDate', 
+          header: 'Payment Date',
+          render: (v, row) => `<span class="text-[#172B4D]">${v || row.rawDate}</span>` 
+        },
+        { 
+          field: 'center', 
+          header: 'Center',
+          render: (v) => `<span class="text-[#172B4D] font-medium">${v || '-'}</span>`
+        },
+        { 
+          field: 'supplierName', 
+          header: 'Supplier / Payee',
+          render: (v) => `<span class="font-medium text-[#172B4D]">${v}</span>`
+        },
+        { 
+          field: 'agent', 
+          header: 'Agent',
+          render: (v) => `<span class="text-[#5E6C84]">${v || 'Direct Farmer'}</span>`
+        },
+        { 
+          field: 'plant', 
+          header: 'Arrival Plant',
+          render: (v) => `<span class="text-[#5E6C84]">${v || '-'}</span>`
+        },
+        { 
+          field: 'billNo', 
+          header: 'Settled Bill',
+          render: (v) => `<span class="font-bold text-[#172B4D]">${v || '-'}</span>`
+        },
+        { 
+          field: 'bankRef', 
+          header: 'Bank Ref / UTR',
+          render: (v) => `<span class="text-xs text-[#5E6C84] font-mono">${v || '-'}</span>`
+        },
+        { 
+          field: 'paymentMode', 
+          header: 'Payment Mode',
+          render: (v) => `<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-[#FAFBFC] text-[#172B4D] border border-[#DFE1E6]">${v}</span>`
+        },
+        { 
+          field: 'amountInr', 
+          header: 'Amount (INR)', 
+          render: (v) => `<span class="font-bold text-[#172B4D]">₹ ${(parseFloat(v) || 0).toLocaleString()}</span>` 
+        },
+        { 
+          field: 'amountUsd', 
+          header: 'Amount (USD)', 
+          render: (v) => `<span class="text-[#006644] font-bold">$ ${(parseFloat(v) || 0).toLocaleString()}</span>` 
+        },
+        { 
+          field: 'status', 
+          header: 'Status',
+          render: (v) => getPaymentStatusBadge(v)
+        }
+      ],
+      actions: [
+        {
+          label: 'Download',
+          icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
+          onClick: (row) => PurchaseView.downloadRecord(row)
+        },
+        {
+          label: 'Delete',
+          icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
+          onClick: (row) => PurchaseView.deletePayment(row, paymentsTable)
+        }
+      ],
+      onRowClick: (row) => PurchaseView.showPaymentDetails(row)
     });
+
+    this.paymentsTable = paymentsTable;
+    PurchaseView.paymentsTable = paymentsTable;
+
+    // Apply Filter Search Logic
+    const applyFilter = () => {
+      const centerVal = document.getElementById('pay-top-center-select')?.value || 'ALL';
+      const typeVal = document.getElementById('pay-top-type-select')?.value || 'ALL';
+      const supplierVal = document.getElementById('pay-top-supplier-select')?.value || 'ALL';
+      const agentVal = document.getElementById('pay-top-agent-select')?.value || 'ALL';
+      const plantVal = document.getElementById('pay-top-plant-select')?.value || 'ALL';
+      const modeVal = document.getElementById('pay-top-mode-select')?.value || 'ALL';
+      const fromDateVal = document.getElementById('pay-top-from-date')?.value || '';
+      const toDateVal = document.getElementById('pay-top-to-date')?.value || '';
+
+      let filtered = [...this.paymentsList];
+
+      if (centerVal !== 'ALL') {
+        filtered = filtered.filter(p => (p.center || '').toLowerCase().includes(centerVal.toLowerCase()));
+      }
+      if (typeVal !== 'ALL') {
+        filtered = filtered.filter(p => (p.type || '').toUpperCase() === typeVal.toUpperCase());
+      }
+      if (supplierVal !== 'ALL') {
+        filtered = filtered.filter(p => (p.supplierName || '').toLowerCase().includes(supplierVal.toLowerCase()));
+      }
+      if (agentVal !== 'ALL') {
+        filtered = filtered.filter(p => (p.agent || '').toLowerCase().includes(agentVal.toLowerCase()));
+      }
+      if (plantVal !== 'ALL') {
+        filtered = filtered.filter(p => (p.plant || '').toLowerCase().includes(plantVal.toLowerCase()));
+      }
+      if (modeVal !== 'ALL') {
+        filtered = filtered.filter(p => (p.paymentMode || '').toLowerCase().includes(modeVal.toLowerCase()));
+      }
+      if (fromDateVal && toDateVal) {
+        filtered = filtered.filter(p => {
+          const itemDate = p.rawDate || '';
+          if (!itemDate) return true;
+          return itemDate >= fromDateVal && itemDate <= toDateVal;
+        });
+      } else if (fromDateVal) {
+        filtered = filtered.filter(p => {
+          const itemDate = p.rawDate || '';
+          return !itemDate || itemDate >= fromDateVal;
+        });
+      } else if (toDateVal) {
+        filtered = filtered.filter(p => {
+          const itemDate = p.rawDate || '';
+          return !itemDate || itemDate <= toDateVal;
+        });
+      }
+
+      paymentsTable.setData(filtered);
+      Toast.show(`Filtered records: ${filtered.length} payment ${filtered.length === 1 ? 'disbursement' : 'disbursements'} found.`, 'info');
+    };
+
+    // Search button click
+    const searchBtn = document.getElementById('pay-top-search-btn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', applyFilter);
+    }
+
+    // Reset button click
+    const resetBtn = document.getElementById('pay-top-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        const cSel = document.getElementById('pay-top-center-select');
+        const tSel = document.getElementById('pay-top-type-select');
+        const sSel = document.getElementById('pay-top-supplier-select');
+        const aSel = document.getElementById('pay-top-agent-select');
+        const plSel = document.getElementById('pay-top-plant-select');
+        const mSel = document.getElementById('pay-top-mode-select');
+        const fdInput = document.getElementById('pay-top-from-date');
+        const tdInput = document.getElementById('pay-top-to-date');
+
+        if (cSel) cSel.value = 'ALL';
+        if (tSel) tSel.value = 'ALL';
+        if (sSel) sSel.value = 'ALL';
+        if (aSel) aSel.value = 'ALL';
+        if (plSel) plSel.value = 'ALL';
+        if (mSel) mSel.value = 'ALL';
+        if (fdInput) fdInput.value = '2026-10-01';
+        if (tdInput) tdInput.value = '2026-10-07';
+
+        paymentsTable.setData(this.paymentsList);
+        Toast.show('Filters reset. Displaying all payment disbursements.', 'info');
+      });
+    }
+
+    // Toggle Filter open/close
+    const toggleBtn = document.getElementById('pay-top-toggle-btn');
+    const filterBody = document.getElementById('pay-top-filter-body');
+    const toggleIcon = document.getElementById('pay-top-toggle-icon');
+    const toggleText = document.getElementById('pay-top-toggle-text');
+    let isCollapsed = false;
+
+    if (toggleBtn && filterBody) {
+      toggleBtn.addEventListener('click', () => {
+        isCollapsed = !isCollapsed;
+        const h = filterBody.previousElementSibling;
+        if (isCollapsed) {
+          filterBody.classList.add('hidden');
+          if (h) { h.classList.remove('pb-1'); h.classList.add('pb-0'); }
+          if (toggleText) toggleText.innerText = 'Show Filter';
+          if (toggleIcon) toggleIcon.classList.add('-rotate-90');
+          toggleBtn.classList.remove('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.add('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        } else {
+          filterBody.classList.remove('hidden');
+          if (h) { h.classList.add('pb-1'); h.classList.remove('pb-0'); }
+          if (toggleText) toggleText.innerText = 'Hide Filter';
+          if (toggleIcon) toggleIcon.classList.remove('-rotate-90');
+          toggleBtn.classList.add('bg-[#DEEBFF]/80', 'text-[#0052CC]', 'border-[#B3D4FF]');
+          toggleBtn.classList.remove('bg-[#FAFBFC]', 'text-[#5E6C84]', 'border-[#DFE1E6]');
+        }
+      });
+    }
   },
 
   // =========================================================================
@@ -1869,10 +3905,9 @@ export const PurchaseView = {
   renderBillDatePayment(container) {
     container.innerHTML = `
       <div class="space-y-4 animate-fade-in">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#DFE1E6] pb-3">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div>
-            <h1 class="text-xl font-extrabold text-[#172B4D]">Bill & Date-Wise Payment Vouchers</h1>
-            <p class="text-xs text-[#5E6C84] mt-0.5">Disbursement vouchers, UTR transaction matching, invoice linkage, and adjustments.</p>
+            <h1 class="text-xl font-extrabold text-[#172B4D]">Payment Vouchers</h1>
           </div>
           <div class="flex items-center gap-2">
             <button id="btn-record-new-payment" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs">
@@ -1891,17 +3926,22 @@ export const PurchaseView = {
       keyField: 'voucherNo',
       tableTitle: 'Vendor Payment Vouchers (CRUD)',
       columns: [
-        { field: 'voucherNo', header: 'Voucher No', render: (v) => `<span class=" font-bold text-[#0052CC]">${v}</span>` },
+        { field: 'voucherNo', header: 'Voucher No', render: (v) => `<span class="font-bold text-[#172B4D]">${v}</span>` },
         { field: 'paymentDate', header: 'Payment Date' },
         { field: 'supplierName', header: 'Beneficiary Supplier' },
         { field: 'billNo', header: 'Against Bill No' },
         { field: 'paymentMode', header: 'Payment Mode' },
-        { field: 'bankRef', header: 'Bank UTR Ref', render: (v) => `<span class=" text-xs">${v}</span>` },
-        { field: 'amountInr', header: 'Paid INR', render: (v) => `<span class="font-bold">₹ ${v.toLocaleString()}</span>` },
-        { field: 'amountUsd', header: 'Paid USD', render: (v) => `<span class=" font-bold text-[#006644]">$ ${v.toLocaleString()}</span>` },
+        { field: 'bankRef', header: 'Bank UTR Ref', render: (v) => `<span class="text-xs">${v}</span>` },
+        { field: 'amountInr', header: 'Paid INR', render: (v) => `<span class="font-bold text-[#172B4D]">₹ ${v.toLocaleString()}</span>` },
+        { field: 'amountUsd', header: 'Paid USD', render: (v) => `<span class="font-bold text-[#006644]">$ ${v.toLocaleString()}</span>` },
         { field: 'status', header: 'Status', type: 'status' }
       ],
       actions: [
+        {
+          label: 'Download',
+          icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
+          onClick: (row) => PurchaseView.downloadRecord(row)
+        },
         {
           label: 'Delete',
           icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
@@ -1921,7 +3961,8 @@ export const PurchaseView = {
             });
           }
         }
-      ]
+      ],
+      onRowClick: (row) => PurchaseView.showPaymentDetails(row)
     });
 
     const recordBtn = document.getElementById('btn-record-new-payment');
@@ -1939,7 +3980,12 @@ export const PurchaseView = {
                 </div>
                 <div>
                   <label class="block text-xs font-semibold text-[#172B4D] mb-1">Payment Date</label>
-                  <input type="date" value="2026-10-05" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+                  <div class="erp-date-wrapper">
+                    <input type="date" value="2026-10-05" class="erp-date-input w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                    <span class="erp-date-icon">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </span>
+                  </div>
                 </div>
               </div>
               <div>
@@ -2018,28 +4064,24 @@ export const PurchaseView = {
   openCreateLotModal(tableInstance) {
     Modal.open({
       title: 'Register New Raw Material Lot',
-      size: 'md',
+      size: 'lg',
       content: `
         <form class="space-y-3">
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Lot Number (Auto-Gen)</label>
-              <input type="text" id="newlot-no" value="LOT-2026-${Math.floor(10000 + Math.random() * 90000)}" readonly class="w-full text-xs  px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded" />
+              <input type="text" id="newlot-no" value="LOT-2026-${Math.floor(10000 + Math.random() * 90000)}" readonly class="w-full text-xs px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded" />
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Purchase Booking No</label>
               <input type="text" id="newlot-pb" value="PB-2026-105" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
             </div>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supplier / Farm Cultivator</label>
-            <select id="newlot-sup" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-              ${ERP_DATA.suppliers.map(s => `<option value="${s.id}|${s.name}">${s.name} (${s.region})</option>`).join('')}
-            </select>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3">
+            <div class="sm:col-span-2 lg:col-span-2">
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supplier / Farm Cultivator</label>
+              <select id="newlot-sup" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
+                ${ERP_DATA.suppliers.map(s => `<option value="${s.id}|${s.name}">${s.name} (${s.region})</option>`).join('')}
+              </select>
+            </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
               <select id="newlot-spec" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
@@ -2052,12 +4094,9 @@ export const PurchaseView = {
                 ${ERP_DATA.varieties.map(v => `<option value="${v.name}">${v.name}</option>`).join('')}
               </select>
             </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Quantity Received (KG)</label>
-              <input type="number" id="newlot-qty" value="3000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded " />
+              <input type="number" id="newlot-qty" value="3000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Landing / Farm Pond Source</label>
@@ -2162,7 +4201,7 @@ export const PurchaseView = {
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Update Lot',
+          label: 'Update',
           type: 'primary',
           onClick: (m) => {
             lot.supplierName = document.getElementById('editlot-sup').value;
@@ -2207,41 +4246,50 @@ export const PurchaseView = {
       size: 'lg',
       content: `
         <form id="form-create-rm-arrival" class="space-y-4 text-xs">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Number</label>
-              <input type="text" id="rm-new-no" value="${nextArrNo}" readonly class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
-            </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Date</label>
-              <input type="text" id="rm-new-date" value="06/10/2026" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <div class="erp-date-wrapper">
+                <input type="date" id="rm-new-date" value="2026-10-06" class="erp-date-input w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Company</label>
-              <select id="rm-new-company" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+              <select id="rm-new-company" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]">
                 <option value="DEVI FISHERIES LIMITED" selected>DEVI FISHERIES LIMITED</option>
                 <option value="DEVI AQUA FEEDS">DEVI AQUA FEEDS</option>
                 <option value="DEVI SEAFOODS">DEVI SEAFOODS</option>
               </select>
             </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
+              <select id="rm-new-species" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]">
+                <option value="">Select</option>
+                <option value="Vannamei (VM)">Vannamei (VM)</option>
+                <option value="Black Tiger (BT)">Black Tiger (BT)</option>
+                <option value="Asian Seabass">Asian Seabass</option>
+              </select>
+            </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Plant</label>
-              <select id="rm-new-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="DFL UNIT-5 (JPT)" selected>DFL UNIT-5 (JPT)</option>
-                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
-                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
-                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
-                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+              <select id="rm-new-plant" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]">
+                <option value="">Select</option>
                 <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+                <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
               </select>
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center</label>
-              <select id="rm-new-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="Bhimavaram Center #1" selected>Bhimavaram Center #1</option>
+              <select id="rm-new-center" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]">
+                <option value="">Select</option>
+                <option value="Bhimavaram Center #1">Bhimavaram Center #1</option>
                 <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
                 <option value="Machilipatnam Delta #3">Machilipatnam Delta #3</option>
                 <option value="Amalapuram Harvesters #4">Amalapuram Harvesters #4</option>
@@ -2250,72 +4298,17 @@ export const PurchaseView = {
               </select>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
-              <select id="rm-new-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="Vannamei (VM)" selected>Vannamei (VM)</option>
-                <option value="Black Tiger (BT)">Black Tiger (BT)</option>
-                <option value="Asian Seabass">Asian Seabass</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Weight (KG)</label>
-              <input type="number" id="rm-new-weight" value="3850" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Weight</label>
+              <input type="number" id="rm-new-weight" placeholder="Enter Weight" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Balance Weight (KG)</label>
-              <input type="number" id="rm-new-bal-weight" value="1250" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Amount</label>
+              <input type="number" id="rm-new-amount" placeholder="Enter Amount" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Average Rate (₹/KG)</label>
-              <input type="number" id="rm-new-avgrate" value="425" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Average Rate</label>
+              <input type="number" id="rm-new-avgrate" placeholder="Enter Average Rate" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]" />
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Status</label>
-              <select id="rm-new-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="QC_CLEARED" selected>QC_CLEARED</option>
-                <option value="RECEIVED">RECEIVED</option>
-                <option value="IN_PROCESS">IN_PROCESS</option>
-                <option value="COMPLETED">COMPLETED</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Real-Time Amount Calculations Card -->
-          <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg">
-            <span class="text-xs font-bold text-[#172B4D] block mb-2">Real-Time Valuation Summary</span>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
-                <span class="text-[11px] font-semibold text-[#5E6C84] block mb-1">Total Amount (Weight × Avg Rate)</span>
-                <div id="rm-new-amt-preview" class="text-sm font-extrabold text-[#172B4D]">
-                  ₹ 16,36,250
-                </div>
-              </div>
-              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
-                <span class="text-[11px] font-semibold text-[#5E6C84] block mb-1">Balance Amount (Bal Weight × Avg Rate)</span>
-                <div id="rm-new-balamt-preview" class="text-sm font-extrabold text-[#6554C0]">
-                  ₹ 5,31,250
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Number</label>
-              <input type="text" id="rm-new-veh" value="AP 37 TE 9011" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
-              <input type="text" id="rm-new-driver" value="K. Ramu" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Remarks</label>
-            <textarea id="rm-new-remarks" rows="2" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">Fresh intake verified at dock weighbridge.</textarea>
           </div>
         </form>
       `,
@@ -2325,21 +4318,23 @@ export const PurchaseView = {
           label: 'Save',
           type: 'primary',
           onClick: (m) => {
-            const arrNo = document.getElementById('rm-new-no').value;
+            const arrNo = nextArrNo;
             const date = document.getElementById('rm-new-date').value || '06/10/2026';
             const company = document.getElementById('rm-new-company').value || 'DEVI FISHERIES LIMITED';
             const plant = document.getElementById('rm-new-plant').value || 'DFL UNIT-5 (JPT)';
             const center = document.getElementById('rm-new-center').value || 'Bhimavaram Center #1';
             const species = document.getElementById('rm-new-species').value || 'Vannamei (VM)';
             const weight = parseFloat(document.getElementById('rm-new-weight').value) || 0;
-            const balWeight = parseFloat(document.getElementById('rm-new-bal-weight').value) || 0;
-            const avgRate = parseFloat(document.getElementById('rm-new-avgrate').value) || 0;
-            const status = document.getElementById('rm-new-status').value || 'QC_CLEARED';
-            const veh = document.getElementById('rm-new-veh').value || '';
-            const driver = document.getElementById('rm-new-driver').value || '';
-            const remarks = document.getElementById('rm-new-remarks').value || '';
+            let amount = parseFloat(document.getElementById('rm-new-amount').value) || 0;
+            let avgRate = parseFloat(document.getElementById('rm-new-avgrate').value) || 0;
 
-            const amount = weight * avgRate;
+            if (weight > 0 && avgRate > 0 && amount === 0) {
+              amount = weight * avgRate;
+            } else if (weight > 0 && amount > 0 && avgRate === 0) {
+              avgRate = Math.round(amount / weight);
+            }
+
+            const balWeight = Math.round(weight * 0.3);
             const balAmount = balWeight * avgRate;
 
             const newRecord = {
@@ -2353,13 +4348,13 @@ export const PurchaseView = {
               species: species,
               weight: weight,
               balanceWeight: balWeight,
-              status: status,
+              status: 'QC_CLEARED',
               averageRate: avgRate,
               amount: amount,
               balanceAmount: balAmount,
-              vehicleNumber: veh,
-              driverName: driver,
-              remarks: remarks
+              vehicleNumber: 'AP 37 TE 9011',
+              driverName: 'K. Ramu',
+              remarks: 'Created via RM Arrival form.'
             };
 
             this.rmArrivalsList.unshift(newRecord);
@@ -2372,15 +4367,16 @@ export const PurchaseView = {
             // Confirmation Popup after save
             Modal.success({
               title: 'Raw Material Arrival Saved Successfully',
-              message: `Arrival record <strong>${arrNo}</strong> has been registered and verified.`,
+              message: `Arrival record <strong>${arrNo}</strong> has been registered successfully.`,
               details: [
-                { label: 'Arrival Number', value: arrNo },
                 { label: 'Date', value: date },
-                { label: 'Plant Facility', value: plant },
-                { label: 'Procurement Center', value: center },
+                { label: 'Company', value: company },
                 { label: 'Species', value: species },
-                { label: 'Intake Weight', value: `${weight.toLocaleString()} KG` },
-                { label: 'Total Valuation', value: `₹ ${amount.toLocaleString()}` }
+                { label: 'Plant', value: plant },
+                { label: 'Center', value: center },
+                { label: 'Weight', value: `${weight.toLocaleString()} KG` },
+                { label: 'Amount', value: `₹ ${amount.toLocaleString()}` },
+                { label: 'Average Rate', value: `₹ ${avgRate} / KG` }
               ]
             });
             Toast.show(`Arrival ${arrNo} saved successfully.`, 'success', 'Arrival Registered');
@@ -2391,147 +4387,108 @@ export const PurchaseView = {
 
     setTimeout(() => {
       const wtInput = document.getElementById('rm-new-weight');
-      const bwtInput = document.getElementById('rm-new-bal-weight');
+      const amtInput = document.getElementById('rm-new-amount');
       const rateInput = document.getElementById('rm-new-avgrate');
-      const amtPrev = document.getElementById('rm-new-amt-preview');
-      const bamtPrev = document.getElementById('rm-new-balamt-preview');
 
       const recalc = () => {
         const w = parseFloat(wtInput ? wtInput.value : 0) || 0;
-        const bw = parseFloat(bwtInput ? bwtInput.value : 0) || 0;
         const r = parseFloat(rateInput ? rateInput.value : 0) || 0;
-        if (amtPrev) amtPrev.innerText = `₹ ${(w * r).toLocaleString()}`;
-        if (bamtPrev) bamtPrev.innerText = `₹ ${(bw * r).toLocaleString()}`;
+        if (w > 0 && r > 0 && !amtInput.matches(':focus')) {
+          amtInput.value = Math.round(w * r);
+        }
       };
 
       if (wtInput) wtInput.addEventListener('input', recalc);
-      if (bwtInput) bwtInput.addEventListener('input', recalc);
       if (rateInput) rateInput.addEventListener('input', recalc);
+      if (amtInput) {
+        amtInput.addEventListener('input', () => {
+          const w = parseFloat(wtInput ? wtInput.value : 0) || 0;
+          const a = parseFloat(amtInput ? amtInput.value : 0) || 0;
+          if (w > 0 && a > 0 && !rateInput.matches(':focus')) {
+            rateInput.value = (a / w).toFixed(1);
+          }
+        });
+      }
     }, 50);
   },
 
   openEditArrivalModal(arrival, tableInstance) {
+    const editDateVal = arrival.date ? (arrival.date.includes('/') ? arrival.date.split('/').reverse().join('-') : arrival.date) : '2026-10-06';
     Modal.open({
       title: `Edit Raw Material Arrival: ${arrival.arrivalNumber || arrival.id}`,
       size: 'lg',
       content: `
         <form id="form-edit-rm-arrival" class="space-y-4 text-xs">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Number</label>
-              <input type="text" value="${arrival.arrivalNumber || arrival.id}" readonly class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
-            </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Date</label>
-              <input type="text" id="rm-edit-date" value="${arrival.date || '06/10/2026'}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <div class="erp-date-wrapper">
+                <input type="date" id="rm-edit-date" value="${editDateVal}" class="erp-date-input w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Company</label>
-              <select id="rm-edit-company" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+              <select id="rm-edit-company" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]">
                 <option value="DEVI FISHERIES LIMITED" ${arrival.company === 'DEVI FISHERIES LIMITED' ? 'selected' : ''}>DEVI FISHERIES LIMITED</option>
                 <option value="DEVI AQUA FEEDS" ${arrival.company === 'DEVI AQUA FEEDS' ? 'selected' : ''}>DEVI AQUA FEEDS</option>
                 <option value="DEVI SEAFOODS" ${arrival.company === 'DEVI SEAFOODS' ? 'selected' : ''}>DEVI SEAFOODS</option>
               </select>
             </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
+              <select id="rm-edit-species" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]">
+                <option value="">Select</option>
+                <option value="Vannamei (VM)" ${arrival.species === 'Vannamei (VM)' || arrival.species?.includes('Vannamei') ? 'selected' : ''}>Vannamei (VM)</option>
+                <option value="Black Tiger (BT)" ${arrival.species === 'Black Tiger (BT)' || arrival.species?.includes('Tiger') ? 'selected' : ''}>Black Tiger (BT)</option>
+                <option value="Asian Seabass" ${arrival.species === 'Asian Seabass' ? 'selected' : ''}>Asian Seabass</option>
+              </select>
+            </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Plant</label>
-              <select id="rm-edit-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="DFL UNIT-5 (JPT)" ${arrival.plant === 'DFL UNIT-5 (JPT)' ? 'selected' : ''}>DFL UNIT-5 (JPT)</option>
-                <option value="DFL UNIT-3 (PSP)" ${arrival.plant === 'DFL UNIT-3 (PSP)' ? 'selected' : ''}>DFL UNIT-3 (PSP)</option>
-                <option value="DFL UNIT-6 (JPT-II)" ${arrival.plant === 'DFL UNIT-6 (JPT-II)' ? 'selected' : ''}>DFL UNIT-6 (JPT-II)</option>
-                <option value="DFL UNIT-4 (PND)" ${arrival.plant === 'DFL UNIT-4 (PND)' ? 'selected' : ''}>DFL UNIT-4 (PND)</option>
-                <option value="DFL UNIT-2 (KKD)" ${arrival.plant === 'DFL UNIT-2 (KKD)' ? 'selected' : ''}>DFL UNIT-2 (KKD)</option>
-                <option value="DFL UNIT-1 (VSP)" ${arrival.plant === 'DFL UNIT-1 (VSP)' ? 'selected' : ''}>DFL UNIT-1 (VSP)</option>
+              <select id="rm-edit-plant" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]">
+                <option value="">Select</option>
+                <option value="DFL UNIT-1 (VSP)" ${arrival.plant?.includes('UNIT-1') ? 'selected' : ''}>DFL UNIT-1 (VSP)</option>
+                <option value="DFL UNIT-2 (KKD)" ${arrival.plant?.includes('UNIT-2') ? 'selected' : ''}>DFL UNIT-2 (KKD)</option>
+                <option value="DFL UNIT-3 (PSP)" ${arrival.plant?.includes('UNIT-3') ? 'selected' : ''}>DFL UNIT-3 (PSP)</option>
+                <option value="DFL UNIT-4 (PND)" ${arrival.plant?.includes('UNIT-4') ? 'selected' : ''}>DFL UNIT-4 (PND)</option>
+                <option value="DFL UNIT-5 (JPT)" ${arrival.plant?.includes('UNIT-5') ? 'selected' : ''}>DFL UNIT-5 (JPT)</option>
+                <option value="DFL UNIT-6 (JPT-II)" ${arrival.plant?.includes('UNIT-6') ? 'selected' : ''}>DFL UNIT-6 (JPT-II)</option>
               </select>
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center</label>
-              <select id="rm-edit-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="Bhimavaram Center #1" ${arrival.center === 'Bhimavaram Center #1' ? 'selected' : ''}>Bhimavaram Center #1</option>
-                <option value="Kakinada Sea Intake #2" ${arrival.center === 'Kakinada Sea Intake #2' ? 'selected' : ''}>Kakinada Sea Intake #2</option>
-                <option value="Machilipatnam Delta #3" ${arrival.center === 'Machilipatnam Delta #3' ? 'selected' : ''}>Machilipatnam Delta #3</option>
-                <option value="Amalapuram Harvesters #4" ${arrival.center === 'Amalapuram Harvesters #4' ? 'selected' : ''}>Amalapuram Harvesters #4</option>
-                <option value="Ongole Coastal Hub #1" ${arrival.center === 'Ongole Coastal Hub #1' ? 'selected' : ''}>Ongole Coastal Hub #1</option>
-                <option value="Visakhapatnam Gate Dock" ${arrival.center === 'Visakhapatnam Gate Dock' ? 'selected' : ''}>Visakhapatnam Gate Dock</option>
+              <select id="rm-edit-center" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]">
+                <option value="">Select</option>
+                <option value="Bhimavaram Center #1" ${arrival.center?.includes('Bhimavaram') ? 'selected' : ''}>Bhimavaram Center #1</option>
+                <option value="Kakinada Sea Intake #2" ${arrival.center?.includes('Kakinada') ? 'selected' : ''}>Kakinada Sea Intake #2</option>
+                <option value="Machilipatnam Delta #3" ${arrival.center?.includes('Machilipatnam') ? 'selected' : ''}>Machilipatnam Delta #3</option>
+                <option value="Amalapuram Harvesters #4" ${arrival.center?.includes('Amalapuram') ? 'selected' : ''}>Amalapuram Harvesters #4</option>
+                <option value="Ongole Coastal Hub #1" ${arrival.center?.includes('Ongole') ? 'selected' : ''}>Ongole Coastal Hub #1</option>
+                <option value="Visakhapatnam Gate Dock" ${arrival.center?.includes('Visakhapatnam') ? 'selected' : ''}>Visakhapatnam Gate Dock</option>
               </select>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
-              <select id="rm-edit-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="Vannamei (VM)" ${arrival.species === 'Vannamei (VM)' ? 'selected' : ''}>Vannamei (VM)</option>
-                <option value="Black Tiger (BT)" ${arrival.species === 'Black Tiger (BT)' ? 'selected' : ''}>Black Tiger (BT)</option>
-                <option value="Asian Seabass" ${arrival.species === 'Asian Seabass' ? 'selected' : ''}>Asian Seabass</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Weight (KG)</label>
-              <input type="number" id="rm-edit-weight" value="${arrival.weight || 0}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Weight</label>
+              <input type="number" id="rm-edit-weight" value="${arrival.weight || ''}" placeholder="Enter Weight" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Balance Weight (KG)</label>
-              <input type="number" id="rm-edit-bal-weight" value="${arrival.balanceWeight || 0}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Amount</label>
+              <input type="number" id="rm-edit-amount" value="${arrival.amount || ''}" placeholder="Enter Amount" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Average Rate (₹/KG)</label>
-              <input type="number" id="rm-edit-avgrate" value="${arrival.averageRate || 0}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Average Rate</label>
+              <input type="number" id="rm-edit-avgrate" value="${arrival.averageRate || ''}" placeholder="Enter Average Rate" class="w-full text-xs px-3 py-2 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#4C9AFF]" />
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Status</label>
-              <select id="rm-edit-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="QC_CLEARED" ${arrival.status === 'QC_CLEARED' ? 'selected' : ''}>QC_CLEARED</option>
-                <option value="RECEIVED" ${arrival.status === 'RECEIVED' ? 'selected' : ''}>RECEIVED</option>
-                <option value="IN_PROCESS" ${arrival.status === 'IN_PROCESS' ? 'selected' : ''}>IN_PROCESS</option>
-                <option value="COMPLETED" ${arrival.status === 'COMPLETED' ? 'selected' : ''}>COMPLETED</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Real-Time Amount Calculations Card -->
-          <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg">
-            <span class="text-xs font-bold text-[#172B4D] block mb-2">Real-Time Valuation Summary</span>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
-                <span class="text-[11px] font-semibold text-[#5E6C84] block mb-1">Total Amount (Weight × Avg Rate)</span>
-                <div id="rm-edit-amt-preview" class="text-sm font-extrabold text-[#172B4D]">
-                  ₹ ${(arrival.amount || 0).toLocaleString()}
-                </div>
-              </div>
-              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
-                <span class="text-[11px] font-semibold text-[#5E6C84] block mb-1">Balance Amount (Bal Weight × Avg Rate)</span>
-                <div id="rm-edit-balamt-preview" class="text-sm font-extrabold text-[#6554C0]">
-                  ₹ ${(arrival.balanceAmount || 0).toLocaleString()}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Number</label>
-              <input type="text" id="rm-edit-veh" value="${arrival.vehicleNumber || ''}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
-              <input type="text" id="rm-edit-driver" value="${arrival.driverName || ''}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Remarks</label>
-            <textarea id="rm-edit-remarks" rows="2" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">${arrival.remarks || ''}</textarea>
           </div>
         </form>
       `,
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Save',
+          label: 'Update',
           type: 'primary',
           onClick: (m) => {
             arrival.date = document.getElementById('rm-edit-date').value || arrival.date;
@@ -2540,14 +4497,16 @@ export const PurchaseView = {
             arrival.center = document.getElementById('rm-edit-center').value || arrival.center;
             arrival.species = document.getElementById('rm-edit-species').value || arrival.species;
             arrival.weight = parseFloat(document.getElementById('rm-edit-weight').value) || 0;
-            arrival.balanceWeight = parseFloat(document.getElementById('rm-edit-bal-weight').value) || 0;
+            arrival.amount = parseFloat(document.getElementById('rm-edit-amount').value) || 0;
             arrival.averageRate = parseFloat(document.getElementById('rm-edit-avgrate').value) || 0;
-            arrival.status = document.getElementById('rm-edit-status').value || arrival.status;
-            arrival.vehicleNumber = document.getElementById('rm-edit-veh').value || '';
-            arrival.driverName = document.getElementById('rm-edit-driver').value || '';
-            arrival.remarks = document.getElementById('rm-edit-remarks').value || '';
 
-            arrival.amount = arrival.weight * arrival.averageRate;
+            if (arrival.weight > 0 && arrival.averageRate > 0 && arrival.amount === 0) {
+              arrival.amount = arrival.weight * arrival.averageRate;
+            } else if (arrival.weight > 0 && arrival.amount > 0 && arrival.averageRate === 0) {
+              arrival.averageRate = Math.round(arrival.amount / arrival.weight);
+            }
+
+            arrival.balanceWeight = Math.round(arrival.weight * 0.3);
             arrival.balanceAmount = arrival.balanceWeight * arrival.averageRate;
 
             if (tableInstance) tableInstance.setData(this.rmArrivalsList);
@@ -2556,14 +4515,16 @@ export const PurchaseView = {
             // Confirmation Popup after edit
             Modal.success({
               title: 'Raw Material Arrival Updated Successfully',
-              message: `Arrival record <strong>${arrival.arrivalNumber || arrival.id}</strong> has been updated.`,
+              message: `Arrival record <strong>${arrival.arrivalNumber || arrival.id}</strong> has been updated successfully.`,
               details: [
-                { label: 'Arrival Number', value: arrival.arrivalNumber || arrival.id },
                 { label: 'Date', value: arrival.date },
-                { label: 'Plant Facility', value: arrival.plant },
+                { label: 'Company', value: arrival.company },
+                { label: 'Species', value: arrival.species },
+                { label: 'Plant', value: arrival.plant },
                 { label: 'Center', value: arrival.center },
-                { label: 'Updated Weight', value: `${arrival.weight.toLocaleString()} KG` },
-                { label: 'Valuation Amount', value: `₹ ${arrival.amount.toLocaleString()}` }
+                { label: 'Weight', value: `${arrival.weight.toLocaleString()} KG` },
+                { label: 'Amount', value: `₹ ${arrival.amount.toLocaleString()}` },
+                { label: 'Average Rate', value: `₹ ${arrival.averageRate} / KG` }
               ]
             });
             Toast.show(`Arrival ${arrival.arrivalNumber || arrival.id} updated successfully.`, 'success');
@@ -2574,22 +4535,28 @@ export const PurchaseView = {
 
     setTimeout(() => {
       const wtInput = document.getElementById('rm-edit-weight');
-      const bwtInput = document.getElementById('rm-edit-bal-weight');
+      const amtInput = document.getElementById('rm-edit-amount');
       const rateInput = document.getElementById('rm-edit-avgrate');
-      const amtPrev = document.getElementById('rm-edit-amt-preview');
-      const bamtPrev = document.getElementById('rm-edit-balamt-preview');
 
       const recalc = () => {
         const w = parseFloat(wtInput ? wtInput.value : 0) || 0;
-        const bw = parseFloat(bwtInput ? bwtInput.value : 0) || 0;
         const r = parseFloat(rateInput ? rateInput.value : 0) || 0;
-        if (amtPrev) amtPrev.innerText = `₹ ${(w * r).toLocaleString()}`;
-        if (bamtPrev) bamtPrev.innerText = `₹ ${(bw * r).toLocaleString()}`;
+        if (w > 0 && r > 0 && !amtInput.matches(':focus')) {
+          amtInput.value = Math.round(w * r);
+        }
       };
 
       if (wtInput) wtInput.addEventListener('input', recalc);
-      if (bwtInput) bwtInput.addEventListener('input', recalc);
       if (rateInput) rateInput.addEventListener('input', recalc);
+      if (amtInput) {
+        amtInput.addEventListener('input', () => {
+          const w = parseFloat(wtInput ? wtInput.value : 0) || 0;
+          const a = parseFloat(amtInput ? amtInput.value : 0) || 0;
+          if (w > 0 && a > 0 && !rateInput.matches(':focus')) {
+            rateInput.value = (a / w).toFixed(1);
+          }
+        });
+      }
     }, 50);
   },
 
@@ -2631,104 +4598,245 @@ export const PurchaseView = {
     const nextCode = `ARR-2026-${1046 + ERP_DATA.arrivals.length}`;
     Modal.open({
       title: 'Create Inward Harvest Catch Arrival Record',
-      size: 'lg',
+      size: 'xl',
       content: `
         <form id="form-create-arrival-record" class="space-y-4 text-xs">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Code</label>
-              <input type="text" id="arr-code" value="${nextCode}" readonly class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-bold text-[#0052CC]" />
+          <!-- Section 1: Required Fields -->
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+              <h4 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Required Fields</h4>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Date</label>
-              <input type="date" id="arr-date" value="2026-10-06" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Procurement Center</label>
-              <select id="arr-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                <option selected>Bhimavaram Center #1 (BVM-C1)</option>
-                <option>Kakinada Sea Intake #2 (KKD-C2)</option>
-                <option>Machilipatnam Delta #3 (MCN-C3)</option>
-                <option>Amalapuram Harvesters #4 (AML-C4)</option>
-                <option>Ongole Coastal Hub #1 (ONG-C1)</option>
-              </select>
-            </div>
-          </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supplier / Farmer</label>
-              <select id="arr-supplier" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Location</label>
-              <input type="text" id="arr-pond" value="Pond #4B Tail Cluster" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
-              <select id="arr-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                ${ERP_DATA.species.map(sp => `<option value="${sp.name}">${sp.name}</option>`).join('')}
-              </select>
-            </div>
-          </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
+                <select id="arr-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Species</option>
+                  <option value="Vannamei Shrimp" selected>Vannamei Shrimp</option>
+                  <option value="Black Tiger Shrimp">Black Tiger Shrimp</option>
+                  <option value="Asian Seabass">Asian Seabass</option>
+                </select>
+              </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Count Range</label>
-              <input type="text" id="arr-count" value="44 pcs/kg" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Crates Inward</label>
-              <input type="number" id="arr-crates-in" value="120" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Core Temp (°C)</label>
-              <input type="number" step="0.1" id="arr-temp" value="2.5" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Number</label>
-              <input type="text" id="arr-veh" value="AP 37 TE 9942" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-          </div>
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center Name</label>
+                <select id="arr-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Center</option>
+                  <option value="Bhimavaram Center #1" selected>Bhimavaram Center #1</option>
+                  <option value="Kakinada Sea Intake #2">Kakinada Sea Intake #2</option>
+                  <option value="Machilipatnam Delta #3">Machilipatnam Delta #3</option>
+                  <option value="Amalapuram Harvesters #4">Amalapuram Harvesters #4</option>
+                  <option value="Ongole Coastal Hub #1">Ongole Coastal Hub #1</option>
+                  <option value="Visakhapatnam Gate Dock">Visakhapatnam Gate Dock</option>
+                </select>
+              </div>
 
-          <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg">
-            <span class="text-xs font-bold text-[#172B4D] block mb-2">Weighment & Catch Calculation</span>
-            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
               <div>
-                <label class="block text-[11px] font-semibold text-[#5E6C84] mb-1">Gross Wt (KG)</label>
-                <input type="number" id="arr-gross-calc" value="3850" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Plant</label>
+                <select id="arr-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Plant</option>
+                  <option value="DFL UNIT-5 (JPT)" selected>DFL UNIT-5 (JPT)</option>
+                  <option value="DFL UNIT-3 (PSP)">DFL UNIT-3 (PSP)</option>
+                  <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
+                  <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
+                  <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
+                  <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
+                </select>
               </div>
+
               <div>
-                <label class="block text-[11px] font-semibold text-[#5E6C84] mb-1">Tare Wt (KG)</label>
-                <input type="number" id="arr-tare-calc" value="450" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-              </div>
-              <div>
-                <label class="block text-[11px] font-semibold text-[#5E6C84] mb-1">Ice Wt (KG)</label>
-                <input type="number" id="arr-ice-calc" value="600" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-              </div>
-              <div>
-                <label class="block text-[11px] font-semibold text-[#006644] mb-1">Calculated Net Catch</label>
-                <div id="arr-net-preview" class="text-sm font-extrabold px-3 py-1.5 bg-[#E3FCEF] text-[#006644] rounded border border-[#ABF5D1]">
-                  2,800 KG
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Bill Date</label>
+                <div class="erp-date-wrapper">
+                  <input type="date" id="arr-bill-date" value="2026-10-05" class="erp-date-input w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                  <span class="erp-date-icon">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </span>
                 </div>
               </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Date</label>
+                <div class="erp-date-wrapper">
+                  <input type="date" id="arr-arrival-date" value="2026-10-06" class="erp-date-input w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                  <span class="erp-date-icon">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Bill Number</label>
+                <input type="number" id="arr-bill-number" placeholder="Enter Arrival Number" value="1046" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="block text-xs font-semibold text-[#172B4D]">Supplier Name</label>
+                  <button type="button" id="btn-quick-new-supplier" class="text-[10px] text-[#0052CC] font-bold hover:underline cursor-pointer bg-[#DEEBFF] hover:bg-[#B3D4FF] px-2 py-0.5 rounded transition-colors">New</button>
+                </div>
+                <select id="arr-supplier" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Supplier</option>
+                  <option value="Godavari Coastal Aqua Farms" selected>Godavari Coastal Aqua Farms</option>
+                  <option value="Sagar Marine Hatcheries">Sagar Marine Hatcheries</option>
+                  <option value="Krishna Delta Prawn Harvesters">Krishna Delta Prawn Harvesters</option>
+                  <option value="Konaseema Marine Harvesters Syndicate">Konaseema Marine Harvesters Syndicate</option>
+                  <option value="Nellore Brackish Aqua Cultivators">Nellore Brackish Aqua Cultivators</option>
+                  <option value="Sri Sai Aqua Farms">Sri Sai Aqua Farms</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Agent Name</label>
+                <select id="arr-agent" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Agent</option>
+                  <option value="Direct Procurement" selected>Direct Procurement</option>
+                  <option value="Coastal Marine Agency">Coastal Marine Agency</option>
+                  <option value="Sagar Marine Brokers">Sagar Marine Brokers</option>
+                  <option value="Delta Marine Syndicate">Delta Marine Syndicate</option>
+                  <option value="East Coast Brokers">East Coast Brokers</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Purchase Type</label>
+                <select id="arr-purchase-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="Site Weightment" selected>Site Weightment</option>
+                  <option value="Direct Farmer Procurement">Direct Farmer Procurement</option>
+                  <option value="Hatchery Buyback Contract">Hatchery Buyback Contract</option>
+                  <option value="Spot Market Purchase">Spot Market Purchase</option>
+                  <option value="Agent Procurement Order">Agent Procurement Order</option>
+                  <option value="Corporate Feed-Linked Booking">Corporate Feed-Linked Booking</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Farm Location</label>
+                <input type="text" id="arr-farm-location" placeholder="Enter Farm Location" value="Pond #4B & 5A, Akividu" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Grader Name</label>
+                <select id="arr-grader" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Grader</option>
+                  <option value="B. Venkatesh" selected>B. Venkatesh</option>
+                  <option value="K. Ramu">K. Ramu</option>
+                  <option value="M. Nagesh">M. Nagesh</option>
+                  <option value="G. Suribabu">G. Suribabu</option>
+                  <option value="Ch. Narayana">Ch. Narayana</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supervisor Name</label>
+                <select id="arr-supervisor" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Supervisor</option>
+                  <option value="S. Prasad" selected>S. Prasad</option>
+                  <option value="K. Srinivas">K. Srinivas</option>
+                  <option value="V. Satyam">V. Satyam</option>
+                  <option value="P. Murthy">P. Murthy</option>
+                  <option value="M. Rao">M. Rao</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
+                <select id="arr-driver" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Driver</option>
+                  <option value="K. Appa Rao" selected>K. Appa Rao</option>
+                  <option value="S. Manikyam">S. Manikyam</option>
+                  <option value="T. Chinna">T. Chinna</option>
+                  <option value="G. Suribabu">G. Suribabu</option>
+                  <option value="Ch. Narayana">Ch. Narayana</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Number</label>
+                <select id="arr-vehicle" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select Vehicle</option>
+                  <option value="AP 37 TE 8812" selected>AP 37 TE 8812</option>
+                  <option value="AP 31 XY 4402">AP 31 XY 4402</option>
+                  <option value="AP 16 TZ 5590">AP 16 TZ 5590</option>
+                  <option value="AP 05 AB 1234">AP 05 AB 1234</option>
+                  <option value="AP 27 BB 9012">AP 27 BB 9012</option>
+                  <option value="AP 04 TT 5619">AP 04 TT 5619</option>
+                  <option value="AP 26 TV 1104">AP 26 TV 1104</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Harvest Commission</label>
+                <input type="text" id="arr-commission" placeholder="Enter Harvest Commission" value="2.50" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
-              <input type="text" id="arr-driver-name" value="K. Appa Rao" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+          <!-- Section 2: Optional Fields -->
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+              <h4 class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Optional Fields</h4>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Grader / Technician</label>
-              <input type="text" id="arr-grader-name" value="B. Venkatesh" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div class="col-span-1 sm:col-span-2 lg:col-span-4">
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Remarks</label>
+                <textarea id="arr-remarks" rows="2" placeholder="Enter Remarks - Optional" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]"></textarea>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center Supervisor</label>
-              <input type="text" id="arr-supervisor-name" value="S. Prasad" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+          </div>
+
+          <!-- Section 3: Details Section -->
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+              <h4 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Details Section</h4>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Total Weight</label>
+                <input type="text" id="arr-total-weight" placeholder="Enter Total Weight" value="3850" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Balance Weight</label>
+                <input type="text" id="arr-balance-weight" placeholder="Enter Balance Weight" value="730" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Total Value</label>
+                <input type="text" id="arr-total-value" placeholder="Enter Total Value" value="1326000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Balance Value</label>
+                <input type="text" id="arr-balance-value" placeholder="Enter Balance Value" value="310250" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Variety</label>
+                <select id="arr-variety" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="HEAD ON" selected>HEAD ON</option>
+                  <option value="HEADLESS">HEADLESS</option>
+                  <option value="EASY PEEL">EASY PEEL</option>
+                  <option value="PUD">PUD</option>
+                  <option value="PDTO">PDTO</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Count</label>
+                <input type="number" id="arr-arrival-count" placeholder="Enter Arrival Count" value="44" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Weight (Kgs)</label>
+                <input type="text" id="arr-arrival-weight" placeholder="Enter Arrival Weight in Kgs" value="3120" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Rate</label>
+                <input type="text" id="arr-arrival-rate" placeholder="Enter Arrival Rate" value="425" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
             </div>
           </div>
         </form>
@@ -2739,46 +4847,75 @@ export const PurchaseView = {
           label: 'Create Arrival Record',
           type: 'primary',
           onClick: (m) => {
-            const code = document.getElementById('arr-code').value;
-            const date = document.getElementById('arr-date').value;
-            const center = document.getElementById('arr-center').value;
-            const sup = document.getElementById('arr-supplier').value;
-            const pond = document.getElementById('arr-pond').value;
-            const species = document.getElementById('arr-species').value;
-            const count = document.getElementById('arr-count').value;
-            const crates = parseInt(document.getElementById('arr-crates-in').value) || 100;
-            const temp = parseFloat(document.getElementById('arr-temp').value) || 2.5;
-            const veh = document.getElementById('arr-veh').value;
-            const gross = parseFloat(document.getElementById('arr-gross-calc').value) || 3000;
-            const tare = parseFloat(document.getElementById('arr-tare-calc').value) || 400;
-            const ice = parseFloat(document.getElementById('arr-ice-calc').value) || 500;
-            const net = Math.max(0, gross - tare - ice);
-            const driver = document.getElementById('arr-driver-name').value;
-            const grader = document.getElementById('arr-grader-name').value;
-            const supervisor = document.getElementById('arr-supervisor-name').value;
+            const spec = document.getElementById('arr-species').value || 'Vannamei Shrimp';
+            const ctr = document.getElementById('arr-center').value || 'Bhimavaram Center #1';
+            const plant = document.getElementById('arr-plant').value || 'DFL UNIT-5 (JPT)';
+            const billDate = document.getElementById('arr-bill-date').value || '05/10/2026';
+            const arrDate = document.getElementById('arr-arrival-date').value || '06/10/2026';
+            const billNo = document.getElementById('arr-bill-number').value || '1046';
+            const sup = document.getElementById('arr-supplier').value || 'Godavari Coastal Aqua Farms';
+            const agent = document.getElementById('arr-agent').value || 'Direct Procurement';
+            const pType = document.getElementById('arr-purchase-type').value || 'Site Weightment';
+            const farmLoc = document.getElementById('arr-farm-location').value || 'Pond #4B & 5A';
+            const grader = document.getElementById('arr-grader').value || 'B. Venkatesh';
+            const supvr = document.getElementById('arr-supervisor').value || 'S. Prasad';
+            const driver = document.getElementById('arr-driver').value || 'K. Appa Rao';
+            const veh = document.getElementById('arr-vehicle').value || 'AP 37 TE 8812';
+            const comm = document.getElementById('arr-commission').value || '2.50';
+            const remarks = document.getElementById('arr-remarks').value || 'Verified catch intake';
 
+            const totWt = parseFloat(document.getElementById('arr-total-weight').value) || 3850;
+            const balWt = parseFloat(document.getElementById('arr-balance-weight').value) || 730;
+            const variety = document.getElementById('arr-variety').value || 'HEAD ON';
+            const count = document.getElementById('arr-arrival-count').value || '44';
+            const arrWt = parseFloat(document.getElementById('arr-arrival-weight').value) || 3120;
+            const arrRate = parseFloat(document.getElementById('arr-arrival-rate').value) || 425;
+            const totVal = parseFloat(document.getElementById('arr-total-value').value) || (arrWt * arrRate);
+            const balVal = parseFloat(document.getElementById('arr-balance-value').value) || (balWt * arrRate);
+
+            const code = `ARR-2026-${billNo}`;
             const newRecord = {
               id: code,
               arrivalCode: code,
-              date: date,
+              arrivalNumber: code,
+              date: arrDate,
+              arrivalDate: arrDate,
+              billDate: billDate,
+              billNumber: billNo,
               time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-              center: center,
+              arrivalPlant: plant,
+              plant: plant,
+              center: ctr,
               supplier: sup,
-              pond: pond,
-              species: species,
-              countRange: count,
-              cratesIn: crates,
-              cratesOut: crates,
-              iceWeightKg: ice,
-              grossWeightKg: gross,
-              tareWeightKg: tare,
-              netCatchKg: net,
-              temperature: `${temp} °C`,
+              pond: farmLoc,
+              farmLocation: farmLoc,
+              species: spec,
+              countRange: `${count} pcs/kg`,
+              arrivalCount: `${count} pcs/kg`,
+              cratesIn: 120,
+              cratesOut: 120,
+              iceWeightKg: 650,
+              grossWeightKg: totWt,
+              tareWeightKg: 470,
+              netCatchKg: arrWt,
+              arrivalWeight: arrWt,
+              ratePerKg: arrRate,
+              arrivalRate: arrRate,
+              totalAmt: totVal,
+              totalWeight: totWt,
+              balanceWeight: balWt,
+              totalValue: totVal,
+              balanceValue: balVal,
+              variety: variety,
+              temperature: '2.5 °C',
               vehicleNo: veh,
               driverName: driver,
               graderName: grader,
-              supervisor: supervisor,
-              remarks: 'Created via center intake portal',
+              supervisor: supvr,
+              agent: agent,
+              purchaseType: pType,
+              harvestCommission: comm,
+              remarks: remarks,
               status: 'QC_CLEARED'
             };
 
@@ -2786,132 +4923,441 @@ export const PurchaseView = {
             if (tableInstance) tableInstance.setData(ERP_DATA.arrivals);
             m.close();
 
-            // Confirmation Popup after save
             Modal.success({
               title: 'Arrival Receipt Submitted Successfully',
-              message: `Inward catch arrival receipt ${code} has been recorded and verified.`,
+              message: `Inward catch arrival receipt <strong>${code}</strong> has been recorded and verified.`,
               details: [
-                { label: 'Arrival Code', value: code },
-                { label: 'Procurement Center', value: center },
-                { label: 'Farmer / Supplier', value: sup },
-                { label: 'Net Catch Weight', value: `${net.toLocaleString()} KG` }
+                { label: 'Arrival Number', value: code },
+                { label: 'Center', value: ctr },
+                { label: 'Plant', value: plant },
+                { label: 'Supplier', value: sup },
+                { label: 'Purchase Type', value: pType },
+                { label: 'Arrival Weight', value: `${arrWt.toLocaleString()} KG` },
+                { label: 'Arrival Rate', value: `₹ ${arrRate} / KG` },
+                { label: 'Total Amt', value: `₹ ${totVal.toLocaleString()}` }
               ]
             });
-            Toast.show(`Arrival receipt ${code} created successfully for ${net.toLocaleString()} KG`, 'success', 'Arrival Created');
+            Toast.show(`Arrival receipt ${code} created successfully for ${arrWt.toLocaleString()} KG`, 'success');
           }
         }
       ]
     });
 
     setTimeout(() => {
-      const g = document.getElementById('arr-gross-calc');
-      const t = document.getElementById('arr-tare-calc');
-      const i = document.getElementById('arr-ice-calc');
-      const prev = document.getElementById('arr-net-preview');
-      const calc = () => {
-        const gv = parseFloat(g.value) || 0;
-        const tv = parseFloat(t.value) || 0;
-        const iv = parseFloat(i.value) || 0;
-        const nv = Math.max(0, gv - tv - iv);
-        if (prev) prev.innerText = `${nv.toLocaleString()} KG`;
+      // Quick New Supplier button
+      const btnNewSup = document.getElementById('btn-quick-new-supplier');
+      if (btnNewSup) {
+        btnNewSup.addEventListener('click', () => {
+          const newName = prompt('Enter New Supplier / Farmer Name:');
+          if (newName && newName.trim()) {
+            const trimmed = newName.trim();
+            const supSelect = document.getElementById('arr-supplier');
+            if (supSelect) {
+              const opt = document.createElement('option');
+              opt.value = trimmed;
+              opt.text = trimmed;
+              opt.selected = true;
+              supSelect.appendChild(opt);
+              if (!ERP_DATA.suppliers.some(s => s.name === trimmed)) {
+                ERP_DATA.suppliers.push({ id: `SUP-${Date.now()}`, name: trimmed, region: 'East Coast Aqua' });
+              }
+              Toast.show(`New supplier "${trimmed}" added and selected.`, 'success');
+            }
+          }
+        });
+      }
+
+      // Auto calculation for Details section
+      const wtInput = document.getElementById('arr-arrival-weight');
+      const rateInput = document.getElementById('arr-arrival-rate');
+      const valInput = document.getElementById('arr-total-value');
+      const balWtInput = document.getElementById('arr-balance-weight');
+      const balValInput = document.getElementById('arr-balance-value');
+      const totWtInput = document.getElementById('arr-total-weight');
+
+      const recalc = () => {
+        const w = parseFloat(wtInput ? wtInput.value : 0) || 0;
+        const r = parseFloat(rateInput ? rateInput.value : 0) || 0;
+        const bw = parseFloat(balWtInput ? balWtInput.value : 0) || 0;
+        if (w > 0 && r > 0 && valInput && !valInput.matches(':focus')) {
+          valInput.value = Math.round(w * r);
+        }
+        if (bw > 0 && r > 0 && balValInput && !balValInput.matches(':focus')) {
+          balValInput.value = Math.round(bw * r);
+        }
       };
-      if (g && t && i) {
-        g.addEventListener('input', calc);
-        t.addEventListener('input', calc);
-        i.addEventListener('input', calc);
+
+      if (wtInput) wtInput.addEventListener('input', recalc);
+      if (rateInput) rateInput.addEventListener('input', recalc);
+      if (balWtInput) balWtInput.addEventListener('input', recalc);
+      if (totWtInput) {
+        totWtInput.addEventListener('input', () => {
+          const tw = parseFloat(totWtInput.value) || 0;
+          const aw = parseFloat(wtInput ? wtInput.value : 0) || 0;
+          if (tw > aw && balWtInput && !balWtInput.matches(':focus')) {
+            balWtInput.value = Math.round(tw - aw);
+            recalc();
+          }
+        });
       }
     }, 60);
   },
 
   openEditArrivalRecordModal(arrival, tableInstance) {
+    const editBillDateVal = arrival.billDate ? (arrival.billDate.includes('/') ? arrival.billDate.split('/').reverse().join('-') : arrival.billDate) : '2026-10-05';
+    const editArrDateVal = (arrival.arrivalDate || arrival.date) ? ((arrival.arrivalDate || arrival.date).includes('/') ? (arrival.arrivalDate || arrival.date).split('/').reverse().join('-') : (arrival.arrivalDate || arrival.date)) : '2026-10-06';
     Modal.open({
-      title: `Edit Arrival Record: ${arrival.arrivalCode}`,
-      size: 'md',
+      title: `Edit Arrival Record: ${arrival.arrivalNumber || arrival.arrivalCode || arrival.id}`,
+      size: 'xl',
       content: `
-        <form class="space-y-3 text-xs">
+        <form id="form-edit-arrival-record" class="space-y-4 text-xs">
+          <!-- Section 1: Required Fields -->
           <div>
-            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center / Station</label>
-            <input type="text" id="edit-arrec-center" value="${arrival.center}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+              <h4 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Required Fields</h4>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Species</label>
+                <select id="edit-arrec-species" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="Vannamei Shrimp" ${arrival.species && arrival.species.includes('Vannamei') ? 'selected' : ''}>Vannamei Shrimp</option>
+                  <option value="Black Tiger Shrimp" ${arrival.species && arrival.species.includes('Black Tiger') ? 'selected' : ''}>Black Tiger Shrimp</option>
+                  <option value="Asian Seabass" ${arrival.species && arrival.species.includes('Seabass') ? 'selected' : ''}>Asian Seabass</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Center Name</label>
+                <select id="edit-arrec-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="Bhimavaram Center #1" ${arrival.center && arrival.center.includes('Bhimavaram') ? 'selected' : ''}>Bhimavaram Center #1</option>
+                  <option value="Kakinada Sea Intake #2" ${arrival.center && arrival.center.includes('Kakinada') ? 'selected' : ''}>Kakinada Sea Intake #2</option>
+                  <option value="Machilipatnam Delta #3" ${arrival.center && arrival.center.includes('Machilipatnam') ? 'selected' : ''}>Machilipatnam Delta #3</option>
+                  <option value="Amalapuram Harvesters #4" ${arrival.center && arrival.center.includes('Amalapuram') ? 'selected' : ''}>Amalapuram Harvesters #4</option>
+                  <option value="Ongole Coastal Hub #1" ${arrival.center && arrival.center.includes('Ongole') ? 'selected' : ''}>Ongole Coastal Hub #1</option>
+                  <option value="Visakhapatnam Gate Dock" ${arrival.center && arrival.center.includes('Visakhapatnam') ? 'selected' : ''}>Visakhapatnam Gate Dock</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Plant</label>
+                <select id="edit-arrec-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="DFL UNIT-5 (JPT)" ${arrival.arrivalPlant && arrival.arrivalPlant.includes('UNIT-5') ? 'selected' : ''}>DFL UNIT-5 (JPT)</option>
+                  <option value="DFL UNIT-3 (PSP)" ${arrival.arrivalPlant && arrival.arrivalPlant.includes('UNIT-3') ? 'selected' : ''}>DFL UNIT-3 (PSP)</option>
+                  <option value="DFL UNIT-6 (JPT-II)" ${arrival.arrivalPlant && arrival.arrivalPlant.includes('UNIT-6') ? 'selected' : ''}>DFL UNIT-6 (JPT-II)</option>
+                  <option value="DFL UNIT-4 (PND)" ${arrival.arrivalPlant && arrival.arrivalPlant.includes('UNIT-4') ? 'selected' : ''}>DFL UNIT-4 (PND)</option>
+                  <option value="DFL UNIT-2 (KKD)" ${arrival.arrivalPlant && arrival.arrivalPlant.includes('UNIT-2') ? 'selected' : ''}>DFL UNIT-2 (KKD)</option>
+                  <option value="DFL UNIT-1 (VSP)" ${arrival.arrivalPlant && arrival.arrivalPlant.includes('UNIT-1') ? 'selected' : ''}>DFL UNIT-1 (VSP)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Bill Date</label>
+                <div class="erp-date-wrapper">
+                  <input type="date" id="edit-arrec-bill-date" value="${editBillDateVal}" class="erp-date-input w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                  <span class="erp-date-icon">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Date</label>
+                <div class="erp-date-wrapper">
+                  <input type="date" id="edit-arrec-arrival-date" value="${editArrDateVal}" class="erp-date-input w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                  <span class="erp-date-icon">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Bill Number</label>
+                <input type="number" id="edit-arrec-bill-number" value="${(arrival.arrivalNumber || arrival.arrivalCode || '').replace(/\D/g, '') || 1045}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="block text-xs font-semibold text-[#172B4D]">Supplier Name</label>
+                  <button type="button" id="btn-quick-new-supplier-edit" class="text-[10px] text-[#0052CC] font-bold hover:underline cursor-pointer bg-[#DEEBFF] hover:bg-[#B3D4FF] px-2 py-0.5 rounded transition-colors">New</button>
+                </div>
+                <select id="edit-arrec-supplier" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="Godavari Coastal Aqua Farms" ${arrival.supplier && arrival.supplier.includes('Godavari') ? 'selected' : ''}>Godavari Coastal Aqua Farms</option>
+                  <option value="Sagar Marine Hatcheries" ${arrival.supplier && arrival.supplier.includes('Sagar') ? 'selected' : ''}>Sagar Marine Hatcheries</option>
+                  <option value="Krishna Delta Prawn Harvesters" ${arrival.supplier && arrival.supplier.includes('Krishna') ? 'selected' : ''}>Krishna Delta Prawn Harvesters</option>
+                  <option value="Konaseema Marine Harvesters Syndicate" ${arrival.supplier && arrival.supplier.includes('Konaseema') ? 'selected' : ''}>Konaseema Marine Harvesters Syndicate</option>
+                  <option value="Nellore Brackish Aqua Cultivators" ${arrival.supplier && arrival.supplier.includes('Nellore') ? 'selected' : ''}>Nellore Brackish Aqua Cultivators</option>
+                  <option value="Sri Sai Aqua Farms" ${arrival.supplier && arrival.supplier.includes('Sri Sai') ? 'selected' : ''}>Sri Sai Aqua Farms</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Agent Name</label>
+                <select id="edit-arrec-agent" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="Direct Procurement" ${!arrival.agent || arrival.agent === 'Direct Procurement' ? 'selected' : ''}>Direct Procurement</option>
+                  <option value="Coastal Marine Agency" ${arrival.agent && arrival.agent.includes('Coastal') ? 'selected' : ''}>Coastal Marine Agency</option>
+                  <option value="Sagar Marine Brokers" ${arrival.agent && arrival.agent.includes('Sagar') ? 'selected' : ''}>Sagar Marine Brokers</option>
+                  <option value="Delta Marine Syndicate" ${arrival.agent && arrival.agent.includes('Delta') ? 'selected' : ''}>Delta Marine Syndicate</option>
+                  <option value="East Coast Brokers" ${arrival.agent && arrival.agent.includes('East') ? 'selected' : ''}>East Coast Brokers</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Purchase Type</label>
+                <select id="edit-arrec-purchase-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="Site Weightment" ${arrival.purchaseType === 'Site Weightment' ? 'selected' : ''}>Site Weightment</option>
+                  <option value="Direct Farmer Procurement" ${arrival.purchaseType === 'Direct Farmer Procurement' ? 'selected' : ''}>Direct Farmer Procurement</option>
+                  <option value="Hatchery Buyback Contract" ${arrival.purchaseType === 'Hatchery Buyback Contract' ? 'selected' : ''}>Hatchery Buyback Contract</option>
+                  <option value="Spot Market Purchase" ${arrival.purchaseType === 'Spot Market Purchase' ? 'selected' : ''}>Spot Market Purchase</option>
+                  <option value="Agent Procurement Order" ${arrival.purchaseType === 'Agent Procurement Order' ? 'selected' : ''}>Agent Procurement Order</option>
+                  <option value="Corporate Feed-Linked Booking" ${arrival.purchaseType === 'Corporate Feed-Linked Booking' ? 'selected' : ''}>Corporate Feed-Linked Booking</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Farm Location</label>
+                <input type="text" id="edit-arrec-farm-location" value="${arrival.farmLocation || arrival.pond || 'Pond #4B & 5A'}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Grader Name</label>
+                <select id="edit-arrec-grader" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="B. Venkatesh" ${arrival.graderName === 'B. Venkatesh' ? 'selected' : ''}>B. Venkatesh</option>
+                  <option value="K. Ramu" ${arrival.graderName === 'K. Ramu' ? 'selected' : ''}>K. Ramu</option>
+                  <option value="M. Nagesh" ${arrival.graderName === 'M. Nagesh' ? 'selected' : ''}>M. Nagesh</option>
+                  <option value="G. Suribabu" ${arrival.graderName === 'G. Suribabu' ? 'selected' : ''}>G. Suribabu</option>
+                  <option value="Ch. Narayana" ${arrival.graderName === 'Ch. Narayana' ? 'selected' : ''}>Ch. Narayana</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Supervisor Name</label>
+                <select id="edit-arrec-supervisor" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="S. Prasad" ${arrival.supervisor === 'S. Prasad' ? 'selected' : ''}>S. Prasad</option>
+                  <option value="K. Srinivas" ${arrival.supervisor === 'K. Srinivas' ? 'selected' : ''}>K. Srinivas</option>
+                  <option value="V. Satyam" ${arrival.supervisor === 'V. Satyam' ? 'selected' : ''}>V. Satyam</option>
+                  <option value="P. Murthy" ${arrival.supervisor === 'P. Murthy' ? 'selected' : ''}>P. Murthy</option>
+                  <option value="M. Rao" ${arrival.supervisor === 'M. Rao' ? 'selected' : ''}>M. Rao</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
+                <select id="edit-arrec-driver" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="K. Appa Rao" ${arrival.driverName === 'K. Appa Rao' ? 'selected' : ''}>K. Appa Rao</option>
+                  <option value="S. Manikyam" ${arrival.driverName === 'S. Manikyam' ? 'selected' : ''}>S. Manikyam</option>
+                  <option value="T. Chinna" ${arrival.driverName === 'T. Chinna' ? 'selected' : ''}>T. Chinna</option>
+                  <option value="G. Suribabu" ${arrival.driverName === 'G. Suribabu' ? 'selected' : ''}>G. Suribabu</option>
+                  <option value="Ch. Narayana" ${arrival.driverName === 'Ch. Narayana' ? 'selected' : ''}>Ch. Narayana</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Number</label>
+                <select id="edit-arrec-vehicle" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="AP 37 TE 8812" ${arrival.vehicleNo === 'AP 37 TE 8812' ? 'selected' : ''}>AP 37 TE 8812</option>
+                  <option value="AP 31 XY 4402" ${arrival.vehicleNo === 'AP 31 XY 4402' ? 'selected' : ''}>AP 31 XY 4402</option>
+                  <option value="AP 16 TZ 5590" ${arrival.vehicleNo === 'AP 16 TZ 5590' ? 'selected' : ''}>AP 16 TZ 5590</option>
+                  <option value="AP 05 AB 1234" ${arrival.vehicleNo === 'AP 05 AB 1234' ? 'selected' : ''}>AP 05 AB 1234</option>
+                  <option value="AP 27 BB 9012" ${arrival.vehicleNo === 'AP 27 BB 9012' ? 'selected' : ''}>AP 27 BB 9012</option>
+                  <option value="AP 04 TT 5619" ${arrival.vehicleNo === 'AP 04 TT 5619' ? 'selected' : ''}>AP 04 TT 5619</option>
+                  <option value="AP 26 TV 1104" ${arrival.vehicleNo === 'AP 26 TV 1104' ? 'selected' : ''}>AP 26 TV 1104</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Harvest Commission</label>
+                <input type="text" id="edit-arrec-commission" value="${arrival.harvestCommission || '2.50'}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+            </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Pond / Harvest Location</label>
-              <input type="text" id="edit-arrec-pond" value="${arrival.pond}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Count Range</label>
-              <input type="text" id="edit-arrec-count" value="${arrival.countRange}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-          </div>
-          <div class="grid grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Net Catch (KG)</label>
-              <input type="number" id="edit-arrec-net" value="${arrival.netCatchKg}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold text-[#006644]" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Core Temp</label>
-              <input type="text" id="edit-arrec-temp" value="${arrival.temperature}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Crates Inward</label>
-              <input type="number" id="edit-arrec-crates" value="${arrival.cratesIn}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Vehicle Registration</label>
-              <input type="text" id="edit-arrec-veh" value="${arrival.vehicleNo}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-[#172B4D] mb-1">Driver Name</label>
-              <input type="text" id="edit-arrec-driver" value="${arrival.driverName}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-            </div>
-          </div>
+
+          <!-- Section 2: Optional Fields -->
           <div>
-            <label class="block text-xs font-semibold text-[#172B4D] mb-1">Status</label>
-            <select id="edit-arrec-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-              <option value="QC_CLEARED" ${arrival.status === 'QC_CLEARED' ? 'selected' : ''}>QC_CLEARED</option>
-              <option value="UNDER_TESTING" ${arrival.status === 'UNDER_TESTING' ? 'selected' : ''}>UNDER_TESTING</option>
-              <option value="TRANSFERRED" ${arrival.status === 'TRANSFERRED' ? 'selected' : ''}>TRANSFERRED</option>
-              <option value="REJECTED" ${arrival.status === 'REJECTED' ? 'selected' : ''}>REJECTED</option>
-            </select>
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+              <h4 class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Optional Fields</h4>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div class="col-span-1 sm:col-span-2 lg:col-span-4">
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Remarks</label>
+                <textarea id="edit-arrec-remarks" rows="2" placeholder="Enter Remarks - Optional" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">${arrival.remarks || ''}</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Details Section -->
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-[#EBECF0]">
+              <h4 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Details Section</h4>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Total Weight</label>
+                <input type="text" id="edit-arrec-total-weight" value="${arrival.totalWeight || arrival.grossWeightKg || 3850}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Balance Weight</label>
+                <input type="text" id="edit-arrec-balance-weight" value="${arrival.balanceWeight || 730}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Total Value</label>
+                <input type="text" id="edit-arrec-total-value" value="${arrival.totalAmt || arrival.totalValue || 1326000}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Balance Value</label>
+                <input type="text" id="edit-arrec-balance-value" value="${arrival.balanceValue || 310250}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Variety</label>
+                <select id="edit-arrec-variety" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="HEAD ON" ${!arrival.variety || arrival.variety === 'HEAD ON' ? 'selected' : ''}>HEAD ON</option>
+                  <option value="HEADLESS" ${arrival.variety === 'HEADLESS' ? 'selected' : ''}>HEADLESS</option>
+                  <option value="EASY PEEL" ${arrival.variety === 'EASY PEEL' ? 'selected' : ''}>EASY PEEL</option>
+                  <option value="PUD" ${arrival.variety === 'PUD' ? 'selected' : ''}>PUD</option>
+                  <option value="PDTO" ${arrival.variety === 'PDTO' ? 'selected' : ''}>PDTO</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Count</label>
+                <input type="number" id="edit-arrec-arrival-count" value="${(arrival.arrivalCount || arrival.countRange || '').replace(/\D/g, '') || 44}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Weight (Kgs)</label>
+                <input type="text" id="edit-arrec-arrival-weight" value="${arrival.arrivalWeight || arrival.netCatchKg || 3120}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Rate</label>
+                <input type="text" id="edit-arrec-arrival-rate" value="${arrival.arrivalRate || arrival.ratePerKg || 425}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+            </div>
           </div>
         </form>
       `,
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Update Arrival',
+          label: 'Update',
           type: 'primary',
           onClick: (m) => {
+            arrival.species = document.getElementById('edit-arrec-species').value;
             arrival.center = document.getElementById('edit-arrec-center').value;
-            arrival.pond = document.getElementById('edit-arrec-pond').value;
-            arrival.countRange = document.getElementById('edit-arrec-count').value;
-            arrival.netCatchKg = parseFloat(document.getElementById('edit-arrec-net').value) || arrival.netCatchKg;
-            arrival.temperature = document.getElementById('edit-arrec-temp').value;
-            arrival.cratesIn = parseInt(document.getElementById('edit-arrec-crates').value) || arrival.cratesIn;
-            arrival.vehicleNo = document.getElementById('edit-arrec-veh').value;
+            arrival.arrivalPlant = document.getElementById('edit-arrec-plant').value;
+            arrival.plant = arrival.arrivalPlant;
+            arrival.billDate = document.getElementById('edit-arrec-bill-date').value;
+            arrival.arrivalDate = document.getElementById('edit-arrec-arrival-date').value;
+            arrival.date = arrival.arrivalDate;
+            arrival.supplier = document.getElementById('edit-arrec-supplier').value;
+            arrival.agent = document.getElementById('edit-arrec-agent').value;
+            arrival.purchaseType = document.getElementById('edit-arrec-purchase-type').value;
+            arrival.farmLocation = document.getElementById('edit-arrec-farm-location').value;
+            arrival.pond = arrival.farmLocation;
+            arrival.graderName = document.getElementById('edit-arrec-grader').value;
+            arrival.supervisor = document.getElementById('edit-arrec-supervisor').value;
             arrival.driverName = document.getElementById('edit-arrec-driver').value;
-            arrival.status = document.getElementById('edit-arrec-status').value;
+            arrival.vehicleNo = document.getElementById('edit-arrec-vehicle').value;
+            arrival.harvestCommission = document.getElementById('edit-arrec-commission').value;
+            arrival.remarks = document.getElementById('edit-arrec-remarks').value;
+
+            arrival.totalWeight = parseFloat(document.getElementById('edit-arrec-total-weight').value) || arrival.totalWeight;
+            arrival.grossWeightKg = arrival.totalWeight;
+            arrival.balanceWeight = parseFloat(document.getElementById('edit-arrec-balance-weight').value) || arrival.balanceWeight;
+            arrival.variety = document.getElementById('edit-arrec-variety').value;
+            const count = document.getElementById('edit-arrec-arrival-count').value || '44';
+            arrival.arrivalCount = `${count} pcs/kg`;
+            arrival.countRange = `${count} pcs/kg`;
+            arrival.arrivalWeight = parseFloat(document.getElementById('edit-arrec-arrival-weight').value) || arrival.arrivalWeight;
+            arrival.netCatchKg = arrival.arrivalWeight;
+            arrival.arrivalRate = parseFloat(document.getElementById('edit-arrec-arrival-rate').value) || arrival.arrivalRate;
+            arrival.ratePerKg = arrival.arrivalRate;
+            arrival.totalAmt = parseFloat(document.getElementById('edit-arrec-total-value').value) || (arrival.arrivalWeight * arrival.arrivalRate);
+            arrival.balanceValue = parseFloat(document.getElementById('edit-arrec-balance-value').value) || (arrival.balanceWeight * arrival.arrivalRate);
 
             if (tableInstance) tableInstance.setData(ERP_DATA.arrivals);
             m.close();
 
-            // Confirmation Popup after update
             Modal.success({
               title: 'Arrival Record Updated',
-              message: `Inward arrival receipt ${arrival.arrivalCode} has been updated.`,
+              message: `Inward arrival receipt <strong>${arrival.arrivalNumber || arrival.arrivalCode}</strong> has been updated successfully.`,
               details: [
-                { label: 'Arrival Code', value: arrival.arrivalCode },
+                { label: 'Arrival Number', value: arrival.arrivalNumber || arrival.arrivalCode },
                 { label: 'Procurement Center', value: arrival.center },
-                { label: 'Net Catch Weight', value: `${arrival.netCatchKg.toLocaleString()} KG` }
+                { label: 'Plant', value: arrival.arrivalPlant },
+                { label: 'Net Catch Weight', value: `${arrival.arrivalWeight.toLocaleString()} KG` },
+                { label: 'Arrival Rate', value: `₹ ${arrival.arrivalRate} / KG` },
+                { label: 'Total Amount', value: `₹ ${arrival.totalAmt.toLocaleString()}` }
               ]
             });
-            Toast.show(`Arrival ${arrival.arrivalCode} updated successfully.`, 'success');
+            Toast.show(`Arrival ${arrival.arrivalNumber || arrival.arrivalCode} updated successfully.`, 'success');
           }
         }
       ]
     });
+
+    setTimeout(() => {
+      const btnNewSup = document.getElementById('btn-quick-new-supplier-edit');
+      if (btnNewSup) {
+        btnNewSup.addEventListener('click', () => {
+          const newName = prompt('Enter New Supplier / Farmer Name:');
+          if (newName && newName.trim()) {
+            const trimmed = newName.trim();
+            const supSelect = document.getElementById('edit-arrec-supplier');
+            if (supSelect) {
+              const opt = document.createElement('option');
+              opt.value = trimmed;
+              opt.text = trimmed;
+              opt.selected = true;
+              supSelect.appendChild(opt);
+              if (!ERP_DATA.suppliers.some(s => s.name === trimmed)) {
+                ERP_DATA.suppliers.push({ id: `SUP-${Date.now()}`, name: trimmed, region: 'East Coast Aqua' });
+              }
+              Toast.show(`New supplier "${trimmed}" added and selected.`, 'success');
+            }
+          }
+        });
+      }
+
+      const wtInput = document.getElementById('edit-arrec-arrival-weight');
+      const rateInput = document.getElementById('edit-arrec-arrival-rate');
+      const valInput = document.getElementById('edit-arrec-total-value');
+      const balWtInput = document.getElementById('edit-arrec-balance-weight');
+      const balValInput = document.getElementById('edit-arrec-balance-value');
+      const totWtInput = document.getElementById('edit-arrec-total-weight');
+
+      const recalc = () => {
+        const w = parseFloat(wtInput ? wtInput.value : 0) || 0;
+        const r = parseFloat(rateInput ? rateInput.value : 0) || 0;
+        const bw = parseFloat(balWtInput ? balWtInput.value : 0) || 0;
+        if (w > 0 && r > 0 && valInput && !valInput.matches(':focus')) {
+          valInput.value = Math.round(w * r);
+        }
+        if (bw > 0 && r > 0 && balValInput && !balValInput.matches(':focus')) {
+          balValInput.value = Math.round(bw * r);
+        }
+      };
+
+      if (wtInput) wtInput.addEventListener('input', recalc);
+      if (rateInput) rateInput.addEventListener('input', recalc);
+      if (balWtInput) balWtInput.addEventListener('input', recalc);
+      if (totWtInput) {
+        totWtInput.addEventListener('input', () => {
+          const tw = parseFloat(totWtInput.value) || 0;
+          const aw = parseFloat(wtInput ? wtInput.value : 0) || 0;
+          if (tw > aw && balWtInput && !balWtInput.matches(':focus')) {
+            balWtInput.value = Math.round(tw - aw);
+            recalc();
+          }
+        });
+      }
+    }, 60);
   },
 
   showArrivalRecordDetails(arrival) {
@@ -2920,12 +5366,22 @@ export const PurchaseView = {
       size: 'lg',
       content: `
         <div class="space-y-4 text-xs">
-          <div class="p-3 bg-[#DEEBFF] text-[#0747A6] rounded-lg border border-[#B3D4FF] flex items-center justify-between">
+          <div class="p-3 bg-[#FAFBFC] text-[#172B4D] rounded-lg border border-[#DFE1E6] flex flex-wrap items-center justify-between gap-2">
             <div>
-              <span class="font-bold text-sm">${arrival.arrivalCode}</span>
-              <span class="ml-2 text-xs">(${arrival.date} • ${arrival.time})</span>
+              <span class="font-bold text-sm text-[#172B4D]">${arrival.arrivalCode}</span>
+              <span class="ml-2 text-xs text-[#5E6C84]">(${arrival.date} • ${arrival.time})</span>
             </div>
-            <span class="lozenge lozenge-success font-bold">${arrival.status}</span>
+            <div class="flex items-center gap-2">
+              <span class="lozenge lozenge-success font-bold">${arrival.status}</span>
+              <button type="button" id="details-top-edit-arrec" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this catch arrival receipt">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span>Edit</span>
+              </button>
+              <button type="button" id="details-top-delete-arrec" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this catch arrival receipt">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <span>Delete</span>
+              </button>
+            </div>
           </div>
 
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -2943,7 +5399,7 @@ export const PurchaseView = {
             </div>
             <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
               <span class="text-[#6B778C] text-[11px] block">Species</span>
-              <span class="font-bold text-[#0052CC]">${arrival.species}</span>
+              <span class="font-bold text-[#172B4D]">${arrival.species}</span>
             </div>
           </div>
 
@@ -2994,14 +5450,43 @@ export const PurchaseView = {
       footerButtons: [
         { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
         { 
-          label: 'Print Inward Slip', 
+          label: 'Delete Record', 
+          type: 'destructive', 
+          onClick: (m) => { 
+            m.close(); 
+            PurchaseView.deleteArrivalRecord(arrival, PurchaseView.arrivalRecordsTable); 
+          } 
+        },
+        { 
+          label: 'Edit Record', 
           type: 'primary', 
+          onClick: (m) => { 
+            m.close(); 
+            PurchaseView.openEditArrivalRecordModal(arrival, PurchaseView.arrivalRecordsTable); 
+          } 
+        },
+        { 
+          label: 'Print Inward Slip', 
+          type: 'secondary', 
           onClick: (m) => {
             Toast.show(`Printing Inward Catch Receipt for ${arrival.arrivalCode}...`, 'info');
           } 
         }
       ]
     });
+
+    setTimeout(() => {
+      const eb = document.getElementById('details-top-edit-arrec');
+      if (eb) eb.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.openEditArrivalRecordModal(arrival, PurchaseView.arrivalRecordsTable);
+      });
+      const db = document.getElementById('details-top-delete-arrec');
+      if (db) db.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.deleteArrivalRecord(arrival, PurchaseView.arrivalRecordsTable);
+      });
+    }, 50);
   },
 
   deleteArrivalRecord(arrival, tableInstance) {
@@ -3040,14 +5525,13 @@ export const PurchaseView = {
           <div class="bg-[#FAFBFC] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
               <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">General Information</span>
-              <span class="text-[11px] text-[#6B778C]">Procurement & Booking Details</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              <!-- 1. Booking Station -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <!-- Booking Station -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  1. Booking Station
+                  Booking Station
                 </label>
                 <select id="newbkg-station" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="">-- Select Booking Station --</option>
@@ -3060,10 +5544,10 @@ export const PurchaseView = {
                 </select>
               </div>
 
-              <!-- 2. Species -->
+              <!-- Species -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  2. Species
+                  Species
                 </label>
                 <select id="newbkg-species" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="">-- Select Species --</option>
@@ -3074,10 +5558,10 @@ export const PurchaseView = {
                 </select>
               </div>
 
-              <!-- 3. Purchase Type -->
+              <!-- Purchase Type -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  3. Purchase Type
+                  Purchase Type
                 </label>
                 <select id="newbkg-purchasetype" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="">-- Select Purchase Type --</option>
@@ -3089,58 +5573,63 @@ export const PurchaseView = {
                 </select>
               </div>
 
-              <!-- 4. Booking Number -->
+              <!-- Booking Number -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  4. Booking Number
+                  Booking Number
                 </label>
-                <input type="text" id="newbkg-no" value="PB-2026-${Math.floor(100 + Math.random() * 900)}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" placeholder="e.g. PB-2026-115" />
+                <input type="text" id="newbkg-no" value="PB-2026-${Math.floor(100 + Math.random() * 900)}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#172B4D] focus:outline-none focus:border-[#4C9AFF]" placeholder="e.g. PB-2026-115" />
               </div>
 
-              <!-- 5. Vehicle Number -->
+              <!-- Vehicle Number -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  5. Vehicle Number
+                  Vehicle Number
                 </label>
                 <input type="text" id="newbkg-vehno" placeholder="e.g. AP 37 TE 4821" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 6. Driver Name -->
+              <!-- Driver Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  6. Driver Name
+                  Driver Name
                 </label>
                 <input type="text" id="newbkg-driver" placeholder="e.g. G. Narayana" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 7. Grader Name -->
+              <!-- Grader Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  7. Grader Name
+                  Grader Name
                 </label>
                 <input type="text" id="newbkg-grader" placeholder="e.g. B. Venkatesh" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 8. Booking Date -->
+              <!-- Booking Date -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  8. Booking Date
+                  Booking Date
                 </label>
-                <input type="date" id="newbkg-date" value="2026-10-06" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <div class="erp-date-wrapper">
+                  <input type="date" id="newbkg-date" value="2026-10-06" class="erp-date-input w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                  <span class="erp-date-icon">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </span>
+                </div>
               </div>
 
-              <!-- 9. Farm Location -->
+              <!-- Farm Location -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  9. Farm Location
+                  Farm Location
                 </label>
                 <input type="text" id="newbkg-farmloc" placeholder="e.g. Bhimavaram Cluster #4 / Pond #12" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 10. Suppliers -->
+              <!-- Suppliers -->
               <div class="sm:col-span-2 lg:col-span-3">
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  10. Suppliers
+                  Suppliers
                 </label>
                 <select id="newbkg-supplier" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="">-- Select Supplier / Farmer --</option>
@@ -3159,22 +5648,21 @@ export const PurchaseView = {
           <div class="bg-white p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
               <span class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Agent & Remarks</span>
-              <span class="text-[11px] text-[#6B778C]">Additional procurement details</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <!-- 11. Agent Name -->
+              <!-- Agent Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
-                  11. Agent Name
+                  Agent Name
                 </label>
                 <input type="text" id="newbkg-agent" placeholder="e.g. Coastal Marine Agency / Direct" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 12. Remarks -->
+              <!-- Remarks -->
               <div>
                 <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
-                  12. Remarks
+                  Remarks
                 </label>
                 <textarea id="newbkg-remarks" rows="2" placeholder="e.g. Harvest scheduled for 4:00 AM, ice boxes ready..." class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]"></textarea>
               </div>
@@ -3184,31 +5672,30 @@ export const PurchaseView = {
           <!-- Booking Details Sub-Section -->
           <div class="bg-[#F4F5F7] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#DFE1E6] pb-2">
-              <span class="text-xs font-bold text-[#0052CC] uppercase tracking-wider">Booking Details</span>
-              <span class="text-[11px] text-[#6B778C]">Grade, Expected Weight & Benchmark Rate</span>
+              <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Booking Details</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <!-- 13. Booking Count -->
+              <!-- Booking Count -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  13. Booking Count
+                  Booking Count
                 </label>
-                <input type="text" id="newbkg-count" placeholder="e.g. 40 Count (30-40 pcs/kg)" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="newbkg-count" placeholder="e.g. 40 Count (30-40 pcs/kg)" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#172B4D] focus:outline-none focus:border-[#4C9AFF]" />
               </div>
 
-              <!-- 14. Booking Weight (Kgs) -->
+              <!-- Booking Weight (Kgs) -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  14. Booking Weight (Kgs)
+                  Booking Weight (Kgs)
                 </label>
                 <input type="number" id="newbkg-weight" placeholder="e.g. 3500" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-extrabold text-[#006644] focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 15. Booking Rate -->
+              <!-- Booking Rate -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  15. Booking Rate (₹ / KG)
+                  Booking Rate (₹ / KG)
                 </label>
                 <input type="number" id="newbkg-rate" placeholder="e.g. 440" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-extrabold text-[#172B4D] focus:outline-none focus:border-[#0052CC]" />
               </div>
@@ -3311,14 +5798,13 @@ export const PurchaseView = {
           <div class="bg-[#FAFBFC] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
               <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">General Information</span>
-              <span class="text-[11px] text-[#6B778C]">Procurement & Booking Details</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              <!-- 1. Booking Station -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <!-- Booking Station -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  1. Booking Station
+                  Booking Station
                 </label>
                 <select id="editbkg-station" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="Bhimavaram Center #1" ${booking.bookingStation === 'Bhimavaram Center #1' || (booking.arrivalPlant && booking.arrivalPlant.includes('UNIT-5')) ? 'selected' : ''}>Bhimavaram Center #1</option>
@@ -3330,10 +5816,10 @@ export const PurchaseView = {
                 </select>
               </div>
 
-              <!-- 2. Species -->
+              <!-- Species -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  2. Species
+                  Species
                 </label>
                 <select id="editbkg-species" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="Vannamei Shrimp" ${booking.species && booking.species.includes('Vannamei') ? 'selected' : ''}>Vannamei Shrimp (Litopenaeus vannamei)</option>
@@ -3343,10 +5829,10 @@ export const PurchaseView = {
                 </select>
               </div>
 
-              <!-- 3. Purchase Type -->
+              <!-- Purchase Type -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  3. Purchase Type
+                  Purchase Type
                 </label>
                 <select id="editbkg-purchasetype" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="Direct Farmer Procurement" ${booking.purchaseType === 'Direct Farmer Procurement' ? 'selected' : ''}>Direct Farmer Procurement</option>
@@ -3357,58 +5843,63 @@ export const PurchaseView = {
                 </select>
               </div>
 
-              <!-- 4. Booking Number -->
+              <!-- Booking Number -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  4. Booking Number
+                  Booking Number
                 </label>
-                <input type="text" id="editbkg-no" value="${booking.bookingNo}" readonly class="w-full text-xs px-2.5 py-2 bg-[#EBECF0] border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC]" />
+                <input type="text" id="editbkg-no" value="${booking.bookingNo}" readonly class="w-full text-xs px-2.5 py-2 bg-[#EBECF0] border border-[#DFE1E6] rounded-lg font-bold text-[#172B4D]" />
               </div>
 
-              <!-- 5. Vehicle Number -->
+              <!-- Vehicle Number -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  5. Vehicle Number
+                  Vehicle Number
                 </label>
                 <input type="text" id="editbkg-vehno" value="${booking.vehicleNo || 'AP 37 TE 4821'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 6. Driver Name -->
+              <!-- Driver Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  6. Driver Name
+                  Driver Name
                 </label>
                 <input type="text" id="editbkg-driver" value="${booking.driverName || 'G. Narayana'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 7. Grader Name -->
+              <!-- Grader Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  7. Grader Name
+                  Grader Name
                 </label>
                 <input type="text" id="editbkg-grader" value="${booking.grader || 'B. Venkatesh'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 8. Booking Date -->
+              <!-- Booking Date -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  8. Booking Date
+                  Booking Date
                 </label>
-                <input type="date" id="editbkg-date" value="${booking.bookingDate || booking.expectedDate || '2026-10-06'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
+                <div class="erp-date-wrapper">
+                  <input type="date" id="editbkg-date" value="${(booking.bookingDate || booking.expectedDate || '2026-10-06').includes('/') ? (booking.bookingDate || booking.expectedDate).split('/').reverse().join('-') : (booking.bookingDate || booking.expectedDate || '2026-10-06')}" class="erp-date-input w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                  <span class="erp-date-icon">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </span>
+                </div>
               </div>
 
-              <!-- 9. Farm Location -->
+              <!-- Farm Location -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  9. Farm Location
+                  Farm Location
                 </label>
                 <input type="text" id="editbkg-farmloc" value="${booking.farmLocation || booking.pond || 'Bhimavaram Cluster #4'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 10. Suppliers -->
+              <!-- Suppliers -->
               <div class="sm:col-span-2 lg:col-span-3">
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  10. Suppliers
+                  Suppliers
                 </label>
                 <select id="editbkg-supplier" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">
                   <option value="Godavari Coastal Aqua Farms" ${booking.supplier && booking.supplier.includes('Godavari') ? 'selected' : ''}>Godavari Coastal Aqua Farms (Bhimavaram)</option>
@@ -3426,22 +5917,21 @@ export const PurchaseView = {
           <div class="bg-white p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#EBECF0] pb-2">
               <span class="text-xs font-bold text-[#5E6C84] uppercase tracking-wider">Agent & Remarks</span>
-              <span class="text-[11px] text-[#6B778C]">Additional procurement details</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <!-- 11. Agent Name -->
+              <!-- Agent Name -->
               <div>
                 <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
-                  11. Agent Name
+                  Agent Name
                 </label>
                 <input type="text" id="editbkg-agent" value="${booking.agent || ''}" placeholder="e.g. Coastal Marine Agency" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 12. Remarks -->
+              <!-- Remarks -->
               <div>
                 <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">
-                  12. Remarks
+                  Remarks
                 </label>
                 <textarea id="editbkg-remarks" rows="2" placeholder="e.g. Harvest notes..." class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded-lg focus:outline-none focus:border-[#0052CC]">${booking.remarks || ''}</textarea>
               </div>
@@ -3451,31 +5941,30 @@ export const PurchaseView = {
           <!-- Booking Details Sub-Section -->
           <div class="bg-[#F4F5F7] p-3.5 rounded-lg border border-[#DFE1E6] space-y-3">
             <div class="flex items-center justify-between border-b border-[#DFE1E6] pb-2">
-              <span class="text-xs font-bold text-[#0052CC] uppercase tracking-wider">Booking Details</span>
-              <span class="text-[11px] text-[#6B778C]">Grade, Expected Weight & Benchmark Rate</span>
+              <span class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Booking Details</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <!-- 13. Booking Count -->
+              <!-- Booking Count -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  13. Booking Count
+                  Booking Count
                 </label>
-                <input type="text" id="editbkg-count" value="${booking.bookingCount || '40 Count'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" />
+                <input type="text" id="editbkg-count" value="${booking.bookingCount || '40 Count'}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-bold text-[#172B4D] focus:outline-none focus:border-[#4C9AFF]" />
               </div>
 
-              <!-- 14. Booking Weight (Kgs) -->
+              <!-- Booking Weight (Kgs) -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  14. Booking Weight (Kgs)
+                  Booking Weight (Kgs)
                 </label>
                 <input type="number" id="editbkg-weight" value="${booking.bookingWeight || booking.bookedQty || 0}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-extrabold text-[#006644] focus:outline-none focus:border-[#0052CC]" />
               </div>
 
-              <!-- 15. Booking Rate -->
+              <!-- Booking Rate -->
               <div>
                 <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">
-                  15. Booking Rate (₹ / KG)
+                  Booking Rate (₹ / KG)
                 </label>
                 <input type="number" id="editbkg-rate" value="${booking.bookingRate || 420}" class="w-full text-xs px-2.5 py-2 bg-white border border-[#DFE1E6] rounded-lg font-extrabold text-[#172B4D] focus:outline-none focus:border-[#0052CC]" />
               </div>
@@ -3486,7 +5975,7 @@ export const PurchaseView = {
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Save',
+          label: 'Update',
           type: 'primary',
           onClick: (m) => {
             const station = document.getElementById('editbkg-station')?.value?.trim() || booking.bookingStation;
@@ -3551,56 +6040,66 @@ export const PurchaseView = {
       size: 'lg',
       content: `
         <div class="space-y-4 text-xs">
-          <div class="p-3 bg-[#DEEBFF] text-[#0747A6] rounded-lg border border-[#B3D4FF] flex items-center justify-between">
+          <div class="p-3 bg-[#FAFBFC] text-[#172B4D] rounded-lg border border-[#DFE1E6] flex flex-wrap items-center justify-between gap-2">
             <div>
-              <span class="font-bold text-sm">${booking.bookingNo}</span>
-              <span class="ml-2 text-xs">(${booking.bookingDate || booking.expectedDate} • ${booking.purchaseType || 'Direct Farmer Procurement'})</span>
+              <span class="font-bold text-sm text-[#172B4D]">${booking.bookingNo}</span>
+              <span class="ml-2 text-xs text-[#5E6C84]">(${booking.bookingDate || booking.expectedDate} • ${booking.purchaseType || 'Direct Farmer Procurement'})</span>
             </div>
-            <span class="lozenge lozenge-success font-bold">${booking.status || 'CONFIRMED'}</span>
+            <div class="flex items-center gap-2">
+              <span class="lozenge lozenge-success font-bold">${booking.status || 'CONFIRMED'}</span>
+              <button type="button" id="details-top-edit-booking" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this booking agreement">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span>Edit</span>
+              </button>
+              <button type="button" id="details-top-delete-booking" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this booking agreement">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <span>Delete</span>
+              </button>
+            </div>
           </div>
 
           <!-- Required Fields Summary -->
           <div class="bg-[#FAFBFC] p-3 rounded-lg border border-[#DFE1E6] space-y-2">
-            <h4 class="font-bold text-xs text-[#172B4D] border-b border-[#EBECF0] pb-1">Required Information</h4>
+            <h4 class="font-bold text-xs text-[#172B4D] pb-1">Booking Information</h4>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">1. Booking Station</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Booking Station</span>
                 <span class="font-bold text-[#172B4D]">${booking.bookingStation || booking.arrivalPlant || 'Bhimavaram Center #1'}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">2. Species</span>
-                <span class="font-bold text-[#0052CC]">${booking.species}</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Species</span>
+                <span class="font-bold text-[#172B4D]">${booking.species}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">3. Purchase Type</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Purchase Type</span>
                 <span class="font-medium text-[#172B4D]">${booking.purchaseType}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">4. Booking Number</span>
-                <span class="font-bold text-[#0052CC]">${booking.bookingNo}</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Booking Number</span>
+                <span class="font-bold text-[#172B4D]">${booking.bookingNo}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">5. Vehicle Number</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Vehicle Number</span>
                 <span class="font-bold text-[#172B4D]">${booking.vehicleNo || 'AP 37 TE 4821'}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">6. Driver Name</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Driver Name</span>
                 <span class="font-medium text-[#172B4D]">${booking.driverName || 'G. Narayana'}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">7. Grader Name</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Grader Name</span>
                 <span class="font-bold text-[#172B4D]">${booking.grader || 'B. Venkatesh'}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">8. Booking Date</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Booking Date</span>
                 <span class="font-medium text-[#172B4D]">${booking.bookingDate || booking.expectedDate}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">9. Farm Location</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Farm Location</span>
                 <span class="font-medium text-[#172B4D]">${booking.farmLocation || booking.pond || 'Bhimavaram Cluster #4'}</span>
               </div>
               <div class="sm:col-span-3">
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">10. Suppliers</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Suppliers</span>
                 <span class="font-bold text-[#172B4D]">${booking.supplier || 'Godavari Coastal Aqua Farms'}</span>
               </div>
             </div>
@@ -3608,14 +6107,14 @@ export const PurchaseView = {
 
           <!-- Optional Fields Summary -->
           <div class="bg-white p-3 rounded-lg border border-[#DFE1E6] space-y-2">
-            <h4 class="font-bold text-xs text-[#5E6C84] border-b border-[#EBECF0] pb-1">Optional Information</h4>
+            <h4 class="font-bold text-xs text-[#5E6C84] pb-1">Agent & Remarks</h4>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">11. Agent Name</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Agent Name</span>
                 <span class="font-medium text-[#172B4D]">${booking.agent || 'Direct'}</span>
               </div>
               <div>
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">12. Remarks</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Remarks</span>
                 <span class="font-medium text-[#172B4D]">${booking.remarks || 'Standard procurement contract.'}</span>
               </div>
             </div>
@@ -3623,18 +6122,18 @@ export const PurchaseView = {
 
           <!-- Booking Details Section -->
           <div class="bg-[#F4F5F7] p-3 rounded-lg border border-[#DFE1E6] space-y-2">
-            <h4 class="font-bold text-xs text-[#0052CC] border-b border-[#DFE1E6] pb-1">Booking Details</h4>
+            <h4 class="font-bold text-xs text-[#172B4D] pb-1">Booking Details</h4>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
               <div class="p-2 bg-white rounded border border-[#DFE1E6]">
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">13. Booking Count</span>
-                <span class="font-bold text-sm text-[#0052CC]">${booking.bookingCount || '40 Count'}</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Booking Count</span>
+                <span class="font-bold text-sm text-[#172B4D]">${booking.bookingCount || '40 Count'}</span>
               </div>
               <div class="p-2 bg-white rounded border border-[#DFE1E6]">
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">14. Booking Weight</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Booking Weight</span>
                 <span class="font-extrabold text-sm text-[#006644]">${(booking.bookingWeight || booking.bookedQty || 0).toLocaleString()} KG</span>
               </div>
               <div class="p-2 bg-white rounded border border-[#DFE1E6]">
-                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">15. Booking Rate</span>
+                <span class="text-[#6B778C] text-[10px] uppercase font-bold block">Booking Rate</span>
                 <span class="font-extrabold text-sm text-[#172B4D]">₹ ${booking.bookingRate || 420} / KG</span>
               </div>
             </div>
@@ -3644,14 +6143,43 @@ export const PurchaseView = {
       footerButtons: [
         { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Print Booking Slip',
+          label: 'Delete Booking',
+          type: 'destructive',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.deleteBooking(booking, PurchaseView.bookingsTable);
+          }
+        },
+        {
+          label: 'Edit Booking',
           type: 'primary',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.openEditBookingModal(booking, PurchaseView.bookingsTable);
+          }
+        },
+        {
+          label: 'Print Booking Slip',
+          type: 'secondary',
           onClick: (m) => {
             Toast.show(`Printing Booking Slip for ${booking.bookingNo}...`, 'info');
           }
         }
       ]
     });
+
+    setTimeout(() => {
+      const eb = document.getElementById('details-top-edit-booking');
+      if (eb) eb.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.openEditBookingModal(booking, PurchaseView.bookingsTable);
+      });
+      const db = document.getElementById('details-top-delete-booking');
+      if (db) db.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.deleteBooking(booking, PurchaseView.bookingsTable);
+      });
+    }, 50);
   },
 
   deleteBooking(booking, tableInstance) {
@@ -3694,7 +6222,12 @@ export const PurchaseView = {
             </div>
             <div>
               <label class="block text-xs font-semibold text-[#172B4D] mb-1">Due Date</label>
-              <input type="date" id="newbill-due" value="2026-10-25" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
+              <div class="erp-date-wrapper">
+                <input type="date" id="newbill-due" value="2026-10-25" class="erp-date-input w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" onclick="this.showPicker ? this.showPicker() : this.focus()" />
+                <span class="erp-date-icon">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </span>
+              </div>
             </div>
           </div>
           <div>
@@ -3795,7 +6328,7 @@ export const PurchaseView = {
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Update Bill',
+          label: 'Update',
           type: 'primary',
           onClick: (m) => {
             const r = parseFloat(document.getElementById('editbill-rate').value) || bill.ratePerKg;
@@ -3915,7 +6448,7 @@ export const PurchaseView = {
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Update Benchmark',
+          label: 'Update',
           type: 'primary',
           onClick: (m) => {
             rate.rateInr = parseFloat(document.getElementById('editrate-inr').value) || rate.rateInr;
@@ -4063,7 +6596,7 @@ export const PurchaseView = {
       content: `
         <div class="space-y-4 text-xs">
           <!-- Top Header Summary Bar -->
-          <div class="flex flex-wrap justify-between items-center p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg">
+          <div class="flex flex-wrap justify-between items-center p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg gap-2">
             <div class="flex items-center gap-2">
               <span class="text-xs font-bold text-[#0052CC]">${arrNo}</span>
               <span class="text-[#6B778C]">•</span>
@@ -4071,7 +6604,17 @@ export const PurchaseView = {
               <span class="text-[#6B778C]">•</span>
               <span class="text-[#5E6C84] font-medium">${company}</span>
             </div>
-            <span class="lozenge lozenge-success font-bold">${status}</span>
+            <div class="flex items-center gap-2">
+              <span class="lozenge lozenge-success font-bold">${status}</span>
+              <button type="button" id="details-top-edit-arrival" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this arrival">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span>Edit</span>
+              </button>
+              <button type="button" id="details-top-delete-arrival" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this arrival">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <span>Delete</span>
+              </button>
+            </div>
           </div>
 
           <!-- Key Metrics Cards -->
@@ -4090,7 +6633,7 @@ export const PurchaseView = {
             </div>
             <div class="p-3 bg-white border border-[#DFE1E6] rounded-lg">
               <span class="text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider block mb-1">Total Valuation</span>
-              <span class="text-base font-extrabold text-[#0052CC]">₹ ${amount.toLocaleString()}</span>
+              <span class="text-base font-extrabold text-[#172B4D]">₹ ${amount.toLocaleString()}</span>
             </div>
           </div>
 
@@ -4099,7 +6642,7 @@ export const PurchaseView = {
             <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded-lg space-y-2">
               <div class="flex justify-between border-b border-[#EBECF0] pb-1.5">
                 <span class="text-[#6B778C]">Plant Facility:</span>
-                <span class="font-bold text-[#0052CC]">${plant}</span>
+                <span class="font-bold text-[#172B4D]">${plant}</span>
               </div>
               <div class="flex justify-between border-b border-[#EBECF0] pb-1.5">
                 <span class="text-[#6B778C]">Procurement Center:</span>
@@ -4141,7 +6684,448 @@ export const PurchaseView = {
           </div>
         </div>
       `,
-      footerButtons: [{ label: 'Close', type: 'secondary', onClick: (m) => m.close() }]
+      footerButtons: [
+        { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Delete Arrival',
+          type: 'destructive',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.deleteArrival(arrival, PurchaseView.arrivalsTable);
+          }
+        },
+        {
+          label: 'Edit Arrival',
+          type: 'primary',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.openEditArrivalModal(arrival, PurchaseView.arrivalsTable);
+          }
+        }
+      ]
+    });
+
+    setTimeout(() => {
+      const eb = document.getElementById('details-top-edit-arrival');
+      if (eb) eb.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.openEditArrivalModal(arrival, PurchaseView.arrivalsTable);
+      });
+      const db = document.getElementById('details-top-delete-arrival');
+      if (db) db.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.deleteArrival(arrival, PurchaseView.arrivalsTable);
+      });
+    }, 50);
+  },
+
+  downloadRecord(record) {
+    const filename = `${record.bookingNo || record.arrivalNumber || record.arrivalCode || record.billNo || record.txnId || record.voucherNo || record.lotNumber || record.id || 'record'}.json`;
+    const jsonStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(record, null, 2));
+    const dlAnchorElem = document.createElement('a');
+    dlAnchorElem.setAttribute("href", jsonStr);
+    dlAnchorElem.setAttribute("download", filename);
+    document.body.appendChild(dlAnchorElem);
+    dlAnchorElem.click();
+    dlAnchorElem.remove();
+    Toast.show(`Downloaded ${filename}`, 'success', 'File Downloaded');
+  },
+
+  showBillDetails(bill) {
+    Modal.open({
+      title: `Supplier Bill: ${bill.billNo}`,
+      size: 'md',
+      content: `
+        <div class="space-y-4 text-xs">
+          <div class="p-3 bg-[#FAFBFC] text-[#172B4D] rounded-lg border border-[#DFE1E6] flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="font-bold text-sm text-[#172B4D]">${bill.billNo}</span>
+              <span class="ml-2 text-xs text-[#5E6C84]">(Due: ${bill.dueDate})</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="lozenge lozenge-success font-bold">${bill.status}</span>
+              <button type="button" id="details-top-edit-bill" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this supplier bill">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span>Edit</span>
+              </button>
+              <button type="button" id="details-top-delete-bill" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this supplier bill">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <span>Delete</span>
+              </button>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Supplier</span>
+              <span class="font-bold text-[#172B4D]">${bill.supplierName}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Linked Lot</span>
+              <span class="font-bold text-[#172B4D]">${bill.lotNumber}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Weight</span>
+              <span class="font-bold text-[#172B4D]">${(bill.weightKg || 0).toLocaleString()} KG</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Rate / KG</span>
+              <span class="font-bold text-[#172B4D]">₹ ${bill.ratePerKg}</span>
+            </div>
+          </div>
+          <div class="p-3 bg-[#E3FCEF] border border-[#ABF5D1] rounded flex justify-between items-center">
+            <span class="text-[#006644] font-bold">Total Valuation</span>
+            <span class="text-base font-extrabold text-[#006644]">₹ ${(bill.totalAmountInr || 0).toLocaleString()} ($ ${(bill.totalAmountUsd || 0).toLocaleString()})</span>
+          </div>
+        </div>
+      `,
+      footerButtons: [
+        { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Delete Bill',
+          type: 'destructive',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.deleteBill(bill, PurchaseView.billsTable);
+          }
+        },
+        {
+          label: 'Edit Bill',
+          type: 'primary',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.openEditBillModal(bill, PurchaseView.billsTable);
+          }
+        },
+        {
+          label: 'Download Record',
+          type: 'secondary',
+          onClick: (m) => PurchaseView.downloadRecord(bill)
+        }
+      ]
+    });
+
+    setTimeout(() => {
+      const eb = document.getElementById('details-top-edit-bill');
+      if (eb) eb.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.openEditBillModal(bill, PurchaseView.billsTable);
+      });
+      const db = document.getElementById('details-top-delete-bill');
+      if (db) db.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.deleteBill(bill, PurchaseView.billsTable);
+      });
+    }, 50);
+  },
+
+  showTransactionDetails(txn) {
+    Modal.open({
+      title: `Commercial Transaction: ${txn.txnId}`,
+      size: 'md',
+      content: `
+        <div class="space-y-4 text-xs">
+          <div class="p-3 bg-[#FAFBFC] text-[#172B4D] rounded-lg border border-[#DFE1E6] flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="font-bold text-sm text-[#172B4D]">${txn.txnId}</span>
+              <span class="ml-2 text-xs text-[#5E6C84]">(${txn.date})</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="lozenge lozenge-success font-bold">${txn.status}</span>
+              <button type="button" id="details-top-edit-txn" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this transaction">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span>Edit</span>
+              </button>
+              <button type="button" id="details-top-delete-txn" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this transaction">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <span>Delete</span>
+              </button>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Supplier / Party</span>
+              <span class="font-bold text-[#172B4D]">${txn.supplier}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Transaction Type</span>
+              <span class="font-bold text-[#172B4D]">${txn.type}</span>
+            </div>
+          </div>
+          <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+            <span class="text-[#6B778C] text-[11px] block">Description</span>
+            <span class="font-medium text-[#172B4D]">${txn.description}</span>
+          </div>
+          <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded flex justify-between items-center">
+            <span class="text-[#5E6C84] font-bold">Transaction Amount</span>
+            <span class="text-base font-extrabold text-[#172B4D]">₹ ${(txn.amountInr || 0).toLocaleString()} ($ ${(txn.amountUsd || 0).toLocaleString()})</span>
+          </div>
+        </div>
+      `,
+      footerButtons: [
+        { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Delete Transaction',
+          type: 'destructive',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.deleteTransaction(txn, PurchaseView.commercialTxnsTable);
+          }
+        },
+        {
+          label: 'Edit Transaction',
+          type: 'primary',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.openEditTransactionModal(txn, PurchaseView.commercialTxnsTable);
+          }
+        },
+        {
+          label: 'Download Record',
+          type: 'secondary',
+          onClick: (m) => PurchaseView.downloadRecord(txn)
+        }
+      ]
+    });
+
+    setTimeout(() => {
+      const eb = document.getElementById('details-top-edit-txn');
+      if (eb) eb.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.openEditTransactionModal(txn, PurchaseView.commercialTxnsTable);
+      });
+      const db = document.getElementById('details-top-delete-txn');
+      if (db) db.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.deleteTransaction(txn, PurchaseView.commercialTxnsTable);
+      });
+    }, 50);
+  },
+
+  openEditTransactionModal(txn, tableInstance) {
+    Modal.open({
+      title: `Edit Commercial Transaction: ${txn.txnId}`,
+      size: 'md',
+      content: `
+        <form id="edit-txn-form" class="space-y-3 text-xs">
+          <div>
+            <label class="block font-semibold text-[#172B4D] mb-1">Transaction Ref</label>
+            <input type="text" value="${txn.txnId}" disabled class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded text-[#5E6C84] cursor-not-allowed" />
+          </div>
+          <div>
+            <label class="block font-semibold text-[#172B4D] mb-1">Party / Supplier</label>
+            <input type="text" id="edittxn-supplier" value="${txn.supplier}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+          </div>
+          <div>
+            <label class="block font-semibold text-[#172B4D] mb-1">Description</label>
+            <input type="text" id="edittxn-desc" value="${txn.description}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-[#172B4D] mb-1">Amount (INR)</label>
+              <input type="number" id="edittxn-amount" value="${txn.amountInr}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block font-semibold text-[#172B4D] mb-1">Ledger Status</label>
+              <select id="edittxn-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="SETTLED" ${txn.status === 'SETTLED' ? 'selected' : ''}>SETTLED</option>
+                <option value="PENDING" ${txn.status === 'PENDING' ? 'selected' : ''}>PENDING</option>
+                <option value="DISPUTED" ${txn.status === 'DISPUTED' ? 'selected' : ''}>DISPUTED</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      `,
+      footerButtons: [
+        { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Save Changes',
+          type: 'primary',
+          onClick: (m) => {
+            txn.supplier = document.getElementById('edittxn-supplier').value || txn.supplier;
+            txn.description = document.getElementById('edittxn-desc').value || txn.description;
+            txn.amountInr = parseFloat(document.getElementById('edittxn-amount').value) || txn.amountInr;
+            txn.amountUsd = Math.round(txn.amountInr / 83.2);
+            txn.status = document.getElementById('edittxn-status').value;
+            if (tableInstance) tableInstance.setData(PurchaseView.commercialTxns);
+            m.close();
+            Toast.show(`Transaction ${txn.txnId} updated successfully.`, 'success');
+          }
+        }
+      ]
+    });
+  },
+
+  deleteTransaction(txn, tableInstance) {
+    Modal.confirm({
+      title: `Delete Transaction ${txn.txnId}`,
+      message: `Are you sure you want to void this commercial ledger transaction <strong>${txn.txnId}</strong>?`,
+      isDestructive: true,
+      onConfirm: () => {
+        const idx = PurchaseView.commercialTxns.findIndex(t => t.txnId === txn.txnId);
+        if (idx > -1) {
+          PurchaseView.commercialTxns.splice(idx, 1);
+          if (tableInstance) tableInstance.setData(PurchaseView.commercialTxns);
+          Toast.show(`Transaction ${txn.txnId} voided.`, 'success');
+        }
+      }
+    });
+  },
+
+  showPaymentDetails(payment) {
+    Modal.open({
+      title: `Payment Voucher: ${payment.voucherNo}`,
+      size: 'md',
+      content: `
+        <div class="space-y-4 text-xs">
+          <div class="p-3 bg-[#FAFBFC] text-[#172B4D] rounded-lg border border-[#DFE1E6] flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="font-bold text-sm text-[#172B4D]">${payment.voucherNo}</span>
+              <span class="ml-2 text-xs text-[#5E6C84]">(${payment.paymentDate})</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="lozenge lozenge-success font-bold">${payment.status}</span>
+              <button type="button" id="details-top-edit-payment" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this payment voucher">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span>Edit</span>
+              </button>
+              <button type="button" id="details-top-delete-payment" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this payment voucher">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                <span>Delete</span>
+              </button>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Beneficiary Supplier</span>
+              <span class="font-bold text-[#172B4D]">${payment.supplierName}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Against Bill No</span>
+              <span class="font-bold text-[#172B4D]">${payment.billNo}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Payment Mode</span>
+              <span class="font-bold text-[#172B4D]">${payment.paymentMode || 'RTGS Wire'}</span>
+            </div>
+            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+              <span class="text-[#6B778C] text-[11px] block">Bank Ref / UTR</span>
+              <span class="font-bold text-[#172B4D]">${payment.bankRef || 'SBIN20261006091'}</span>
+            </div>
+          </div>
+          <div class="p-3 bg-[#E3FCEF] border border-[#ABF5D1] rounded flex justify-between items-center">
+            <span class="text-[#006644] font-bold">Total Paid Amount</span>
+            <span class="text-base font-extrabold text-[#006644]">₹ ${(payment.amountInr || 0).toLocaleString()} ($ ${(payment.amountUsd || 0).toLocaleString()})</span>
+          </div>
+        </div>
+      `,
+      footerButtons: [
+        { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Delete Voucher',
+          type: 'destructive',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.deletePayment(payment, PurchaseView.paymentsTable);
+          }
+        },
+        {
+          label: 'Edit Voucher',
+          type: 'primary',
+          onClick: (m) => {
+            m.close();
+            PurchaseView.openEditPaymentModal(payment, PurchaseView.paymentsTable);
+          }
+        },
+        {
+          label: 'Download Record',
+          type: 'secondary',
+          onClick: (m) => PurchaseView.downloadRecord(payment)
+        }
+      ]
+    });
+
+    setTimeout(() => {
+      const eb = document.getElementById('details-top-edit-payment');
+      if (eb) eb.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.openEditPaymentModal(payment, PurchaseView.paymentsTable);
+      });
+      const db = document.getElementById('details-top-delete-payment');
+      if (db) db.addEventListener('click', () => {
+        Modal.close();
+        PurchaseView.deletePayment(payment, PurchaseView.paymentsTable);
+      });
+    }, 50);
+  },
+
+  openEditPaymentModal(payment, tableInstance) {
+    Modal.open({
+      title: `Edit Payment Voucher: ${payment.voucherNo}`,
+      size: 'md',
+      content: `
+        <form id="edit-pay-form" class="space-y-3 text-xs">
+          <div>
+            <label class="block font-semibold text-[#172B4D] mb-1">Voucher Number</label>
+            <input type="text" value="${payment.voucherNo}" disabled class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded text-[#5E6C84] cursor-not-allowed" />
+          </div>
+          <div>
+            <label class="block font-semibold text-[#172B4D] mb-1">Beneficiary Supplier</label>
+            <input type="text" id="editpay-supplier" value="${payment.supplierName}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-[#172B4D] mb-1">Paid Amount (INR)</label>
+              <input type="number" id="editpay-amount" value="${payment.amountInr}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+            </div>
+            <div>
+              <label class="block font-semibold text-[#172B4D] mb-1">Payment Status</label>
+              <select id="editpay-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                <option value="CLEARED" ${payment.status === 'CLEARED' ? 'selected' : ''}>CLEARED</option>
+                <option value="PROCESSING" ${payment.status === 'PROCESSING' ? 'selected' : ''}>PROCESSING</option>
+                <option value="HELD" ${payment.status === 'HELD' ? 'selected' : ''}>HELD</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block font-semibold text-[#172B4D] mb-1">Bank Reference / UTR</label>
+            <input type="text" id="editpay-ref" value="${payment.bankRef || ''}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+          </div>
+        </form>
+      `,
+      footerButtons: [
+        { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Save Changes',
+          type: 'primary',
+          onClick: (m) => {
+            payment.supplierName = document.getElementById('editpay-supplier').value || payment.supplierName;
+            payment.amountInr = parseFloat(document.getElementById('editpay-amount').value) || payment.amountInr;
+            payment.amountUsd = Math.round(payment.amountInr / 83.2);
+            payment.status = document.getElementById('editpay-status').value;
+            payment.bankRef = document.getElementById('editpay-ref').value || payment.bankRef;
+            if (tableInstance) tableInstance.setData(PurchaseView.paymentsList);
+            m.close();
+            Toast.show(`Payment voucher ${payment.voucherNo} updated.`, 'success');
+          }
+        }
+      ]
+    });
+  },
+
+  deletePayment(payment, tableInstance) {
+    Modal.confirm({
+      title: `Delete Payment Voucher ${payment.voucherNo}`,
+      message: `Are you sure you want to delete payment voucher <strong>${payment.voucherNo}</strong>?`,
+      confirmText: 'Delete Voucher',
+      isDestructive: true,
+      onConfirm: () => {
+        const idx = PurchaseView.paymentsList.findIndex(p => p.voucherNo === payment.voucherNo);
+        if (idx > -1) {
+          PurchaseView.paymentsList.splice(idx, 1);
+          if (tableInstance) tableInstance.setData(PurchaseView.paymentsList);
+          Toast.show(`Payment voucher ${payment.voucherNo} removed.`, 'success');
+        }
+      }
     });
   }
 };

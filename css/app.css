@@ -50,7 +50,7 @@
   --ds-purple-text: #403294;
 }
 
-*, *::before, *::after, body, button, input, select, textarea, kbd, code, pre, table, . {
+*, *::before, *::after, body, button, input, select, textarea, kbd, code, pre, table {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
 }
 
@@ -235,11 +235,16 @@ body {
   color: #0052CC !important;
 }
 
-/* Tab active */
+/* Tab active pill */
 .tab-active {
-  color: #0052CC !important;
-  border-bottom: 2px solid #0052CC !important;
-  font-weight: 600 !important;
+  background-color: #0052CC !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-bottom: none !important;
+  font-weight: 700 !important;
+}
+.tab-active span {
+  color: #FFFFFF !important;
 }
 
 /* Drawer & Modal Transitions */
@@ -323,6 +328,64 @@ body {
   animation: skeletonShimmer 1.5s ease-in-out infinite;
 }
 
+/* Date Picker Input styling with calendar icon */
+.erp-date-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.erp-date-input {
+  width: 100%;
+  padding-right: 32px !important;
+  cursor: pointer;
+}
+/* Completely remove native calendar picker icons in all browsers to prevent double icons */
+input[type="date"]::-webkit-calendar-picker-indicator,
+.erp-date-input::-webkit-calendar-picker-indicator {
+  display: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  color: transparent !important;
+}
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button,
+.erp-date-input::-webkit-inner-spin-button,
+.erp-date-input::-webkit-clear-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+input[type="date"] {
+  -moz-appearance: textfield;
+}
+.erp-date-icon {
+  position: absolute;
+  right: 8px;
+  pointer-events: none;
+  color: #5E6C84;
+}
+
+/* Accessibility Screen Reader Only Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* Print Styles */
 @media print {
   aside, header, .no-print {
@@ -334,3 +397,4 @@ body {
     width: 100% !important;
   }
 }
+
