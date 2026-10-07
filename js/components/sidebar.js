@@ -563,7 +563,7 @@ export const Sidebar = {
           <div class="h-14 px-4 py-2 flex items-center justify-between border-b border-white/10 bg-[#002766]/80 shrink-0">
             <div class="flex items-center gap-2.5">
               <img src="${LOGO_WHITE}" alt="Devi Fisheries" class="h-8 w-auto max-w-[125px] object-contain shrink-0" />
-              <span class="text-[10px] font-bold text-white bg-[#0052CC] border border-[#4C9AFF]/40 px-2 py-0.5 rounded tracking-wider shadow-2xs">ERP</span>
+              <span class="text-xs font-bold text-white tracking-wide">Devi Fisheries Limited</span>
             </div>
           </div>
 

@@ -310,7 +310,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid -->
-          <div id="rm-filter-body" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
+          <div id="rm-filter-body" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SPECIES</label>
               <select class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
@@ -934,7 +934,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid -->
-          <div id="comm-filter-body" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
+          <div id="comm-filter-body" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">PURCHASE STATION</label>
               <select id="comm-station-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
@@ -994,8 +994,8 @@ export const PurchaseView = {
               </div>
             </div>
 
-            <!-- Second Row: Search Button -->
-            <div class="lg:col-span-5 flex items-center justify-start pt-1">
+            <!-- Search Button -->
+            <div class="flex items-end">
               <button type="button" id="comm-search-btn" class="btn-primary px-5 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow cursor-pointer h-[31px]">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 <span>Search</span>
@@ -1524,7 +1524,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid (5 columns) -->
-          <div id="lot-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
+          <div id="lot-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">PURCHASE STATION</label>
               <select id="lot-station-filter" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
@@ -1769,7 +1769,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid -->
-          <div id="booking-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
+          <div id="booking-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT PURCHASE</label>
               <select id="booking-top-purchase-select" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
@@ -2093,7 +2093,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid -->
-          <div id="rm-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
+          <div id="rm-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">DATE</label>
               <div class="erp-date-wrapper">
@@ -2689,7 +2689,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid (Max 5 Columns) -->
-          <div id="bill-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 text-xs transition-all duration-200">
+          <div id="bill-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <!-- 1. Select Purchase -->
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT PURCHASE</label>
@@ -2891,14 +2891,9 @@ export const PurchaseView = {
       ],
       actions: [
         {
-          label: 'Download',
-          icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
-          onClick: (row) => PurchaseView.downloadRecord(row)
-        },
-        {
-          label: 'Delete',
-          icon: `<svg class="w-4 h-4 text-[#FF5630]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
-          onClick: (row) => PurchaseView.deleteBill(row, billsTable)
+          label: 'Add',
+          icon: `<svg class="w-4 h-4 text-[#006644]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>`,
+          onClick: (row) => PurchaseView.openAddBillDetailsModal(row, billsTable)
         }
       ],
       onRowClick: (row) => PurchaseView.showBillDetails(row)
@@ -3040,9 +3035,9 @@ export const PurchaseView = {
             <h1 class="text-xl font-extrabold text-[#172B4D]">Commercial Transactions</h1>
           </div>
           <div class="flex items-center gap-2">
-            <button id="btn-pay-commercial" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-              <span>Pay</span>
+            <button id="btn-add-commercial-txn" class="btn-primary px-3 py-1.5 rounded text-xs flex items-center gap-1.5 shadow-xs cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>Add Transaction</span>
             </button>
           </div>
         </div>
@@ -3070,7 +3065,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid (Max 5 Columns) -->
-          <div id="ctx-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-xs transition-all duration-200">
+          <div id="ctx-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <!-- 1. Select Center -->
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT CENTER</label>
@@ -3250,6 +3245,11 @@ export const PurchaseView = {
       ],
       actions: [
         {
+          label: 'Edit',
+          icon: `<svg class="w-4 h-4 text-[#FFAB00]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>`,
+          onClick: (row) => PurchaseView.openEditTransactionModal(row, txnsTable)
+        },
+        {
           label: 'Download',
           icon: `<svg class="w-4 h-4 text-[#00875A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
           onClick: (row) => PurchaseView.downloadRecord(row)
@@ -3355,167 +3355,11 @@ export const PurchaseView = {
       });
     }
 
-    const payBtn = document.getElementById('btn-pay-commercial');
-    if (payBtn) {
-      payBtn.addEventListener('click', () => {
-        Modal.open({
-          title: 'Disburse Commercial Payment',
-          size: 'md',
-          content: `
-            <form class="space-y-3">
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Voucher No</label>
-                  <input type="text" id="pay-modal-voucher" value="PAY-2026-${Math.floor(100 + Math.random() * 900)}" readonly class="w-full text-xs px-3 py-1.5 bg-[#EBECF0] border border-[#DFE1E6] rounded" />
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Payment Date</label>
-                  <div class="erp-date-wrapper">
-                    <input type="date" id="pay-modal-date" value="${new Date().toISOString().substring(0, 10)}" class="erp-date-input w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" onclick="this.showPicker ? this.showPicker() : this.focus()" />
-                    <span class="erp-date-icon">
-                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Procurement Center</label>
-                  <select id="pay-modal-center" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                    ${ERP_DATA.centers.map(c => `<option value="${c.name}">${c.name}</option>`).join('')}
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Payment Type</label>
-                  <select id="pay-modal-type" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                    <option value="PURCHASE_PAYABLE">Purchase Payable</option>
-                    <option value="LOGISTICS_FEE">Logistics Fee</option>
-                    <option value="COMMISSION_FEE">Commission Fee</option>
-                    <option value="ADVANCE_PAID">Advance Paid</option>
-                    <option value="TDS_PAYABLE">TDS Payable</option>
-                  </select>
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Party / Supplier</label>
-                  <select id="pay-modal-party" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                    ${ERP_DATA.suppliers.map(s => `<option value="${s.name}">${s.name}</option>`).join('')}
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Commission Agent</label>
-                  <select id="pay-modal-agent" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                    ${ERP_DATA.agents.map(a => `<option value="${a.name}">${a.name}</option>`).join('')}
-                  </select>
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Payment Mode</label>
-                  <select id="pay-modal-mode" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                    <option value="RTGS / Bank Wire">RTGS / Bank Wire</option>
-                    <option value="NEFT">NEFT</option>
-                    <option value="Direct Bank Transfer">Direct Bank Transfer</option>
-                    <option value="Cheque / DD">Cheque / DD</option>
-                    <option value="Letter of Credit">Letter of Credit</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Bank Reference / UTR</label>
-                  <input type="text" id="pay-modal-ref" placeholder="e.g. HDFC-RTGS-991204" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Amount (INR)</label>
-                  <input type="number" id="pay-modal-inr" placeholder="0.00" value="750000" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-[#172B4D] mb-1">Arrival Plant</label>
-                  <select id="pay-modal-plant" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded">
-                    <option value="DFL UNIT-1 (VSP)">DFL UNIT-1 (VSP)</option>
-                    <option value="DFL UNIT-2 (KKD)">DFL UNIT-2 (KKD)</option>
-                    <option value="DFL UNIT-4 (PND)">DFL UNIT-4 (PND)</option>
-                    <option value="DFL UNIT-5 (JPT)">DFL UNIT-5 (JPT)</option>
-                    <option value="DFL UNIT-6 (JPT-II)">DFL UNIT-6 (JPT-II)</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-[#172B4D] mb-1">Settlement / Commercial Remarks</label>
-                <input type="text" id="pay-modal-desc" placeholder="Settlement for RM intake / Commercial clearance" value="Settlement for RM Intake / Commercial clearance" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded" />
-              </div>
-            </form>
-          `,
-          footerButtons: [
-            { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
-            { 
-              label: 'Confirm & Disburse Payment', 
-              type: 'primary', 
-              onClick: (m) => {
-                const voucherNo = document.getElementById('pay-modal-voucher')?.value || `PAY-2026-${Math.floor(100 + Math.random() * 900)}`;
-                const party = document.getElementById('pay-modal-party')?.value || '';
-                const center = document.getElementById('pay-modal-center')?.value || '';
-                const agent = document.getElementById('pay-modal-agent')?.value || '';
-                const plant = document.getElementById('pay-modal-plant')?.value || '';
-                const mode = document.getElementById('pay-modal-mode')?.value || 'RTGS / Bank Wire';
-                const ref = document.getElementById('pay-modal-ref')?.value || 'HDFC-RTGS-991204';
-                const desc = document.getElementById('pay-modal-desc')?.value || 'Commercial Payment Settlement';
-                const inr = parseFloat(document.getElementById('pay-modal-inr')?.value) || 0;
-                const type = document.getElementById('pay-modal-type')?.value || 'PURCHASE_PAYABLE';
-
-                if (inr <= 0) {
-                  Toast.show('Please enter a valid payment amount.', 'warning');
-                  return;
-                }
-
-                const newTxn = {
-                  sNo: 1,
-                  txnId: `CTX-2026-${Math.floor(1000 + Math.random() * 9000)}`,
-                  date: new Date().toLocaleDateString('en-GB'),
-                  rawDate: new Date().toISOString().substring(0, 10),
-                  center: center,
-                  supplier: party,
-                  agent: agent,
-                  plant: plant,
-                  description: `${desc} [${mode} Ref: ${ref}]`,
-                  amountInr: inr,
-                  amountUsd: Math.round(inr / 83),
-                  type: type,
-                  status: 'SETTLED'
-                };
-
-                PurchaseView.commercialTxns.unshift(newTxn);
-                PurchaseView.commercialTxns.forEach((item, idx) => item.sNo = idx + 1);
-                txnsTable.setData(PurchaseView.commercialTxns);
-
-                if (PurchaseView.paymentsList) {
-                  PurchaseView.paymentsList.unshift({
-                    sNo: 1,
-                    voucherNo: voucherNo,
-                    paymentDate: new Date().toLocaleDateString('en-GB'),
-                    rawDate: new Date().toISOString().substring(0, 10),
-                    center: center,
-                    type: type,
-                    supplierName: party,
-                    agent: agent,
-                    plant: plant,
-                    billNo: 'COMM-SETTLE',
-                    bankRef: ref,
-                    amountInr: inr,
-                    amountUsd: Math.round(inr / 83),
-                    paymentMode: mode,
-                    status: 'COMPLETED'
-                  });
-                }
-
-                m.close();
-                Toast.show(`Payment voucher ${voucherNo} for ₹${inr.toLocaleString('en-IN')} disbursed & recorded successfully.`, 'success');
-              }
-            }
-          ]
-        });
+    // Add Commercial Transaction Button Click
+    const addTxnBtn = document.getElementById('btn-add-commercial-txn');
+    if (addTxnBtn) {
+      addTxnBtn.addEventListener('click', () => {
+        PurchaseView.openAddTransactionModal(txnsTable);
       });
     }
   },
@@ -3556,7 +3400,7 @@ export const PurchaseView = {
           </div>
 
           <!-- Collapsible Filter Inputs Grid (Max 5 Columns) -->
-          <div id="pay-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 text-xs transition-all duration-200">
+          <div id="pay-top-filter-body" class="dt-top-filter-body mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs transition-all duration-200">
             <!-- 1. Select Center -->
             <div>
               <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">SELECT CENTER</label>
@@ -6731,69 +6575,570 @@ export const PurchaseView = {
     Toast.show(`Downloaded ${filename}`, 'success', 'File Downloaded');
   },
 
-  showBillDetails(bill) {
+  // =========================================================================
+  // SUPPLIER BILL: ADD DETAILS & PRICING MODAL (ACTION ADD ICON)
+  // =========================================================================
+  openAddBillDetailsModal(bill, tableInstance) {
+    // 1. Read-Only / Auto-Populated Fields
+    const species = bill.species || 'ST';
+    const purchaseStation = bill.purchaseStation || bill.station || 'BALASORE';
+    const processingStation = bill.processingStation || bill.plant || 'DFL UNIT-5 (JPT)';
+    const purchaseType = bill.purchaseType || 'By Yield';
+    const billNumber = bill.billNo || 'BLS/2627/0145';
+    const vehicleNumber = bill.vehicleNo || 'AP05TC8585';
+    const driverName = bill.driverName || 'ANJI';
+    const graderName = bill.graderName || 'LAKSHMI';
+    const purchaseDate = bill.purchaseDate || bill.arrivalDate || '06-10-2026';
+    const agentName = bill.agent || 'ADITYA AQUA FARMS';
+    const farmLocation = bill.farmLocation || 'BALASORE';
+
+    // 2. Editable Fields
+    const supplierName = bill.supplier || bill.supplierName || 'K.GOPAL NAIDU--AFCPN8806J';
+    const additionDeduction = bill.additionDeduction !== undefined ? parseFloat(bill.additionDeduction) : 0.00;
+    const remarks = bill.remarks || '';
+
+    // 3. Table Rows Data
+    const defaultWeight = parseFloat(bill.arrivalWeight || bill.weightKg) || 3500;
+    const defaultCount = bill.arrivalCount || bill.count || '40';
+    let items = (bill.tableItems && bill.tableItems.length) ? JSON.parse(JSON.stringify(bill.tableItems)) : [
+      {
+        sNo: 1,
+        variety: 'VANNAMEI (ST)',
+        count: defaultCount,
+        weight: defaultWeight,
+        masterRate: 480.00,
+        harvestCom: 5.00
+      }
+    ];
+
+    // Compute initial rate and total value
+    items.forEach(it => {
+      it.rate = it.masterRate + additionDeduction - it.harvestCom;
+      it.totalValue = it.weight * it.rate;
+    });
+
+    const totalWeight = items.reduce((sum, it) => sum + it.weight, 0);
+    const totalValue = items.reduce((sum, it) => sum + it.totalValue, 0);
+
     Modal.open({
-      title: `Supplier Bill: ${bill.billNo}`,
-      size: 'md',
+      title: `Add Bill Details & Rates: ${billNumber}`,
+      size: 'xl',
+      content: `
+        <form class="space-y-4 text-xs" onsubmit="return false;">
+          <!-- Top Section: Read-Only / Auto-Populated Fields (11 Fields) -->
+          <div class="bg-[#FAFBFC] border border-[#EBECF0] rounded-xl p-4 shadow-2xs">
+            <div class="flex items-center gap-2 mb-3 pb-2 border-b border-[#EBECF0]">
+              <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Arrival &amp; Bill Information (Read-Only / Auto-Populated)</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <!-- 1. Species -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Species</label>
+                <input type="text" id="bill-add-species" value="${species}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 2. Purchase Station -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Purchase Station</label>
+                <input type="text" id="bill-add-purchase-station" value="${purchaseStation}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 3. Processing Station -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Processing Station</label>
+                <input type="text" id="bill-add-processing-station" value="${processingStation}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 4. Purchase Type -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Purchase Type</label>
+                <input type="text" id="bill-add-purchase-type" value="${purchaseType}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 5. Bill Number -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Bill Number</label>
+                <input type="text" id="bill-add-bill-number" value="${billNumber}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-bold text-[#0052CC] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 6. Vehicle Number -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Vehicle Number</label>
+                <input type="text" id="bill-add-vehicle-number" value="${vehicleNumber}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 7. Driver Name -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Driver Name</label>
+                <input type="text" id="bill-add-driver-name" value="${driverName}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 8. Grader Name -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Grader Name</label>
+                <input type="text" id="bill-add-grader-name" value="${graderName}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 9. Purchase Date -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Purchase Date</label>
+                <input type="text" id="bill-add-purchase-date" value="${purchaseDate}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+
+              <!-- 10. Agent Name (Dropdown) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Agent Name <span class="text-[#0052CC] font-normal">(Dropdown)</span></label>
+                <select id="bill-add-agent" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC] font-semibold text-[#172B4D]">
+                  <option value="ADITYA AQUA FARMS" ${agentName === 'ADITYA AQUA FARMS' ? 'selected' : ''}>ADITYA AQUA FARMS</option>
+                  <option value="Coastal Marine Agency" ${agentName === 'Coastal Marine Agency' ? 'selected' : ''}>Coastal Marine Agency</option>
+                  <option value="Sagar Marine Brokers" ${agentName === 'Sagar Marine Brokers' ? 'selected' : ''}>Sagar Marine Brokers</option>
+                  <option value="Direct Farmer" ${agentName === 'Direct Farmer' ? 'selected' : ''}>Direct Farmer</option>
+                  <option value="Delta Seafood Associates" ${agentName === 'Delta Seafood Associates' ? 'selected' : ''}>Delta Seafood Associates</option>
+                  <option value="East Coast Brokers" ${agentName === 'East Coast Brokers' ? 'selected' : ''}>East Coast Brokers</option>
+                  <option value="Nellore Aqua Syndicate" ${agentName === 'Nellore Aqua Syndicate' ? 'selected' : ''}>Nellore Aqua Syndicate</option>
+                </select>
+              </div>
+
+              <!-- 11. Farm Location -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Farm Location</label>
+                <input type="text" id="bill-add-farm-location" value="${farmLocation}" readonly class="w-full text-xs px-2.5 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded font-semibold text-[#172B4D] cursor-not-allowed select-none" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle Section: Editable Fields -->
+          <div class="bg-white border border-[#DFE1E6] rounded-xl p-4 shadow-2xs">
+            <div class="flex items-center gap-2 mb-3 pb-2 border-b border-[#EBECF0]">
+              <svg class="w-4 h-4 text-[#006644]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+              <h3 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Settlement Parameters (Editable)</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              <!-- 1. Supplier Name - Dropdown (K.GOPAL NAIDU--AFCPN8806J) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">Supplier Name <span class="text-red-500">*</span></label>
+                <select id="bill-add-supplier" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold text-[#172B4D] focus:outline-none focus:border-[#0052CC]">
+                  <option value="K.GOPAL NAIDU--AFCPN8806J" ${supplierName.includes('GOPAL') ? 'selected' : ''}>K.GOPAL NAIDU--AFCPN8806J</option>
+                  <option value="Godavari Coastal Aqua Farms" ${supplierName.includes('Godavari') ? 'selected' : ''}>Godavari Coastal Aqua Farms</option>
+                  <option value="Sagar Marine Hatcheries & Cultivators" ${supplierName.includes('Sagar') ? 'selected' : ''}>Sagar Marine Hatcheries &amp; Cultivators</option>
+                  <option value="Krishna Delta Prawn Harvesters" ${supplierName.includes('Krishna') ? 'selected' : ''}>Krishna Delta Prawn Harvesters</option>
+                  <option value="Konaseema Marine Harvesters" ${supplierName.includes('Konaseema') ? 'selected' : ''}>Konaseema Marine Harvesters</option>
+                  <option value="Nellore Brackish Aqua Cultivators" ${supplierName.includes('Nellore') ? 'selected' : ''}>Nellore Brackish Aqua Cultivators</option>
+                  <option value="Sri Sai Aqua Farms & Seedlings" ${supplierName.includes('Sri Sai') ? 'selected' : ''}>Sri Sai Aqua Farms &amp; Seedlings</option>
+                  <option value="East Coast Aqua Society" ${supplierName.includes('East Coast') ? 'selected' : ''}>East Coast Aqua Society</option>
+                  <option value="L.G SEA FOODS(D HARIBABU)" ${supplierName.includes('HARIBABU') ? 'selected' : ''}>L.G SEA FOODS(D HARIBABU)</option>
+                  <option value="${supplierName}" ${(!supplierName.includes('GOPAL') && !supplierName.includes('Godavari')) ? 'selected' : ''}>${supplierName}</option>
+                </select>
+              </div>
+
+              <!-- 2. Addition/Deduction Per KG * - Number Input (0.00) - Required -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">Addition/Deduction Per KG <span class="text-red-500">*</span></label>
+                <div class="relative">
+                  <span class="absolute left-2.5 top-1.5 text-xs font-bold text-[#5E6C84]">₹</span>
+                  <input type="number" step="0.01" id="bill-add-deduction" value="${additionDeduction.toFixed(2)}" placeholder="0.00" required class="w-full text-xs pl-7 pr-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold text-[#0052CC] focus:outline-none focus:border-[#0052CC]" />
+                </div>
+                <span class="text-[10px] text-[#5E6C84] mt-0.5 block">Dynamically adjusts Rate and Total Value below</span>
+              </div>
+
+              <!-- 3. Remarks - Text Input (Enter Remarks) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#172B4D] uppercase tracking-wider mb-1">Remarks</label>
+                <input type="text" id="bill-add-remarks" placeholder="Enter Remarks" value="${remarks}" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Table Columns (8 Columns) -->
+          <div class="border border-[#EBECF0] rounded-xl overflow-hidden shadow-2xs">
+            <div class="px-4 py-2.5 bg-[#FAFBFC] border-b border-[#EBECF0] flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <h4 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Bill Variety &amp; Pricing Calculation</h4>
+              </div>
+              <span class="text-[11px] text-[#5E6C84]">${items.length} Line Item${items.length > 1 ? 's' : ''}</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-[#FAFBFC] border-b border-[#EBECF0] text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider whitespace-nowrap">
+                  <tr>
+                    <th class="px-3 py-2.5 text-center">S.No</th>
+                    <th class="px-3 py-2.5">Variety</th>
+                    <th class="px-3 py-2.5 text-center">Count</th>
+                    <th class="px-3 py-2.5 text-right">Weight</th>
+                    <th class="px-3 py-2.5 text-right">Master Rate</th>
+                    <th class="px-3 py-2.5 text-right">Harvest Com.</th>
+                    <th class="px-3 py-2.5 text-right">Rate</th>
+                    <th class="px-3 py-2.5 text-right">Total Value</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#EBECF0] bg-white text-xs">
+                  ${items.map((it, idx) => `
+                    <tr class="hover:bg-[#F4F5F7] transition-colors">
+                      <td class="px-3 py-2.5 text-center font-medium text-[#5E6C84]">${idx + 1}</td>
+                      <td class="px-3 py-2.5 font-bold text-[#172B4D]">${it.variety}</td>
+                      <td class="px-3 py-2.5 text-center font-semibold text-[#172B4D]">${it.count}</td>
+                      <td class="px-3 py-2.5 text-right font-medium text-[#172B4D]">${it.weight.toLocaleString()} KG</td>
+                      <td class="px-3 py-2.5 text-right font-medium text-[#5E6C84]">₹ ${it.masterRate.toFixed(2)}</td>
+                      <td class="px-3 py-2.5 text-right font-medium text-[#BF2600]">₹ ${it.harvestCom.toFixed(2)}</td>
+                      <td class="px-3 py-2.5 text-right font-bold text-[#006644] whitespace-nowrap" id="bill-row-rate-${idx}">₹ ${it.rate.toFixed(2)}</td>
+                      <td class="px-3 py-2.5 text-right font-extrabold text-[#172B4D] whitespace-nowrap" id="bill-row-total-${idx}">₹ ${it.totalValue.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+                <tfoot class="bg-[#F4F5F7] border-t-2 border-[#DFE1E6] text-xs font-bold text-[#172B4D]">
+                  <tr>
+                    <td colspan="3" class="px-3 py-2.5 text-right uppercase tracking-wider text-[#5E6C84]">Total:</td>
+                    <td class="px-3 py-2.5 text-right text-[#172B4D] whitespace-nowrap" id="bill-table-foot-weight">${totalWeight.toLocaleString()} KG</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84]">-</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84]">-</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84]">-</td>
+                    <td class="px-3 py-2.5 text-right text-[#006644] whitespace-nowrap" id="bill-table-foot-total">₹ ${totalValue.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- Total Amount Summary Bar Below the Table -->
+            <div class="px-4 py-3 bg-[#FAFBFC] border-t border-[#EBECF0] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold text-[#5E6C84]">Bill Calculation Summary:</span>
+                <span class="text-xs font-bold text-[#172B4D] bg-[#EBECF0] px-2 py-0.5 rounded">${items.length} Item</span>
+              </div>
+              <div class="flex items-center gap-6">
+                <div class="text-right">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#5E6C84] block">Addition / Deduction</span>
+                  <span class="text-xs font-bold text-[#0052CC]" id="bill-summary-add-ded">₹ ${additionDeduction.toFixed(2)} / KG</span>
+                </div>
+                <div class="text-right pl-3 border-l border-[#DFE1E6]">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-[#0052CC] block">Net Total Bill Value</span>
+                  <span class="text-base font-extrabold text-[#006644]" id="bill-summary-net-total">₹ ${totalValue.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      `,
+      footerButtons: [
+        { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
+        {
+          label: 'Save & Update Bill',
+          type: 'primary',
+          onClick: (m) => {
+            const addDedStr = document.getElementById('bill-add-deduction')?.value;
+            if (addDedStr === '' || addDedStr === null || isNaN(parseFloat(addDedStr))) {
+              Toast.show('Addition/Deduction Per KG is required.', 'warning');
+              return;
+            }
+            const addDedVal = parseFloat(addDedStr);
+            const selectedAgent = document.getElementById('bill-add-agent')?.value || agentName;
+            const selectedSupplier = document.getElementById('bill-add-supplier')?.value || supplierName;
+            const enteredRemarks = document.getElementById('bill-add-remarks')?.value || '';
+
+            // Recalculate final items
+            let finalTotalWeight = 0;
+            let finalTotalValue = 0;
+            items.forEach(item => {
+              item.rate = item.masterRate + addDedVal - item.harvestCom;
+              item.totalValue = item.weight * item.rate;
+              finalTotalWeight += item.weight;
+              finalTotalValue += item.totalValue;
+            });
+
+            // Persist all fields to bill object
+            bill.species = species;
+            bill.purchaseStation = purchaseStation;
+            bill.processingStation = processingStation;
+            bill.purchaseType = purchaseType;
+            bill.billNo = billNumber;
+            bill.vehicleNo = vehicleNumber;
+            bill.driverName = driverName;
+            bill.graderName = graderName;
+            bill.purchaseDate = purchaseDate;
+            bill.arrivalDate = purchaseDate;
+            bill.agent = selectedAgent;
+            bill.farmLocation = farmLocation;
+            bill.supplier = selectedSupplier;
+            bill.supplierName = selectedSupplier;
+            bill.additionDeduction = addDedVal;
+            bill.remarks = enteredRemarks;
+            bill.tableItems = items;
+            bill.arrivalWeight = finalTotalWeight;
+            bill.weightKg = finalTotalWeight;
+            bill.totalBillAmount = finalTotalValue;
+            bill.totalAmountInr = finalTotalValue;
+            bill.status = 'Approved';
+
+            // Refresh table
+            if (tableInstance) {
+              tableInstance.setData(ERP_DATA.supplierBills);
+            }
+
+            m.close();
+
+            // Rich Confirmation Popup on Action Done
+            Modal.success({
+              title: 'Bill Saved & Confirmed Successfully',
+              message: `
+                <div class="space-y-3 text-xs text-[#172B4D]">
+                  <p>Bill <strong>${billNumber}</strong> has been updated with the new settlement parameters and pricing.</p>
+                  <div class="p-3 bg-[#FAFBFC] rounded-lg border border-[#EBECF0] grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    <div><span class="text-[#5E6C84] block text-[11px]">Supplier:</span><strong class="text-[#172B4D]">${selectedSupplier}</strong></div>
+                    <div><span class="text-[#5E6C84] block text-[11px]">Agent:</span><strong class="text-[#172B4D]">${selectedAgent}</strong></div>
+                    <div><span class="text-[#5E6C84] block text-[11px]">Addition/Deduction:</span><strong class="text-[#0052CC]">₹ ${addDedVal.toFixed(2)} / KG</strong></div>
+                    <div><span class="text-[#5E6C84] block text-[11px]">Net Total Bill Value:</span><strong class="text-[#006644]">₹ ${finalTotalValue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</strong></div>
+                    <div><span class="text-[#5E6C84] block text-[11px]">Status:</span><span class="inline-flex px-2 py-0.5 rounded text-[11px] font-bold bg-[#DEEBFF] text-[#0052CC]">Approved</span></div>
+                  </div>
+                </div>
+              `
+            });
+            Toast.show(`Bill ${billNumber} updated successfully!`, 'success', 'Changes Saved');
+          }
+        }
+      ]
+    });
+
+    // Real-Time Event Listener for Addition/Deduction
+    setTimeout(() => {
+      const deductionInput = document.getElementById('bill-add-deduction');
+      if (deductionInput) {
+        deductionInput.addEventListener('input', () => {
+          const val = parseFloat(deductionInput.value) || 0;
+          let totW = 0;
+          let totV = 0;
+          items.forEach((it, idx) => {
+            it.rate = it.masterRate + val - it.harvestCom;
+            it.totalValue = it.weight * it.rate;
+            totW += it.weight;
+            totV += it.totalValue;
+
+            const rEl = document.getElementById(`bill-row-rate-${idx}`);
+            const vEl = document.getElementById(`bill-row-total-${idx}`);
+            if (rEl) rEl.textContent = `₹ ${it.rate.toFixed(2)}`;
+            if (vEl) vEl.textContent = `₹ ${it.totalValue.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+          });
+
+          const fw = document.getElementById('bill-table-foot-weight');
+          const fv = document.getElementById('bill-table-foot-total');
+          const st = document.getElementById('bill-summary-net-total');
+          const sa = document.getElementById('bill-summary-add-ded');
+
+          if (fw) fw.textContent = `${totW.toLocaleString()} KG`;
+          if (fv) fv.textContent = `₹ ${totV.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+          if (st) st.textContent = `₹ ${totV.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+          if (sa) sa.textContent = `₹ ${val.toFixed(2)} / KG`;
+        });
+      }
+    }, 50);
+  },
+
+  // Backward-compatible alias for payment settlements
+  openAddPaymentForBill(bill, tableInstance) {
+    this.openAddBillDetailsModal(bill, tableInstance);
+  },
+
+  // =========================================================================
+  // SUPPLIER BILL: ROW CLICK VIEW DETAILS MODAL (SHOWS ALL ADDED DATA)
+  // =========================================================================
+  showBillDetails(bill) {
+    const species = bill.species || 'ST';
+    const purchaseStation = bill.purchaseStation || bill.station || 'BALASORE';
+    const processingStation = bill.processingStation || bill.plant || 'DFL UNIT-5 (JPT)';
+    const purchaseType = bill.purchaseType || 'By Yield';
+    const billNumber = bill.billNo || 'BLS/2627/0145';
+    const vehicleNumber = bill.vehicleNo || 'AP05TC8585';
+    const driverName = bill.driverName || 'ANJI';
+    const graderName = bill.graderName || 'LAKSHMI';
+    const purchaseDate = bill.purchaseDate || bill.arrivalDate || '06-10-2026';
+    const agentName = bill.agent || 'ADITYA AQUA FARMS';
+    const farmLocation = bill.farmLocation || 'BALASORE';
+    const supplierName = bill.supplier || bill.supplierName || 'K.GOPAL NAIDU--AFCPN8806J';
+    const additionDeduction = bill.additionDeduction !== undefined ? parseFloat(bill.additionDeduction) : 0.00;
+    const remarks = bill.remarks || 'Standard harvest delivery';
+    const status = bill.status || 'Pending';
+
+    // Line Items
+    const defaultWeight = parseFloat(bill.arrivalWeight || bill.weightKg) || 3500;
+    const defaultCount = bill.arrivalCount || bill.count || '40';
+    const items = (bill.tableItems && bill.tableItems.length) ? bill.tableItems : [
+      {
+        sNo: 1,
+        variety: 'VANNAMEI (ST)',
+        count: defaultCount,
+        weight: defaultWeight,
+        masterRate: 480.00,
+        harvestCom: 5.00,
+        rate: 480.00 + additionDeduction - 5.00,
+        totalValue: defaultWeight * (480.00 + additionDeduction - 5.00)
+      }
+    ];
+
+    const totalWeight = items.reduce((sum, it) => sum + (parseFloat(it.weight) || 0), 0);
+    const totalAmt = bill.totalBillAmount || bill.totalAmountInr || items.reduce((sum, it) => sum + (parseFloat(it.totalValue) || 0), 0);
+
+    Modal.open({
+      title: `Supplier Bill Summary: ${billNumber}`,
+      size: 'xl',
       content: `
         <div class="space-y-4 text-xs">
-          <div class="p-3 bg-[#FAFBFC] text-[#172B4D] rounded-lg border border-[#DFE1E6] flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <span class="font-bold text-sm text-[#172B4D]">${bill.billNo}</span>
-              <span class="ml-2 text-xs text-[#5E6C84]">(Due: ${bill.dueDate})</span>
+          <!-- Top Header Info Banner -->
+          <div class="p-3 bg-[#FAFBFC] text-[#172B4D] rounded-xl border border-[#DFE1E6] flex flex-wrap items-center justify-between gap-2 shadow-2xs">
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-base text-[#0052CC]">${billNumber}</span>
+              <span class="text-xs text-[#5E6C84]">(${purchaseDate})</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="lozenge lozenge-success font-bold">${bill.status}</span>
-              <button type="button" id="details-top-edit-bill" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this supplier bill">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold ${status === 'Paid' ? 'bg-[#E3FCEF] text-[#006644] border border-[#ABF5D1]' : (status === 'Approved' ? 'bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF]' : 'bg-[#FFF0B3] text-[#8F4D00] border border-[#FFE380]')}">${status}</span>
+              <button type="button" id="details-top-edit-bill" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit bill details">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                <span>Edit</span>
-              </button>
-              <button type="button" id="details-top-delete-bill" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this supplier bill">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                <span>Delete</span>
+                <span>Edit / Update Bill</span>
               </button>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Supplier</span>
-              <span class="font-bold text-[#172B4D]">${bill.supplierName}</span>
+
+          <!-- Section 1: Auto-Populated & Read-Only Information (11 Fields) -->
+          <div class="bg-[#FAFBFC] border border-[#EBECF0] rounded-xl p-4 shadow-2xs">
+            <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-[#EBECF0]">
+              <svg class="w-3.5 h-3.5 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <h4 class="text-[11px] font-bold text-[#172B4D] uppercase tracking-wider">Arrival &amp; Bill Information</h4>
             </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Linked Lot</span>
-              <span class="font-bold text-[#172B4D]">${bill.lotNumber}</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Weight</span>
-              <span class="font-bold text-[#172B4D]">${(bill.weightKg || 0).toLocaleString()} KG</span>
-            </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Rate / KG</span>
-              <span class="font-bold text-[#172B4D]">₹ ${bill.ratePerKg}</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Species</span>
+                <span class="font-bold text-[#172B4D]">${species}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Purchase Station</span>
+                <span class="font-semibold text-[#172B4D]">${purchaseStation}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Processing Station</span>
+                <span class="font-semibold text-[#172B4D]">${processingStation}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Purchase Type</span>
+                <span class="font-semibold text-[#172B4D]">${purchaseType}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Bill Number</span>
+                <span class="font-bold text-[#0052CC]">${billNumber}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Vehicle Number</span>
+                <span class="font-semibold text-[#172B4D]">${vehicleNumber}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Driver Name</span>
+                <span class="font-semibold text-[#172B4D]">${driverName}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Grader Name</span>
+                <span class="font-semibold text-[#172B4D]">${graderName}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Purchase Date</span>
+                <span class="font-semibold text-[#172B4D]">${purchaseDate}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Agent Name</span>
+                <span class="font-bold text-[#172B4D]">${agentName}</span>
+              </div>
+              <div class="p-2 bg-white border border-[#EBECF0] rounded col-span-2 sm:col-span-1">
+                <span class="text-[#6B778C] text-[10px] block font-bold uppercase tracking-wider">Farm Location</span>
+                <span class="font-semibold text-[#172B4D]">${farmLocation}</span>
+              </div>
             </div>
           </div>
-          <div class="p-3 bg-[#E3FCEF] border border-[#ABF5D1] rounded flex justify-between items-center">
-            <span class="text-[#006644] font-bold">Total Valuation</span>
-            <span class="text-base font-extrabold text-[#006644]">₹ ${(bill.totalAmountInr || 0).toLocaleString()} ($ ${(bill.totalAmountUsd || 0).toLocaleString()})</span>
+
+          <!-- Section 2: Added & Editable Settlement Parameters -->
+          <div class="bg-white border border-[#EBECF0] rounded-xl p-4 shadow-2xs">
+            <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-[#EBECF0]">
+              <svg class="w-3.5 h-3.5 text-[#006644]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <h4 class="text-[11px] font-bold text-[#172B4D] uppercase tracking-wider">Settlement &amp; Supplier Parameters</h4>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[11px] block font-semibold uppercase tracking-wider">Supplier Name</span>
+                <span class="font-bold text-sm text-[#172B4D]">${supplierName}</span>
+              </div>
+              <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[11px] block font-semibold uppercase tracking-wider">Addition / Deduction Per KG</span>
+                <span class="font-extrabold text-sm text-[#0052CC]">₹ ${additionDeduction.toFixed(2)} / KG</span>
+              </div>
+              <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
+                <span class="text-[#6B778C] text-[11px] block font-semibold uppercase tracking-wider">Remarks</span>
+                <span class="font-medium text-xs text-[#172B4D]">${remarks}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Pricing Calculation Table (8 Columns) -->
+          <div class="border border-[#EBECF0] rounded-xl overflow-hidden shadow-2xs">
+            <div class="px-4 py-2 bg-[#FAFBFC] border-b border-[#EBECF0] flex items-center justify-between">
+              <h4 class="text-[11px] font-bold text-[#172B4D] uppercase tracking-wider">Pricing Calculation Breakdown</h4>
+              <span class="text-[11px] text-[#5E6C84]">${items.length} Record</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-[#FAFBFC] border-b border-[#EBECF0] text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider whitespace-nowrap">
+                  <tr>
+                    <th class="px-3 py-2 text-center">S.No</th>
+                    <th class="px-3 py-2">Variety</th>
+                    <th class="px-3 py-2 text-center">Count</th>
+                    <th class="px-3 py-2 text-right">Weight</th>
+                    <th class="px-3 py-2 text-right">Master Rate</th>
+                    <th class="px-3 py-2 text-right">Harvest Com.</th>
+                    <th class="px-3 py-2 text-right">Rate</th>
+                    <th class="px-3 py-2 text-right">Total Value</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#EBECF0] bg-white text-xs">
+                  ${items.map((it, idx) => `
+                    <tr>
+                      <td class="px-3 py-2 text-center text-[#5E6C84]">${idx + 1}</td>
+                      <td class="px-3 py-2 font-bold text-[#172B4D]">${it.variety}</td>
+                      <td class="px-3 py-2 text-center font-semibold text-[#172B4D]">${it.count}</td>
+                      <td class="px-3 py-2 text-right font-medium text-[#172B4D]">${(parseFloat(it.weight) || 0).toLocaleString()} KG</td>
+                      <td class="px-3 py-2 text-right font-medium text-[#5E6C84]">₹ ${(parseFloat(it.masterRate) || 0).toFixed(2)}</td>
+                      <td class="px-3 py-2 text-right font-medium text-[#BF2600]">₹ ${(parseFloat(it.harvestCom) || 0).toFixed(2)}</td>
+                      <td class="px-3 py-2 text-right font-bold text-[#006644]">₹ ${(parseFloat(it.rate) || 0).toFixed(2)}</td>
+                      <td class="px-3 py-2 text-right font-extrabold text-[#172B4D]">₹ ${(parseFloat(it.totalValue) || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+                <tfoot class="bg-[#F4F5F7] border-t-2 border-[#DFE1E6] text-xs font-bold text-[#172B4D]">
+                  <tr>
+                    <td colspan="3" class="px-3 py-2 text-right uppercase tracking-wider text-[#5E6C84]">Total:</td>
+                    <td class="px-3 py-2 text-right whitespace-nowrap">${totalWeight.toLocaleString()} KG</td>
+                    <td class="px-3 py-2 text-right text-[#5E6C84]">-</td>
+                    <td class="px-3 py-2 text-right text-[#5E6C84]">-</td>
+                    <td class="px-3 py-2 text-right text-[#5E6C84]">-</td>
+                    <td class="px-3 py-2 text-right text-[#006644] whitespace-nowrap">₹ ${totalAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
+          <!-- Total Bill Amount Card -->
+          <div class="p-3 bg-[#E3FCEF] border border-[#ABF5D1] rounded-xl flex justify-between items-center shadow-2xs">
+            <div>
+              <span class="text-[#006644] font-bold block text-xs">Total Bill Amount</span>
+              <span class="text-[11px] text-[#5E6C84]">Calculated from variety, weight, rates &amp; adjustments</span>
+            </div>
+            <span class="text-lg font-extrabold text-[#006644]">₹ ${totalAmt.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
           </div>
         </div>
       `,
       footerButtons: [
         { label: 'Close', type: 'secondary', onClick: (m) => m.close() },
         {
-          label: 'Delete Bill',
-          type: 'destructive',
-          onClick: (m) => {
-            m.close();
-            PurchaseView.deleteBill(bill, PurchaseView.billsTable);
-          }
-        },
-        {
-          label: 'Edit Bill',
+          label: 'Edit / Update Bill',
           type: 'primary',
           onClick: (m) => {
             m.close();
-            PurchaseView.openEditBillModal(bill, PurchaseView.billsTable);
+            PurchaseView.openAddBillDetailsModal(bill, PurchaseView.billsTable);
           }
         },
         {
@@ -6808,56 +7153,152 @@ export const PurchaseView = {
       const eb = document.getElementById('details-top-edit-bill');
       if (eb) eb.addEventListener('click', () => {
         Modal.close();
-        PurchaseView.openEditBillModal(bill, PurchaseView.billsTable);
-      });
-      const db = document.getElementById('details-top-delete-bill');
-      if (db) db.addEventListener('click', () => {
-        Modal.close();
-        PurchaseView.deleteBill(bill, PurchaseView.billsTable);
+        PurchaseView.openAddBillDetailsModal(bill, PurchaseView.billsTable);
       });
     }, 50);
   },
 
-  showTransactionDetails(txn) {
+    showTransactionDetails(txn) {
+    const billNo = txn.billNo || ('AMP/2627/' + (txn.txnId ? txn.txnId.replace(/\D/g, '').slice(-4) : '2967'));
+    const voucherNo = txn.voucherNo || ('VCH-2026-' + (txn.txnId ? txn.txnId.split('-')[2] : '9041'));
+    const chqNeft = txn.bankRef || txn.chqNeft || ('NEFT-' + (txn.txnId ? txn.txnId.replace(/\D/g, '') : '9912048'));
+    const mode = txn.paymentMode || 'NEFT';
+    const amt = parseFloat(txn.amountInr) || 11000;
+    const comments = txn.description || 'Harvest settlement payment for pond intake';
+
     Modal.open({
       title: `Commercial Transaction: ${txn.txnId}`,
-      size: 'md',
+      size: 'xl',
       content: `
         <div class="space-y-4 text-xs">
-          <div class="p-3 bg-[#FAFBFC] text-[#172B4D] rounded-lg border border-[#DFE1E6] flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <span class="font-bold text-sm text-[#172B4D]">${txn.txnId}</span>
-              <span class="ml-2 text-xs text-[#5E6C84]">(${txn.date})</span>
+          <!-- Top Form Fields Card (5 Fields - View Mode) -->
+          <div class="bg-[#FAFBFC] border border-[#EBECF0] rounded-xl p-4 shadow-2xs">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-[#EBECF0]">
+              <div class="flex items-center gap-2">
+                <span class="font-extrabold text-sm text-[#172B4D]">${txn.txnId}</span>
+                <span class="text-xs text-[#5E6C84]">(${txn.date || txn.rawDate || '06-10-2026'})</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#E3FCEF] text-[#006644] border border-[#ABF5D1]">${txn.status || 'SETTLED'}</span>
+                <button type="button" id="details-top-edit-txn" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this transaction">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                  <span>Edit</span>
+                </button>
+                <button type="button" id="details-top-delete-txn" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this transaction">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                  <span>Delete</span>
+                </button>
+              </div>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="lozenge lozenge-success font-bold">${txn.status}</span>
-              <button type="button" id="details-top-edit-txn" class="px-2.5 py-1 bg-white hover:bg-[#DEEBFF] text-[#0052CC] border border-[#B3D4FF] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Edit this transaction">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                <span>Edit</span>
-              </button>
-              <button type="button" id="details-top-delete-txn" class="px-2.5 py-1 bg-white hover:bg-[#FFEBE6] text-[#BF2600] border border-[#FFBDAD] rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer shadow-2xs" title="Delete this transaction">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                <span>Delete</span>
-              </button>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs">
+              <!-- 1. Payment Mode -->
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-0.5">Payment Mode</span>
+                <span class="font-bold text-[#172B4D]">${mode}</span>
+              </div>
+
+              <!-- 2. Voucher No -->
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-0.5">Voucher No</span>
+                <span class="font-bold text-[#0052CC]">${voucherNo}</span>
+              </div>
+
+              <!-- 3. Cheque/NEFT.No -->
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-0.5">Cheque/NEFT.No</span>
+                <span class="font-bold text-[#172B4D]">${chqNeft}</span>
+              </div>
+
+              <!-- 4. Amount -->
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-0.5">Amount</span>
+                <span class="font-bold text-[#006644]">₹ ${amt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+              </div>
+
+              <!-- 5. Comments -->
+              <div class="p-2.5 bg-white border border-[#DFE1E6] rounded">
+                <span class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-0.5">Comments</span>
+                <span class="text-[#172B4D] truncate block" title="${comments}">${comments}</span>
+              </div>
             </div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Supplier / Party</span>
-              <span class="font-bold text-[#172B4D]">${txn.supplier}</span>
+
+          <!-- Table Section (10 Columns matching exact specification) -->
+          <div class="border border-[#EBECF0] rounded-xl overflow-hidden shadow-2xs">
+            <div class="px-4 py-2.5 bg-[#FAFBFC] border-b border-[#EBECF0] flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <h4 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Settlement Invoices &amp; Bills</h4>
+              </div>
+              <span class="text-[11px] text-[#5E6C84]">1 Invoice attached</span>
             </div>
-            <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-              <span class="text-[#6B778C] text-[11px] block">Transaction Type</span>
-              <span class="font-bold text-[#172B4D]">${txn.type}</span>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-[#FAFBFC] border-b border-[#EBECF0] text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider whitespace-nowrap">
+                  <tr>
+                    <th class="px-3 py-2.5">Bill No.</th>
+                    <th class="px-3 py-2.5">Bill Date</th>
+                    <th class="px-3 py-2.5">Supplier Name</th>
+                    <th class="px-3 py-2.5 text-right">Total Bill Amount</th>
+                    <th class="px-3 py-2.5 text-right">TDS</th>
+                    <th class="px-3 py-2.5 text-right">Bill Amt</th>
+                    <th class="px-3 py-2.5 text-right">Already Paid</th>
+                    <th class="px-3 py-2.5 text-right">Balance Value</th>
+                    <th class="px-3 py-2.5 text-right">Amount</th>
+                    <th class="px-3 py-2.5 text-right">Remainings</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#EBECF0] bg-white text-xs">
+                  <tr class="hover:bg-[#F4F5F7] transition-colors">
+                    <td class="px-3 py-2.5 font-bold text-[#0052CC] whitespace-nowrap">${billNo}</td>
+                    <td class="px-3 py-2.5 whitespace-nowrap">${txn.date || '06-10-2026'}</td>
+                    <td class="px-3 py-2.5 font-semibold text-[#172B4D] whitespace-nowrap">${txn.supplier}</td>
+                    <td class="px-3 py-2.5 text-right font-medium whitespace-nowrap">${amt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0.00</td>
+                    <td class="px-3 py-2.5 text-right font-medium whitespace-nowrap">${amt}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0</td>
+                    <td class="px-3 py-2.5 text-right font-bold text-[#172B4D] whitespace-nowrap">${amt.toFixed(2)}</td>
+                    <td class="px-3 py-2.5 text-right font-bold text-[#006644] whitespace-nowrap">${amt.toFixed(2)}</td>
+                    <td class="px-3 py-2.5 text-right font-bold text-[#5E6C84] whitespace-nowrap">0.00</td>
+                  </tr>
+                </tbody>
+                <tfoot class="bg-[#F4F5F7] border-t-2 border-[#DFE1E6] text-xs font-bold text-[#172B4D]">
+                  <tr>
+                    <td colspan="3" class="px-3 py-2.5 text-right uppercase tracking-wider text-[#5E6C84]">Total:</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap">${amt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0.00</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap">${amt}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap">${amt.toFixed(2)}</td>
+                    <td class="px-3 py-2.5 text-right text-[#006644] whitespace-nowrap">${amt.toFixed(2)}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0.00</td>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
-          </div>
-          <div class="p-2.5 bg-[#FAFBFC] border border-[#EBECF0] rounded">
-            <span class="text-[#6B778C] text-[11px] block">Description</span>
-            <span class="font-medium text-[#172B4D]">${txn.description}</span>
-          </div>
-          <div class="p-3 bg-[#FAFBFC] border border-[#DFE1E6] rounded flex justify-between items-center">
-            <span class="text-[#5E6C84] font-bold">Transaction Amount</span>
-            <span class="text-base font-extrabold text-[#172B4D]">₹ ${(txn.amountInr || 0).toLocaleString()} ($ ${(txn.amountUsd || 0).toLocaleString()})</span>
+
+            <!-- Total Amount Summary Bar Below the Table -->
+            <div class="px-4 py-3 bg-[#FAFBFC] border-t border-[#EBECF0] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold text-[#5E6C84]">Settlement Invoices &amp; Bills Total:</span>
+                <span class="text-xs font-bold text-[#172B4D] bg-[#EBECF0] px-2 py-0.5 rounded">1 Record</span>
+              </div>
+              <div class="flex items-center gap-6">
+                <div class="text-right">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#5E6C84] block">Total Bill Amount</span>
+                  <span class="text-xs font-bold text-[#172B4D]">₹ ${amt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#5E6C84] block">Balance Value</span>
+                  <span class="text-xs font-bold text-[#172B4D]">₹ ${amt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                </div>
+                <div class="text-right pl-3 border-l border-[#DFE1E6]">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-[#0052CC] block">Total Amount</span>
+                  <span class="text-base font-extrabold text-[#006644]">₹ ${amt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       `,
@@ -6901,71 +7342,530 @@ export const PurchaseView = {
     }, 50);
   },
 
-  openEditTransactionModal(txn, tableInstance) {
+  openAddTransactionModal(tableInstance) {
     Modal.open({
-      title: `Edit Commercial Transaction: ${txn.txnId}`,
-      size: 'md',
+      title: 'Add Commercial Transaction',
+      size: 'xl',
       content: `
-        <form id="edit-txn-form" class="space-y-3 text-xs">
-          <div>
-            <label class="block font-semibold text-[#172B4D] mb-1">Transaction Ref</label>
-            <input type="text" value="${txn.txnId}" disabled class="w-full text-xs px-3 py-1.5 bg-[#F4F5F7] border border-[#DFE1E6] rounded text-[#5E6C84] cursor-not-allowed" />
-          </div>
-          <div>
-            <label class="block font-semibold text-[#172B4D] mb-1">Party / Supplier</label>
-            <input type="text" id="edittxn-supplier" value="${txn.supplier}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
-          </div>
-          <div>
-            <label class="block font-semibold text-[#172B4D] mb-1">Description</label>
-            <input type="text" id="edittxn-desc" value="${txn.description}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
-          </div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block font-semibold text-[#172B4D] mb-1">Amount (INR)</label>
-              <input type="number" id="edittxn-amount" value="${txn.amountInr}" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+        <form class="space-y-4">
+          <!-- Top Form Fields Card (5 Fields) -->
+          <div class="bg-[#FAFBFC] border border-[#EBECF0] rounded-xl p-4 shadow-2xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs">
+              <!-- 1. Payment Mode - Dropdown (Select) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Payment Mode</label>
+                <select id="modal-pay-mode" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select</option>
+                  <option value="NEFT" selected>NEFT</option>
+                  <option value="RTGS">RTGS</option>
+                  <option value="Direct Bank Transfer">Direct Bank Transfer</option>
+                  <option value="Cheque">Cheque</option>
+                  <option value="Cash Voucher">Cash Voucher</option>
+                </select>
+              </div>
+
+              <!-- 2. Voucher No - Text Input (Enter Voucher No) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Voucher No</label>
+                <input type="text" id="modal-pay-voucher-no" placeholder="Enter Voucher No" value="VCH-2026-9041" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 3. Cheque/NEFT.No - Text Input (Enter Cheque/NEFT.No) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Cheque/NEFT.No</label>
+                <input type="text" id="modal-pay-cheque-neft" placeholder="Enter Cheque/NEFT.No" value="NEFT-9912048" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 4. Amount - Text Input (11000.00) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Amount</label>
+                <input type="text" id="modal-pay-amount" placeholder="11000.00" value="11000.00" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold text-[#172B4D] focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 5. Comments - Text Input (Enter Comments) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Comments</label>
+                <input type="text" id="modal-pay-comments" placeholder="Enter Comments" value="Harvest settlement payment for pond intake" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
             </div>
-            <div>
-              <label class="block font-semibold text-[#172B4D] mb-1">Ledger Status</label>
-              <select id="edittxn-status" class="w-full text-xs px-3 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
-                <option value="SETTLED" ${txn.status === 'SETTLED' ? 'selected' : ''}>SETTLED</option>
-                <option value="PENDING" ${txn.status === 'PENDING' ? 'selected' : ''}>PENDING</option>
-                <option value="DISPUTED" ${txn.status === 'DISPUTED' ? 'selected' : ''}>DISPUTED</option>
-              </select>
+          </div>
+
+          <!-- Table Section (10 Columns matching exact specification) -->
+          <div class="border border-[#EBECF0] rounded-xl overflow-hidden shadow-2xs">
+            <div class="px-4 py-2.5 bg-[#FAFBFC] border-b border-[#EBECF0] flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <h4 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Settlement Invoices &amp; Bills</h4>
+              </div>
+              <span class="text-[11px] text-[#5E6C84]">1 Invoice attached</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-[#FAFBFC] border-b border-[#EBECF0] text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider whitespace-nowrap">
+                  <tr>
+                    <th class="px-3 py-2.5">Bill No.</th>
+                    <th class="px-3 py-2.5">Bill Date</th>
+                    <th class="px-3 py-2.5">Supplier Name</th>
+                    <th class="px-3 py-2.5 text-right">Total Bill Amount</th>
+                    <th class="px-3 py-2.5 text-right">TDS</th>
+                    <th class="px-3 py-2.5 text-right">Bill Amt</th>
+                    <th class="px-3 py-2.5 text-right">Already Paid</th>
+                    <th class="px-3 py-2.5 text-right">Balance Value</th>
+                    <th class="px-3 py-2.5 text-right">Amount</th>
+                    <th class="px-3 py-2.5 text-right">Remainings</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#EBECF0] bg-white text-xs">
+                  <tr class="hover:bg-[#F4F5F7] transition-colors">
+                    <td class="px-3 py-2.5 font-bold text-[#0052CC] whitespace-nowrap">AMP/2627/2967</td>
+                    <td class="px-3 py-2.5 whitespace-nowrap">06-10-2026</td>
+                    <td class="px-3 py-2.5 font-semibold text-[#172B4D] whitespace-nowrap">L.G SEA FOODS(D HARIBABU)</td>
+                    <td class="px-3 py-2.5 text-right font-medium whitespace-nowrap">11,000.00</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0.00</td>
+                    <td class="px-3 py-2.5 text-right font-medium whitespace-nowrap">11000</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0</td>
+                    <td class="px-3 py-2.5 text-right font-bold text-[#172B4D] whitespace-nowrap">11000.00</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap">
+                      <input type="text" id="modal-table-amount-input" value="11000.00" class="w-24 text-right text-xs px-2 py-1 border border-[#DFE1E6] rounded font-bold text-[#006644] focus:outline-none focus:border-[#0052CC]" />
+                    </td>
+                    <td class="px-3 py-2.5 text-right font-bold text-[#5E6C84] whitespace-nowrap" id="modal-table-remainings">0.00</td>
+                  </tr>
+                </tbody>
+                <tfoot class="bg-[#F4F5F7] border-t-2 border-[#DFE1E6] text-xs font-bold text-[#172B4D]">
+                  <tr>
+                    <td colspan="3" class="px-3 py-2.5 text-right uppercase tracking-wider text-[#5E6C84]">Total:</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap">11,000.00</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0.00</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap">11000</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap">11000.00</td>
+                    <td class="px-3 py-2.5 text-right text-[#006644] whitespace-nowrap" id="modal-table-foot-amount">11000.00</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap" id="modal-table-foot-remainings">0.00</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- Total Amount Summary Bar Below the Table -->
+            <div class="px-4 py-3 bg-[#FAFBFC] border-t border-[#EBECF0] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold text-[#5E6C84]">Settlement Invoices &amp; Bills Total:</span>
+                <span class="text-xs font-bold text-[#172B4D] bg-[#EBECF0] px-2 py-0.5 rounded">1 Record</span>
+              </div>
+              <div class="flex items-center gap-6">
+                <div class="text-right">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#5E6C84] block">Total Bill Amount</span>
+                  <span class="text-xs font-bold text-[#172B4D]">₹ 11,000.00</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#5E6C84] block">Balance Value</span>
+                  <span class="text-xs font-bold text-[#172B4D]">₹ 11,000.00</span>
+                </div>
+                <div class="text-right pl-3 border-l border-[#DFE1E6]">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-[#0052CC] block">Total Amount</span>
+                  <span class="text-base font-extrabold text-[#006644]" id="modal-summary-total-amount">₹ 11,000.00</span>
+                </div>
+              </div>
             </div>
           </div>
         </form>
       `,
       footerButtons: [
         { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
-        {
-          label: 'Save Changes',
-          type: 'primary',
+        { 
+          label: 'Save & Disburse Transaction', 
+          type: 'primary', 
           onClick: (m) => {
-            txn.supplier = document.getElementById('edittxn-supplier').value || txn.supplier;
-            txn.description = document.getElementById('edittxn-desc').value || txn.description;
-            txn.amountInr = parseFloat(document.getElementById('edittxn-amount').value) || txn.amountInr;
-            txn.amountUsd = Math.round(txn.amountInr / 83.2);
-            txn.status = document.getElementById('edittxn-status').value;
+            const mode = document.getElementById('modal-pay-mode')?.value || 'NEFT';
+            const voucherNo = document.getElementById('modal-pay-voucher-no')?.value || 'VCH-2026-9041';
+            const chqNeft = document.getElementById('modal-pay-cheque-neft')?.value || 'NEFT-9912048';
+            const amtStr = document.getElementById('modal-pay-amount')?.value || '11000.00';
+            const comments = document.getElementById('modal-pay-comments')?.value || '';
+            const inr = parseFloat(amtStr.replace(/,/g, '')) || 11000;
+
+            if (!mode) {
+              Toast.show('Please select a payment mode.', 'warning');
+              return;
+            }
+
+            const newTxn = {
+              sNo: 1,
+              txnId: `CTX-2026-${Math.floor(1000 + Math.random() * 9000)}`,
+              date: '06/10/2026',
+              rawDate: '2026-10-06',
+              center: 'Amalapuram Harvesters #4',
+              supplier: 'L.G SEA FOODS(D HARIBABU)',
+              agent: 'Direct Farmer',
+              plant: 'DFL UNIT-6 (JPT-II)',
+              billNo: 'AMP/2627/2967',
+              voucherNo: voucherNo,
+              bankRef: chqNeft,
+              paymentMode: mode,
+              description: `${comments || 'Bill Settlement AMP/2627/2967'} [${mode} Ref: ${chqNeft}]`,
+              amountInr: inr,
+              amountUsd: Math.round(inr / 83),
+              type: 'PURCHASE_PAYABLE',
+              status: 'SETTLED'
+            };
+
+            PurchaseView.commercialTxns.unshift(newTxn);
+            PurchaseView.commercialTxns.forEach((item, idx) => item.sNo = idx + 1);
+            if (tableInstance) tableInstance.setData(PurchaseView.commercialTxns);
+
+            if (PurchaseView.paymentsList) {
+              PurchaseView.paymentsList.unshift({
+                sNo: 1,
+                voucherNo: voucherNo,
+                paymentDate: '06/10/2026',
+                rawDate: '2026-10-06',
+                center: 'Amalapuram Harvesters #4',
+                type: 'PURCHASE_PAYABLE',
+                supplierName: 'L.G SEA FOODS(D HARIBABU)',
+                agent: 'Direct Farmer',
+                plant: 'DFL UNIT-6 (JPT-II)',
+                billNo: 'AMP/2627/2967',
+                bankRef: chqNeft,
+                amountInr: inr,
+                amountUsd: Math.round(inr / 83),
+                paymentMode: mode,
+                status: 'COMPLETED'
+              });
+            }
+
+            m.close();
+
+            // Confirmation message on add action
+            Modal.success({
+              title: 'Commercial Transaction Added Successfully',
+              message: `Commercial transaction <strong>${newTxn.txnId}</strong> (Voucher <strong>${voucherNo}</strong>) has been recorded in the commercial ledger.`,
+              details: [
+                { label: 'Txn Ref', value: newTxn.txnId },
+                { label: 'Voucher No', value: voucherNo },
+                { label: 'Party / Supplier', value: newTxn.supplier },
+                { label: 'Amount', value: `₹ ${inr.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` },
+                { label: 'Payment Mode', value: mode }
+              ]
+            });
+            Toast.show(`Commercial transaction ${newTxn.txnId} added successfully.`, 'success');
+          }
+        }
+      ]
+    });
+
+    // Dynamic 2-way sync between form Amount and table Amount/Remainings/Total
+    setTimeout(() => {
+      const topAmt = document.getElementById('modal-pay-amount');
+      const tblAmt = document.getElementById('modal-table-amount-input');
+      const remEl = document.getElementById('modal-table-remainings');
+      const footAmt = document.getElementById('modal-table-foot-amount');
+      const footRem = document.getElementById('modal-table-foot-remainings');
+      const summaryAmt = document.getElementById('modal-summary-total-amount');
+
+      const updateSync = (val) => {
+        const entered = parseFloat(val) || 0;
+        const balance = 11000;
+        const remain = Math.max(0, balance - entered);
+        if (remEl) {
+          remEl.textContent = remain.toFixed(2);
+          if (remain > 0) {
+            remEl.className = 'px-3 py-2.5 text-right font-bold text-[#BF2600] whitespace-nowrap';
+          } else {
+            remEl.className = 'px-3 py-2.5 text-right font-bold text-[#5E6C84] whitespace-nowrap';
+          }
+        }
+        if (footAmt) {
+          footAmt.textContent = entered.toFixed(2);
+        }
+        if (footRem) {
+          footRem.textContent = remain.toFixed(2);
+          footRem.className = remain > 0 ? 'px-3 py-2.5 text-right font-bold text-[#BF2600] whitespace-nowrap' : 'px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap';
+        }
+        if (summaryAmt) {
+          summaryAmt.textContent = `₹ ${entered.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+      };
+
+      if (tblAmt) {
+        tblAmt.addEventListener('input', (e) => {
+          if (topAmt) topAmt.value = e.target.value;
+          updateSync(e.target.value);
+        });
+      }
+
+      if (topAmt) {
+        topAmt.addEventListener('input', (e) => {
+          if (tblAmt) tblAmt.value = e.target.value;
+          updateSync(e.target.value);
+        });
+      }
+    }, 50);
+  },
+
+  openEditTransactionModal(txn, tableInstance) {
+    const billNo = txn.billNo || ('AMP/2627/' + (txn.txnId ? txn.txnId.replace(/\D/g, '').slice(-4) : '2967'));
+    const voucherNo = txn.voucherNo || ('VCH-2026-' + (txn.txnId ? txn.txnId.split('-')[2] : '9041'));
+    const chqNeft = txn.bankRef || txn.chqNeft || ('NEFT-' + (txn.txnId ? txn.txnId.replace(/\D/g, '') : '9912048'));
+    const mode = txn.paymentMode || 'NEFT';
+    const initialAmt = parseFloat(txn.amountInr) || 11000;
+    const comments = txn.description || 'Harvest settlement payment for pond intake';
+
+    Modal.open({
+      title: `Edit Commercial Transaction: ${txn.txnId}`,
+      size: 'xl',
+      content: `
+        <form class="space-y-4">
+          <!-- Top Form Fields Card (5 Fields in Edit Mode) -->
+          <div class="bg-[#FAFBFC] border border-[#EBECF0] rounded-xl p-4 shadow-2xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-xs">
+              <!-- 1. Payment Mode - Dropdown (Select) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Payment Mode</label>
+                <select id="edit-pay-mode" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]">
+                  <option value="">Select</option>
+                  <option value="NEFT" ${mode === 'NEFT' ? 'selected' : ''}>NEFT</option>
+                  <option value="RTGS" ${mode === 'RTGS' ? 'selected' : ''}>RTGS</option>
+                  <option value="Direct Bank Transfer" ${mode === 'Direct Bank Transfer' ? 'selected' : ''}>Direct Bank Transfer</option>
+                  <option value="Cheque" ${mode === 'Cheque' ? 'selected' : ''}>Cheque</option>
+                  <option value="Cash Voucher" ${mode === 'Cash Voucher' ? 'selected' : ''}>Cash Voucher</option>
+                </select>
+              </div>
+
+              <!-- 2. Voucher No - Text Input (Enter Voucher No) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Voucher No</label>
+                <input type="text" id="edit-pay-voucher-no" placeholder="Enter Voucher No" value="${voucherNo}" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 3. Cheque/NEFT.No - Text Input (Enter Cheque/NEFT.No) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Cheque/NEFT.No</label>
+                <input type="text" id="edit-pay-cheque-neft" placeholder="Enter Cheque/NEFT.No" value="${chqNeft}" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 4. Amount - Text Input -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Amount</label>
+                <input type="text" id="edit-pay-amount" placeholder="11000.00" value="${initialAmt.toFixed(2)}" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded font-bold text-[#172B4D] focus:outline-none focus:border-[#0052CC]" />
+              </div>
+
+              <!-- 5. Comments - Text Input (Enter Comments) -->
+              <div>
+                <label class="block text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider mb-1">Comments</label>
+                <input type="text" id="edit-pay-comments" placeholder="Enter Comments" value="${comments}" class="w-full text-xs px-2.5 py-1.5 bg-white border border-[#DFE1E6] rounded focus:outline-none focus:border-[#0052CC]" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Table Section (10 Columns matching exact specification) -->
+          <div class="border border-[#EBECF0] rounded-xl overflow-hidden shadow-2xs">
+            <div class="px-4 py-2.5 bg-[#FAFBFC] border-b border-[#EBECF0] flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#0052CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <h4 class="text-xs font-bold text-[#172B4D] uppercase tracking-wider">Settlement Invoices &amp; Bills</h4>
+              </div>
+              <span class="text-[11px] text-[#5E6C84]">1 Invoice attached</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-[#FAFBFC] border-b border-[#EBECF0] text-[11px] font-bold text-[#5E6C84] uppercase tracking-wider whitespace-nowrap">
+                  <tr>
+                    <th class="px-3 py-2.5">Bill No.</th>
+                    <th class="px-3 py-2.5">Bill Date</th>
+                    <th class="px-3 py-2.5">Supplier Name</th>
+                    <th class="px-3 py-2.5 text-right">Total Bill Amount</th>
+                    <th class="px-3 py-2.5 text-right">TDS</th>
+                    <th class="px-3 py-2.5 text-right">Bill Amt</th>
+                    <th class="px-3 py-2.5 text-right">Already Paid</th>
+                    <th class="px-3 py-2.5 text-right">Balance Value</th>
+                    <th class="px-3 py-2.5 text-right">Amount</th>
+                    <th class="px-3 py-2.5 text-right">Remainings</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#EBECF0] bg-white text-xs">
+                  <tr class="hover:bg-[#F4F5F7] transition-colors">
+                    <td class="px-3 py-2.5 font-bold text-[#0052CC] whitespace-nowrap">${billNo}</td>
+                    <td class="px-3 py-2.5 whitespace-nowrap">${txn.date || '06-10-2026'}</td>
+                    <td class="px-3 py-2.5 font-semibold text-[#172B4D] whitespace-nowrap">${txn.supplier}</td>
+                    <td class="px-3 py-2.5 text-right font-medium whitespace-nowrap" id="edit-tbl-total-bill-amt">${initialAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0.00</td>
+                    <td class="px-3 py-2.5 text-right font-medium whitespace-nowrap" id="edit-tbl-bill-amt">${initialAmt}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0</td>
+                    <td class="px-3 py-2.5 text-right font-bold text-[#172B4D] whitespace-nowrap" id="edit-tbl-bal-value">${initialAmt.toFixed(2)}</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap">
+                      <input type="text" id="edit-table-amount-input" value="${initialAmt.toFixed(2)}" class="w-24 text-right text-xs px-2 py-1 border border-[#DFE1E6] rounded font-bold text-[#006644] focus:outline-none focus:border-[#0052CC]" />
+                    </td>
+                    <td class="px-3 py-2.5 text-right font-bold text-[#5E6C84] whitespace-nowrap" id="edit-table-remainings">0.00</td>
+                  </tr>
+                </tbody>
+                <tfoot class="bg-[#F4F5F7] border-t-2 border-[#DFE1E6] text-xs font-bold text-[#172B4D]">
+                  <tr>
+                    <td colspan="3" class="px-3 py-2.5 text-right uppercase tracking-wider text-[#5E6C84]">Total:</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap" id="edit-foot-total-bill-amt">${initialAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0.00</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap" id="edit-foot-bill-amt">${initialAmt}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap">0</td>
+                    <td class="px-3 py-2.5 text-right whitespace-nowrap" id="edit-foot-bal-value">${initialAmt.toFixed(2)}</td>
+                    <td class="px-3 py-2.5 text-right text-[#006644] whitespace-nowrap" id="edit-table-foot-amount">${initialAmt.toFixed(2)}</td>
+                    <td class="px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap" id="edit-table-foot-remainings">0.00</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- Total Amount Summary Bar Below the Table -->
+            <div class="px-4 py-3 bg-[#FAFBFC] border-t border-[#EBECF0] flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold text-[#5E6C84]">Settlement Invoices &amp; Bills Total:</span>
+                <span class="text-xs font-bold text-[#172B4D] bg-[#EBECF0] px-2 py-0.5 rounded">1 Record</span>
+              </div>
+              <div class="flex items-center gap-6">
+                <div class="text-right">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#5E6C84] block">Total Bill Amount</span>
+                  <span class="text-xs font-bold text-[#172B4D]" id="edit-summary-total-bill-amt">₹ ${initialAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#5E6C84] block">Balance Value</span>
+                  <span class="text-xs font-bold text-[#172B4D]" id="edit-summary-bal-value">₹ ${initialAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                </div>
+                <div class="text-right pl-3 border-l border-[#DFE1E6]">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-[#0052CC] block">Total Amount</span>
+                  <span class="text-base font-extrabold text-[#006644]" id="edit-summary-total-amount">₹ ${initialAmt.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      `,
+      footerButtons: [
+        { label: 'Cancel', type: 'secondary', onClick: (m) => m.close() },
+        { 
+          label: 'Save Changes', 
+          type: 'primary', 
+          onClick: (m) => {
+            const newMode = document.getElementById('edit-pay-mode')?.value || mode;
+            const newVoucherNo = document.getElementById('edit-pay-voucher-no')?.value || voucherNo;
+            const newChqNeft = document.getElementById('edit-pay-cheque-neft')?.value || chqNeft;
+            const amtStr = document.getElementById('edit-pay-amount')?.value || initialAmt.toString();
+            const newComments = document.getElementById('edit-pay-comments')?.value || comments;
+            const inr = parseFloat(amtStr.replace(/,/g, '')) || initialAmt;
+
+            if (!newMode) {
+              Toast.show('Please select a payment mode.', 'warning');
+              return;
+            }
+
+            txn.paymentMode = newMode;
+            txn.voucherNo = newVoucherNo;
+            txn.bankRef = newChqNeft;
+            txn.amountInr = inr;
+            txn.amountUsd = Math.round(inr / 83);
+            txn.description = newComments;
+            txn.billNo = billNo;
+
+            if (PurchaseView.paymentsList) {
+              const p = PurchaseView.paymentsList.find(item => item.voucherNo === voucherNo || item.billNo === billNo);
+              if (p) {
+                p.voucherNo = newVoucherNo;
+                p.bankRef = newChqNeft;
+                p.amountInr = inr;
+                p.amountUsd = Math.round(inr / 83);
+                p.paymentMode = newMode;
+              }
+            }
+
             if (tableInstance) tableInstance.setData(PurchaseView.commercialTxns);
             m.close();
+
+            // Confirmation message on edit action
+            Modal.success({
+              title: 'Commercial Transaction Updated Successfully',
+              message: `Transaction <strong>${txn.txnId}</strong> (Voucher <strong>${newVoucherNo}</strong>) has been updated in the commercial ledger.`,
+              details: [
+                { label: 'Txn Ref', value: txn.txnId },
+                { label: 'Voucher No', value: newVoucherNo },
+                { label: 'Party / Supplier', value: txn.supplier },
+                { label: 'Amount', value: `₹ ${inr.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` },
+                { label: 'Payment Mode', value: newMode }
+              ]
+            });
             Toast.show(`Transaction ${txn.txnId} updated successfully.`, 'success');
           }
         }
       ]
     });
+
+    // Dynamic 2-way sync between form Amount and table Amount/Remainings/Total
+    setTimeout(() => {
+      const topAmt = document.getElementById('edit-pay-amount');
+      const tblAmt = document.getElementById('edit-table-amount-input');
+      const remEl = document.getElementById('edit-table-remainings');
+      const footAmt = document.getElementById('edit-table-foot-amount');
+      const footRem = document.getElementById('edit-table-foot-remainings');
+      const summaryAmt = document.getElementById('edit-summary-total-amount');
+
+      const updateSync = (val) => {
+        const entered = parseFloat(val) || 0;
+        const balance = initialAmt;
+        const remain = Math.max(0, balance - entered);
+        if (remEl) {
+          remEl.textContent = remain.toFixed(2);
+          if (remain > 0) {
+            remEl.className = 'px-3 py-2.5 text-right font-bold text-[#BF2600] whitespace-nowrap';
+          } else {
+            remEl.className = 'px-3 py-2.5 text-right font-bold text-[#5E6C84] whitespace-nowrap';
+          }
+        }
+        if (footAmt) {
+          footAmt.textContent = entered.toFixed(2);
+        }
+        if (footRem) {
+          footRem.textContent = remain.toFixed(2);
+          footRem.className = remain > 0 ? 'px-3 py-2.5 text-right font-bold text-[#BF2600] whitespace-nowrap' : 'px-3 py-2.5 text-right text-[#5E6C84] whitespace-nowrap';
+        }
+        if (summaryAmt) {
+          summaryAmt.textContent = `₹ ${entered.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+      };
+
+      if (tblAmt) {
+        tblAmt.addEventListener('input', (e) => {
+          if (topAmt) topAmt.value = e.target.value;
+          updateSync(e.target.value);
+        });
+      }
+
+      if (topAmt) {
+        topAmt.addEventListener('input', (e) => {
+          if (tblAmt) tblAmt.value = e.target.value;
+          updateSync(e.target.value);
+        });
+      }
+    }, 50);
   },
 
   deleteTransaction(txn, tableInstance) {
     Modal.confirm({
       title: `Delete Transaction ${txn.txnId}`,
-      message: `Are you sure you want to void this commercial ledger transaction <strong>${txn.txnId}</strong>?`,
+      message: `Are you sure you want to void this commercial ledger transaction <strong>${txn.txnId}</strong> for party <strong>${txn.supplier}</strong> (₹ ${(txn.amountInr || 0).toLocaleString()})?`,
       isDestructive: true,
       onConfirm: () => {
         const idx = PurchaseView.commercialTxns.findIndex(t => t.txnId === txn.txnId);
         if (idx > -1) {
           PurchaseView.commercialTxns.splice(idx, 1);
+          PurchaseView.commercialTxns.forEach((t, i) => t.sNo = i + 1);
           if (tableInstance) tableInstance.setData(PurchaseView.commercialTxns);
-          Toast.show(`Transaction ${txn.txnId} voided.`, 'success');
+
+          // Confirmation message on delete action
+          Modal.success({
+            title: 'Commercial Transaction Voided',
+            message: `Commercial ledger transaction <strong>${txn.txnId}</strong> has been voided and deleted.`,
+            details: [
+              { label: 'Txn Ref', value: txn.txnId },
+              { label: 'Party / Supplier', value: txn.supplier },
+              { label: 'Amount', value: `₹ ${(txn.amountInr || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` }
+            ]
+          });
+          Toast.show(`Transaction ${txn.txnId} voided and removed from ledger.`, 'success');
         }
       }
     });
