@@ -41,10 +41,7 @@ export const TopNav = {
           <div class="flex items-center gap-4">
             <a href="#/purchase/dashboard/rm-dashboard" class="flex items-center gap-2.5 group">
               <img src="${LOGO_COLOR}" alt="Devi Fisheries" class="h-8 w-auto object-contain" />
-              <div class="hidden sm:flex flex-col">
-                <span class="font-black text-sm text-[#0052CC] tracking-tight leading-tight group-hover:text-[#0747A6] transition-colors">DEVI FISHERIES</span>
-                <span class="text-[9px] font-semibold text-[#5E6C84] tracking-wider uppercase leading-none">Enterprise ERP SaaS</span>
-              </div>
+              <span class="hidden sm:inline-block font-bold text-sm text-[#0052CC] tracking-tight group-hover:text-[#0747A6] transition-colors">Devi Fisheries Limited</span>
             </a>
           </div>
 
